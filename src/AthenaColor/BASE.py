@@ -44,7 +44,7 @@ class Colors:
     Purple              = 91
     Purple_Light        = 129
 
-    Teal_Dark           = 24    # totally not a reference to LEGO Teal
+    Teal_Dark           = 24    # The colour TEAL totally not a reference to LEGO Teal
     Teal                = 31
     Teal_Light          = 37
 
@@ -52,9 +52,9 @@ class Colors:
     Violet              = 135
     Violet_Light        = 177
 
-    orange_Dark         = 130
-    orange              = 208
-    orange_Light        = 214
+    Orange_Dark         = 130
+    Orange              = 208
+    Orange_Light        = 214
 
     Cyan_Dark           = 45
     Cyan                = 51

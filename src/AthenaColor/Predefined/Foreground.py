@@ -48,9 +48,9 @@ class Foreground:
     Violet =            f"{esc}[38;{cc}{Colors.Violet      }{end}"
     Violet_Light =      f"{esc}[38;{cc}{Colors.Violet_Light}{end}"
 
-    orange_Dark =       f"{esc}[38;{cc}{Colors.orange_Dark }{end}"
-    orange =            f"{esc}[38;{cc}{Colors.orange      }{end}"
-    orange_Light =      f"{esc}[38;{cc}{Colors.orange_Light}{end}"
+    Orange_Dark =       f"{esc}[38;{cc}{Colors.Orange_Dark }{end}"
+    Orange =            f"{esc}[38;{cc}{Colors.Orange      }{end}"
+    Orange_Light =      f"{esc}[38;{cc}{Colors.Orange_Light}{end}"
 
     Cyan_Dark =         f"{esc}[38;{cc}{Colors.Cyan_Dark   }{end}"
     Cyan =              f"{esc}[38;{cc}{Colors.Cyan        }{end}"

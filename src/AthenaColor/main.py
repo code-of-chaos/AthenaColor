@@ -22,7 +22,7 @@ def _print_all(class_object:object) -> None:
         if isinstance(v, str):
             print(f"{v}{k}{Format.Reset}")
 
-def all_colors() -> None:
+def all_Colors() -> None:
     for k, v in Colors.__class__.__dict__.items():
         if isinstance(v, int):
             print(f"{k} = {v}")
@@ -33,7 +33,7 @@ def all_Foregrounds() -> None:
 def all_Backgrounds() -> None:
     _print_all(Background)
 
-def all_formats() -> None:
+def all_Formats() -> None:
     for k, v in Foreground.__class__.__dict__.items():
         if isinstance(v, str):
             print(f"{v}{k}{Format.Reset}")
@@ -49,7 +49,7 @@ def all_formats() -> None:
 
 
 if __name__ == "__main__":
-    all_colors()
+    all_Colors()
     all_Foregrounds()
     all_Backgrounds()
-    all_formats()
+    all_Formats()
