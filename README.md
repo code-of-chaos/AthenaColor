@@ -1,4 +1,4 @@
-# - Athena Color Package - v1.0.0
+# - Athena Color Package - v1.0.1
 
 A little package which allows you to use ANSI codes to print colour to the console.
 
@@ -101,4 +101,13 @@ all_Formats()
 
 ---
 
+## Links
+Project files can be found at:
+- [GitHub Repo](https://github.com/DirectiveAthena/AthenaColor) 
+- [Pypi link](https://pypi.org/project/AthenaColor/)
+
+Pip installs by the following command: 
+```
+pip install AthenaColor
+```
 Made By Andreas Sas, 2022
