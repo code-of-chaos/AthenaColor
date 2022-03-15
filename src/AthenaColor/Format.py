@@ -12,7 +12,7 @@ from .BASE import esc, end
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class Format:
-    Reset = f"{esc}[0;39;49{end}"
+    Reset = f"{esc}[0{end}"
 
     Italic = f"{esc}[3{end}"
     NoItalic = f"{esc}[23{end}"
