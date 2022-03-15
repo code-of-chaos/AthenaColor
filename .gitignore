@@ -1,0 +1,16 @@
+.idea/
+desktop.ini
+\.run
+*\__pychache__
+*.pyc
+temp/
+*/PyVenv/
+*.egg-info/
+*.gz
+*.whl
+*PKG-INFO
+*SOURCES.txt
+*top_level.txt
+*dependency_links.txt
+*requires.txt
+*/test/
