@@ -19,6 +19,8 @@ def boundary(value:int|float) -> int|float:
         return 0
     elif value > 255:
         return 255
+    else:
+        ValueError("Value out of range")
 
 class rgb:
     # ------------------------------------------------------------------------------------------------------------------
@@ -75,7 +77,7 @@ class rgb:
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
     def __str__(self) -> str:
-        return f"{self.r},{self.g},{self.b}"
+        return f"{self.r};{self.g};{self.b}"
 
     def __repr__(self) -> str:
         return f"rgb(r={self.r},g={self.g},b={self.b})"
