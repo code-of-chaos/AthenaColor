@@ -3,34 +3,13 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 
-# Custom Library
-
 # Custom Packages
-from ..Objects.Rgb import rgb
+from .Objects.Rgb import rgb
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-    # Same names as named HTML colors
-
-class BasicColors:
-    Black   = rgb(0,0,0)
-    White   = rgb(255,255,255)
-    Red     = rgb(255,0,0)
-    Lime    = rgb(0,255,0)
-    Blue    = rgb(0,0,255)
-    Yellow  = rgb(255,255,0)
-    Cyan    = rgb(0,255,255)
-    Magenta = rgb(255,0,255)
-    Silver  = rgb(192,192,192)
-    Gray    = rgb(128,128,128)
-    Maroon  = rgb(128,0,0)
-    Olive   = rgb(128,128,0)
-    Green   = rgb(0,128,0)
-    Purple  = rgb(128,0,128)
-    Teal    = rgb(0,128,128)
-    Navy    = rgb(0,0,128)
-
+# Same names as named HTML colors
 class Colors:
     Maroon                  = rgb(128,0,0)
     DarkRed                 = rgb(139,0,0)
@@ -171,4 +150,3 @@ class Colors:
     Gainsboro               = rgb(220,220,220)
     WhiteSmoke              = rgb(245,245,245)
     White                   = rgb(255,255,255)
-
