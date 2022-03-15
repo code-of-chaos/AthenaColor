@@ -17,14 +17,16 @@ Colors
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 
+color_list = [k for k in Colors.__class__.__dict__.keys() if k[:1] != "_"]
+
 def _print_all(class_object:object) -> None:
     for k,v in class_object.__class__.__dict__.items():
-        if isinstance(v, str):
+        if k in color_list:
             print(f"{v}{k}{Format.Reset}")
 
 def all_Colors() -> None:
     for k, v in Colors.__class__.__dict__.items():
-        if isinstance(v, int):
+        if k in color_list:
             print(f"{k} = {v}")
 
 def all_Foregrounds() -> None:
@@ -35,7 +37,7 @@ def all_Backgrounds() -> None:
 
 def all_Formats() -> None:
     for k, v in Foreground.__class__.__dict__.items():
-        if isinstance(v, str):
+        if k in color_list:
             print(f"{v}{k}{Format.Reset}")
             print(f"{Format.Italic}{v}{k}{Format.Reset}")
             print(f"{Format.Bold}{v}{k}{Format.Reset}")
@@ -46,7 +48,6 @@ def all_Formats() -> None:
             print(f"{Format.Frame}{v}{k}{Format.Reset}")
             print(f"{Format.Circle}{v}{k}{Format.Reset}")
             print(f"{Format.Italic}{Format.Bold}{Format.Underline}{Format.Dim}{Format.Crossed}{Format.Reversed}{Format.Frame}{Format.Circle}{v}{k}{Format.Reset}")
-
 
 if __name__ == "__main__":
     all_Colors()

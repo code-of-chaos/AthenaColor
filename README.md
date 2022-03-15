@@ -1,4 +1,4 @@
-# - Athena Color Package - v1.0.1
+# - Athena Color Package - v1.0.2
 
 A little package which allows you to use ANSI codes to print colour to the console.
 
