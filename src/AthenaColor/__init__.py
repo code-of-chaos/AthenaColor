@@ -6,4 +6,4 @@ Colors = AthenaColor.Predefined.Colors
 
 # DOCU
 import AthenaColor.Help
-
+from AthenaColor.readme import readme

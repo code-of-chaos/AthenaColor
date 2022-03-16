@@ -12,9 +12,4 @@ import AthenaColor as AC
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
-    AC.Help.all_Colours_Limited()
-    AC.Help.all_Foregrounds()
-    AC.Help.all_Backgrounds()
-    AC.Help.all_Formats()
-    AC.Help.all_NotWorkingPycharm()
-    AC.Help.color_box(rows=4)
+    AC.readme()
