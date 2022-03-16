@@ -41,21 +41,21 @@ class rgb:
         return self._r
     @r.setter
     def r(self, value:int|float):
-        self._r = round(boundary(value))
+        self._r = int(round(boundary(value)))
 
     @property
     def g(self):
         return self._g
     @g.setter
     def g(self, value: int | float):
-        self._g = round(boundary(value))
+        self._g = int(round(boundary(value)))
 
     @property
     def b(self):
         return self._b
     @b.setter
     def b(self, value: int | float):
-        self._b = round(boundary(value))
+        self._b = int(round(boundary(value)))
 
     # ------------------------------------------------------------------------------------------------------------------
     # Special Methods
