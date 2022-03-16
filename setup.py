@@ -14,10 +14,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="AthenaColor",
-    version="1.0.2",
+    version="2.0.0",
     author="Andreas Sas",
     author_email="",
-    description="A small ANSI  color library for Console Colours. Primarily designed to work with PyCharm",
+    description="A little package which allows you to use ANSI codes to print color to the console.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/DirectiveAthena/AthenaColor",
