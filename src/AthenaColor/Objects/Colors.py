@@ -4,7 +4,7 @@
 # General Packages
 
 # Custom Packages
-from .Objects.Rgb import rgb
+from .Rgb import rgb
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

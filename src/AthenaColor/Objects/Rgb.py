@@ -25,10 +25,13 @@ class rgb:
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,r:int,g:int,b:int):
-        self.r = r
-        self.g = g
-        self.b = b
+    def __init__(self,r:int|float,g:int|float,b:int|float):
+        if isinstance(r, (int,float)) and isinstance(g, (int,float)) and isinstance(b, (int,float)):
+            self.r = r
+            self.g = g
+            self.b = b
+        else:
+            raise ValueError("no int or float were given on rgb creation")
 
     # ------------------------------------------------------------------------------------------------------------------
     # RGB Properties
