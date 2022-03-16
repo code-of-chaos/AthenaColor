@@ -89,7 +89,7 @@ NoOverLine                  = f"{esc}[55m"
 def UnderColour(color:rgb) -> str:              # NOT WORKING PYCHARM
     return f"{esc}[58;2;{color}m"
 
-UnderColourDefault  = f"{esc}[59m"
+UnderColourDefault          = f"{esc}[59m"
 
 IdeogramUnderLine           = f"{esc}[60m"
 IdeogramUnderLineDouble     = f"{esc}[61m"

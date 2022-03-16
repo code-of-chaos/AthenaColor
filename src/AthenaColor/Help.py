@@ -6,8 +6,10 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor import ConsolePrinter as CP
-from AthenaColor.Predefined import Colors
+from AthenaColor import (
+    ConsolePrinter as CP,
+    Colors
+)
 from AthenaColor.Predefined.ColorsBasic import ColorsBasic
 from AthenaColor.Objects import rgb
 
