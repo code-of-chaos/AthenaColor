@@ -3,5 +3,5 @@ import AthenaColor.Predefined
 import AthenaColor.ConsolePrinter
 
 # DOCU
-import AthenaColor.Docu
+import AthenaColor.Help
 

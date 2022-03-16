@@ -10,9 +10,9 @@ import AthenaColor as AC
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
-    AC.Docu.all_Colours_Limited()
-    AC.Docu.all_Foregrounds()
-    AC.Docu.all_Backgrounds()
-    AC.Docu.all_Formats()
-    AC.Docu.all_NotWorkingPycharm()
-    AC.Docu.color_box(rows=4)
+    AC.Help.all_Colours_Limited()
+    AC.Help.all_Foregrounds()
+    AC.Help.all_Backgrounds()
+    AC.Help.all_Formats()
+    AC.Help.all_NotWorkingPycharm()
+    AC.Help.color_box(rows=4)
