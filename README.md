@@ -1,11 +1,11 @@
 # - Athena Color Package - v2.0.0
 
-A little package which allows you to use ANSI codes to print colour to the console.
+A little package which allows you to use ANSI codes to print color to the console.
 
 ---
 ## Details and features
 - Support for Fore- and Background colours
-- Support for Underline, Bold, Italic and other Format styles
+- Support for Underline, Bold, Italic and other Text Makeups
 - Custom rgb class with full support for math operators
 - All basic and extended web colors available to be printed to console
 - Access to the full rgb spectrum to be printed to the console
@@ -15,37 +15,52 @@ A little package which allows you to use ANSI codes to print colour to the conso
 ## Usage
 The code below is an example:
 ```python
-import AthenaColor as AC
-from AthenaColor import Colors
+# *-* Base Needed imports *-*
+from AthenaColor import (
+    ConsolePrinter as ACP,
+    Colors
+)
 
-# *-*
-# Use the objects in an f-string
-# *-*
-print(f"{AC.Bold}Hello there!{AC.Reset}")
-print(f"{AC.Foreground(Colors.Olive)}This changes the foreground color{AC.Reset}")
-print(f"{AC.Foreground(Colors.DarkViolet)}This changes the background color{AC.Reset}")
-print(f"{AC.Background(Colors.Teal)}{AC.Foreground(Colors.LightGoldenRodYellow)}You can also combine them{AC.Reset}")
+# *-* Use the objects in an f-string *-*
+print(
+f"""||| {ACP.Bold}Welcome to the AthenaColor Package!{ACP.Reset} |||
 
-text_style = AC.Background(Colors.DarkSlateBlue) + Colors.Violet + AC.Underline
-print(f"{text_style}This works as well!{AC.Reset}")
+- The {ACP.Foreground(Colors.HotPink)}ACP.Foreground(Colors.HotPink){ACP.Reset} Changes the Foreground color
+- The {ACP.Background(Colors.Indigo)}ACP.Background(Colors.Indigo){ACP.Reset} changes the background color
+- Combinations like {ACP.Background(Colors.Teal) + ACP.Foreground(Colors.LightGoldenRodYellow)} ACP.Background(Colors.Teal) + ACP.Foreground(Colors.LightGoldenRodYellow){ACP.Reset} are also supported
+"""
+)
 
+text_style = ACP.Background(Colors.DarkSlateBlue) + ACP.Foreground(Colors.Violet) + ACP.Underline
 
-# *-*
-# Use the objects in a concat-ed string
-# *-*
-print(AC.Bold + "Hello there!" + AC.Reset)
+print(
+f"""Usage of custom combined styles can also be used without any issue
+{text_style}ACP.Background(Colors.DarkSlateBlue) + ACP.Foreground(Colors.Violet) + ACP.Underline{ACP.Reset}"""
+)
 
-# *-*
-# To see all available colors and format styles, the following functions will print out all the available colors and the available 
-# *-*
+# *-* Create your own rgb objects *-*
+from AthenaColor.Objects import rgb
 
-from AthenaColor.Docu import (
+custom_color = rgb(r=86,g=54,b=186)
+print(f"{ACP.Foreground(custom_color) + ACP.Reversed}Text with a newly made rgb object{ACP.Reset}\n")
+
+# *-* Print out of all colours and Style Formats *-*
+from AthenaColor.Help import (
     all_Formats,
     color_box
 )
-all_Formats()
-color_box()
+print(f"""{ACP.Bold}
+The following is a full list of all predefined colors.
+Together with all Style makeups found in AthenaColor.ConsolePrinter:
+{ACP.Reset}""")
 
+all_Formats()
+
+print(f"""{ACP.Bold}
+The following is a small view of all predefined colors:
+{ACP.Reset}""")
+
+color_box()
 ```
 ---
 ## Links
@@ -53,7 +68,7 @@ Project files can be found at:
 - [GitHub Repo](https://github.com/DirectiveAthena/AthenaColor) 
 - [Pypi link](https://pypi.org/project/AthenaColor/)
 
-Pip install by the following command: 
+Pip installs by the following command: 
 ```
 pip install AthenaColor
 ```
