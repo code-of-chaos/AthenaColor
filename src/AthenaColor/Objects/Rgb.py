@@ -96,7 +96,7 @@ class rgb:
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) > (other + other + other)
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
 
     # <
     def __lt__(self, other:rgb|int|float) -> bool:
@@ -105,7 +105,7 @@ class rgb:
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) < (other + other + other)
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
 
     # ==
     def __eq__(self, other:rgb|int|float) -> bool:
@@ -114,7 +114,7 @@ class rgb:
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) == (other + other + other)
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
     # !=
     def __ne__(self, other:rgb|int|float) -> bool:
         if isinstance(other, rgb):
@@ -122,7 +122,7 @@ class rgb:
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) != (other + other + other)
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
     # <=
     def __le__(self, other:rgb|int|float) -> bool:
         if isinstance(other, rgb):
@@ -130,7 +130,7 @@ class rgb:
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) > (other + other + other)
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
     # >=
     def __ge__(self, other:rgb|int|float) -> bool:
         if isinstance(other, rgb):
@@ -138,7 +138,7 @@ class rgb:
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) >= (other + other + other)
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
 
     # math operators
     # +
@@ -154,7 +154,7 @@ class rgb:
             self.b = self.b + other
             return self
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
     # -
     def __sub__(self, other: rgb | int | float) -> rgb:
         if isinstance(other, rgb):
@@ -168,7 +168,7 @@ class rgb:
             self.b = self.b - other
             return self
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
     # *
     def __mul__(self, other: rgb | int | float) -> rgb:
         if isinstance(other, rgb):
@@ -182,7 +182,7 @@ class rgb:
             self.b = self.b * other
             return self
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
     # //
     def __floordiv__(self, other: rgb | int | float) -> rgb:
         if isinstance(other, rgb):
@@ -196,7 +196,7 @@ class rgb:
             self.b = self.b // other
             return self
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
     # /
     def __truediv__(self, other: rgb | int | float) -> rgb:
         if isinstance(other, rgb):
@@ -210,7 +210,7 @@ class rgb:
             self.b = self.b / other
             return self
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
 
     # %
     def __mod__(self, other: rgb | int | float) -> rgb:
@@ -225,7 +225,7 @@ class rgb:
             self.b = self.b % other
             return self
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
 
     # **
     def __pow__(self, other: rgb | int | float) -> rgb:
@@ -240,7 +240,7 @@ class rgb:
             self.b = self.b ** other
             return self
         else:
-            raise TypeError(f"Expected types: rgb, int or float. Got: {type(other)=}")
+            return NotImplemented
 
     # Augmented assignments
     # +=
