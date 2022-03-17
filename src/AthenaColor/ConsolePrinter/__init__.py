@@ -1,4 +1,4 @@
-from .ConsolePrinter import (
+from .GraphicMakeup import (
     Foreground,
     Background,
 

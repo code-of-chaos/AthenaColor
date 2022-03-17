@@ -6,7 +6,7 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.ConsolePrinter.ConsolePrinter import esc
+from AthenaColor.ConsolePrinter.GraphicMakeup import esc
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
