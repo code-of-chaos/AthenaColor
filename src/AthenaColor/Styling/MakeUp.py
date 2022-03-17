@@ -28,11 +28,11 @@ NoItalic                    = f"{esc}[23{end}"
 Underline                   = f"{esc}[4{end}"
 NoUnderline                 = f"{esc}[24{end}"
 
-BlinkSlow                   = f"{esc}[5{end}"      # NOT WORKING PYCHARM
-NoBlinkSlow                 = f"{esc}[25{end}"     # NOT WORKING PYCHARM
+BlinkSlow                   = f"{esc}[5{end}"       # NOT WORKING PYCHARM
+NoBlinkSlow                 = f"{esc}[25{end}"      # NOT WORKING PYCHARM
 
-BlinkRapid                  = f"{esc}[6{end}"      # NOT WORKING PYCHARM
-NoBlinkRapid                = f"{esc}[25{end}"     # NOT WORKING PYCHARM
+BlinkRapid                  = f"{esc}[6{end}"       # NOT WORKING PYCHARM
+NoBlinkRapid                = f"{esc}[25{end}"      # NOT WORKING PYCHARM
 
 Reversed                    = f"{esc}[7{end}"
 NoReversed                  = f"{esc}[27{end}"
@@ -43,24 +43,24 @@ NoConceal                   = f"{esc}[28{end}"      # NOT WORKING PYCHARM
 Crossed                     = f"{esc}[9{end}"
 NoCrossed                   = f"{esc}[29{end}"
 
-FontPrimary                 = f"{esc}[10{end}"     # NOT WORKING PYCHARM
-FontSecond1                 = f"{esc}[11{end}"     # NOT WORKING PYCHARM
-FontSecond2                 = f"{esc}[12{end}"     # NOT WORKING PYCHARM
-FontSecond3                 = f"{esc}[13{end}"     # NOT WORKING PYCHARM
-FontSecond4                 = f"{esc}[14{end}"     # NOT WORKING PYCHARM
-FontSecond5                 = f"{esc}[15{end}"     # NOT WORKING PYCHARM
-FontSecond6                 = f"{esc}[16{end}"     # NOT WORKING PYCHARM
-FontSecond8                 = f"{esc}[17{end}"     # NOT WORKING PYCHARM
-FontSecond9                 = f"{esc}[18{end}"     # NOT WORKING PYCHARM
-FontSecond10                = f"{esc}[19{end}"     # NOT WORKING PYCHARM
-NoFont                      = f"{esc}[10{end}"     # NOT WORKING PYCHARM
-Fraktur                     = f"{esc}[20{end}"     # NOT WORKING PYCHARM
+FontPrimary                 = f"{esc}[10{end}"      # NOT WORKING PYCHARM
+FontSecond1                 = f"{esc}[11{end}"      # NOT WORKING PYCHARM
+FontSecond2                 = f"{esc}[12{end}"      # NOT WORKING PYCHARM
+FontSecond3                 = f"{esc}[13{end}"      # NOT WORKING PYCHARM
+FontSecond4                 = f"{esc}[14{end}"      # NOT WORKING PYCHARM
+FontSecond5                 = f"{esc}[15{end}"      # NOT WORKING PYCHARM
+FontSecond6                 = f"{esc}[16{end}"      # NOT WORKING PYCHARM
+FontSecond8                 = f"{esc}[17{end}"      # NOT WORKING PYCHARM
+FontSecond9                 = f"{esc}[18{end}"      # NOT WORKING PYCHARM
+FontSecond10                = f"{esc}[19{end}"      # NOT WORKING PYCHARM
+NoFont                      = f"{esc}[10{end}"      # NOT WORKING PYCHARM
+Fraktur                     = f"{esc}[20{end}"      # NOT WORKING PYCHARM
 
 UnderlineDouble             = f"{esc}[21{end}"
 NoUnderlineDouble           = f"{esc}[24{end}"
 
-PropSpacing                 = f"{esc}[26{end}"     # NOT WORKING PYCHARM
-NoPropSpacing               = f"{esc}[26{end}"     # NOT WORKING PYCHARM
+PropSpacing                 = f"{esc}[26{end}"      # NOT WORKING PYCHARM
+NoPropSpacing               = f"{esc}[26{end}"      # NOT WORKING PYCHARM
 
 # 30 - 37 -> see Basic
 
@@ -73,7 +73,7 @@ NoForeground                = f"{esc}[39m"
 # 48 -> see RgbControlled.Back
 
 
-NoBackground           = f"{esc}[49{end}"
+NoBackground                = f"{esc}[49{end}"
 
 Frame                       = f"{esc}[51{end}"
 NoFrame                     = f"{esc}[54{end}"

@@ -170,4 +170,3 @@ class RgbControlled:
 
     def rgb(self, r:int,g:int,b:int):
       return f"{self._prefix}{rgb(r,g,b)}{self._sufix}"
-
