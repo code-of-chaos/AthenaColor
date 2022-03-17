@@ -1,0 +1,93 @@
+{
+  "main": {
+    "id": "400d261ef611d02c",
+    "type": "split",
+    "children": [
+      {
+        "id": "bc6f5c4c72f73971",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "AthenaColor.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2e11b525d6f1139d",
+    "type": "split",
+    "children": [
+      {
+        "id": "518b535d6cd77909",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a67c180c04e6db6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "f2033e3be0ec8e7c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "495b8f9a66acbfb2",
+    "type": "split",
+    "children": [
+      {
+        "id": "396bc19406b07212",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "34c13bdb890076f8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "AthenaColor.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "bc6f5c4c72f73971",
+  "lastOpenFiles": [
+    "AthenaColor.md"
+  ]
+}
