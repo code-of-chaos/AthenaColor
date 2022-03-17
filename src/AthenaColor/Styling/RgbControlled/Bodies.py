@@ -6,13 +6,26 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Help.PrintOut import AllFore,AllTable,AllTable_UnverfifiedPycharm,AllBoxes
+from AthenaColor.BASE import (
+    esc,
+    end,
+)
+from .RgbControlled import RgbControlled
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-if __name__ == "__main__":
-    AllFore()
-    AllTable()
-    AllTable_UnverfifiedPycharm()
-    AllBoxes()
+Fore = RgbControlled(
+    prefix= f"{esc}[38;2;",
+    sufix= end
+)
+
+Back = RgbControlled(
+    prefix= f"{esc}[48;2;",
+    sufix= end
+)
+
+Underline = RgbControlled(
+    prefix= f"{esc}[58;2;",
+    sufix= end
+)
