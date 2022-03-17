@@ -1,19 +1,23 @@
-# - Athena Color Package - v2.0.0
+# - Athena Color Package - v3.0.0  
+  
+Python Package used to print rgb colors to the console
+  
+---  
+## Details and features  
+- Support for Fore- and Background colours  
+- Support for Underline, Bold, Italic and other Text Styling  
+- Custom rgb class with full support for math operators  
+- All basic and extended web colors are available as the default predefined Fore and Back colors.
+- Access to the full rgb spectrum to be printed to the console  
+  
+---  
+  
+## Usage  
+The following import will print the underlying python code to console:
+```python  
+import AthenaColor.Help.readme
+```
 
-A little package which allows you to use ANSI codes to print color to the console.
-
----
-## Details and features
-- Support for Fore- and Background colours
-- Support for Underline, Bold, Italic and other Text Makeups
-- Custom rgb class with full support for math operators
-- All basic and extended web colors available to be printed to console
-- Access to the full rgb spectrum to be printed to the console
-
----
-
-## Usage
-The code below is an example:
 ```python
 # *-* Base Needed imports *-*
 from AthenaColor import (
@@ -61,18 +65,19 @@ AllTable()
 print(
 f"""
 {Style.Bold}The following is a small view of all predefined colors:{Style.Reset}
-""")
+"""
+)
 
 AllBoxes()
-```
----
-## Links
-Project files can be found at:
-- [GitHub Repo](https://github.com/DirectiveAthena/AthenaColor) 
-- [Pypi link](https://pypi.org/project/AthenaColor/)
-
-Pip installs by the following command: 
-```
-pip install AthenaColor
-```
+```  
+---  
+## Links  
+Project files can be found at:  
+- [GitHub Repo](https://github.com/DirectiveAthena/AthenaColor)   
+- [Pypi link](https://pypi.org/project/AthenaColor/)  
+  
+Pip installs by the following command:   
+```  
+pip install AthenaColor  
+```  
 Made By Andreas Sas, 2022

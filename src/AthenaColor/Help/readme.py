@@ -1,20 +1,3 @@
-# - Athena Color Package - v2.0.0
-
-A little package which allows you to use ANSI codes to print color to the console.
-
----
-## Details and features
-- Support for Fore- and Background colours
-- Support for Underline, Bold, Italic and other Text Makeups
-- Custom rgb class with full support for math operators
-- All basic and extended web colors available to be printed to console
-- Access to the full rgb spectrum to be printed to the console
-
----
-
-## Usage
-The code below is an example:
-```python
 # *-* Base Needed imports *-*
 from AthenaColor import (
     Fore,   # All predefined Foreground colors
@@ -64,15 +47,3 @@ f"""
 """)
 
 AllBoxes()
-```
----
-## Links
-Project files can be found at:
-- [GitHub Repo](https://github.com/DirectiveAthena/AthenaColor) 
-- [Pypi link](https://pypi.org/project/AthenaColor/)
-
-Pip installs by the following command: 
-```
-pip install AthenaColor
-```
-Made By Andreas Sas, 2022

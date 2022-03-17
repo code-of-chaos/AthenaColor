@@ -12,7 +12,10 @@ from AthenaColor.Help.PrintOut import AllFore,AllTable,AllTable_UnverfifiedPycha
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 if __name__ == "__main__":
-    AllFore()
-    AllTable()
-    AllTable_UnverfifiedPycharm()
-    AllBoxes()
+
+    import AthenaColor.Help.readme
+
+    # AllFore()
+    # AllTable()
+    # AllTable_UnverfifiedPycharm()
+    # AllBoxes()
