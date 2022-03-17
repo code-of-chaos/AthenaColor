@@ -1,4 +1,4 @@
-# - Athena Color Package - v3.0.0  
+# - Athena Color Package - v3.0.1  
   
 Python Package used to print rgb colors to the console
   
