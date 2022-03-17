@@ -68,7 +68,7 @@ f"""
 {nl.join(
     f"┃ {style_name}{' '*(19 - len(style_name))}┃ {' '.join(f'{style}{Fore.c(color_rgb)}{color_name}{Style.Reset}' for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}"
     for style_name, style in vars(Style.Unverfified).items()
-    if not any((style_name.startswith("_") , style_name.startswith("No") , style_name in ("Reset","Unverfified","BackgroundDefault")))
+    if not any((style_name.startswith("_") , style_name.startswith("No") , style_name in ("Reset","Unverfified")))
 )}
 ┃ Underline          ┃ {" ".join(f"{Underline.c(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
 ┗━━━━━━━━━━━━━━━━━━━━┻━{"━" * color_len}

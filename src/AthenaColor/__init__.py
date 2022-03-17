@@ -27,7 +27,7 @@ class Style:
         NoCircle,
         UnderlineDouble,
         NoForeground,
-        BackgroundDefault
+        NoBackground
     )
     class Unverfified:
         from AthenaColor.Styling.MakeUp import (

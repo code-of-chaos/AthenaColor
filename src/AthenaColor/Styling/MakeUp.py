@@ -73,7 +73,7 @@ NoForeground                = f"{esc}[39m"
 # 48 -> see RgbControlled.Back
 
 
-BackgroundDefault           = f"{esc}[49{end}"
+NoBackground           = f"{esc}[49{end}"
 
 Frame                       = f"{esc}[51{end}"
 NoFrame                     = f"{esc}[54{end}"
