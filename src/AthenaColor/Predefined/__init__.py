@@ -1,3 +1,6 @@
-from .ColorsHtml import Colors
-from .ColorsBasic import ColorsBasic
-Colors = Colors() # Forms color list as soon as possible
+from .Back import Back
+from .Fore import Fore
+from .Basic import Basic
+
+
+from .Underline import Underline

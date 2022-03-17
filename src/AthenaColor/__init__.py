@@ -1,9 +1,10 @@
-import AthenaColor.Objects
-import AthenaColor.Predefined
-import AthenaColor.ConsolePrinter
-
-Colors = AthenaColor.Predefined.Colors
-
-# DOCU
-import AthenaColor.Help
-from AthenaColor.readme import readme
+# Console Color Imports
+from AthenaColor.Predefined import(
+    Fore,
+    Back,
+    Basic
+)
+from AthenaColor.Objects import (
+    rgb,
+    HtmlColors
+)

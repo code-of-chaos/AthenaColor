@@ -6,13 +6,13 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Objects import rgb
+from .Rgb import rgb
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 # Same names as named HTML colors
-class Colors:
+class HtmlColors:
     Maroon                  = rgb(128,0  ,0  )
     DarkRed                 = rgb(139,0  ,0  )
     Brown                   = rgb(165,42 ,42 )
