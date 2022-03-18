@@ -3,7 +3,7 @@ from AthenaColor import (
     Fore,   # All predefined Foreground colors
     Back,   # All predefined Background colors
     Style,  # All Style makeups
-    rgb
+    rgb,
 )
 
 # *-* Use the objects in an f-string *-*  
