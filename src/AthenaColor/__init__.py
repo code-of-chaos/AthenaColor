@@ -1,3 +1,44 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# - Package Imports -
+# ----------------------------------------------------------------------------------------------------------------------
+# General Packages
+from __future__ import annotations
+import os
+
+# Custom Library
+
+# Custom Packages
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - INIT class -
+# ----------------------------------------------------------------------------------------------------------------------
+class Init:
+    esc_hex = "\x1b"
+    esc_octal = "\033"
+    esc_uni = "\u001b"
+
+    esc:str
+
+    def __init__(self, escape_code:str=None):
+        self.set_esc(escape_code)
+
+        # prep the console for colors
+        os.system("color")
+
+    def set_esc(self, escape_code:str=None):
+        # define escape codes
+        if escape_code is None:
+            self.esc = self.esc_hex
+        elif escape_code in [self.esc_hex,self.esc_octal, self.esc_octal]:
+            self.esc = escape_code
+        else:
+            raise ValueError("escape_code not defined correctly")
+
+init = Init()
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - AthenaColor Imports -
+# ----------------------------------------------------------------------------------------------------------------------
 from AthenaColor.Styling import(
     Fore,
     Back,

@@ -6,14 +6,16 @@
 # Custom Library
 
 # Custom Packages
-from ..BASE import (
-    esc,
-    end
-)
+from AthenaColor import init
+from AthenaColor.BASE import end_codes
+
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
+esc = init.esc
+end = end_codes.color
+
 Reset                       = f"{esc}[0{end}"
 
 Bold                        = f"{esc}[1{end}"

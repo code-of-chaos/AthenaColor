@@ -6,15 +6,16 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.BASE import (
-    esc,
-    end,
-)
 from .RgbControlled import RgbControlled
+from AthenaColor import init
+from AthenaColor.BASE import end_codes
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
+esc = init.esc
+end = end_codes.color
+
 Fore = RgbControlled(
     prefix= f"{esc}[38;2;",
     sufix= end

@@ -6,12 +6,16 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Objects import rgb
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-
-esc = "\033"
-end = "m"
-
+class end_codes:
+    cursor_line_up = "A"
+    cursor_line_down = "B"
+    cursor_right = "C"
+    cursor_left = "D"
+    cursor_line_next = "E"
+    cursor_line_previous = "F"
+    cursor_to_column = "G"
+    color = "m"

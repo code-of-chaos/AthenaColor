@@ -42,8 +42,8 @@ def AllBack():
 
 def AllTable():
     nl = "\n"
-
     all_styles = Style.UnderlineDouble + Style.Italic + Style.Bold + Style.Underline + Style.Crossed + Style.Reversed + Style.Frame + Style.Circle
+
     print(
 f"""
 ┏━{Style.Bold}Colors{Style.Reset}━━━━━━━━━━━━━┳━{"━" * color_len}
