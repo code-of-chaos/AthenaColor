@@ -10,163 +10,316 @@ from ...Objects import (
     rgb,
     HtmlColors
 )
+from AthenaColor import init
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class RgbControlled:
-    _prefix:str
+    param_code:str
     _sufix:str
 
-    def __init__(self, prefix:str,sufix:str):
-        self._prefix = prefix
-        self._sufix = sufix
+    def __init__(self, param_code:str):
+        self.param_code = param_code
+        self._sufix =  "m"
 
-        self.Maroon                 = f"{self._prefix}{HtmlColors.Maroon                    }{self._sufix}"
-        self.DarkRed                = f"{self._prefix}{HtmlColors.DarkRed                   }{self._sufix}"
-        self.Brown                  = f"{self._prefix}{HtmlColors.Brown                     }{self._sufix}"
-        self.Firebrick              = f"{self._prefix}{HtmlColors.Firebrick                 }{self._sufix}"
-        self.Crimson                = f"{self._prefix}{HtmlColors.Crimson                   }{self._sufix}"
-        self.Red                    = f"{self._prefix}{HtmlColors.Red                       }{self._sufix}"
-        self.Tomato                 = f"{self._prefix}{HtmlColors.Tomato                    }{self._sufix}"
-        self.Coral                  = f"{self._prefix}{HtmlColors.Coral                     }{self._sufix}"
-        self.IndianRed              = f"{self._prefix}{HtmlColors.IndianRed                 }{self._sufix}"
-        self.LightCoral             = f"{self._prefix}{HtmlColors.LightCoral                }{self._sufix}"
-        self.DarkSalmon             = f"{self._prefix}{HtmlColors.DarkSalmon                }{self._sufix}"
-        self.Salmon                 = f"{self._prefix}{HtmlColors.Salmon                    }{self._sufix}"
-        self.LightSalmon            = f"{self._prefix}{HtmlColors.LightSalmon               }{self._sufix}"
-        self.OrangeRed              = f"{self._prefix}{HtmlColors.OrangeRed                 }{self._sufix}"
-        self.DarkOrange             = f"{self._prefix}{HtmlColors.DarkOrange                }{self._sufix}"
-        self.Orange                 = f"{self._prefix}{HtmlColors.Orange                    }{self._sufix}"
-        self.Gold                   = f"{self._prefix}{HtmlColors.Gold                      }{self._sufix}"
-        self.DarkGoldenRod          = f"{self._prefix}{HtmlColors.DarkGoldenRod             }{self._sufix}"
-        self.GoldenRod              = f"{self._prefix}{HtmlColors.GoldenRod                 }{self._sufix}"
-        self.PaleGoldenRod          = f"{self._prefix}{HtmlColors.PaleGoldenRod             }{self._sufix}"
-        self.DarkKhaki              = f"{self._prefix}{HtmlColors.DarkKhaki                 }{self._sufix}"
-        self.Khaki                  = f"{self._prefix}{HtmlColors.Khaki                     }{self._sufix}"
-        self.Olive                  = f"{self._prefix}{HtmlColors.Olive                     }{self._sufix}"
-        self.Yellow                 = f"{self._prefix}{HtmlColors.Yellow                    }{self._sufix}"
-        self.YellowGreen            = f"{self._prefix}{HtmlColors.YellowGreen               }{self._sufix}"
-        self.DarkOliveGreen         = f"{self._prefix}{HtmlColors.DarkOliveGreen            }{self._sufix}"
-        self.OliveDrab              = f"{self._prefix}{HtmlColors.OliveDrab                 }{self._sufix}"
-        self.LawnGreen              = f"{self._prefix}{HtmlColors.LawnGreen                 }{self._sufix}"
-        self.Chartreuse             = f"{self._prefix}{HtmlColors.Chartreuse                }{self._sufix}"
-        self.GreenYellow            = f"{self._prefix}{HtmlColors.GreenYellow               }{self._sufix}"
-        self.DarkGreen              = f"{self._prefix}{HtmlColors.DarkGreen                 }{self._sufix}"
-        self.Green                  = f"{self._prefix}{HtmlColors.Green                     }{self._sufix}"
-        self.ForestGreen            = f"{self._prefix}{HtmlColors.ForestGreen               }{self._sufix}"
-        self.Lime                   = f"{self._prefix}{HtmlColors.Lime                      }{self._sufix}"
-        self.LimeGreen              = f"{self._prefix}{HtmlColors.LimeGreen                 }{self._sufix}"
-        self.LightGreen             = f"{self._prefix}{HtmlColors.LightGreen                }{self._sufix}"
-        self.PaleGreen              = f"{self._prefix}{HtmlColors.PaleGreen                 }{self._sufix}"
-        self.DarkSeaGreen           = f"{self._prefix}{HtmlColors.DarkSeaGreen              }{self._sufix}"
-        self.MediumSpringGreen      = f"{self._prefix}{HtmlColors.MediumSpringGreen         }{self._sufix}"
-        self.SpringGreen            = f"{self._prefix}{HtmlColors.SpringGreen               }{self._sufix}"
-        self.SeaGreen               = f"{self._prefix}{HtmlColors.SeaGreen                  }{self._sufix}"
-        self.MediumAquaMarine       = f"{self._prefix}{HtmlColors.MediumAquaMarine          }{self._sufix}"
-        self.MediumSeaGreen         = f"{self._prefix}{HtmlColors.MediumSeaGreen            }{self._sufix}"
-        self.LightSeaGreen          = f"{self._prefix}{HtmlColors.LightSeaGreen             }{self._sufix}"
-        self.DarkSlateGray          = f"{self._prefix}{HtmlColors.DarkSlateGray             }{self._sufix}"
-        self.Teal                   = f"{self._prefix}{HtmlColors.Teal                      }{self._sufix}"
-        self.DarkCyan               = f"{self._prefix}{HtmlColors.DarkCyan                  }{self._sufix}"
-        self.Aqua                   = f"{self._prefix}{HtmlColors.Aqua                      }{self._sufix}"
-        self.Cyan                   = f"{self._prefix}{HtmlColors.Cyan                      }{self._sufix}"
-        self.LightCyan              = f"{self._prefix}{HtmlColors.LightCyan                 }{self._sufix}"
-        self.DarkTurquoise          = f"{self._prefix}{HtmlColors.DarkTurquoise             }{self._sufix}"
-        self.Turquoise              = f"{self._prefix}{HtmlColors.Turquoise                 }{self._sufix}"
-        self.MediumTurquoise        = f"{self._prefix}{HtmlColors.MediumTurquoise           }{self._sufix}"
-        self.PaleTurquoise          = f"{self._prefix}{HtmlColors.PaleTurquoise             }{self._sufix}"
-        self.AquaMarine             = f"{self._prefix}{HtmlColors.AquaMarine                }{self._sufix}"
-        self.PowderBlue             = f"{self._prefix}{HtmlColors.PowderBlue                }{self._sufix}"
-        self.CadetBlue              = f"{self._prefix}{HtmlColors.CadetBlue                 }{self._sufix}"
-        self.SteelBlue              = f"{self._prefix}{HtmlColors.SteelBlue                 }{self._sufix}"
-        self.CornFlowerBlue         = f"{self._prefix}{HtmlColors.CornFlowerBlue            }{self._sufix}"
-        self.DeepSkyBlue            = f"{self._prefix}{HtmlColors.DeepSkyBlue               }{self._sufix}"
-        self.DodgerBlue             = f"{self._prefix}{HtmlColors.DodgerBlue                }{self._sufix}"
-        self.LightBlue              = f"{self._prefix}{HtmlColors.LightBlue                 }{self._sufix}"
-        self.SkyBlue                = f"{self._prefix}{HtmlColors.SkyBlue                   }{self._sufix}"
-        self.LightSkyBlue           = f"{self._prefix}{HtmlColors.LightSkyBlue              }{self._sufix}"
-        self.MidnightBlue           = f"{self._prefix}{HtmlColors.MidnightBlue              }{self._sufix}"
-        self.Navy                   = f"{self._prefix}{HtmlColors.Navy                      }{self._sufix}"
-        self.DarkBlue               = f"{self._prefix}{HtmlColors.DarkBlue                  }{self._sufix}"
-        self.MediumBlue             = f"{self._prefix}{HtmlColors.MediumBlue                }{self._sufix}"
-        self.Blue                   = f"{self._prefix}{HtmlColors.Blue                      }{self._sufix}"
-        self.RoyalBlue              = f"{self._prefix}{HtmlColors.RoyalBlue                 }{self._sufix}"
-        self.BlueViolet             = f"{self._prefix}{HtmlColors.BlueViolet                }{self._sufix}"
-        self.Indigo                 = f"{self._prefix}{HtmlColors.Indigo                    }{self._sufix}"
-        self.DarkSlateBlue          = f"{self._prefix}{HtmlColors.DarkSlateBlue             }{self._sufix}"
-        self.SlateBlue              = f"{self._prefix}{HtmlColors.SlateBlue                 }{self._sufix}"
-        self.MediumSlateBlue        = f"{self._prefix}{HtmlColors.MediumSlateBlue           }{self._sufix}"
-        self.MediumPurple           = f"{self._prefix}{HtmlColors.MediumPurple              }{self._sufix}"
-        self.DarkMagenta            = f"{self._prefix}{HtmlColors.DarkMagenta               }{self._sufix}"
-        self.DarkViolet             = f"{self._prefix}{HtmlColors.DarkViolet                }{self._sufix}"
-        self.DarkOrchid             = f"{self._prefix}{HtmlColors.DarkOrchid                }{self._sufix}"
-        self.MediumOrchid           = f"{self._prefix}{HtmlColors.MediumOrchid              }{self._sufix}"
-        self.Purple                 = f"{self._prefix}{HtmlColors.Purple                    }{self._sufix}"
-        self.Thistle                = f"{self._prefix}{HtmlColors.Thistle                   }{self._sufix}"
-        self.Plum                   = f"{self._prefix}{HtmlColors.Plum                      }{self._sufix}"
-        self.Violet                 = f"{self._prefix}{HtmlColors.Violet                    }{self._sufix}"
-        self.Magenta                = f"{self._prefix}{HtmlColors.Magenta                   }{self._sufix}"
-        self.Orchid                 = f"{self._prefix}{HtmlColors.Orchid                    }{self._sufix}"
-        self.MediumVioletRed        = f"{self._prefix}{HtmlColors.MediumVioletRed           }{self._sufix}"
-        self.PaleVioletRed          = f"{self._prefix}{HtmlColors.PaleVioletRed             }{self._sufix}"
-        self.DeepPink               = f"{self._prefix}{HtmlColors.DeepPink                  }{self._sufix}"
-        self.HotPink                = f"{self._prefix}{HtmlColors.HotPink                   }{self._sufix}"
-        self.LightPink              = f"{self._prefix}{HtmlColors.LightPink                 }{self._sufix}"
-        self.Pink                   = f"{self._prefix}{HtmlColors.Pink                      }{self._sufix}"
-        self.AntiqueWhite           = f"{self._prefix}{HtmlColors.AntiqueWhite              }{self._sufix}"
-        self.Beige                  = f"{self._prefix}{HtmlColors.Beige                     }{self._sufix}"
-        self.Bisque                 = f"{self._prefix}{HtmlColors.Bisque                    }{self._sufix}"
-        self.BlanchedAlmond	        = f"{self._prefix}{HtmlColors.BlanchedAlmond	        }{self._sufix}"
-        self.Wheat                  = f"{self._prefix}{HtmlColors.Wheat                     }{self._sufix}"
-        self.CornSilk               = f"{self._prefix}{HtmlColors.CornSilk                  }{self._sufix}"
-        self.LemonChiffon           = f"{self._prefix}{HtmlColors.LemonChiffon              }{self._sufix}"
-        self.LightGoldenRodYellow   = f"{self._prefix}{HtmlColors.LightGoldenRodYellow      }{self._sufix}"
-        self.LightYellow            = f"{self._prefix}{HtmlColors.LightYellow               }{self._sufix}"
-        self.SaddleBrown            = f"{self._prefix}{HtmlColors.SaddleBrown               }{self._sufix}"
-        self.Sienna                 = f"{self._prefix}{HtmlColors.Sienna                    }{self._sufix}"
-        self.Chocolate              = f"{self._prefix}{HtmlColors.Chocolate                 }{self._sufix}"
-        self.Peru                   = f"{self._prefix}{HtmlColors.Peru                      }{self._sufix}"
-        self.SandyBrown             = f"{self._prefix}{HtmlColors.SandyBrown                }{self._sufix}"
-        self.BurlyWood              = f"{self._prefix}{HtmlColors.BurlyWood                 }{self._sufix}"
-        self.Tan                    = f"{self._prefix}{HtmlColors.Tan                       }{self._sufix}"
-        self.RosyBrown              = f"{self._prefix}{HtmlColors.RosyBrown                 }{self._sufix}"
-        self.Moccasin               = f"{self._prefix}{HtmlColors.Moccasin                  }{self._sufix}"
-        self.NavajoWhite            = f"{self._prefix}{HtmlColors.NavajoWhite               }{self._sufix}"
-        self.PeachPuff              = f"{self._prefix}{HtmlColors.PeachPuff                 }{self._sufix}"
-        self.MistyRose              = f"{self._prefix}{HtmlColors.MistyRose                 }{self._sufix}"
-        self.LavenderBlush          = f"{self._prefix}{HtmlColors.LavenderBlush             }{self._sufix}"
-        self.Linen                  = f"{self._prefix}{HtmlColors.Linen                     }{self._sufix}"
-        self.OldLace                = f"{self._prefix}{HtmlColors.OldLace                   }{self._sufix}"
-        self.PapayaWhip             = f"{self._prefix}{HtmlColors.PapayaWhip                }{self._sufix}"
-        self.WeaShell               = f"{self._prefix}{HtmlColors.WeaShell                  }{self._sufix}"
-        self.MintCream              = f"{self._prefix}{HtmlColors.MintCream                 }{self._sufix}"
-        self.SlateGray              = f"{self._prefix}{HtmlColors.SlateGray                 }{self._sufix}"
-        self.LightSlateGray         = f"{self._prefix}{HtmlColors.LightSlateGray            }{self._sufix}"
-        self.LightSteelBlue         = f"{self._prefix}{HtmlColors.LightSteelBlue            }{self._sufix}"
-        self.Lavender               = f"{self._prefix}{HtmlColors.Lavender                  }{self._sufix}"
-        self.FloralWhite            = f"{self._prefix}{HtmlColors.FloralWhite               }{self._sufix}"
-        self.AliceBlue              = f"{self._prefix}{HtmlColors.AliceBlue                 }{self._sufix}"
-        self.GhostWhite             = f"{self._prefix}{HtmlColors.GhostWhite                }{self._sufix}"
-        self.Honeydew               = f"{self._prefix}{HtmlColors.Honeydew                  }{self._sufix}"
-        self.Ivory                  = f"{self._prefix}{HtmlColors.Ivory                     }{self._sufix}"
-        self.Azure                  = f"{self._prefix}{HtmlColors.Azure                     }{self._sufix}"
-        self.Snow                   = f"{self._prefix}{HtmlColors.Snow                      }{self._sufix}"
-        self.Black                  = f"{self._prefix}{HtmlColors.Black                     }{self._sufix}"
-        self.DimGray                = f"{self._prefix}{HtmlColors.DimGray                   }{self._sufix}"
-        self.Gray	                = f"{self._prefix}{HtmlColors.Gray	                    }{self._sufix}"
-        self.DarkGray	            = f"{self._prefix}{HtmlColors.DarkGray	                }{self._sufix}"
-        self.Silver	                = f"{self._prefix}{HtmlColors.Silver	                }{self._sufix}"
-        self.LightGray	            = f"{self._prefix}{HtmlColors.LightGray	                }{self._sufix}"
-        self.Gainsboro              = f"{self._prefix}{HtmlColors.Gainsboro                 }{self._sufix}"
-        self.WhiteSmoke             = f"{self._prefix}{HtmlColors.WhiteSmoke                }{self._sufix}"
-        self.White                  = f"{self._prefix}{HtmlColors.White                     }{self._sufix}"
+    @property
+    def prefix(self):
+        return init.esc + self.param_code
+    @property
+    def sufix(self):
+        return self._sufix
 
+    # ------------------------------------------------------------------------------------------------------------------
+    # - Methods -
+    # ------------------------------------------------------------------------------------------------------------------
     def custom(self, color:rgb):
-      return f"{self._prefix}{color}{self._sufix}"
+      return f"{self.prefix}{color}{self.sufix}"
 
     def c(self,color:rgb): #synonim for cls.custom()
       return self.custom(color)
 
     def rgb(self, r:int,g:int,b:int):
-      return f"{self._prefix}{rgb(r,g,b)}{self._sufix}"
+      return f"{self.prefix}{rgb(r,g,b)}{self.sufix}"
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # - HTML colors -
+    # ------------------------------------------------------------------------------------------------------------------
+    @property
+    def Maroon              (self): return self.prefix + str(HtmlColors.Maroon              )+ self.sufix
+    @property
+    def DarkRed             (self): return self.prefix + str(HtmlColors.DarkRed             )+ self.sufix
+    @property
+    def Brown               (self): return self.prefix + str(HtmlColors.Brown               )+ self.sufix
+    @property
+    def Firebrick           (self): return self.prefix + str(HtmlColors.Firebrick           )+ self.sufix
+    @property
+    def Crimson             (self): return self.prefix + str(HtmlColors.Crimson             )+ self.sufix
+    @property
+    def Red                 (self): return self.prefix + str(HtmlColors.Red                 )+ self.sufix
+    @property
+    def Tomato              (self): return self.prefix + str(HtmlColors.Tomato              )+ self.sufix
+    @property
+    def Coral               (self): return self.prefix + str(HtmlColors.Coral               )+ self.sufix
+    @property
+    def IndianRed           (self): return self.prefix + str(HtmlColors.IndianRed           )+ self.sufix
+    @property
+    def LightCoral          (self): return self.prefix + str(HtmlColors.LightCoral          )+ self.sufix
+    @property
+    def DarkSalmon          (self): return self.prefix + str(HtmlColors.DarkSalmon          )+ self.sufix
+    @property
+    def Salmon              (self): return self.prefix + str(HtmlColors.Salmon              )+ self.sufix
+    @property
+    def LightSalmon         (self): return self.prefix + str(HtmlColors.LightSalmon         )+ self.sufix
+    @property
+    def OrangeRed           (self): return self.prefix + str(HtmlColors.OrangeRed           )+ self.sufix
+    @property
+    def DarkOrange          (self): return self.prefix + str(HtmlColors.DarkOrange          )+ self.sufix
+    @property
+    def Orange              (self): return self.prefix + str(HtmlColors.Orange              )+ self.sufix
+    @property
+    def Gold                (self): return self.prefix + str(HtmlColors.Gold                )+ self.sufix
+    @property
+    def DarkGoldenRod       (self): return self.prefix + str(HtmlColors.DarkGoldenRod       )+ self.sufix
+    @property
+    def GoldenRod           (self): return self.prefix + str(HtmlColors.GoldenRod           )+ self.sufix
+    @property
+    def PaleGoldenRod       (self): return self.prefix + str(HtmlColors.PaleGoldenRod       )+ self.sufix
+    @property
+    def DarkKhaki           (self): return self.prefix + str(HtmlColors.DarkKhaki           )+ self.sufix
+    @property
+    def Khaki               (self): return self.prefix + str(HtmlColors.Khaki               )+ self.sufix
+    @property
+    def Olive               (self): return self.prefix + str(HtmlColors.Olive               )+ self.sufix
+    @property
+    def Yellow              (self): return self.prefix + str(HtmlColors.Yellow              )+ self.sufix
+    @property
+    def YellowGreen         (self): return self.prefix + str(HtmlColors.YellowGreen         )+ self.sufix
+    @property
+    def DarkOliveGreen      (self): return self.prefix + str(HtmlColors.DarkOliveGreen      )+ self.sufix
+    @property
+    def OliveDrab           (self): return self.prefix + str(HtmlColors.OliveDrab           )+ self.sufix
+    @property
+    def LawnGreen           (self): return self.prefix + str(HtmlColors.LawnGreen           )+ self.sufix
+    @property
+    def Chartreuse          (self): return self.prefix + str(HtmlColors.Chartreuse          )+ self.sufix
+    @property
+    def GreenYellow         (self): return self.prefix + str(HtmlColors.GreenYellow         )+ self.sufix
+    @property
+    def DarkGreen           (self): return self.prefix + str(HtmlColors.DarkGreen           )+ self.sufix
+    @property
+    def Green               (self): return self.prefix + str(HtmlColors.Green               )+ self.sufix
+    @property
+    def ForestGreen         (self): return self.prefix + str(HtmlColors.ForestGreen         )+ self.sufix
+    @property
+    def Lime                (self): return self.prefix + str(HtmlColors.Lime                )+ self.sufix
+    @property
+    def LimeGreen           (self): return self.prefix + str(HtmlColors.LimeGreen           )+ self.sufix
+    @property
+    def LightGreen          (self): return self.prefix + str(HtmlColors.LightGreen          )+ self.sufix
+    @property
+    def PaleGreen           (self): return self.prefix + str(HtmlColors.PaleGreen           )+ self.sufix
+    @property
+    def DarkSeaGreen        (self): return self.prefix + str(HtmlColors.DarkSeaGreen        )+ self.sufix
+    @property
+    def MediumSpringGreen   (self): return self.prefix + str(HtmlColors.MediumSpringGreen   )+ self.sufix
+    @property
+    def SpringGreen         (self): return self.prefix + str(HtmlColors.SpringGreen         )+ self.sufix
+    @property
+    def SeaGreen            (self): return self.prefix + str(HtmlColors.SeaGreen            )+ self.sufix
+    @property
+    def MediumAquaMarine    (self): return self.prefix + str(HtmlColors.MediumAquaMarine    )+ self.sufix
+    @property
+    def MediumSeaGreen      (self): return self.prefix + str(HtmlColors.MediumSeaGreen      )+ self.sufix
+    @property
+    def LightSeaGreen       (self): return self.prefix + str(HtmlColors.LightSeaGreen       )+ self.sufix
+    @property
+    def DarkSlateGray       (self): return self.prefix + str(HtmlColors.DarkSlateGray       )+ self.sufix
+    @property
+    def Teal                (self): return self.prefix + str(HtmlColors.Teal                )+ self.sufix
+    @property
+    def DarkCyan            (self): return self.prefix + str(HtmlColors.DarkCyan            )+ self.sufix
+    @property
+    def Aqua                (self): return self.prefix + str(HtmlColors.Aqua                )+ self.sufix
+    @property
+    def Cyan                (self): return self.prefix + str(HtmlColors.Cyan                )+ self.sufix
+    @property
+    def LightCyan           (self): return self.prefix + str(HtmlColors.LightCyan           )+ self.sufix
+    @property
+    def DarkTurquoise       (self): return self.prefix + str(HtmlColors.DarkTurquoise       )+ self.sufix
+    @property
+    def Turquoise           (self): return self.prefix + str(HtmlColors.Turquoise           )+ self.sufix
+    @property
+    def MediumTurquoise     (self): return self.prefix + str(HtmlColors.MediumTurquoise     )+ self.sufix
+    @property
+    def PaleTurquoise       (self): return self.prefix + str(HtmlColors.PaleTurquoise       )+ self.sufix
+    @property
+    def AquaMarine          (self): return self.prefix + str(HtmlColors.AquaMarine          )+ self.sufix
+    @property
+    def PowderBlue          (self): return self.prefix + str(HtmlColors.PowderBlue          )+ self.sufix
+    @property
+    def CadetBlue           (self): return self.prefix + str(HtmlColors.CadetBlue           )+ self.sufix
+    @property
+    def SteelBlue           (self): return self.prefix + str(HtmlColors.SteelBlue           )+ self.sufix
+    @property
+    def CornFlowerBlue      (self): return self.prefix + str(HtmlColors.CornFlowerBlue      )+ self.sufix
+    @property
+    def DeepSkyBlue         (self): return self.prefix + str(HtmlColors.DeepSkyBlue         )+ self.sufix
+    @property
+    def DodgerBlue          (self): return self.prefix + str(HtmlColors.DodgerBlue          )+ self.sufix
+    @property
+    def LightBlue           (self): return self.prefix + str(HtmlColors.LightBlue           )+ self.sufix
+    @property
+    def SkyBlue             (self): return self.prefix + str(HtmlColors.SkyBlue             )+ self.sufix
+    @property
+    def LightSkyBlue        (self): return self.prefix + str(HtmlColors.LightSkyBlue        )+ self.sufix
+    @property
+    def MidnightBlue        (self): return self.prefix + str(HtmlColors.MidnightBlue        )+ self.sufix
+    @property
+    def Navy                (self): return self.prefix + str(HtmlColors.Navy                )+ self.sufix
+    @property
+    def DarkBlue            (self): return self.prefix + str(HtmlColors.DarkBlue            )+ self.sufix
+    @property
+    def MediumBlue          (self): return self.prefix + str(HtmlColors.MediumBlue          )+ self.sufix
+    @property
+    def Blue                (self): return self.prefix + str(HtmlColors.Blue                )+ self.sufix
+    @property
+    def RoyalBlue           (self): return self.prefix + str(HtmlColors.RoyalBlue           )+ self.sufix
+    @property
+    def BlueViolet          (self): return self.prefix + str(HtmlColors.BlueViolet          )+ self.sufix
+    @property
+    def Indigo              (self): return self.prefix + str(HtmlColors.Indigo              )+ self.sufix
+    @property
+    def DarkSlateBlue       (self): return self.prefix + str(HtmlColors.DarkSlateBlue       )+ self.sufix
+    @property
+    def SlateBlue           (self): return self.prefix + str(HtmlColors.SlateBlue           )+ self.sufix
+    @property
+    def MediumSlateBlue     (self): return self.prefix + str(HtmlColors.MediumSlateBlue     )+ self.sufix
+    @property
+    def MediumPurple        (self): return self.prefix + str(HtmlColors.MediumPurple        )+ self.sufix
+    @property
+    def DarkMagenta         (self): return self.prefix + str(HtmlColors.DarkMagenta         )+ self.sufix
+    @property
+    def DarkViolet          (self): return self.prefix + str(HtmlColors.DarkViolet          )+ self.sufix
+    @property
+    def DarkOrchid          (self): return self.prefix + str(HtmlColors.DarkOrchid          )+ self.sufix
+    @property
+    def MediumOrchid        (self): return self.prefix + str(HtmlColors.MediumOrchid        )+ self.sufix
+    @property
+    def Purple              (self): return self.prefix + str(HtmlColors.Purple              )+ self.sufix
+    @property
+    def Thistle             (self): return self.prefix + str(HtmlColors.Thistle             )+ self.sufix
+    @property
+    def Plum                (self): return self.prefix + str(HtmlColors.Plum                )+ self.sufix
+    @property
+    def Violet              (self): return self.prefix + str(HtmlColors.Violet              )+ self.sufix
+    @property
+    def Magenta             (self): return self.prefix + str(HtmlColors.Magenta             )+ self.sufix
+    @property
+    def Orchid              (self): return self.prefix + str(HtmlColors.Orchid              )+ self.sufix
+    @property
+    def MediumVioletRed     (self): return self.prefix + str(HtmlColors.MediumVioletRed     )+ self.sufix
+    @property
+    def PaleVioletRed       (self): return self.prefix + str(HtmlColors.PaleVioletRed       )+ self.sufix
+    @property
+    def DeepPink            (self): return self.prefix + str(HtmlColors.DeepPink            )+ self.sufix
+    @property
+    def HotPink             (self): return self.prefix + str(HtmlColors.HotPink             )+ self.sufix
+    @property
+    def LightPink           (self): return self.prefix + str(HtmlColors.LightPink           )+ self.sufix
+    @property
+    def Pink                (self): return self.prefix + str(HtmlColors.Pink                )+ self.sufix
+    @property
+    def AntiqueWhite        (self): return self.prefix + str(HtmlColors.AntiqueWhite        )+ self.sufix
+    @property
+    def Beige               (self): return self.prefix + str(HtmlColors.Beige               )+ self.sufix
+    @property
+    def Bisque              (self): return self.prefix + str(HtmlColors.Bisque              )+ self.sufix
+    @property
+    def BlanchedAlmond      (self): return self.prefix + str(HtmlColors.BlanchedAlmond      )+ self.sufix
+    @property
+    def Wheat               (self): return self.prefix + str(HtmlColors.Wheat               )+ self.sufix
+    @property
+    def CornSilk            (self): return self.prefix + str(HtmlColors.CornSilk            )+ self.sufix
+    @property
+    def LemonChiffon        (self): return self.prefix + str(HtmlColors.LemonChiffon        )+ self.sufix
+    @property
+    def LightGoldenRodYellow(self): return self.prefix + str(HtmlColors.LightGoldenRodYellow)+ self.sufix
+    @property
+    def LightYellow         (self): return self.prefix + str(HtmlColors.LightYellow         )+ self.sufix
+    @property
+    def SaddleBrown         (self): return self.prefix + str(HtmlColors.SaddleBrown         )+ self.sufix
+    @property
+    def Sienna              (self): return self.prefix + str(HtmlColors.Sienna              )+ self.sufix
+    @property
+    def Chocolate           (self): return self.prefix + str(HtmlColors.Chocolate           )+ self.sufix
+    @property
+    def Peru                (self): return self.prefix + str(HtmlColors.Peru                )+ self.sufix
+    @property
+    def SandyBrown          (self): return self.prefix + str(HtmlColors.SandyBrown          )+ self.sufix
+    @property
+    def BurlyWood           (self): return self.prefix + str(HtmlColors.BurlyWood           )+ self.sufix
+    @property
+    def Tan                 (self): return self.prefix + str(HtmlColors.Tan                 )+ self.sufix
+    @property
+    def RosyBrown           (self): return self.prefix + str(HtmlColors.RosyBrown           )+ self.sufix
+    @property
+    def Moccasin            (self): return self.prefix + str(HtmlColors.Moccasin            )+ self.sufix
+    @property
+    def NavajoWhite         (self): return self.prefix + str(HtmlColors.NavajoWhite         )+ self.sufix
+    @property
+    def PeachPuff           (self): return self.prefix + str(HtmlColors.PeachPuff           )+ self.sufix
+    @property
+    def MistyRose           (self): return self.prefix + str(HtmlColors.MistyRose           )+ self.sufix
+    @property
+    def LavenderBlush       (self): return self.prefix + str(HtmlColors.LavenderBlush       )+ self.sufix
+    @property
+    def Linen               (self): return self.prefix + str(HtmlColors.Linen               )+ self.sufix
+    @property
+    def OldLace             (self): return self.prefix + str(HtmlColors.OldLace             )+ self.sufix
+    @property
+    def PapayaWhip          (self): return self.prefix + str(HtmlColors.PapayaWhip          )+ self.sufix
+    @property
+    def WeaShell            (self): return self.prefix + str(HtmlColors.WeaShell            )+ self.sufix
+    @property
+    def MintCream           (self): return self.prefix + str(HtmlColors.MintCream           )+ self.sufix
+    @property
+    def SlateGray           (self): return self.prefix + str(HtmlColors.SlateGray           )+ self.sufix
+    @property
+    def LightSlateGray      (self): return self.prefix + str(HtmlColors.LightSlateGray      )+ self.sufix
+    @property
+    def LightSteelBlue      (self): return self.prefix + str(HtmlColors.LightSteelBlue      )+ self.sufix
+    @property
+    def Lavender            (self): return self.prefix + str(HtmlColors.Lavender            )+ self.sufix
+    @property
+    def FloralWhite         (self): return self.prefix + str(HtmlColors.FloralWhite         )+ self.sufix
+    @property
+    def AliceBlue           (self): return self.prefix + str(HtmlColors.AliceBlue           )+ self.sufix
+    @property
+    def GhostWhite          (self): return self.prefix + str(HtmlColors.GhostWhite          )+ self.sufix
+    @property
+    def Honeydew            (self): return self.prefix + str(HtmlColors.Honeydew            )+ self.sufix
+    @property
+    def Ivory               (self): return self.prefix + str(HtmlColors.Ivory               )+ self.sufix
+    @property
+    def Azure               (self): return self.prefix + str(HtmlColors.Azure               )+ self.sufix
+    @property
+    def Snow                (self): return self.prefix + str(HtmlColors.Snow                )+ self.sufix
+    @property
+    def Black               (self): return self.prefix + str(HtmlColors.Black               )+ self.sufix
+    @property
+    def DimGray             (self): return self.prefix + str(HtmlColors.DimGray             )+ self.sufix
+    @property
+    def Gray                (self): return self.prefix + str(HtmlColors.Gray                )+ self.sufix
+    @property
+    def DarkGray            (self): return self.prefix + str(HtmlColors.DarkGray            )+ self.sufix
+    @property
+    def Silver              (self): return self.prefix + str(HtmlColors.Silver              )+ self.sufix
+    @property
+    def LightGray           (self): return self.prefix + str(HtmlColors.LightGray           )+ self.sufix
+    @property
+    def Gainsboro           (self): return self.prefix + str(HtmlColors.Gainsboro           )+ self.sufix
+    @property
+    def WhiteSmoke          (self): return self.prefix + str(HtmlColors.WhiteSmoke          )+ self.sufix
+    @property
+    def White               (self): return self.prefix + str(HtmlColors.White               )+ self.sufix

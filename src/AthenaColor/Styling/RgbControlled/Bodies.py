@@ -7,26 +7,18 @@
 
 # Custom Packages
 from .RgbControlled import RgbControlled
-from AthenaColor import init
-from AthenaColor.BASE import end_codes
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-esc = init.esc
-end = end_codes.color
-
 Fore = RgbControlled(
-    prefix= f"{esc}[38;2;",
-    sufix= end
+    param_code= f"[38;2;",
 )
 
 Back = RgbControlled(
-    prefix= f"{esc}[48;2;",
-    sufix= end
+    param_code= f"[48;2;",
 )
 
 Underline = RgbControlled(
-    prefix= f"{esc}[58;2;",
-    sufix= end
+    param_code= f"[58;2;",
 )
