@@ -46,7 +46,8 @@ from AthenaColor.Styling import(
 )
 from AthenaColor.Objects import (
     rgb,
-    HtmlColors
+    HtmlColors,
+    hexadecimal
 )
 
 class Style:
