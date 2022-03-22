@@ -1,3 +1,8 @@
+# v3.0.5
+- Addition of a Hexadecimal class. Inherits from rgb and is a way to input a color with hexadecimal values.
+  - Added due to popular demand
+
+---
 # v3.0.4
 - Correct link in README.md to the AthenaColor logo image
 

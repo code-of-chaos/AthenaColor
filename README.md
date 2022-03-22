@@ -1,4 +1,4 @@
-# - Athena Color Package - v3.0.4
+# - Athena Color Package - v3.0.5
 <img height="128" src="https://github.com/DirectiveAthena/VSC-AthenaColor/blob/master/Resources/AthenaColor.png?raw=true" width="128"/>
   
 Python Package used to print rgb colors to the console
