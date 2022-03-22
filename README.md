@@ -1,4 +1,4 @@
-# - Athena Color Package - v3.0.2 
+# - Athena Color Package - v3.0.3
 <img height="128" src="Resources/AthenaColor.png" width="128"/>
   
 Python Package used to print rgb colors to the console
@@ -77,6 +77,7 @@ AllBoxes()
 Project files can be found at:  
 - [GitHub Repo](https://github.com/DirectiveAthena/AthenaColor)   
 - [Pypi link](https://pypi.org/project/AthenaColor/)  
+- [Full Version History](https://github.com/DirectiveAthena/VSC-AthenaColor/blob/master/Docu/Version%20History.md)
   
 Pip installs by the following command:   
 ```  
