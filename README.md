@@ -75,7 +75,7 @@ AllBoxes()
 ---  
 ## Links  
 Project files can be found at:  
-- [GitHub Repo](https://github.com/DirectiveAthena/AthenaColor)   
+- [GitHub Repo](https://github.com/DirectiveAthena/VSC-AthenaColor)   
 - [Pypi link](https://pypi.org/project/AthenaColor/)  
 - [Full Version History](https://github.com/DirectiveAthena/VSC-AthenaColor/blob/master/Docu/Version%20History.md)
   
