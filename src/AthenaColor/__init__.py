@@ -4,6 +4,7 @@
 # General Packages
 from __future__ import annotations
 import os
+import sys
 
 # Custom Library
 
@@ -12,13 +13,20 @@ import os
 # ----------------------------------------------------------------------------------------------------------------------
 # - INIT class -
 # ----------------------------------------------------------------------------------------------------------------------
-class init:
+class Init:
     esc_hex = "\x1b"
     esc_octal = "\033"
     esc_uni = "\u001b"
 
     esc = esc_hex
 
+    def __init__(self, escape_code:str=None):
+        self.set_esc(escape_code)
+
+        # prep the console for colors
+        if sys.platform == 'win32':
+            os.system("color")
+            
     @classmethod
     def set_esc(cls, escape_code:str=None):
         # define escape codes
@@ -28,7 +36,7 @@ class init:
             cls.esc = escape_code
         else:
             raise ValueError("escape_code not defined correctly")
-
+init = Init()
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - AthenaColor Imports -
