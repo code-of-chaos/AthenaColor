@@ -4,6 +4,7 @@
 # General Packages
 from __future__ import annotations
 import os
+import sys
 
 # Custom Library
 
@@ -23,7 +24,8 @@ class Init:
         self.set_esc(escape_code)
 
         # prep the console for colors
-        os.system("color")
+        if sys.platform == 'win32':
+            os.system("color")
 
     def set_esc(self, escape_code:str=None):
         # define escape codes
