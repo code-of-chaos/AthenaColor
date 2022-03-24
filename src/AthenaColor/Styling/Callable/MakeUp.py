@@ -70,11 +70,6 @@ def SuperScript                 (*obj) -> str: return ''.join([f'{esc}[73{end}',
 def SubScript                   (*obj) -> str: return ''.join([f'{esc}[74{end}',*[o+ f'{esc}[74{end}' for o in obj],f'{esc}[75{end}'   ])
 def NoScript                    (*obj) -> str: return ''.join([f'{esc}[75{end}',*[o+ f'{esc}[75{end}' for o in obj],f''                ])
 
-# ? 76 - 89
-
-# 90 - 97 see Basic
-# 100 - 107 see Basic
-
 class Basic:
     class Fore:
         def Black         (*obj) -> str: return ''.join([f"{esc}[30m", *[o+f"{esc}[30m" for o in obj], f'{esc}[39m'])

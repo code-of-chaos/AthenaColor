@@ -1,4 +1,4 @@
-# - Athena Color Package - v3.0.5
+# - Athena Color Package - v3.0.6
 <img height="128" src="https://github.com/DirectiveAthena/VSC-AthenaColor/blob/master/Resources/AthenaColor.png?raw=true" width="128"/>
   
 Python Package used to print rgb colors to the console
@@ -11,7 +11,8 @@ Python Package used to print rgb colors to the console
 - Custom rgb class with full support for math operators  
 - All basic and extended web colors are available as the default predefined Fore and Back colors.
 - Access to the full rgb spectrum to be printed to the console  
-  
+- Callable Styling (documentation under development)  
+
 ---  
   
 ## Usage  
