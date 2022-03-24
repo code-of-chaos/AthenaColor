@@ -12,33 +12,29 @@ import os
 # ----------------------------------------------------------------------------------------------------------------------
 # - INIT class -
 # ----------------------------------------------------------------------------------------------------------------------
-class Init:
+class init:
     esc_hex = "\x1b"
     esc_octal = "\033"
     esc_uni = "\u001b"
 
-    esc:str
+    esc = esc_hex
 
-    def __init__(self, escape_code:str=None):
-        self.set_esc(escape_code)
-
-        # prep the console for colors
-        os.system("color")
-
-    def set_esc(self, escape_code:str=None):
+    @classmethod
+    def set_esc(cls, escape_code:str=None):
         # define escape codes
         if escape_code is None:
-            self.esc = self.esc_hex
-        elif escape_code in [self.esc_hex,self.esc_octal, self.esc_octal]:
-            self.esc = escape_code
+            cls.esc = cls.esc_hex
+        elif escape_code in [cls.esc_hex,cls.esc_octal, cls.esc_octal]:
+            cls.esc = escape_code
         else:
             raise ValueError("escape_code not defined correctly")
 
-init = Init()
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - AthenaColor Imports -
 # ----------------------------------------------------------------------------------------------------------------------
+os.system("color")
+
 from AthenaColor.Styling import(
     Fore,
     Back,
@@ -49,6 +45,7 @@ from AthenaColor.Objects import (
     HtmlColors,
     hexadecimal
 )
+
 
 class Style:
     from AthenaColor.Styling.MakeUp import (
