@@ -6,36 +6,27 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Help.readme import readme
+from .RgbControlled_Callable import RgbControlled_Callable
+from .MakeUp import (
+    NoForeground,
+    NoBackground,
+    NoUnderline
+)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-if __name__ == "__main__":
-    readme()
+Fore = RgbControlled_Callable(
+    param_code= f"[38;2;",
+    reset=NoForeground
+)
 
+Back = RgbControlled_Callable(
+    param_code= f"[48;2;",
+    reset=NoBackground
+)
 
-    from AthenaColor.Styling.Callable import (
-        Fore, Back, Style
-    )
-
-    print(
-        Fore.Blue(
-            "blue",
-            Fore.Red("red"),
-            Back.Crimson("something"),
-            Style.Bold("PLEASE HELP ME"),
-            Style.Underline("HERE"),
-            "blue",
-            Fore.Red("red"),
-        )
-    )
-
-    print(
-        Style.Bold(
-            "BOLD",
-            Style.Bold("BOLD"),
-            "BOLD"
-        ),
-        "not"
-    )
+Underline = RgbControlled_Callable(
+    param_code= f"[58;2;",
+    reset=NoUnderline
+)
