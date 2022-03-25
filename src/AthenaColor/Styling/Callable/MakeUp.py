@@ -2,6 +2,7 @@
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
+from functools import partial
 
 # Custom Library
 
@@ -13,112 +14,114 @@ from AthenaColor.BASE import end_codes
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-esc = init.esc
-end = end_codes.color
+def control_sequence(*obj, control_code: str | int = '') -> str:
+    if control_code in ['0', 0]:
+        last = f''
+    else:
+        last = f'{init.esc}[{control_code}{end_codes.color}'
+    return ''.join([
+        f'{init.esc}[{control_code}{end_codes.color}',
+        *[o+ f'{init.esc}[{control_code}{end_codes.color}' for o in obj],
+        last
+    ])
 
-def Reset                       (*obj) -> str: return ''.join([f'{esc}[0{end}' ,*[o+ f'{esc}[0{end}'  for o in obj],f''                ])
-def Bold                        (*obj) -> str: return ''.join([f'{esc}[1{end}' ,*[o+ f'{esc}[1{end}'  for o in obj],f'{esc}[22{end}'   ])
-def NoBold                      (*obj) -> str: return ''.join([f'{esc}[22{end}',*[o+ f'{esc}[22{end}' for o in obj],f'{esc}[1{end}'    ])
-def Dim                         (*obj) -> str: return ''.join([f'{esc}[2{end}' ,*[o+ f'{esc}[2{end}'  for o in obj],f'{esc}[22{end}'   ])
-def NoDim                       (*obj) -> str: return ''.join([f'{esc}[22{end}',*[o+ f'{esc}[22{end}' for o in obj],f'{esc}[2{end}'    ])
-def Italic                      (*obj) -> str: return ''.join([f'{esc}[3{end}' ,*[o+ f'{esc}[3{end}'  for o in obj],f'{esc}[23{end}'   ])
-def NoItalic                    (*obj) -> str: return ''.join([f'{esc}[23{end}',*[o+ f'{esc}[23{end}' for o in obj],f'{esc}[3{end}'    ])
-def Underline                   (*obj) -> str: return ''.join([f'{esc}[4{end}' ,*[o+ f'{esc}[4{end}'  for o in obj],f'{esc}[24{end}'   ])
-def NoUnderline                 (*obj) -> str: return ''.join([f'{esc}[24{end}',*[o+ f'{esc}[24{end}' for o in obj],f'{esc}[4{end}'    ])
-def BlinkSlow                   (*obj) -> str: return ''.join([f'{esc}[5{end}' ,*[o+ f'{esc}[5{end}'  for o in obj],f'{esc}[25{end}'   ])      # NOT WORKING PYCHARM
-def NoBlinkSlow                 (*obj) -> str: return ''.join([f'{esc}[25{end}',*[o+ f'{esc}[25{end}' for o in obj],f'{esc}[5{end}'    ])    # NOT WORKING PYCHARM
-def BlinkRapid                  (*obj) -> str: return ''.join([f'{esc}[6{end}' ,*[o+ f'{esc}[6{end}'  for o in obj],f'{esc}[25{end}'   ])      # NOT WORKING PYCHARM
-def NoBlinkRapid                (*obj) -> str: return ''.join([f'{esc}[25{end}',*[o+ f'{esc}[25{end}' for o in obj],f'{esc}[6{end}'    ])    # NOT WORKING PYCHARM
-def Reversed                    (*obj) -> str: return ''.join([f'{esc}[7{end}' ,*[o+ f'{esc}[7{end}'  for o in obj],f'{esc}[27{end}'   ])
-def NoReversed                  (*obj) -> str: return ''.join([f'{esc}[27{end}',*[o+ f'{esc}[27{end}' for o in obj],f'{esc}[7{end}'    ])
-def Conceal                     (*obj) -> str: return ''.join([f'{esc}[8{end}' ,*[o+ f'{esc}[8{end}'  for o in obj],f'{esc}[28{end}'   ])      # NOT WORKING PYCHARM
-def NoConceal                   (*obj) -> str: return ''.join([f'{esc}[28{end}',*[o+ f'{esc}[28{end}' for o in obj],f'{esc}[8{end}'    ])    # NOT WORKING PYCHARM
-def Crossed                     (*obj) -> str: return ''.join([f'{esc}[9{end}' ,*[o+ f'{esc}[9{end}'  for o in obj],f'{esc}[29{end}'   ])
-def NoCrossed                   (*obj) -> str: return ''.join([f'{esc}[29{end}',*[o+ f'{esc}[29{end}' for o in obj],f'{esc}[9{end}'    ])
-def FontPrimary                 (*obj) -> str: return ''.join([f'{esc}[10{end}',*[o+ f'{esc}[10{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def FontSecond1                 (*obj) -> str: return ''.join([f'{esc}[11{end}',*[o+ f'{esc}[11{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def FontSecond2                 (*obj) -> str: return ''.join([f'{esc}[12{end}',*[o+ f'{esc}[12{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def FontSecond3                 (*obj) -> str: return ''.join([f'{esc}[13{end}',*[o+ f'{esc}[13{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def FontSecond4                 (*obj) -> str: return ''.join([f'{esc}[14{end}',*[o+ f'{esc}[14{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def FontSecond5                 (*obj) -> str: return ''.join([f'{esc}[15{end}',*[o+ f'{esc}[15{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def FontSecond6                 (*obj) -> str: return ''.join([f'{esc}[16{end}',*[o+ f'{esc}[16{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def FontSecond8                 (*obj) -> str: return ''.join([f'{esc}[17{end}',*[o+ f'{esc}[17{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def FontSecond9                 (*obj) -> str: return ''.join([f'{esc}[18{end}',*[o+ f'{esc}[18{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def FontSecond10                (*obj) -> str: return ''.join([f'{esc}[19{end}',*[o+ f'{esc}[19{end}' for o in obj],f'{esc}[10{end}'   ])     # NOT WORKING PYCHARM
-def NoFont                      (*obj) -> str: return ''.join([f'{esc}[10{end}',*[o+ f'{esc}[10{end}' for o in obj]                    ])     # NOT WORKING PYCHARM
-def Fraktur                     (*obj) -> str: return ''.join([f'{esc}[20{end}',*[o+ f'{esc}[20{end}' for o in obj]                    ])        # NOT WORKING PYCHARM
-def UnderlineDouble             (*obj) -> str: return ''.join([f'{esc}[21{end}',*[o+ f'{esc}[21{end}' for o in obj],f'{esc}[24{end}'   ])
-def NoUnderlineDouble           (*obj) -> str: return ''.join([f'{esc}[24{end}',*[o+ f'{esc}[24{end}' for o in obj],f'{esc}[21{end}'   ])
-def PropSpacing                 (*obj) -> str: return ''.join([f'{esc}[26{end}',*[o+ f'{esc}[26{end}' for o in obj],f'{esc}[26{end}'   ])     # NOT WORKING PYCHARM
-def NoPropSpacing               (*obj) -> str: return ''.join([f'{esc}[26{end}',*[o+ f'{esc}[26{end}' for o in obj],f'{esc}[26{end}'   ])     # NOT WORKING PYCHARM
-def NoForeground                (*obj) -> str: return ''.join([f'{esc}[39m'    ,*[o+ f'{esc}[39m'     for o in obj],f''                ])
-def NoBackground                (*obj) -> str: return ''.join([f'{esc}[49{end}',*[o+ f'{esc}[49{end}' for o in obj],f''                ])
-def Frame                       (*obj) -> str: return ''.join([f'{esc}[51{end}',*[o+ f'{esc}[51{end}' for o in obj],f'{esc}[54{end}'   ])
-def NoFrame                     (*obj) -> str: return ''.join([f'{esc}[54{end}',*[o+ f'{esc}[54{end}' for o in obj],f'{esc}[51{end}'   ])
-def Circle                      (*obj) -> str: return ''.join([f'{esc}[52{end}',*[o+ f'{esc}[52{end}' for o in obj],f'{esc}[54{end}'   ])
-def NoCircle                    (*obj) -> str: return ''.join([f'{esc}[54{end}',*[o+ f'{esc}[54{end}' for o in obj],f'{esc}[52{end}'   ])
-def OverLine                    (*obj) -> str: return ''.join([f'{esc}[53{end}',*[o+ f'{esc}[53{end}' for o in obj],f'{esc}[55{end}'   ])
-def NoOverLine                  (*obj) -> str: return ''.join([f'{esc}[55{end}',*[o+ f'{esc}[55{end}' for o in obj],f'{esc}[53{end}'   ])
-def UnderColourDefault          (*obj) -> str: return ''.join([f'{esc}[59{end}',*[o+ f'{esc}[59{end}' for o in obj],f''                ])
-def IdeogramUnderLine           (*obj) -> str: return ''.join([f'{esc}[60{end}',*[o+ f'{esc}[60{end}' for o in obj],f'{esc}[65{end}'   ])
-def IdeogramUnderLineDouble     (*obj) -> str: return ''.join([f'{esc}[61{end}',*[o+ f'{esc}[61{end}' for o in obj],f'{esc}[65{end}'   ])
-def IdeogramOverLine            (*obj) -> str: return ''.join([f'{esc}[62{end}',*[o+ f'{esc}[62{end}' for o in obj],f'{esc}[65{end}'   ])
-def IdeogramOverLineDouble      (*obj) -> str: return ''.join([f'{esc}[63{end}',*[o+ f'{esc}[63{end}' for o in obj],f'{esc}[65{end}'   ])
-def IdeogramStress              (*obj) -> str: return ''.join([f'{esc}[64{end}',*[o+ f'{esc}[64{end}' for o in obj],f'{esc}[65{end}'   ])
-def NoIdeogram                  (*obj) -> str: return ''.join([f'{esc}[65{end}',*[o+ f'{esc}[65{end}' for o in obj],f''                ])
-def SuperScript                 (*obj) -> str: return ''.join([f'{esc}[73{end}',*[o+ f'{esc}[73{end}' for o in obj],f'{esc}[75{end}'   ])
-def SubScript                   (*obj) -> str: return ''.join([f'{esc}[74{end}',*[o+ f'{esc}[74{end}' for o in obj],f'{esc}[75{end}'   ])
-def NoScript                    (*obj) -> str: return ''.join([f'{esc}[75{end}',*[o+ f'{esc}[75{end}' for o in obj],f''                ])
+
+def color_sequence(*obj, color_code: str | int = '') -> str:
+    return ''.join([
+        f'{init.esc}[{color_code}m',
+        *[o+f'{init.esc}[{color_code}m' for o in obj],
+        f'{init.esc}[39m'
+    ])
+
+
+Reset                       = partial(control_sequence, control_code=0)
+Bold                        = partial(control_sequence, control_code=1)
+NoBold                      = partial(control_sequence, control_code=22)
+Dim                         = partial(control_sequence, control_code=2)
+NoDim                       = partial(control_sequence, control_code=22)
+Italic                      = partial(control_sequence, control_code=3)
+NoItalic                    = partial(control_sequence, control_code=23)
+Underline                   = partial(control_sequence, control_code=4)
+NoUnderline                 = partial(control_sequence, control_code=24)
+BlinkSlow                   = partial(control_sequence, control_code=5)
+NoBlinkSlow                 = partial(control_sequence, control_code=25)
+BlinkRapid                  = partial(control_sequence, control_code=6)
+NoBlinkRapid                = partial(control_sequence, control_code=25)
+Reversed                    = partial(control_sequence, control_code=7)
+NoReversed                  = partial(control_sequence, control_code=27)
+Conceal                     = partial(control_sequence, control_code=8)
+NoConceal                   = partial(control_sequence, control_code=28)
+Crossed                     = partial(control_sequence, control_code=9)
+NoCrossed                   = partial(control_sequence, control_code=29)
+FontPrimary                 = partial(control_sequence, control_code=10)
+FontSecond1                 = partial(control_sequence, control_code=11)
+FontSecond2                 = partial(control_sequence, control_code=12)
+FontSecond3                 = partial(control_sequence, control_code=13)
+FontSecond4                 = partial(control_sequence, control_code=14)
+FontSecond5                 = partial(control_sequence, control_code=15)
+FontSecond6                 = partial(control_sequence, control_code=16)
+FontSecond8                 = partial(control_sequence, control_code=17)
+FontSecond9                 = partial(control_sequence, control_code=18)
+FontSecond10                = partial(control_sequence, control_code=19)
+NoFont                      = partial(control_sequence, control_code=10)
+Fraktur                     = partial(control_sequence, control_code=20)
+UnderlineDouble             = partial(control_sequence, control_code=21)
+NoUnderlineDouble           = partial(control_sequence, control_code=24)
+PropSpacing                 = partial(control_sequence, control_code=26)
+NoPropSpacing               = partial(control_sequence, control_code=26)
+NoForeground                = partial(control_sequence, control_code=39)
+NoBackground                = partial(control_sequence, control_code=49)
+Frame                       = partial(control_sequence, control_code=51)
+NoFrame                     = partial(control_sequence, control_code=54)
+Circle                      = partial(control_sequence, control_code=52)
+NoCircle                    = partial(control_sequence, control_code=54)
+OverLine                    = partial(control_sequence, control_code=53)
+NoOverLine                  = partial(control_sequence, control_code=55)
+UnderColourDefault          = partial(control_sequence, control_code=59)
+IdeogramUnderLine           = partial(control_sequence, control_code=60)
+IdeogramUnderLineDouble     = partial(control_sequence, control_code=61)
+IdeogramOverLine            = partial(control_sequence, control_code=62)
+IdeogramOverLineDouble      = partial(control_sequence, control_code=63)
+IdeogramStress              = partial(control_sequence, control_code=64)
+NoIdeogram                  = partial(control_sequence, control_code=65)
+SuperScript                 = partial(control_sequence, control_code=73)
+SubScript                   = partial(control_sequence, control_code=74)
+NoScript                    = partial(control_sequence, control_code=75)
+
 
 class Basic:
     class Fore:
-        def Black         (*obj) -> str: return ''.join([f"{esc}[30m", *[o+f"{esc}[30m" for o in obj], f'{esc}[39m'])
-        def Red           (*obj) -> str: return ''.join([f"{esc}[31m", *[o+f"{esc}[31m" for o in obj], f'{esc}[39m'])
-        def Green         (*obj) -> str: return ''.join([f"{esc}[32m", *[o+f"{esc}[32m" for o in obj], f'{esc}[39m'])
-        def Yellow        (*obj) -> str: return ''.join([f"{esc}[33m", *[o+f"{esc}[33m" for o in obj], f'{esc}[39m'])
-        def Blue          (*obj) -> str: return ''.join([f"{esc}[34m", *[o+f"{esc}[34m" for o in obj], f'{esc}[39m'])
-        def Magenta       (*obj) -> str: return ''.join([f"{esc}[35m", *[o+f"{esc}[35m" for o in obj], f'{esc}[39m'])
-        def Cyan          (*obj) -> str: return ''.join([f"{esc}[36m", *[o+f"{esc}[36m" for o in obj], f'{esc}[39m'])
-        def White         (*obj) -> str: return ''.join([f"{esc}[37m", *[o+f"{esc}[37m" for o in obj], f'{esc}[39m'])
-        def BrightBlack   (*obj) -> str: return ''.join([f"{esc}[90m", *[o+f"{esc}[90m" for o in obj], f'{esc}[39m'])
-        def BrightRed     (*obj) -> str: return ''.join([f"{esc}[91m", *[o+f"{esc}[91m" for o in obj], f'{esc}[39m'])
-        def BrightGreen   (*obj) -> str: return ''.join([f"{esc}[92m", *[o+f"{esc}[92m" for o in obj], f'{esc}[39m'])
-        def BrightYellow  (*obj) -> str: return ''.join([f"{esc}[93m", *[o+f"{esc}[93m" for o in obj], f'{esc}[39m'])
-        def BrightBlue    (*obj) -> str: return ''.join([f"{esc}[94m", *[o+f"{esc}[94m" for o in obj], f'{esc}[39m'])
-        def BrightMagenta (*obj) -> str: return ''.join([f"{esc}[95m", *[o+f"{esc}[95m" for o in obj], f'{esc}[39m'])
-        def BrightCyan    (*obj) -> str: return ''.join([f"{esc}[96m", *[o+f"{esc}[96m" for o in obj], f'{esc}[39m'])
-        def BrightWhite   (*obj) -> str: return ''.join([f"{esc}[97m", *[o+f"{esc}[97m" for o in obj], f'{esc}[39m'])
+        Black           = partial(color_sequence, color_code=30)
+        Red             = partial(color_sequence, color_code=31)
+        Green           = partial(color_sequence, color_code=32)
+        Yellow          = partial(color_sequence, color_code=33)
+        Blue            = partial(color_sequence, color_code=34)
+        Magenta         = partial(color_sequence, color_code=35)
+        Cyan            = partial(color_sequence, color_code=36)
+        White           = partial(color_sequence, color_code=37)
+        BrightBlack     = partial(color_sequence, color_code=90)
+        BrightRed       = partial(color_sequence, color_code=91)
+        BrightGreen     = partial(color_sequence, color_code=92)
+        BrightYellow    = partial(color_sequence, color_code=93)
+        BrightBlue      = partial(color_sequence, color_code=94)
+        BrightMagenta   = partial(color_sequence, color_code=95)
+        BrightCyan      = partial(color_sequence, color_code=96)
+        BrightWhite     = partial(color_sequence, color_code=97)
 
     class Back:
-        def Black         (*obj) -> str: return ''.join([f"{esc}[40m" , *[o+f"{esc}[40m"  for o in obj], f'{esc}[49m'])
-        def Red           (*obj) -> str: return ''.join([f"{esc}[41m" , *[o+f"{esc}[41m"  for o in obj], f'{esc}[49m'])
-        def Green         (*obj) -> str: return ''.join([f"{esc}[42m" , *[o+f"{esc}[42m"  for o in obj], f'{esc}[49m'])
-        def Yellow        (*obj) -> str: return ''.join([f"{esc}[43m" , *[o+f"{esc}[43m"  for o in obj], f'{esc}[49m'])
-        def Blue          (*obj) -> str: return ''.join([f"{esc}[44m" , *[o+f"{esc}[44m"  for o in obj], f'{esc}[49m'])
-        def Magenta       (*obj) -> str: return ''.join([f"{esc}[45m" , *[o+f"{esc}[45m"  for o in obj], f'{esc}[49m'])
-        def Cyan          (*obj) -> str: return ''.join([f"{esc}[46m" , *[o+f"{esc}[46m"  for o in obj], f'{esc}[49m'])
-        def White         (*obj) -> str: return ''.join([f"{esc}[47m" , *[o+f"{esc}[47m"  for o in obj], f'{esc}[49m'])
-        def BrightBlack   (*obj) -> str: return ''.join([f"{esc}[100m", *[o+f"{esc}[100m" for o in obj], f'{esc}[49m'])
-        def BrightRed     (*obj) -> str: return ''.join([f"{esc}[101m", *[o+f"{esc}[101m" for o in obj], f'{esc}[49m'])
-        def BrightGreen   (*obj) -> str: return ''.join([f"{esc}[102m", *[o+f"{esc}[102m" for o in obj], f'{esc}[49m'])
-        def BrightYellow  (*obj) -> str: return ''.join([f"{esc}[103m", *[o+f"{esc}[103m" for o in obj], f'{esc}[49m'])
-        def BrightBlue    (*obj) -> str: return ''.join([f"{esc}[104m", *[o+f"{esc}[104m" for o in obj], f'{esc}[49m'])
-        def BrightMagenta (*obj) -> str: return ''.join([f"{esc}[105m", *[o+f"{esc}[105m" for o in obj], f'{esc}[49m'])
-        def BrightCyan    (*obj) -> str: return ''.join([f"{esc}[106m", *[o+f"{esc}[106m" for o in obj], f'{esc}[49m'])
-        def BrightWhite   (*obj) -> str: return ''.join([f"{esc}[107m", *[o+f"{esc}[107m" for o in obj], f'{esc}[49m'])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        Black           = partial(color_sequence, color_code=40)
+        Red             = partial(color_sequence, color_code=41)
+        Green           = partial(color_sequence, color_code=42)
+        Yellow          = partial(color_sequence, color_code=43)
+        Blue            = partial(color_sequence, color_code=44)
+        Magenta         = partial(color_sequence, color_code=45)
+        Cyan            = partial(color_sequence, color_code=46)
+        White           = partial(color_sequence, color_code=47)
+        BrightBlack     = partial(color_sequence, color_code=100)
+        BrightRed       = partial(color_sequence, color_code=101)
+        BrightGreen     = partial(color_sequence, color_code=102)
+        BrightYellow    = partial(color_sequence, color_code=103)
+        BrightBlue      = partial(color_sequence, color_code=104)
+        BrightMagenta   = partial(color_sequence, color_code=105)
+        BrightCyan      = partial(color_sequence, color_code=106)
+        BrightWhite     = partial(color_sequence, color_code=107)
