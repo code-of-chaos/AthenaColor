@@ -9,7 +9,7 @@ def readme():
 
     # *-* Use the objects in an f-string *-*
     print(
-f"""||| {Style.Bold}Welcome to the AthenaColor Package!{Style.Reset} |||  
+f"""||| {Style.Bold}Welcome to the AthenaColor Package{Style.Reset} |||  
 
 - The {Fore.HotPink}Fore.HotPink{Style.Reset} Changes the Foreground color  
 - The {Back.Indigo}Back.Indigo{Style.Reset} changes the background color  
