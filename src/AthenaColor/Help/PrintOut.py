@@ -13,7 +13,7 @@ from AthenaColor import (
     HtmlColors,
     rgb,
 )
-from AthenaColor.Styling.RgbControlled import Underline
+from AthenaColor.Styling.Inline import Underline
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support -

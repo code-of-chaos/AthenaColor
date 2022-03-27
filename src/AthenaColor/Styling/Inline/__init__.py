@@ -1,7 +1,8 @@
-from .Bodies_Called import (
-    Fore,Back,Underline
+from .Bodies import (
+    Fore,
+    Back,
+    Underline # Technically present, but does not work in PyCharm
 )
-
 class Style:
     from .MakeUp import (
         Reset,

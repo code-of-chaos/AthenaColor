@@ -1,4 +1,4 @@
 from .AnsiSquences import (
     AnsiEscape,
-    NestedColorSequence
+    NestedSequence
 )

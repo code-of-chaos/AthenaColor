@@ -6,8 +6,8 @@
 # Custom Library
 
 # Custom Packages
-from .RgbControlled_Callable import RgbControlled_Callable
-from .MakeUp import (
+from .Nested_RgbControlled import Nested_RgbControlled
+from .Nested_MakeUp import (
     NoForeground,
     NoBackground,
     NoUnderline
@@ -16,17 +16,17 @@ from .MakeUp import (
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-Fore = RgbControlled_Callable(
-    param_code= f"[38;2;",
-    reset=NoForeground
+Fore = Nested_RgbControlled(
+    param_code= f"38;2;",
+    reset_code=39
 )
 
-Back = RgbControlled_Callable(
-    param_code= f"[48;2;",
-    reset=NoBackground
+Back = Nested_RgbControlled(
+    param_code= f"48;2;",
+    reset_code=49
 )
 
-Underline = RgbControlled_Callable(
-    param_code= f"[58;2;",
-    reset=NoUnderline
+Underline = Nested_RgbControlled(
+    param_code= f"58;2;",
+    reset_code=24
 )
