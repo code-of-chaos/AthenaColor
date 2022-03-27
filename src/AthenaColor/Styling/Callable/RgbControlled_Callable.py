@@ -57,6 +57,7 @@ class RgbControlled_Callable:
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -
     # ------------------------------------------------------------------------------------------------------------------
+    @stacked
     def Maroon              (self,obj=None)->str: return f"{self.prefix}{str(HtmlColors.Maroon              )}{self.sufix}{obj if obj is not None else ''}"
     @stacked
     def DarkRed             (self,obj=None)->str: return f"{self.prefix}{str(HtmlColors.DarkRed             )}{self.sufix}{obj if obj is not None else ''}"
