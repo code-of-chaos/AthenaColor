@@ -15,7 +15,7 @@ from AthenaColor.BASE import end_codes
 def AnsiEscape(code: str | int,end_code:str) -> str:
     return f'{init.esc}[{code}{end_code}'
 
-def NestedSequence(*obj, control_code: str | int,reset_code:str|int=None) -> str:
+def NestedSequence(*obj, control_code: str | int,reset_code:str|int=None, sep:str=" ") -> str:
     styleCode = AnsiEscape(code=control_code,end_code=end_codes.color)
     resetCode = AnsiEscape(code=reset_code,end_code=end_codes.color)
     return ''.join([
@@ -23,7 +23,7 @@ def NestedSequence(*obj, control_code: str | int,reset_code:str|int=None) -> str
         styleCode,
         *[
             # Negate the last code, doesn't do a thing if reset code is called
-            (styleCode+o+styleCode) if o != obj[-1] else o
+            (styleCode+o+styleCode+sep) if o != obj[-1] else o
             for o in obj
         ],
         # Reset the specifc Style Choice with the corresponding "No..." code

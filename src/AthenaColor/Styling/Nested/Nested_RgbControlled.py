@@ -27,14 +27,14 @@ class Nested_RgbControlled:
     # ------------------------------------------------------------------------------------------------------------------
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
-    def custom(self,*obj, color:rgb):
-        return NestedSequence(*obj, control_code=self._param_code + str(color), reset_code=self._reset)
+    def custom(self,*obj, color:rgb, sep:str=" "):
+        return NestedSequence(*obj, sep=sep, control_code=self._param_code + str(color), reset_code=self._reset)
 
-    def c(self,*obj, color:rgb): #synonim for cls.custom()
-        return NestedSequence(*obj, control_code=self._param_code + str(color),reset_code=self._reset)
+    def c(self,*obj, color:rgb, sep:str=" "): #synonim for cls.custom()
+        return NestedSequence(*obj, sep=sep, control_code=self._param_code + str(color),reset_code=self._reset)
 
-    def rgb(self,*obj, r:int,g:int,b:int):
-        return NestedSequence(*obj, control_code=self._param_code + str(rgb(r,g,b)),reset_code=self._reset)
+    def rgb(self,*obj, r:int,g:int,b:int, sep:str=" "):
+        return NestedSequence(*obj, sep=sep, control_code=self._param_code + str(rgb(r,g,b)),reset_code=self._reset)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -
