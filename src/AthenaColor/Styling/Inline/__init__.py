@@ -4,6 +4,26 @@ from .Bodies import (
     Underline # Technically present, but does not work in PyCharm
 )
 class Style:
+    __all__=[
+        "Reset",
+        "Italic",
+        "NoItalic",
+        "Bold",
+        "NoBold",
+        "Underline",
+        "NoUnderline",
+        "Crossed",
+        "NoCrossed",
+        "Reversed",
+        "NoReversed",
+        "Frame",
+        "NoFrame",
+        "Circle",
+        "NoCircle",
+        "UnderlineDouble",
+        "NoForeground",
+        "NoBackground"
+    ]
     from .MakeUp import (
         Reset,
         Italic,
