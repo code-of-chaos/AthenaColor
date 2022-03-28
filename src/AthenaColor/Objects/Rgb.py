@@ -7,6 +7,7 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
+from ..Functions import rgb_to_hexadecimal
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
@@ -75,6 +76,16 @@ class rgb:
         self.b += self.b * value
 
     # ------------------------------------------------------------------------------------------------------------------
+    # Conversion Methods
+    # ------------------------------------------------------------------------------------------------------------------
+    def hexadecimal(self) -> str:
+        return rgb_to_hexadecimal(
+            r=self.r,
+            g=self.g,
+            b=self.b
+        )
+
+    # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
@@ -83,10 +94,6 @@ class rgb:
 
     def __repr__(self) -> str:
         return f"rgb(r={self.r},g={self.g},b={self.b})"
-
-    # conversion magic methods
-    def __hex__(self) -> str:
-        return '#%02x%02x%02x' % (self.r, self.b, self.g)
 
     # Comparison operators
     # >
