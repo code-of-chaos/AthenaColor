@@ -7,7 +7,7 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from ..Functions import rgb_to_hexadecimal
+from ..Functions.ColorConversion import rgb_to_hexadecimal
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

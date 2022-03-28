@@ -10,7 +10,6 @@ from ...Objects import (
     rgb,
     HtmlColors
 )
-from AthenaColor import init
 from ...Functions import AnsiEscape
 from ...BASE import end_codes
 

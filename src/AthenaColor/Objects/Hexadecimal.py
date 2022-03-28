@@ -7,7 +7,7 @@
 
 # Custom Packages
 from .Rgb import rgb
-from ..Functions import hexadecimal_to_rgb
+from ..Functions.ColorConversion import hexadecimal_to_rgb
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

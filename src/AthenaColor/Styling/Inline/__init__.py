@@ -4,6 +4,7 @@ from .Bodies import (
     Underline # Technically present, but does not work in PyCharm
 )
 class Style:
+    # noinspection PyUnresolvedReferences
     __all__=[
         "Reset",
         "Italic",
