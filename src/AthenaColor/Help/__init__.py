@@ -5,3 +5,9 @@ from .PrintOut import (
     AllTable_UnverfifiedPycharm,
     AllBoxes
 )
+
+from .Examples import (
+    example_nested,
+    example_inline,
+    example_rgb
+)

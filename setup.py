@@ -14,7 +14,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="AthenaColor",
-    version="3.0.7",
+    version="3.1.1",
     author="Andreas Sas",
     author_email="",
     description="Python Package used to print rgb colors to the console",
