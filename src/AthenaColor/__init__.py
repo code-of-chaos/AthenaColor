@@ -47,12 +47,12 @@ from AthenaColor.Styling.Inline import (
     Back,
     Style
 )
+
 from AthenaColor.Styling.Nested import (
     Fore    as ForeNest ,
     Back    as BackNest ,
     Style   as StyleNest
 )
-
 
 from AthenaColor.Objects import (
     rgb,

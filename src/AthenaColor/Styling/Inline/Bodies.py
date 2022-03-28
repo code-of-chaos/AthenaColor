@@ -12,13 +12,13 @@ from .RgbControlled import RgbControlled
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 Fore = RgbControlled(
-    param_code= f"[38;2;",
+    param_code= f"38;2;",
 )
 
 Back = RgbControlled(
-    param_code= f"[48;2;",
+    param_code= f"48;2;",
 )
 
 Underline = RgbControlled(
-    param_code= f"[58;2;",
+    param_code= f"58;2;",
 )

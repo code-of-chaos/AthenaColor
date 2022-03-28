@@ -47,14 +47,14 @@ def AllTable():
     print(
 f"""
 ┏━{Style.Bold}Colors{Style.Reset}━━━━━━━━━━━━━┳━{"━" * color_len}
-┃ Color Name         ┃ {" ".join(f"{Fore.c(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
+┃ Color Name         ┃ {" ".join(f"{Fore.custom(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
 ┣────────────────────╂─{"─" * color_len}
 {nl.join(
-    f"┃ {style_name}{' '*(19 - len(style_name))}┃ {' '.join(f'{style}{Fore.c(color_rgb)}{color_name}{Style.Reset}' for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}"
+    f"┃ {style_name}{' '*(19 - len(style_name))}┃ {' '.join(f'{style}{Fore.custom(color_rgb)}{color_name}{Style.Reset}' for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}"
     for style_name, style in vars(Style).items()
     if not any((style_name.startswith("_") , style_name.startswith("No") , style_name in ("Reset","Unverfified","BackgroundDefault")))
 )}
-┃ ALL                ┃ {" ".join(f"{all_styles}{Fore.c(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
+┃ ALL                ┃ {" ".join(f"{all_styles}{Fore.custom(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
 ┗━━━━━━━━━━━━━━━━━━━━┻━{"━" * color_len}
 """
     )
@@ -63,10 +63,10 @@ def AllTable_UnverfifiedPycharm():
     print(
 f"""
 ┏━{Style.Bold}Unverfified{Style.Reset}━━━━━━━━┳━{"━" * color_len}
-┃ Color Name         ┃ {" ".join(f"{Fore.c(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
+┃ Color Name         ┃ {" ".join(f"{Fore.custom(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
 ┣────────────────────╂─{"─" * color_len}
 {nl.join(
-    f"┃ {style_name}{' '*(19 - len(style_name))}┃ {' '.join(f'{style}{Fore.c(color_rgb)}{color_name}{Style.Reset}' for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}"
+    f"┃ {style_name}{' '*(19 - len(style_name))}┃ {' '.join(f'{style}{Fore.custom(color_rgb)}{color_name}{Style.Reset}' for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}"
     for style_name, style in vars(Style.Unverfified).items()
     if not any((style_name.startswith("_") , style_name.startswith("No") , style_name in ("Reset","Unverfified")))
 )}
@@ -80,7 +80,7 @@ def AllBoxes(rows=4):
     list_blocks = [[None]*round(len(color_list)/rows)for _ in range(rows)]
     for color_name, color_rgb in vars(HtmlColors).items():
         if isinstance(color_rgb, rgb):
-            list_blocks[y][x] = f"{Fore.c(color_rgb)}█{Style.Reset}"
+            list_blocks[y][x] = f"{Fore.custom(color_rgb)}█{Style.Reset}"
             y+=1
             if y == rows:
                 x += 1
