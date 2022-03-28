@@ -7,7 +7,13 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from ..Functions.ColorConversion import rgb_to_hexadecimal
+from ...BASE import ColorClass
+from ...Functions.ColorConversion import (
+    rgb_to_hexadecimal,
+    rgb_to_hsl,
+    rgb_to_cmyk,
+    rgb_to_hsv
+)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
@@ -22,7 +28,7 @@ def boundary(value:int|float) -> int|float:
     else:
         ValueError("Value out of range")
 
-class rgb:
+class rgb(ColorClass):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
@@ -78,8 +84,26 @@ class rgb:
     # ------------------------------------------------------------------------------------------------------------------
     # Conversion Methods
     # ------------------------------------------------------------------------------------------------------------------
-    def hexadecimal(self) -> str:
+    def to_hexadecimal(self) -> str:
         return rgb_to_hexadecimal(
+            r=self.r,
+            g=self.g,
+            b=self.b
+        )
+    def to_cmyk(self) -> tuple[float,float,float,float]:
+        return rgb_to_cmyk(
+            r=self.r,
+            g=self.g,
+            b=self.b
+        )
+    def to_hsl(self) -> tuple[float,float,float]:
+        return rgb_to_hsl(
+            r=self.r,
+            g=self.g,
+            b=self.b
+        )
+    def to_hsv(self) -> tuple[float,float,float]:
+        return rgb_to_hsv(
             r=self.r,
             g=self.g,
             b=self.b
@@ -248,26 +272,3 @@ class rgb:
             return self
         else:
             return NotImplemented
-
-    # Augmented assignments
-    # +=
-    def __iadd__(self, other: rgb | int | float) -> rgb:
-        return self.__add__(other)
-    # -=
-    def __isub__(self, other: rgb | int | float) -> rgb:
-        return self.__sub__(other)
-    # *=
-    def __imul__(self, other: rgb | int | float) -> rgb:
-        return self.__mul__(other)
-    # //=
-    def __ifloordiv__(self, other: rgb | int | float) -> rgb:
-        return self.__floordiv__(other)
-    # /=
-    def __itruediv__(self, other: rgb | int | float) -> rgb:
-        return self.__truediv__(other)
-    # %=
-    def __imod__(self, other: rgb | int | float) -> rgb:
-        return self.__mod__(other)
-    # **=
-    def __ipow__(self, other: rgb | int | float) -> rgb:
-        return self.__pow__(other)
