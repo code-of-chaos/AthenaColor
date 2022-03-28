@@ -1,3 +1,35 @@
+__all__ = [
+    # to RGB
+    "hexadecimal_to_rgb",
+    "hsv_to_rgb",
+    "cmyk_to_rgb",
+    "hsl_to_rgb",
+
+    # to hexadecimal
+    "rgb_to_hexadecimal",
+    "hsv_to_hexadeimal",
+    "cmyk_to_hexadecimal",
+    "hsl_to_hexadecimal",
+
+    # to HSV
+    "rgb_to_hsv",
+    "hexadeimal_to_hsv",
+    "cmyk_to_hsv",
+    "hsl_to_hsv",
+
+    # to CMYK
+    "rgb_to_cmyk",
+    "hexadecimal_to_cmyk",
+    "hsv_to_cmyk",
+    "hsl_to_cmyk",
+
+    # to HSL
+    "rgb_to_hsl",
+    "hexadecimal_to_hsl",
+    "cmyk_to_hsl",
+    "hsv_to_hsl",
+]
+
 # ----------------------------------------------------------------------------------------------------------------------
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
@@ -65,6 +97,7 @@ def cmyk_to_rgb(c:float,m:float,y:float,k:float) -> tuple[int,int,int]:
         round(255*(1-m)*(1-k)),#g
         round(255*(1-y)*(1-k)) #b
     )
+
 def hsl_to_rgb(h:float,s:float,l:float) -> tuple[int,int,int]:
     C = (1-abs((2*l)-1))*s
     X = C*(1-abs(((h/60)%2)-1))
