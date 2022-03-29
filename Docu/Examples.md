@@ -34,19 +34,19 @@ example_nested()
 
 Copy directly
 ```python
-from AthenaColor import (  
-	Fore,  
-	Back,  
-	Style,  
-)  
-pre_formated = lambda t_: f"{Fore.SkyBlue}{Style.Italic}{Back.MidnightBlue}{t_}{Style.NoForeground}{Style.NoItalic}{Style.NoBackground}"  
-  
-text = \  
-f"""{Fore.GoldenRod}{Style.Italic}Hello there!{Style.NoItalic}{Style.NoForeground}  
-{Fore.PaleGoldenRod}This is an example of {Style.Bold}INLINE{Style.NoBold} styling{Style.NoForeground}  
-{Fore.GoldenRod}Here we have some Golden rod again{Style.NoForeground},  
-{Back.DarkViolet}{Fore.GoldenRod}Here we have to redefined colors and worry about resets{Style.NoForeground}{Style.NoBackground}  
-{pre_formated("The style of this part was preformatted")}  
+from AthenaColor import (
+	Fore,
+	Back,
+	Style,
+)
+pre_formated = lambda t_: f"{Fore.SkyBlue}{Style.Italic}{Back.MidnightBlue}{t_}{Style.NoForeground}{Style.NoItalic}{Style.NoBackground}"
+
+text = \
+f"""{Fore.GoldenRod}{Style.Italic}Hello there!{Style.NoItalic}{Style.NoForeground}
+{Fore.PaleGoldenRod}This is an example of {Style.Bold}INLINE{Style.NoBold} styling{Style.NoForeground}
+{Fore.GoldenRod}Here we have some Golden rod again{Style.NoForeground},
+{Back.DarkViolet}{Fore.GoldenRod}Here we have to redefined colors and worry about resets{Style.NoForeground}{Style.NoBackground}
+{pre_formated("The style of this part was preformatted")}
 """  
 
 print(text)
@@ -63,15 +63,15 @@ example_inline()
 Copy directly
 ```python
 from AthenaColor import (  
-    ForeNest,  
-    BackNest,  
-    rgb  
+    ForeNest,
+    BackNest,
+    RGB
 )  
 
-color1 = rgb(r=86, g=54, b=251)  
-color2 = rgb(214,124,61)  
+color1 = RGB(r=86, g=54, b=251)
+color2 = RGB(214,124,61)
 
-text = ForeNest.custom(BackNest.custom("This is a custom color",color=color2),color=color1)  
+text = ForeNest.custom(BackNest.custom("This is a custom color",color=color2),color=color1)
 
 print(text)
 ```

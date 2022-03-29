@@ -7,7 +7,7 @@
 
 # Custom Packages
 from ...Objects import (
-    rgb,
+    RGB,
     HtmlColors
 )
 from ...Functions import AnsiEscape
@@ -24,11 +24,11 @@ class RgbControlled:
     # ------------------------------------------------------------------------------------------------------------------
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
-    def custom(self, color:rgb):
+    def custom(self, color:RGB):
         return AnsiEscape(self.param_code + str(color), end_code=end_codes.color)
 
     def rgb(self, r:int,g:int,b:int):
-        return AnsiEscape(self.param_code + str(rgb(r,g,b)), end_code=end_codes.color)
+        return AnsiEscape(self.param_code + str(RGB(r,g,b)), end_code=end_codes.color)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -

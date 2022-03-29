@@ -11,7 +11,7 @@ from AthenaColor import (
     Back,
     Style,
     HtmlColors,
-    rgb,
+    RGB,
 )
 from AthenaColor.Styling.Inline import Underline
 
@@ -47,14 +47,14 @@ def AllTable():
     print(
 f"""
 ┏━{Style.Bold}Colors{Style.Reset}━━━━━━━━━━━━━┳━{"━" * color_len}
-┃ Color Name         ┃ {" ".join(f"{Fore.custom(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
+┃ Color Name         ┃ {" ".join(f"{Fore.custom(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, RGB))}
 ┣────────────────────╂─{"─" * color_len}
 {nl.join(
-    f"┃ {style_name}{' '*(19 - len(style_name))}┃ {' '.join(f'{style}{Fore.custom(color_rgb)}{color_name}{Style.Reset}' for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}"
+    f"┃ {style_name}{' '*(19 - len(style_name))}┃ {' '.join(f'{style}{Fore.custom(color_rgb)}{color_name}{Style.Reset}' for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, RGB))}"
     for style_name, style in vars(Style).items()
     if not any((style_name.startswith("_") , style_name.startswith("No") , style_name in ("Reset","Unverfified","BackgroundDefault")))
 )}
-┃ ALL                ┃ {" ".join(f"{all_styles}{Fore.custom(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
+┃ ALL                ┃ {" ".join(f"{all_styles}{Fore.custom(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, RGB))}
 ┗━━━━━━━━━━━━━━━━━━━━┻━{"━" * color_len}
 """
     )
@@ -63,14 +63,14 @@ def AllTable_UnverfifiedPycharm():
     print(
 f"""
 ┏━{Style.Bold}Unverfified{Style.Reset}━━━━━━━━┳━{"━" * color_len}
-┃ Color Name         ┃ {" ".join(f"{Fore.custom(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
+┃ Color Name         ┃ {" ".join(f"{Fore.custom(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, RGB))}
 ┣────────────────────╂─{"─" * color_len}
 {nl.join(
-    f"┃ {style_name}{' '*(19 - len(style_name))}┃ {' '.join(f'{style}{Fore.custom(color_rgb)}{color_name}{Style.Reset}' for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}"
+    f"┃ {style_name}{' '*(19 - len(style_name))}┃ {' '.join(f'{style}{Fore.custom(color_rgb)}{color_name}{Style.Reset}' for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, RGB))}"
     for style_name, style in vars(Style.Unverfified).items()
     if not any((style_name.startswith("_") , style_name.startswith("No") , style_name in ("Reset","Unverfified")))
 )}
-┃ Underline          ┃ {" ".join(f"{Underline.c(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, rgb))}
+┃ Underline          ┃ {" ".join(f"{Underline.c(color_rgb)}{color_name}{Style.Reset}" for color_name, color_rgb in vars(HtmlColors).items() if isinstance(color_rgb, RGB))}
 ┗━━━━━━━━━━━━━━━━━━━━┻━{"━" * color_len}
 """
     )
@@ -79,7 +79,7 @@ def AllBoxes(rows=4):
     x,y = 0,0
     list_blocks = [[None]*round(len(color_list)/rows)for _ in range(rows)]
     for color_name, color_rgb in vars(HtmlColors).items():
-        if isinstance(color_rgb, rgb):
+        if isinstance(color_rgb, RGB):
             list_blocks[y][x] = f"{Fore.custom(color_rgb)}█{Style.Reset}"
             y+=1
             if y == rows:

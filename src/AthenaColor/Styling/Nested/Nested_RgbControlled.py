@@ -8,7 +8,7 @@ from functools import partialmethod
 
 # Custom Packages
 from ...Objects import (
-    rgb,
+    RGB,
     HtmlColors
 )
 from ...Functions import NestedSequence
@@ -27,14 +27,14 @@ class Nested_RgbControlled:
     # ------------------------------------------------------------------------------------------------------------------
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
-    def custom(self,*obj, color:rgb, **kwargs):
+    def custom(self,*obj, color:RGB, **kwargs):
         return NestedSequence(*obj,**kwargs, control_code=self._param_code + str(color), reset_code=self._reset)
 
-    def c(self,*obj, color:rgb, **kwargs): #synonim for cls.custom()
+    def c(self,*obj, color:RGB, **kwargs): #synonim for cls.custom()
         return NestedSequence(*obj,**kwargs, control_code=self._param_code + str(color),reset_code=self._reset)
 
     def rgb(self,*obj, r:int,g:int,b:int, **kwargs):
-        return NestedSequence(*obj ,**kwargs, control_code=self._param_code + str(rgb(r,g,b)),reset_code=self._reset)
+        return NestedSequence(*obj ,**kwargs, control_code=self._param_code + str(RGB(r,g,b)),reset_code=self._reset)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -

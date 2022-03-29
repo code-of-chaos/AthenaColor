@@ -2,6 +2,6 @@ from .HtmlColors import HtmlColors
 
 
 from .ColorClasses import (
-    rgb,
+    RGB,
     hexadecimal
 )

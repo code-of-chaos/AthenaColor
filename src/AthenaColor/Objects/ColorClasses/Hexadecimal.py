@@ -6,7 +6,7 @@
 # Custom Library
 
 # Custom Packages
-from .Rgb import rgb
+from .Rgb import RGB
 from ...Functions.ColorConversion import (
     hexadecimal_to_rgb,
     rgb_to_hexadecimal
@@ -17,7 +17,7 @@ from ...Functions.ColorConversion import (
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 # inherits from rgb as it is just another notation of the rgb format
-class hexadecimal(rgb):
+class hexadecimal(RGB):
     def __init__(self, hex_value:str):
         self.r,self.g,self.b = hexadecimal_to_rgb(hex_value)
 

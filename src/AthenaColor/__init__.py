@@ -55,7 +55,7 @@ from AthenaColor.Styling.Nested import (
 )
 
 from AthenaColor.Objects import (
-    rgb,
+    RGB,
     HtmlColors,
     hexadecimal
 )

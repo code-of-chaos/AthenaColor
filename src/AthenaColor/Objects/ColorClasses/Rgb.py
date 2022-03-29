@@ -4,10 +4,12 @@
 # General Packages
 from __future__ import annotations
 
+from functools import wraps
+import operator
 # Custom Library
 
 # Custom Packages
-from ...BASE import ColorClass
+from AthenaColor.Objects.ColorClasses._color import ColorSystem
 from ...Functions.ColorConversion import (
     rgb_to_hexadecimal,
     rgb_to_hsl,
@@ -19,20 +21,13 @@ from ...Functions.ColorConversion import (
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def boundary(value:int|float) -> int|float:
-    if 0 <= value <= 255:
-        return value
-    elif value < 0:
-        return 0
-    elif value > 255:
-        return 255
-    else:
-        ValueError("Value out of range")
+    return min(max(value, 0), 255)
 
-class rgb(ColorClass):
+class RGB(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,r:int|float,g:int|float,b:int|float):
+    def __init__(self,r: int | float, g: int | float, b: int | float):
         if isinstance(r, (int,float)) and isinstance(g, (int,float)) and isinstance(b, (int,float)):
             self.r = r
             self.g = g
@@ -46,23 +41,26 @@ class rgb(ColorClass):
     @property
     def r(self):
         return self._r
+
     @r.setter
-    def r(self, value:int|float):
-        self._r = int(round(boundary(value)))
+    def r(self, value: int | float):
+        self._r = round(boundary(value))
 
     @property
     def g(self):
         return self._g
+
     @g.setter
     def g(self, value: int | float):
-        self._g = int(round(boundary(value)))
+        self._g = round(boundary(value))
 
     @property
     def b(self):
         return self._b
+
     @b.setter
     def b(self, value: int | float):
-        self._b = int(round(boundary(value)))
+        self._b = round(boundary(value))
 
     # ------------------------------------------------------------------------------------------------------------------
     # Special Methods
@@ -112,163 +110,62 @@ class rgb(ColorClass):
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
+    def __int__(self):
+        return self.r + self.g + self.b
+
     # String magic methods
     def __str__(self) -> str:
         return f"{self.r};{self.g};{self.b}"
 
     def __repr__(self) -> str:
-        return f"rgb(r={self.r},g={self.g},b={self.b})"
+        return f"rgb(r={self.r}, g={self.g}, b={self.b})"
 
-    # Comparison operators
-    # >
-    def __gt__(self, other:rgb|int|float) -> bool:
-        if isinstance(other, rgb):
-            return (self.r + self.g + self.b) > (other.r + other.g + other.b)
-        elif isinstance(other, (int, float)):
-            return (self.r + self.g + self.b) > (other + other + other)
-        else:
-            return NotImplemented
+    def _compare(operation):
+        def outer_wrapper(f):
+            @wraps(f)
+            def wrapper(self, other):
+                if isinstance(other, RGB):
+                    return operation(int(self), int(other))
+                elif isinstance(other, (int, float)):
+                    return operation(int(self), 3 * other)
+                else:
+                    return NotImplemented
+            return wrapper
+        return outer_wrapper
 
-    # <
-    def __lt__(self, other:rgb|int|float) -> bool:
-        if isinstance(other, rgb):
-            return (self.r + self.g + self.b) < (other.r + other.g + other.b)
-        elif isinstance(other, (int, float)):
-            return (self.r + self.g + self.b) < (other + other + other)
-        else:
-            return NotImplemented
+    def _calculate(operation):
+        def outer_wrapper(f):
+            @wraps(f)
+            def wrapper(self, other):
+                if isinstance(other, RGB):
+                    self.r = operation(self.r, other.r)
+                    self.g = operation(self.g, other.g)
+                    self.b = operation(self.b, other.b)
+                    return self
+                elif isinstance(other, (int,float)):
+                    self.r = operation(self.r, other)
+                    self.g = operation(self.g, other)
+                    self.b = operation(self.b, other)
+                    return self
+                else:
+                    return NotImplemented
+            return wrapper
+        return outer_wrapper
 
-    # ==
-    def __eq__(self, other:rgb|int|float) -> bool:
-        if isinstance(other, rgb):
-            return all(((self.r == other.r), (self.g == other.g), (self.b == other.b)))
-        elif isinstance(other, (int, float)):
-            return (self.r + self.g + self.b) == (other + other + other)
-        else:
-            return NotImplemented
-    # !=
-    def __ne__(self, other:rgb|int|float) -> bool:
-        if isinstance(other, rgb):
-            return all(((self.r != other.r), (self.g != other.g), (self.b != other.b)))
-        elif isinstance(other, (int, float)):
-            return (self.r + self.g + self.b) != (other + other + other)
-        else:
-            return NotImplemented
-    # <=
-    def __le__(self, other:rgb|int|float) -> bool:
-        if isinstance(other, rgb):
-            return (self.r + self.g + self.b) > (other.r + other.g + other.b)
-        elif isinstance(other, (int, float)):
-            return (self.r + self.g + self.b) > (other + other + other)
-        else:
-            return NotImplemented
-    # >=
-    def __ge__(self, other:rgb|int|float) -> bool:
-        if isinstance(other, rgb):
-            return (self.r + self.g + self.b) >= (other.r + other.g + other.b)
-        elif isinstance(other, (int, float)):
-            return (self.r + self.g + self.b) >= (other + other + other)
-        else:
-            return NotImplemented
+    # Comparison operators.
+    __gt__ = _compare(operator.gt)
+    __lt__ = _compare(operator.lt)
+    __eq__ = _compare(operator.eq)
+    __ne__ = _compare(operator.ne)
+    __le__ = _compare(operator.le)
+    __ge__ = _compare(operator.ge)
 
     # math operators
-    # +
-    def __add__(self, other:rgb|int|float) -> rgb:
-        if isinstance(other, rgb):
-            self.r = self.r + other.r
-            self.g = self.g + other.g
-            self.b = self.b + other.b
-            return self
-        elif isinstance(other, (int,float)):
-            self.r = self.r + other
-            self.g = self.g + other
-            self.b = self.b + other
-            return self
-        else:
-            return NotImplemented
-    # -
-    def __sub__(self, other: rgb | int | float) -> rgb:
-        if isinstance(other, rgb):
-            self.r = self.r - other.r
-            self.g = self.g - other.g
-            self.b = self.b - other.b
-            return self
-        elif isinstance(other, (int, float)):
-            self.r = self.r - other
-            self.g = self.g - other
-            self.b = self.b - other
-            return self
-        else:
-            return NotImplemented
-    # *
-    def __mul__(self, other: rgb | int | float) -> rgb:
-        if isinstance(other, rgb):
-            self.r = self.r * other.r
-            self.g = self.g * other.g
-            self.b = self.b * other.b
-            return self
-        elif isinstance(other, (int, float)):
-            self.r = self.r * other
-            self.g = self.g * other
-            self.b = self.b * other
-            return self
-        else:
-            return NotImplemented
-    # //
-    def __floordiv__(self, other: rgb | int | float) -> rgb:
-        if isinstance(other, rgb):
-            self.r = self.r // other.r
-            self.g = self.g // other.g
-            self.b = self.b // other.b
-            return self
-        elif isinstance(other, (int, float)):
-            self.r = self.r // other
-            self.g = self.g // other
-            self.b = self.b // other
-            return self
-        else:
-            return NotImplemented
-    # /
-    def __truediv__(self, other: rgb | int | float) -> rgb:
-        if isinstance(other, rgb):
-            self.r = self.r / other.r
-            self.g = self.g / other.g
-            self.b = self.b / other.b
-            return self
-        elif isinstance(other, (int, float)):
-            self.r = self.r / other
-            self.g = self.g / other
-            self.b = self.b / other
-            return self
-        else:
-            return NotImplemented
-
-    # %
-    def __mod__(self, other: rgb | int | float) -> rgb:
-        if isinstance(other, rgb):
-            self.r = self.r % other.r
-            self.g = self.g % other.g
-            self.b = self.b % other.b
-            return self
-        elif isinstance(other, (int, float)):
-            self.r = self.r % other
-            self.g = self.g % other
-            self.b = self.b % other
-            return self
-        else:
-            return NotImplemented
-
-    # **
-    def __pow__(self, other: rgb | int | float) -> rgb:
-        if isinstance(other, rgb):
-            self.r = self.r ** other.r
-            self.g = self.g ** other.g
-            self.b = self.b ** other.b
-            return self
-        elif isinstance(other, (int, float)):
-            self.r = self.r ** other
-            self.g = self.g ** other
-            self.b = self.b ** other
-            return self
-        else:
-            return NotImplemented
+    __add__ = _calculate(operator.add)
+    __sub__ = _calculate(operator.sub)
+    __mul__ = _calculate(operator.mul)
+    __floordiv__ = _calculate(operator.floordiv)
+    __truediv__ = _calculate(operator.truediv)
+    __mod__ = _calculate(operator.mod)
+    __pow__ = _calculate(operator.pow)
+        
