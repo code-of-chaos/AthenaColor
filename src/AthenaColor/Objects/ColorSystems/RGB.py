@@ -71,56 +71,74 @@ class RGB(ColorSystem):
 
     # Comparison operators
     # >
-    def __gt__(self, other: RGB | int | float) -> bool:
+    def __gt__(self, other: RGB | int | float | tuple[int|float,int|float,int|float]) -> bool:
         if isinstance(other, RGB):
-            return (self.r + self.g + self.b) > (other.r + other.g + other.b)
+            return all(((self.r > other.r), (self.g > other.g), (self.b > other.b)))
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) > (other + other + other)
+        elif isinstance(other, tuple):
+            r_,g_,b_ = other
+            return all((self.r > r_, self.g > g_, self.b > b_))
         else:
             return NotImplemented
 
     # <
-    def __lt__(self, other: RGB | int | float) -> bool:
+    def __lt__(self, other: RGB | int | float | tuple[int|float,int|float,int|float]) -> bool:
         if isinstance(other, RGB):
-            return (self.r + self.g + self.b) < (other.r + other.g + other.b)
+            return all(((self.r < other.r), (self.g < other.g), (self.b < other.b)))
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) < (other + other + other)
+        elif isinstance(other, tuple):
+            r_,g_,b_ = other
+            return all((self.r < r_, self.g < g_, self.b < b_))
         else:
             return NotImplemented
 
     # ==
-    def __eq__(self, other: RGB | int | float) -> bool:
+    def __eq__(self, other: RGB | int | float | tuple[int|float,int|float,int|float]) -> bool:
         if isinstance(other, RGB):
             return all(((self.r == other.r), (self.g == other.g), (self.b == other.b)))
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) == (other + other + other)
+        elif isinstance(other, tuple):
+            r_,g_,b_ = other
+            return all((self.r == r_, self.g == g_, self.b == b_))
         else:
             return NotImplemented
 
     # !=
-    def __ne__(self, other: RGB | int | float) -> bool:
+    def __ne__(self, other: RGB | int | float | tuple[int|float,int|float,int|float]) -> bool:
         if isinstance(other, RGB):
             return all(((self.r != other.r), (self.g != other.g), (self.b != other.b)))
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) != (other + other + other)
+        elif isinstance(other, tuple):
+            r_,g_,b_ = other
+            return all((self.r != r_, self.g != g_, self.b != b_))
         else:
             return NotImplemented
-        # <=
 
-    def __le__(self, other: RGB | int | float) -> bool:
+    # <=
+    def __le__(self, other: RGB | int | float | tuple[int|float,int|float,int|float]) -> bool:
         if isinstance(other, RGB):
-            return (self.r + self.g + self.b) > (other.r + other.g + other.b)
+            return all((self.r <= other.r, self.g <= other.g, self.b >= other.b))
         elif isinstance(other, (int, float)):
-            return (self.r + self.g + self.b) > (other + other + other)
+            return (self.r + self.g + self.b) >= (other + other + other)
+        elif isinstance(other, tuple):
+            r_,g_,b_ = other
+            return all((self.r <= r_, self.g <= g_, self.b >= b_))
         else:
             return NotImplemented
 
     # >=
-    def __ge__(self, other: RGB | int | float) -> bool:
+    def __ge__(self, other: RGB | int | float | tuple[int|float,int|float,int|float]) -> bool:
         if isinstance(other, RGB):
-            return (self.r + self.g + self.b) >= (other.r + other.g + other.b)
+            return all((self.r >= other.r, self.g >= other.g, self.b >= other.b))
         elif isinstance(other, (int, float)):
             return (self.r + self.g + self.b) >= (other + other + other)
+        elif isinstance(other, tuple):
+            r_,g_,b_ = other
+            return all((self.r >= r_, self.g >=g_, self.b>=b_))
         else:
             return NotImplemented
 
