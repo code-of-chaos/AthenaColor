@@ -6,12 +6,11 @@
 # Custom Library
 
 # Custom Packages
-from .Rgb import RGB
+from .RGB import RGB
 from ...Functions.ColorConversion import (
     hexadecimal_to_rgb,
     rgb_to_hexadecimal
 )
-
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

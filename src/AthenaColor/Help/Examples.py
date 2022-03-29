@@ -50,10 +50,10 @@ def example_rgb():
     from AthenaColor import (
         ForeNest,
         BackNest,
-        rgb
+        RGB
     )
-    color1 = rgb(r=86, g=54, b=251)
-    color2 = rgb(214,124,61)
+    color1 = RGB(r=86, g=54, b=251)
+    color2 = RGB(214,124,61)
     text = ForeNest.custom(BackNest.custom("This is a custom color",color=color2),color=color1)
     print(text)
 

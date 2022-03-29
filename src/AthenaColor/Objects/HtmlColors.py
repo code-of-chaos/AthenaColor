@@ -6,7 +6,7 @@
 # Custom Library
 
 # Custom Packages
-from .ColorClasses import RGB
+from .ColorSystems import RGB
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

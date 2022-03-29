@@ -1,2 +1,2 @@
-from .Rgb import RGB
+from .RGB import RGB
 from .Hexadecimal import hexadecimal
