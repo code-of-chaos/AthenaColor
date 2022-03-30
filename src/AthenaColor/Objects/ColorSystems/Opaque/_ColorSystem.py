@@ -14,35 +14,36 @@ from AthenaColor.Functions.BoilerPlate import Constrain
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
-def _to_rgb(n:object) -> tuple[int|float,int|float,int|float]|tuple[int|float,...]:
-    if isinstance(n, (_RGB, _HEX)):
-        return n.r, n.g, n.b
-    elif isinstance(n, _CMYK):
-        return cmyk_to_rgb(n.c, n.m, n.y, n.k)
-    elif isinstance(n, _HSL):
-        return hsl_to_rgb(n.h, n.s, n.l)
-    elif isinstance(n, _HSV):
-        return hsl_to_rgb(n.h, n.s, n.v)
-    elif isinstance(n, tuple) and len(n) == 3 and all(map(lambda x: isinstance(x, (int, float)), n)):
-        n_ = tuple(Constrain(x,255) for x in n)
-        return n_
-    elif isinstance(n, (int,float)):
-        n_ = Constrain(n, 255)
-        return n_,n_,n_
-    else:
-        return NotImplemented
+def _to_rgb(color):
+    match color:
+        case _RGB(r=r,g=g,b=b) | _HEX(r=r,g=g,b=b):
+            return r,g,b
+        case _CMYK(c=c,m=m,y=y,k=k):
+            return cmyk_to_rgb(c,m,y,k)
+        case _HSL(h=h,s=s,l=l):
+            return hsl_to_rgb(h,s,l)
+        case _HSV(h=h,s=s,v=v):
+            return hsv_to_rgb(h,s,v)
+        case tuple() if len(color) == 3 and all(map(lambda x: isinstance(x, (int, float)), color)):
+            return tuple(Constrain(x, 255) for x in color)
+        case int() | float():
+            c = Constrain(color, 255)
+            return c,c,c
+        case _:
+            return NotImplemented
 
-def _to_system(n:object, r:int,g:int,b:int):
-    if isinstance(n, (_RGB, _HEX)):
-        n.r, n.g, n.b = r,g,b
-    elif isinstance(n, _CMYK):
-        n.c, n.m, n.y, n.k = rgb_to_cmyk(r,g,b)
-    elif isinstance(n, _HSL):
-        n.h, n.s, n.l = rgb_to_hsl(r,g,b)
-    elif isinstance(n, _HSV):
-        n.h, n.s, n.v = rgb_to_hsv(r,g,b)
-    else:
-        return NotImplemented
+def _to_system(color:object, r:int,g:int,b:int):
+    match color:
+        case _RGB() | _HEX():
+            color.r, color.g, color.b = r,g,b
+        case _CMYK():
+            color.c, color.m, color.y, color.k = rgb_to_cmyk(r,g,b)
+        case _HSL():
+            color.h, color.s, color.l = rgb_to_hsl(r,g,b)
+        case _HSV():
+            color.h, color.s, color.v = rgb_to_hsv(r,g,b)
+        case _:
+            return NotImplemented
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Various Supported Color Systems -
@@ -81,6 +82,12 @@ class ColorSystem(ABC):
     def __str__(self): ...
     @abstractmethod
     def __repr__(self): ...
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # - Other Dunders -
+    # ------------------------------------------------------------------------------------------------------------------
+    def __len__(self):
+        return NotImplemented
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -

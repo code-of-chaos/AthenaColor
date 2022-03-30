@@ -26,7 +26,7 @@ class RGBA(ColorSystem,_RGBA):
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
     def __init__(self,r: int, g: int, b: int, a:int):
-        if not TestTypes(types=int,objects=(r,g,b,a)):
+        if not TestTypes(types=(int,float),objects=(r,g,b,a)):
             raise ValueError(f"RGB values {r=},{g=},{b=},{a=} did not consist of integer values")
 
         self.r = r

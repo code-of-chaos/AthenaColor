@@ -13,23 +13,24 @@ from AthenaColor.Functions.BoilerPlate import Constrain
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
-def _to_rgba(n:object) -> tuple[int|float,int|float,int|float,int|float] | tuple[int|float, ...]:
-    if isinstance(n, (_RGBA, _HEXA)):
-        return n.r, n.g, n.b,n.a
-    elif isinstance(n, tuple) and len(n) == 4 and all(map(lambda x: isinstance(x, (int, float)), n)):
-        n_ = tuple(Constrain(x,255) for x in n)
-        return n_
-    elif isinstance(n, (int,float)):
-        n_ = Constrain(n,255)
-        return n_,n_,n_,n_
-    else:
-        return NotImplemented
+def _to_rgba(color):
+    match color:
+        case _RGBA() | _HEXA():
+            return color.r, color.g, color.b,color.a
+        case tuple() if len(color) == 4 and all(map(lambda x: isinstance(x, (int, float)), color)):
+            return tuple(Constrain(x, 255) for x in color)
+        case int() | float():
+            c = Constrain(color, 255)
+            return c,c,c,c
+        case _:
+            return NotImplemented
 
-def _to_system(n:object, r:int,g:int,b:int,a:int):
-    if isinstance(n, (_RGBA, _HEXA)):
-        n.r, n.g, n.b, n.a = r,g,b,a
-    else:
-        return NotImplemented
+def _to_system(color:object, r:int,g:int,b:int,a:int):
+    match color:
+        case _RGBA() | _HEXA():
+            color.r, color.g, color.b, color.a = r,g,b,a
+        case _:
+            return NotImplemented
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Various Supported Color Systems -
@@ -54,6 +55,12 @@ class ColorSystem(ABC):
     def __str__(self): ...
     @abstractmethod
     def __repr__(self): ...
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # - Other Dunders -
+    # ------------------------------------------------------------------------------------------------------------------
+    def __len__(self):
+        return NotImplemented
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
