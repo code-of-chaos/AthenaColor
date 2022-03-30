@@ -8,7 +8,7 @@
 # Custom Packages
 from AthenaColor.Functions.ColorConversion_Tuples import (
     hex_to_rgb,
-    rgb_to_hexadecimal
+    rgb_to_hex
 )
 from .RGB import RGB
 
@@ -26,7 +26,7 @@ class HEX(RGB):
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
     def __str__(self) -> str:
-        return rgb_to_hexadecimal(self.r,self.g,self.b)
+        return rgb_to_hex(self.r,self.g,self.b)
 
     def __repr__(self) -> str:
         return f"hexadecimal(r={self.r},g={self.g},b={self.b})"

@@ -7,7 +7,11 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions.BoilerPlate import Constrain
+from AthenaColor.Functions.BoilerPlate import (
+    Constrain,
+    TestTypes,
+    round_correctly
+)
 from ._ColorSystem import ColorSystem
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -17,13 +21,13 @@ class RGB(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,r: int | float, g: int | float, b: int | float):
-        if isinstance(r, (int,float)) and isinstance(g, (int,float)) and isinstance(b, (int,float)):
-            self.r = r
-            self.g = g
-            self.b = b
-        else:
-            raise ValueError("no int or float were given on rgb creation")
+    def __init__(self,r: int, g: int, b: int):
+        if not TestTypes(types=int,objects=(r,g,b)):
+            raise ValueError(f"RGB values {r=},{g=},{b=} did not consist of integer values")
+
+        self.r = r
+        self.g = g
+        self.b = b
 
     # ------------------------------------------------------------------------------------------------------------------
     # RGB Properties
@@ -34,7 +38,7 @@ class RGB(ColorSystem):
 
     @r.setter
     def r(self, value: int | float):
-        self._r = round(Constrain(value,255))
+        self._r = round_correctly(Constrain(value,255))
 
     @property
     def g(self):
@@ -42,7 +46,7 @@ class RGB(ColorSystem):
 
     @g.setter
     def g(self, value: int | float):
-        self._g = round(Constrain(value,255))
+        self._g = round_correctly(Constrain(value,255))
 
     @property
     def b(self):
@@ -50,7 +54,7 @@ class RGB(ColorSystem):
 
     @b.setter
     def b(self, value: int | float):
-        self._b = round(Constrain(value,255))
+        self._b = round_correctly(Constrain(value,255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
