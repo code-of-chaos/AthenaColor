@@ -201,10 +201,8 @@ def hsl_to_cmyk(h:float,s:float,l:float) -> tuple[float,float,float,float]:
 # ----------------------------------------------------------------------------------------------------------------------
 @testRGB
 def rgb_to_hsl(r:int,g:int,b:int) -> tuple[float,float,float]:
-    r,g,b = ConstrainRGB(r,g,b)
-
     # Normalize
-    r_, g_, b_ = NormalizeRgb(r, g, b)
+    r_, g_, b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
     # Find max and min
     Max = max(r_, g_, b_)
     Min = min(r_, g_, b_)
@@ -226,10 +224,10 @@ def rgb_to_hsl(r:int,g:int,b:int) -> tuple[float,float,float]:
     Lum = (Max+Min)/2
 
     # Find Saturation
-    if Max == 0:
+    if Delta == 0:
         Sat = 0
     else:
-        Sat = 1-abs((2*Lum)-1)
+        Sat = Delta/(1-abs((2*Lum)-1))
 
     return (
         Hue,    # H

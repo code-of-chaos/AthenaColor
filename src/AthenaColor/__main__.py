@@ -18,10 +18,9 @@ if __name__ == "__main__":
     print(a)
     print(a==AthenaColor.ColorSystems.RGB(255,255,255))
 
-
     from AthenaColor.Functions.ColorObjectConversion import *
 
     print(a)
 
-    b = to_cmyk(a)
+    b = to_hsl(a)
     print(repr(b))
