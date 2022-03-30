@@ -176,14 +176,13 @@ def hsl_to_hsv(h:float,s:float,l:float) -> tuple[float,float,float]:
 def rgb_to_cmyk(r:int,g:int,b:int) -> tuple[float,float,float,float]:
     # Normalize
     r_, g_, b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
-    K = 1 - max(r_, g_, b_)
+    k = 1 - max(r_, g_, b_)
 
-    return (
-        (1-r_-K) / (1/K), #C
-        (1-g_-K) / (1/K), #M
-        (1-b_-K) / (1/K), #Y
-        K
-    )
+    c = (1-r_-k) / (1-k)
+    m = (1-g_-k) / (1-k)
+    y = (1-b_-k) / (1-k)
+
+    return c,m,y,k
 
 @testHEX
 def hex_to_cmyk(hexadecimal:str) -> tuple[float,float,float,float]:

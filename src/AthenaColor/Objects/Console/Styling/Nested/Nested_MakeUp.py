@@ -7,7 +7,7 @@ from functools import partial
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions import NestedColorSequence
+from AthenaColor.Functions.AnsiSquences import NestedColorSequence
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Style Sequences -

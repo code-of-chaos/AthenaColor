@@ -40,28 +40,28 @@ class CMYK(ColorSystem,_CMYK):
         return self._c
     @c.setter
     def c(self, value: int | float):
-        self._c = RoundCorrectly(Constrain(value, 1))
+        self._c = Constrain(value, 1)
 
     @property
     def m(self):
         return self._m
     @m.setter
     def m(self, value: int | float):
-        self._m = RoundCorrectly(Constrain(value, 1))
+        self._m = Constrain(value, 1)
 
     @property
     def y(self):
         return self._y
     @y.setter
     def y(self, value: int | float):
-        self._y = RoundCorrectly(Constrain(value, 1))
+        self._y = Constrain(value, 1)
 
     @property
     def k(self):
         return self._k
     @k.setter
     def k(self, value: int | float):
-        self._k = RoundCorrectly(Constrain(value, 1))
+        self._k = Constrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods

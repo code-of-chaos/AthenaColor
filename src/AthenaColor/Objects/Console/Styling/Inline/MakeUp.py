@@ -6,7 +6,7 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions import ColorSequence
+from AthenaColor.Functions.AnsiSquences import ColorSequence
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

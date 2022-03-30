@@ -17,3 +17,11 @@ if __name__ == "__main__":
     a -= (125,14.5,13)
     print(a)
     print(a==AthenaColor.ColorSystems.RGB(255,255,255))
+
+
+    from AthenaColor.Functions.ColorObjectConversion import *
+
+    print(a)
+
+    b = to_cmyk(a)
+    print(repr(b))

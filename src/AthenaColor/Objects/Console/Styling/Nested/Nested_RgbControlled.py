@@ -8,7 +8,7 @@ from functools import partialmethod
 
 # Custom Packages
 from AthenaColor.Objects.ColorSystems.Opaque import RGB
-from AthenaColor.Functions import NestedColorSequence
+from AthenaColor.Functions.AnsiSquences import NestedColorSequence
 import AthenaColor.Data.HtmlColors as HtmlColors
 
 # ----------------------------------------------------------------------------------------------------------------------

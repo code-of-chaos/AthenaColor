@@ -38,7 +38,7 @@ def to_rgb(color:RGB|HEX|CMYK|HSL|HSV) -> RGB:
         case CMYK():
             return RGB(*CTC.cmyk_to_rgb(c=color.c, m=color.m, y=color.y, k=color.k))
         case _:
-            raise ValueError(f"No known Color system: {color=}")
+            raise ValueError(f"No known Opaque Color system: {color=}")
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Hexadecimal -
@@ -56,7 +56,7 @@ def to_hex(color:RGB|HEX|CMYK|HSL|HSV) -> HEX:
         case CMYK():
             return HEX(*CTC.cmyk_to_hex(c=color.c, m=color.m, y=color.y, k=color.k))
         case _:
-            raise ValueError(f"No known Color system: {color=}")
+            raise ValueError(f"No known Opaque Color system: {color=}")
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - HSV -
@@ -74,7 +74,7 @@ def to_hsv(color:RGB|HEX|CMYK|HSL|HSV) -> HSV:
         case CMYK():
             return HSV(*CTC.cmyk_to_hsv(c=color.c, m=color.m, y=color.y, k=color.k))
         case _:
-            raise ValueError(f"No known Color system: {color=}")
+            raise ValueError(f"No known Opaque Color system: {color=}")
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - HSL -
@@ -92,7 +92,7 @@ def to_hsl(color:RGB|HEX|CMYK|HSL|HSV) -> HSL:
         case CMYK():
             return HSL(*CTC.cmyk_to_hsl(c=color.c, m=color.m, y=color.y, k=color.k))
         case _:
-            raise ValueError(f"No known Color system: {color=}")
+            raise ValueError(f"No known Opaque Color system: {color=}")
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - CMYK -
@@ -110,7 +110,7 @@ def to_cmyk(color:RGB|HEX|CMYK|HSL|HSV) -> CMYK:
         case CMYK():
             return color
         case _:
-            raise ValueError(f"No known Color system: {color=}")
+            raise ValueError(f"No known Opaque Color system: {color=}")
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - TRANSPARENT COLORS -
@@ -122,7 +122,7 @@ def to_rgba(color:RGBA|HEXA) -> RGBA:
         case HEXA():
             return RGBA(*CTC.hexa_to_rgba(str(color)))
         case _:
-            raise ValueError(f"No known Color system: {color=}")
+            raise ValueError(f"No known Transparent Color system: {color=}")
 
 def to_hexa(color:RGBA|HEXA) -> HEXA:
     match color:
@@ -131,4 +131,4 @@ def to_hexa(color:RGBA|HEXA) -> HEXA:
         case HEXA():
             return color
         case _:
-            raise ValueError(f"No known Color system: {color=}")
+            raise ValueError(f"No known Transparent Color system: {color=}")
