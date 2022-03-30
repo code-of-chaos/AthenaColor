@@ -13,18 +13,22 @@ import AthenaColor.Data.ConsoleCodes as ConsoleCodes
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def ColorSequence(control_code:str|int)->str:
+    """
+    Used for quick assembly of correct Ansi Escape functions
+    Used the escape code defined in AthenaColor.init
+    """
     return f'{init.esc}[{control_code}{ConsoleCodes.color}'
 
 def NestedColorSequence(*obj, control_code:str|int,reset_code:str|int=None, sep:str=" ") -> str:
+    """
+    Used by Nested Console Style Makup opartions like ForeNest, BackNest, StyleNest.
+    Function wraps every obj in the properly defined control- and reset codes.
+    THis is made to prevent Style makup bleed
+    """
     color = ColorSequence(control_code=control_code)
     reset = ColorSequence(control_code=reset_code) if reset_code is not None else ''
 
-    content = [
-        f"{color}{o}{reset}"
-        for o in obj
-    ]
-
     if len(obj) == 1:
-        return  ''.join(content)
+        return  ''.join([f"{color}{o}{reset}"for o in obj])
     else:
-        return sep.join(content)
+        return sep.join([f"{color}{o}{reset}"for o in obj])

@@ -27,6 +27,10 @@ from .Constraints import (
 # ----------------------------------------------------------------------------------------------------------------------
 @testHEX
 def hex_to_rgb(hexadecimal:str) -> tuple[int,int,int]:
+    """
+    Function to convert a hexadecimal string to a rgb tuple.
+    Does not create an RGB object.
+    """
     # Form hex value in usable state (cast away the '#' value)
     if hexadecimal[0] == "#":
         hex_v = hexadecimal[1:]
@@ -45,6 +49,10 @@ def hex_to_rgb(hexadecimal:str) -> tuple[int,int,int]:
 
 @testHSV
 def hsv_to_rgb(h:float,s:float,v:float) -> tuple[int,int,int]:
+    """
+    Function to convert a hsv tuple to a rgb tuple.
+    Does not create an RGB object.
+    """
     h,s,v = ConstrainHSV(h,s,v)
 
     C = v*s
@@ -69,6 +77,10 @@ def hsv_to_rgb(h:float,s:float,v:float) -> tuple[int,int,int]:
 
 @testCMYK
 def cmyk_to_rgb(c:float,m:float,y:float,k:float) -> tuple[int,int,int]:
+    """
+    Function to convert a cmyk tuple to a rgb tuple.
+    Does not create an RGB object.
+    """
     c,m,y,k = ConstrainCMYK(c,m,y,k)
     return (
         RoundCorrectly(255 * (1 - c) * (1 - k)),  #r
@@ -78,6 +90,10 @@ def cmyk_to_rgb(c:float,m:float,y:float,k:float) -> tuple[int,int,int]:
 
 @testHSL
 def hsl_to_rgb(h:float,s:float,l:float) -> tuple[int,int,int]:
+    """
+    Function to convert a hsl tuple to a rgb tuple.
+    Does not create an RGB object.
+    """
     h,s,l =ConstrainHSL(h,s,l)
 
     C = (1-abs((2*l)-1))*s
@@ -105,18 +121,34 @@ def hsl_to_rgb(h:float,s:float,l:float) -> tuple[int,int,int]:
 # ----------------------------------------------------------------------------------------------------------------------
 @testRGB
 def rgb_to_hex(r:int,g:int,b:int) -> str:
+    """
+    Function to convert a rgb to a hexadecimal string.
+    Does not create a HEX object.
+    """
     return '#%02x%02x%02x' % ConstrainRGB(r,g,b)
 
 @testHSV
 def hsv_to_hex(h:int|float,s:int|float, v:int|float) -> str:
+    """
+    Function to convert a hsv to a hexadecimal string.
+    Does not create a HEX object.
+    """
     return rgb_to_hex(*hsv_to_rgb(*ConstrainHSV(h,s,v)))
 
 @testCMYK
 def cmyk_to_hex(c:int|float,m:int|float,y:int|float,k:int|float) -> str:
+    """
+    Function to convert a cmyk to a hexadecimal string.
+    Does not create a HEX object.
+    """
     return rgb_to_hex(*cmyk_to_rgb(*ConstrainCMYK(c,m,y,k)))
 
 @testHSL
 def hsl_to_hex(h:int|float,s:int|float,l:int|float) -> str:
+    """
+    Function to convert a hsl to a hexadecimal string.
+    Does not create a HEX object.
+    """
     return rgb_to_hex(*hsl_to_rgb(*ConstrainHSL(h,s,l)))
 
 
@@ -125,6 +157,10 @@ def hsl_to_hex(h:int|float,s:int|float,l:int|float) -> str:
 # ----------------------------------------------------------------------------------------------------------------------
 @testRGB
 def rgb_to_hsv(r:int,g:int,b:int) -> tuple[float,float,float]:
+    """
+    Function to convert a rgb tuple to a hsv tuple.
+    Does not create an HSV object.
+    """
     # Normalize
     r_,g_,b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
 
@@ -159,14 +195,26 @@ def rgb_to_hsv(r:int,g:int,b:int) -> tuple[float,float,float]:
 
 @testHEX
 def hex_to_hsv(hexadecimal:str) -> tuple[float,float,float]:
+    """
+    Function to convert a hexadecimal string to a hsv tuple.
+    Does not create an HSV object.
+    """
     return rgb_to_hsv(*hex_to_rgb(hexadecimal))
 
 @testCMYK
 def cmyk_to_hsv(c:float,m:float,y:float,k:float) -> tuple[float,float,float]:
+    """
+    Function to convert a cmyk tuple to a hsv tuple.
+    Does not create an HSV object.
+    """
     return rgb_to_hsv(*cmyk_to_rgb(*ConstrainCMYK(c,m,y,k)))
 
 @testHSL
 def hsl_to_hsv(h:float,s:float,l:float) -> tuple[float,float,float]:
+    """
+    Function to convert a hsl tuple to a hsv tuple.
+    Does not create an HSV object.
+    """
     return rgb_to_hsv(*hsl_to_rgb(*ConstrainHSL(h,s,l)))
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -174,6 +222,10 @@ def hsl_to_hsv(h:float,s:float,l:float) -> tuple[float,float,float]:
 # ----------------------------------------------------------------------------------------------------------------------
 @testRGB
 def rgb_to_cmyk(r:int,g:int,b:int) -> tuple[float,float,float,float]:
+    """
+    Function to convert a rgb tuple to a cmyk tuple.
+    Does not create an CMYK object.
+    """
     # Normalize
     r_, g_, b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
     k = 1 - max(r_, g_, b_)
@@ -186,14 +238,26 @@ def rgb_to_cmyk(r:int,g:int,b:int) -> tuple[float,float,float,float]:
 
 @testHEX
 def hex_to_cmyk(hexadecimal:str) -> tuple[float,float,float,float]:
+    """
+    Function to convert a hexadecimal string to a cmyk tuple.
+    Does not create an CMYK object.
+    """
     return rgb_to_cmyk(*hex_to_rgb(hexadecimal))
 
 @testHSV
 def hsv_to_cmyk(h:float,s:float,v:float) -> tuple[float,float,float,float]:
+    """
+    Function to convert a hsv tuple to a cmyk tuple.
+    Does not create an CMYK object.
+    """
     return rgb_to_cmyk(*hsv_to_rgb(*ConstrainHSV(h,s,v)))
 
 @testHSL
 def hsl_to_cmyk(h:float,s:float,l:float) -> tuple[float,float,float,float]:
+    """
+    Function to convert a hsl tuple to a cmyk tuple.
+    Does not create an CMYK object.
+    """
     return rgb_to_cmyk(*hsl_to_rgb(*ConstrainHSL(h,s,l)))
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -201,6 +265,10 @@ def hsl_to_cmyk(h:float,s:float,l:float) -> tuple[float,float,float,float]:
 # ----------------------------------------------------------------------------------------------------------------------
 @testRGB
 def rgb_to_hsl(r:int,g:int,b:int) -> tuple[float,float,float]:
+    """
+    Function to convert a rgb tuple to a hsl tuple.
+    Does not create an HSL object.
+    """
     # Normalize
     r_, g_, b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
     # Find max and min
@@ -237,14 +305,26 @@ def rgb_to_hsl(r:int,g:int,b:int) -> tuple[float,float,float]:
 
 @testHEX
 def hex_to_hsl(hexadecimal:str) -> tuple[float,float,float]:
+    """
+    Function to convert a hexadecimal string to a hsl tuple.
+    Does not create an HSL object.
+    """
     return rgb_to_hsl(*hex_to_rgb(hexadecimal))
 
 @testHSV
 def hsv_to_hsl(h:float,s:float,v:float) -> tuple[float,float,float]:
+    """
+    Function to convert a hsv tuple to a hsl tuple.
+    Does not create an HSL object.
+    """
     return rgb_to_hsl(*hsv_to_rgb(*ConstrainHSV(h,s,v)))
 
 @testCMYK
 def cmyk_to_hsl(c:float,m:float,y:float,k:float) -> tuple[float,float,float]:
+    """
+    Function to convert a cmyk tuple to a hsl tuple.
+    Does not create an HSL object.
+    """
     return rgb_to_hsl(*cmyk_to_rgb(*ConstrainCMYK(c,m,y,k)))
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -252,6 +332,10 @@ def cmyk_to_hsl(c:float,m:float,y:float,k:float) -> tuple[float,float,float]:
 # ----------------------------------------------------------------------------------------------------------------------
 @testHEXA
 def hexa_to_rgba(hexadecimal:str) -> tuple[int,int,int,int]:
+    """
+    Function to convert a hexadecimal string to a rgb tuple.
+    Does not create an RGBA object.
+    """
     # Form hex value in usable state (cast away the '#' value)
     if hexadecimal[0] == "#":
         hex_v = hexadecimal[1:]
@@ -269,4 +353,8 @@ def hexa_to_rgba(hexadecimal:str) -> tuple[int,int,int,int]:
     return r, g, b, a
 @testRGBA
 def rgba_to_hexa(r:int,g:int,b:int,a:int) -> str:
+    """
+    Function to convert a rgba tuple to a hexa string.
+    Does not create an HEXA object.
+    """
     return '#%02x%02x%02x%02x' % ConstrainRGBA(r,g,b,a)

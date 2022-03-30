@@ -13,6 +13,10 @@ from .BoilerPlate import TestTypes
 # ----------------------------------------------------------------------------------------------------------------------
 # RGB tests
 def testRGB(fnc):
+    """
+    Decorator which runs TestTypes on the function's arguments.
+    Raises a ValueError when not all off the arguments can be matched to the given type
+    """
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=int,
@@ -24,6 +28,10 @@ def testRGB(fnc):
 
 # HEX tests
 def testHEX(fnc):
+    """
+    Decorator which runs TestTypes on the function's arguments.
+    Raises a ValueError when not all off the arguments can be matched to the given type
+    """
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=str,
@@ -35,6 +43,10 @@ def testHEX(fnc):
 
 # HSV tests
 def testHSV(fnc):
+    """
+    Decorator which runs TestTypes on the function's arguments.
+    Raises a ValueError when not all off the arguments can be matched to the given type
+    """
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=(int,float),
@@ -46,6 +58,10 @@ def testHSV(fnc):
 
 # HSL tests
 def testHSL(fnc):
+    """
+    Decorator which runs TestTypes on the function's arguments.
+    Raises a ValueError when not all off the arguments can be matched to the given type
+    """
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=(int,float),
@@ -57,6 +73,10 @@ def testHSL(fnc):
 
 # CMYK tests
 def testCMYK(fnc):
+    """
+    Decorator which runs TestTypes on the function's arguments.
+    Raises a ValueError when not all off the arguments can be matched to the given type
+    """
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=(int,float),
@@ -71,6 +91,10 @@ def testCMYK(fnc):
 # ----------------------------------------------------------------------------------------------------------------------
 # RGB tests
 def testRGBA(fnc):
+    """
+    Decorator which runs TestTypes on the function's arguments.
+    Raises a ValueError when not all off the arguments can be matched to the given type
+    """
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=int,
@@ -82,6 +106,10 @@ def testRGBA(fnc):
 
 # HEX tests
 def testHEXA(fnc):
+    """
+    Decorator which runs TestTypes on the function's arguments.
+    Raises a ValueError when not all off the arguments can be matched to the given type
+    """
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=str,

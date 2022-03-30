@@ -85,6 +85,10 @@ class OpaqueColorSystem(ABC):
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     def __add__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+        """
+        Math Dunder which executes an addition operator on the RGB notations of its own and the other class.
+        Reassembles the RGB values to the current object's needed values
+        """
         r,g,b = map(
             (lambda xy: xy[0] + xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -93,6 +97,10 @@ class OpaqueColorSystem(ABC):
         return self
 
     def __sub__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+        """
+        Math Dunder which executes a subtraction operator on the RGB notations of its own and the other class.
+        Reassembles the RGB values to the current object's needed values
+        """
         r, g, b = map(
             (lambda xy: xy[0] - xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -101,6 +109,10 @@ class OpaqueColorSystem(ABC):
         return self
 
     def __mul__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+        """
+        Math Dunder which executes a multiplication operator on the RGB notations of its own and the other class.
+        Reassembles the RGB values to the current object's needed values
+        """
         r, g, b = map(
             (lambda xy: xy[0] * xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -109,6 +121,10 @@ class OpaqueColorSystem(ABC):
         return self
 
     def __floordiv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+        """
+        Math Dunder which executes a floor division operator on the RGB notations of its own and the other class.
+        Reassembles the RGB values to the current object's needed values
+        """
         r, g, b = map(
             (lambda xy: xy[0] // xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -117,6 +133,10 @@ class OpaqueColorSystem(ABC):
         return self
 
     def __truediv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+        """
+        Math Dunder which executes a division operator on the RGB notations of its own and the other class.
+        Reassembles the RGB values to the current object's needed values
+        """
         r, g, b = map(
             (lambda xy: xy[0] / xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -125,6 +145,10 @@ class OpaqueColorSystem(ABC):
         return self
 
     def __mod__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+        """
+        Math Dunder which executes a modulo operator on the RGB notations of its own and the other class.
+        Reassembles the RGB values to the current object's needed values
+        """
         r, g, b = map(
             (lambda xy: xy[0] % xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -133,6 +157,10 @@ class OpaqueColorSystem(ABC):
         return self
 
     def __pow__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+        """
+        Math Dunder which executes a power operator on the RGB notations of its own and the other class.
+        Reassembles the RGB values to the current object's needed values
+        """
         r, g, b = map(
             (lambda xy: xy[0] ** xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -159,31 +187,55 @@ class OpaqueColorSystem(ABC):
     # - Comparison Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     def __gt__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+        """
+        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
+        Tests for greater than the other
+        """
         return all(map(
             (lambda xy: xy[0] > xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
     def __lt__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+        """
+        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
+        Tests for smaller than the other
+        """
         return all(map(
             (lambda xy: xy[0] < xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
     def __eq__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+        """
+        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
+        Tests for equality to the other
+        """
         return all(map(
             (lambda xy: xy[0] == xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
     def __ne__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+        """
+        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
+        Tests for inequality to the other
+        """
         return all(map(
             (lambda xy: xy[0] != xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
     def __le__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+        """
+        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
+        Tests for smaller than or equality to the other
+        """
         return all(map(
             (lambda xy: xy[0] <= xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
     def __ge__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+        """
+        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
+        Tests for greater than or equality to the other
+        """
         return all(map(
             (lambda xy: xy[0] >= xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
