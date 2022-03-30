@@ -21,7 +21,8 @@ class HEXA(RGBA,_HEXA):
     def __init__(self, hex_value:str):
         if not isinstance(hex_value,str):
             raise ValueError(f"HEXA value {hex_value=} did not consist of a string value")
-        self._recieve(*hexa_to_rgba(hex_value))
+        self.r,self.g,self.b,self.a = hexa_to_rgba(hex_value)
+
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods

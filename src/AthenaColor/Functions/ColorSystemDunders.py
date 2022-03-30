@@ -40,6 +40,9 @@ def mod(left:tuple, right:tuple)->tuple:
         (lambda lr: lr[0] % lr[1]),
         zip(left, right)
     ))
+
+
+# noinspection PyShadowingBuiltins
 def pow(left:tuple, right:tuple)->tuple:
     return tuple(map(
         (lambda lr: lr[0] ** lr[1]),

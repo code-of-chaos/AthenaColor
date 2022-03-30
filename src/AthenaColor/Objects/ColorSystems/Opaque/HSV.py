@@ -26,9 +26,6 @@ class HSV(OpaqueColorSystem,_HSV):
     def __init__(self,h: int|float, s: int|float, v: int|float):
         if not TestTypes(types=(int,float),objects=(h,s,v)):
             raise ValueError(f"HSV values {h=},{s=},{v=} did not consist of integer or float values")
-        self._recieve(h,s,v)
-
-    def _recieve(self, h,s,v):
         self.h = h
         self.s = s
         self.v = v

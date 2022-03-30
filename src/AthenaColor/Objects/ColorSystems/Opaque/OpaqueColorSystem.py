@@ -16,6 +16,7 @@ import AthenaColor.Functions.ColorSystemDunders as CSD
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
 def _to_rgb(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple)->tuple:
+    print("!!! called _to_rgb !!!")
     if isinstance(color, (_RGB, _HEX)):
         return color.r, color.g, color.b
     elif isinstance(color, _CMYK):
@@ -34,13 +35,13 @@ def _to_rgb(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple)->
 
 def _to_system(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV, r:int,g:int,b:int)->tuple:
     if isinstance(color, (_RGB, _HEX)):
-        color.r, color.g, color.b = r, g, b
+        return r, g, b
     elif isinstance(color, _CMYK):
-        color.c, color.m, color.y, color.k = rgb_to_cmyk(r, g, b)
+        return rgb_to_cmyk(r, g, b)
     elif isinstance(color, _HSL):
-        color.h, color.s, color.l = rgb_to_hsl(r, g, b)
+        return rgb_to_hsl(r, g, b)
     elif isinstance(color, _HSV):
-        color.h, color.s, color.v = rgb_to_hsv(r, g, b)
+        return rgb_to_hsv(r, g, b)
     else:
         return NotImplemented
 
@@ -78,12 +79,12 @@ class _HSV:
 # ----------------------------------------------------------------------------------------------------------------------
 class OpaqueColorSystem(ABC):
     @abstractmethod
+    def __init__(self, *_):...
+    @abstractmethod
     def __str__(self)->str: ...
     @abstractmethod
     def __repr__(self)->str: ...
 
-    @abstractmethod
-    def _recieve(self, *_):...
     @abstractmethod
     def _export(self) -> tuple:...
 
@@ -96,10 +97,10 @@ class OpaqueColorSystem(ABC):
         Reassembles the RGB values to the current object's needed values
         """
         if type(self) is type(other):
-            self._recieve(CSD.add(self._export(),other._export()))
+            return type(self)(*CSD.add(self._export(),other._export()))
         else:
-            _to_system(self, *CSD.add(_to_rgb(self),_to_rgb(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.add(_to_rgb(self),_to_rgb(other))))
+
 
     def __sub__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
@@ -107,10 +108,9 @@ class OpaqueColorSystem(ABC):
         Reassembles the RGB values to the current object's needed values
         """
         if type(self) is type(other):
-            self._recieve(CSD.sub(self._export(),other._export()))
+            return type(self)(*CSD.sub(self._export(),other._export()))
         else:
-            _to_system(self, *CSD.sub(_to_rgb(self),_to_rgb(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.sub(_to_rgb(self),_to_rgb(other))))
 
     def __mul__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
@@ -118,10 +118,9 @@ class OpaqueColorSystem(ABC):
         Reassembles the RGB values to the current object's needed values
         """
         if type(self) is type(other):
-            self._recieve(CSD.mul(self._export(),other._export()))
+            return type(self)(*CSD.mul(self._export(),other._export()))
         else:
-            _to_system(self, *CSD.mul(_to_rgb(self),_to_rgb(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.mul(_to_rgb(self),_to_rgb(other))))
 
     def __floordiv__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
@@ -129,10 +128,9 @@ class OpaqueColorSystem(ABC):
         Reassembles the RGB values to the current object's needed values
         """
         if type(self) is type(other):
-            self._recieve(CSD.floordiv(self._export(),other._export()))
+            return type(self)(*CSD.floordiv(self._export(),other._export()))
         else:
-            _to_system(self, *CSD.floordiv(_to_rgb(self),_to_rgb(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.floordiv(_to_rgb(self),_to_rgb(other))))
 
     def __truediv__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
@@ -140,10 +138,9 @@ class OpaqueColorSystem(ABC):
         Reassembles the RGB values to the current object's needed values
         """
         if type(self) is type(other):
-            self._recieve(CSD.truediv(self._export(),other._export()))
+            return type(self)(*CSD.truediv(self._export(),other._export()))
         else:
-            _to_system(self, *CSD.truediv(_to_rgb(self),_to_rgb(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.truediv(_to_rgb(self),_to_rgb(other))))
 
     def __mod__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
@@ -151,10 +148,9 @@ class OpaqueColorSystem(ABC):
         Reassembles the RGB values to the current object's needed values
         """
         if type(self) is type(other):
-            self._recieve(CSD.mod(self._export(),other._export()))
+            return type(self)(*CSD.mod(self._export(),other._export()))
         else:
-            _to_system(self, *CSD.mod(_to_rgb(self),_to_rgb(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.mod(_to_rgb(self),_to_rgb(other))))
 
     def __pow__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
@@ -162,10 +158,9 @@ class OpaqueColorSystem(ABC):
         Reassembles the RGB values to the current object's needed values
         """
         if type(self) is type(other):
-            self._recieve(CSD.pow(self._export(),other._export()))
+            return type(self)(*CSD.pow(self._export(),other._export()))
         else:
-            _to_system(self, *CSD.pow(_to_rgb(self),_to_rgb(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.pow(_to_rgb(self),_to_rgb(other))))
 
     def __iadd__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         return self.__add__(other)

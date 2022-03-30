@@ -12,7 +12,31 @@ import AthenaColor
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def main():
-    pass
+    a = AthenaColor.RGB(12,125,1)
+    b = AthenaColor.RGB(156,12,1)
+    c = a+b
+    print(f"{repr(a)}+{repr(b)}={repr(c)}")
+
+    d = AthenaColor.RGB(12,125,1)
+    e = AthenaColor.HSL(156,.4,.8)
+    f = d+e
+    print(f"{repr(d)}+{repr(e)}={repr(f)}")
+
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

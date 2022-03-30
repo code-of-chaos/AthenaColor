@@ -51,12 +51,12 @@ class _HEXA:
 # ----------------------------------------------------------------------------------------------------------------------
 class TransparentColorSystem(ABC):
     @abstractmethod
+    def __init__(self, *_):...
+    @abstractmethod
     def __str__(self)->str: ...
     @abstractmethod
     def __repr__(self)->str: ...
 
-    @abstractmethod
-    def _recieve(self, *_):...
     @abstractmethod
     def _export(self) -> tuple:...
 
@@ -65,52 +65,45 @@ class TransparentColorSystem(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     def __add__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
         if type(self) is type(other):
-            self._recieve(CSD.add(self._export(),other._export()))
+            return type(self)(*CSD.add(self._export(),other._export()))
         else:
-            _to_system(self, *CSD.add(_to_rgba(self),_to_rgba(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.add(_to_rgba(self),_to_rgba(other))))
 
     def __sub__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
         if type(self) is type(other):
-            self._recieve(CSD.sub(self._export(), other._export()))
+            return type(self)(*CSD.sub(self._export(), other._export()))
         else:
-            _to_system(self, *CSD.sub(_to_rgba(self), _to_rgba(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.sub(_to_rgba(self),_to_rgba(other))))
 
     def __mul__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
         if type(self) is type(other):
-            self._recieve(CSD.mul(self._export(), other._export()))
+            return type(self)(*CSD.mul(self._export(), other._export()))
         else:
-            _to_system(self, *CSD.mul(_to_rgba(self), _to_rgba(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.mul(_to_rgba(self),_to_rgba(other))))
 
     def __floordiv__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
         if type(self) is type(other):
-            self._recieve(CSD.floordiv(self._export(), other._export()))
+            return type(self)(*CSD.floordiv(self._export(), other._export()))
         else:
-            _to_system(self, *CSD.floordiv(_to_rgba(self), _to_rgba(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.floordiv(_to_rgba(self),_to_rgba(other))))
 
     def __truediv__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
         if type(self) is type(other):
-            self._recieve(CSD.truediv(self._export(), other._export()))
+            return type(self)(*CSD.truediv(self._export(), other._export()))
         else:
-            _to_system(self, *CSD.truediv(_to_rgba(self), _to_rgba(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.truediv(_to_rgba(self),_to_rgba(other))))
 
     def __mod__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
         if type(self) is type(other):
-            self._recieve(CSD.mod(self._export(), other._export()))
+            return type(self)(*CSD.mod(self._export(), other._export()))
         else:
-            _to_system(self, *CSD.mod(_to_rgba(self), _to_rgba(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.mod(_to_rgba(self),_to_rgba(other))))
 
     def __pow__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
         if type(self) is type(other):
-            self._recieve(CSD.pow(self._export(), other._export()))
+            return type(self)(*CSD.pow(self._export(), other._export()))
         else:
-            _to_system(self, *CSD.pow(_to_rgba(self), _to_rgba(other)))
-        return self
+            return type(self)(*_to_system(self, *CSD.pow(_to_rgba(self),_to_rgba(other))))
 
     def __iadd__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
         return self.__add__(other)

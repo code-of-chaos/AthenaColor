@@ -28,9 +28,6 @@ class RGB(OpaqueColorSystem,_RGB):
     def __init__(self,r: int, g: int, b: int):
         if not TestTypes(types=(int,float),objects=(r,g,b)):
             raise ValueError(f"RGB values {r=},{g=},{b=} did not consist of integer values")
-        self._recieve(r,g,b)
-
-    def _recieve(self, r,g,b):
         self.r = r
         self.g = g
         self.b = b

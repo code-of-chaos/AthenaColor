@@ -26,9 +26,6 @@ class CMYK(OpaqueColorSystem,_CMYK):
     def __init__(self, c:int|float, m:int|float, y:int|float, k:int|float):
         if not TestTypes(types=(int,float), objects=(c,m,y,k)):
             raise ValueError(f"CMYK values {c=},{m=},{y=},{k=} did not consist of integer or float values")
-        self._recieve(c,m,y,k)
-
-    def _recieve(self, c,m,y,k):
         self.c = c
         self.m = m
         self.y = y
