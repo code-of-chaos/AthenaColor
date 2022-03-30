@@ -8,7 +8,7 @@
 # Custom Packages
 from ..BoilerPlate import (
     NormalizeRgb,
-    round_correctly
+    RoundCorrectly
 )
 from .TestValues import (
     testRGB,testHSV,testHSL,testCMYK,testHEX,
@@ -57,18 +57,18 @@ def hsv_to_rgb(h:float,s:float,v:float) -> tuple[int,int,int]:
     m = v-C
 
     return (
-        round_correctly((r_+m)*255) ,
-        round_correctly((g_+m)*255) ,
-        round_correctly((b_+m)*255)
+        RoundCorrectly((r_ + m) * 255),
+        RoundCorrectly((g_ + m) * 255),
+        RoundCorrectly((b_ + m) * 255)
     )
 
 @testCMYK
 def cmyk_to_rgb(c:float,m:float,y:float,k:float) -> tuple[int,int,int]:
     c,m,y,k = ConstrainCMYK(c,m,y,k)
     return (
-        round_correctly(255*(1-c)*(1-k)),#r
-        round_correctly(255*(1-m)*(1-k)),#g
-        round_correctly(255*(1-y)*(1-k)) #b
+        RoundCorrectly(255 * (1 - c) * (1 - k)),  #r
+        RoundCorrectly(255 * (1 - m) * (1 - k)),  #g
+        RoundCorrectly(255 * (1 - y) * (1 - k))  #b
     )
 
 @testHSL
@@ -90,9 +90,9 @@ def hsl_to_rgb(h:float,s:float,l:float) -> tuple[int,int,int]:
     m = l-(C/2)
 
     return (
-        round_correctly((r_+m)*255) ,
-        round_correctly((g_+m)*255) ,
-        round_correctly((b_+m)*255)
+        RoundCorrectly((r_ + m) * 255),
+        RoundCorrectly((g_ + m) * 255),
+        RoundCorrectly((b_ + m) * 255)
     )
 
 # ----------------------------------------------------------------------------------------------------------------------

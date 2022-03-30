@@ -21,7 +21,7 @@ def TestTypes(types: Any, objects:object|tuple[object]) -> bool:
 def Constrain(value:int|float, maximum:int|float, minimum:int|float=0) -> int|float:
     return max(min(value, maximum),minimum)
 
-def round_correctly(value:int|float):
+def RoundCorrectly(value:int|float) -> int:
     if value - (value_:=math.floor(value)) < 0.5:
         return value_
     else:

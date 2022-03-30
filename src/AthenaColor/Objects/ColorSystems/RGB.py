@@ -10,7 +10,7 @@ from __future__ import annotations
 from AthenaColor.Functions.BoilerPlate import (
     Constrain,
     TestTypes,
-    round_correctly
+    RoundCorrectly
 )
 from ._ColorSystem import ColorSystem
 
@@ -38,7 +38,7 @@ class RGB(ColorSystem):
 
     @r.setter
     def r(self, value: int | float):
-        self._r = round_correctly(Constrain(value,255))
+        self._r = RoundCorrectly(Constrain(value, 255))
 
     @property
     def g(self):
@@ -46,7 +46,7 @@ class RGB(ColorSystem):
 
     @g.setter
     def g(self, value: int | float):
-        self._g = round_correctly(Constrain(value,255))
+        self._g = RoundCorrectly(Constrain(value, 255))
 
     @property
     def b(self):
@@ -54,7 +54,7 @@ class RGB(ColorSystem):
 
     @b.setter
     def b(self, value: int | float):
-        self._b = round_correctly(Constrain(value,255))
+        self._b = RoundCorrectly(Constrain(value, 255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
