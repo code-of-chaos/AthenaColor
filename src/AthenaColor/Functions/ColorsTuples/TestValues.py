@@ -6,14 +6,14 @@
 # Custom Library
 
 # Custom Packages
-from .BoilerPlate import TestTypes
+from ..BoilerPlate import TestTypes
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Decorators for testing -
 # ----------------------------------------------------------------------------------------------------------------------
 
 # RGB tests
-def testRGB_Tuple(fnc):
+def testRGB(fnc):
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=int,
@@ -24,7 +24,7 @@ def testRGB_Tuple(fnc):
     return wrapper
 
 # HEX tests
-def testHEX_Tuple(fnc):
+def testHEX(fnc):
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=str,
@@ -35,7 +35,7 @@ def testHEX_Tuple(fnc):
     return wrapper
 
 # HSV tests
-def testHSV_Tuple(fnc):
+def testHSV(fnc):
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=(int,float),
@@ -46,7 +46,7 @@ def testHSV_Tuple(fnc):
     return wrapper
 
 # HSL tests
-def testHSL_Tuple(fnc):
+def testHSL(fnc):
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=(int,float),
@@ -57,7 +57,7 @@ def testHSL_Tuple(fnc):
     return wrapper
 
 # CMYK tests
-def testCMYK_Tuple(fnc):
+def testCMYK(fnc):
     def wrapper(*args,**kwargs):
         if not TestTypes(
                 types=(int,float),

@@ -6,7 +6,7 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions.ColorConversion_Tuples import (
+from AthenaColor.Functions.ColorsTuples import (
     hex_to_rgb,
     rgb_to_hex
 )

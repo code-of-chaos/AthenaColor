@@ -13,7 +13,7 @@ from AthenaColor.Objects import (
     HSV,
     CMYK
 )
-from .BoilerPlate import TestTypes
+from ..BoilerPlate import TestTypes
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Decorators for testing -
