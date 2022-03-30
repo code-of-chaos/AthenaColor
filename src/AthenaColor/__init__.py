@@ -70,18 +70,17 @@ from .Objects.Console import (
     StyleNest
 )
 
-class ColorSystems:
-    from AthenaColor.Objects.ColorSystems.Opaque import (
-        RGB,
-        HEX,
-        CMYK,
-        HSL,
-        HSV
-    )
-    from AthenaColor.Objects.ColorSystems.Transparent import (
-        RGBA,
-        HEXA,
-    )
+from AthenaColor.Objects.ColorSystems.Opaque import (
+    RGB,
+    HEX,
+    CMYK,
+    HSL,
+    HSV
+)
+from AthenaColor.Objects.ColorSystems.Transparent import (
+    RGBA,
+    HEXA,
+)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Import other systems -
