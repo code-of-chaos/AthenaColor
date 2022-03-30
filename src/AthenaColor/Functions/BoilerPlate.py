@@ -24,6 +24,25 @@ def NormalizeRgb(r:int,g:int,b:int) -> tuple[float,float,float]:
 def TestTypes(types: Any, objects:object|tuple[object]) -> bool:
     return all(map(lambda n: isinstance(n, types),objects))
 
+def Constrain(value:int|float, maximum:int|float, minimum:int|float=0) -> int|float:
+    return max(min(value, maximum),minimum)
+
+def ConstrainHSV_Tuple(h,s,v)->tuple[int|float,int|float,int|float]:
+    h = Constrain(h, 360)
+    s,v = map(lambda x: Constrain(x, 1), (s,v))
+    return h,s,v
+def ConstrainHSL_Tuple(h,s,l)->tuple[int|float,int|float,int|float]:
+    h = Constrain(h, 360)
+    s,l = map(lambda x: Constrain(x, 1), (s,l))
+    return h,s,l
+def ConstrainRGB_Tuple(r,g,b)->tuple[int|float,int|float,int|float]:
+    r,g,b = map(lambda x: Constrain(x, 255), (r,g,b))
+    return r,g,b
+def ConstrainCMYK_Tuple(c,m,y,k)->tuple[int|float,int|float,int|float,int|float]:
+    c,m,y,k = map(lambda x: Constrain(x, 1), (c,m,y,k))
+    return c,m,y,k
+
+
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Decorators for testing -
 # ----------------------------------------------------------------------------------------------------------------------
