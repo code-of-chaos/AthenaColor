@@ -16,7 +16,6 @@ import AthenaColor.Functions.ColorSystemDunders as CSD
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
 def _to_rgb(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple)->tuple:
-    print("!!! called _to_rgb !!!")
     if isinstance(color, (_RGB, _HEX)):
         return color.r, color.g, color.b
     elif isinstance(color, _CMYK):
