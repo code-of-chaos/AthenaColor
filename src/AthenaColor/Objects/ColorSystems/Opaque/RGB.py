@@ -14,14 +14,14 @@ from AthenaColor.Functions.BoilerPlate import (
     RoundCorrectly
 )
 from ._ColorSystem import (
-    ColorSystem,
+    OpaqueColorSystem,
     _RGB
 )
 
 # ------------------------------------------------------------------------------------------------------------------
 # - Color -
 # ------------------------------------------------------------------------------------------------------------------
-class RGB(ColorSystem,_RGB):
+class RGB(OpaqueColorSystem,_RGB):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
@@ -37,21 +37,21 @@ class RGB(ColorSystem,_RGB):
     # RGB Properties
     # ------------------------------------------------------------------------------------------------------------------
     @property
-    def r(self):
+    def r(self) -> int:
         return self._r
     @r.setter
     def r(self, value: int | float):
         self._r = RoundCorrectly(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
     @property
-    def g(self):
+    def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int | float):
         self._g = RoundCorrectly(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
     @property
-    def b(self):
+    def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int | float):

@@ -21,7 +21,7 @@ from ._ColorSystem import _HEX
 class HEX(RGB,_HEX):
     def __init__(self, hex_value:str):
         if not isinstance(hex_value,str):
-            raise ValueError(f"HEXA value {hex_value=} did not consist of a string value")
+            raise ValueError(f"HEX value {hex_value=} did not consist of a string value")
         self.r,self.g,self.b = hex_to_rgb(hex_value)
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -32,4 +32,4 @@ class HEX(RGB,_HEX):
         return rgb_to_hex(self.r,self.g,self.b)
 
     def __repr__(self) -> str:
-        return f"hexadecimal(r={self.r},g={self.g},b={self.b})"
+        return f"HEX(r={self.r},g={self.g},b={self.b})"

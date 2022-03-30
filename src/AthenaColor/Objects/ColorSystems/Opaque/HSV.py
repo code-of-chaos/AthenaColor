@@ -12,14 +12,14 @@ from AthenaColor.Functions.BoilerPlate import (
     TestTypes
 )
 from ._ColorSystem import (
-    ColorSystem,
+    OpaqueColorSystem,
     _HSV
 )
 
 # ------------------------------------------------------------------------------------------------------------------
 # - Color -
 # ------------------------------------------------------------------------------------------------------------------
-class HSV(ColorSystem,_HSV):
+class HSV(OpaqueColorSystem,_HSV):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
@@ -35,21 +35,21 @@ class HSV(ColorSystem,_HSV):
     # RGB Properties
     # ------------------------------------------------------------------------------------------------------------------
     @property
-    def h(self):
+    def h(self) -> int|float:
         return self._h
     @h.setter
     def h(self, value: int | float):
         self._h = Constrain(value, 360)
 
     @property
-    def s(self):
+    def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int | float):
         self._s = Constrain(value, 1)
 
     @property
-    def v(self):
+    def v(self) -> int|float:
         return self._v
     @v.setter
     def v(self, value: int | float):

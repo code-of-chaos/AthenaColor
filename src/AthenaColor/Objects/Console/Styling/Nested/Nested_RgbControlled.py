@@ -25,10 +25,10 @@ class Nested_RgbControlled:
     # ------------------------------------------------------------------------------------------------------------------
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
-    def custom(self,*obj, color:RGB, **kwargs):
+    def custom(self,*obj, color:RGB, **kwargs) -> str:
         return NestedColorSequence(*obj, control_code=self._param_code + str(color), reset_code=self._reset, **kwargs)
 
-    def rgb(self,*obj, r:int,g:int,b:int, **kwargs):
+    def rgb(self,*obj, r:int,g:int,b:int, **kwargs) -> str:
         return NestedColorSequence(*obj, control_code=self._param_code + str(RGB(r, g, b)), reset_code=self._reset,
                                    **kwargs)
 

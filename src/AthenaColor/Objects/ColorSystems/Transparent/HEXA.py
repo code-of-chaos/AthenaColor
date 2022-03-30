@@ -32,4 +32,4 @@ class HEXA(RGBA,_HEXA):
         return rgba_to_hexa(self.r,self.g,self.b,self.a)
 
     def __repr__(self) -> str:
-        return f"hexadecimal(r={self.r},g={self.g},b={self.b},a={self.a})"
+        return f"HEXA(r={self.r},g={self.g},b={self.b},a={self.a})"

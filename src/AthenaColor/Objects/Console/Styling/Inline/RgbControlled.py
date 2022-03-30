@@ -21,10 +21,10 @@ class RgbControlled:
     # ------------------------------------------------------------------------------------------------------------------
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
-    def custom(self, color:RGB):
+    def custom(self, color:RGB) -> str:
         return ColorSequence(self.param_code + str(color))
 
-    def rgb(self, r:int,g:int,b:int):
+    def rgb(self, r:int,g:int,b:int) -> str:
         return ColorSequence(self.param_code + str(RGB(r, g, b)))
 
     # ------------------------------------------------------------------------------------------------------------------

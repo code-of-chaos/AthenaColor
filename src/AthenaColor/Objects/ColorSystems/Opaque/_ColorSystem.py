@@ -14,7 +14,7 @@ from AthenaColor.Functions.BoilerPlate import Constrain
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
-def _to_rgb(color:ColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple):
+def _to_rgb(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple):
     match color:
         case _RGB(r=r,g=g,b=b) | _HEX(r=r,g=g,b=b):
             return r,g,b
@@ -32,7 +32,7 @@ def _to_rgb(color:ColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple):
         case _:
             return NotImplemented
 
-def _to_system(color:ColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV, r:int,g:int,b:int):
+def _to_system(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV, r:int,g:int,b:int):
     match color:
         case _RGB() | _HEX():
             color.r, color.g, color.b = r,g,b
@@ -77,22 +77,16 @@ class _HSV:
 # ----------------------------------------------------------------------------------------------------------------------
 # - Actual Color System -
 # ----------------------------------------------------------------------------------------------------------------------
-class ColorSystem(ABC):
+class OpaqueColorSystem(ABC):
     @abstractmethod
-    def __str__(self): ...
+    def __str__(self)->str: ...
     @abstractmethod
-    def __repr__(self): ...
-
-    # ------------------------------------------------------------------------------------------------------------------
-    # - Other Dunders -
-    # ------------------------------------------------------------------------------------------------------------------
-    def __len__(self):
-        return NotImplemented
+    def __repr__(self)->str: ...
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
-    def __add__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __add__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         r,g,b = map(
             (lambda xy: xy[0] + xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -100,7 +94,7 @@ class ColorSystem(ABC):
         _to_system(self, r,g,b)
         return self
 
-    def __sub__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __sub__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         r, g, b = map(
             (lambda xy: xy[0] - xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -108,7 +102,7 @@ class ColorSystem(ABC):
         _to_system(self, r, g, b)
         return self
 
-    def __mul__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __mul__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         r, g, b = map(
             (lambda xy: xy[0] * xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -116,7 +110,7 @@ class ColorSystem(ABC):
         _to_system(self, r, g, b)
         return self
 
-    def __floordiv__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __floordiv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         r, g, b = map(
             (lambda xy: xy[0] // xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -124,7 +118,7 @@ class ColorSystem(ABC):
         _to_system(self, r, g, b)
         return self
 
-    def __truediv__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __truediv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         r, g, b = map(
             (lambda xy: xy[0] / xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -132,7 +126,7 @@ class ColorSystem(ABC):
         _to_system(self, r, g, b)
         return self
 
-    def __mod__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __mod__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         r, g, b = map(
             (lambda xy: xy[0] % xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -140,7 +134,7 @@ class ColorSystem(ABC):
         _to_system(self, r, g, b)
         return self
 
-    def __pow__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __pow__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         r, g, b = map(
             (lambda xy: xy[0] ** xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
@@ -148,50 +142,50 @@ class ColorSystem(ABC):
         _to_system(self, r, g, b)
         return self
 
-    def __iadd__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __iadd__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         return self.__add__(other)
-    def __isub__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __isub__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         return self.__sub__(other)
-    def __imul__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __imul__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         return self.__mul__(other)
-    def __ifloordiv__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __ifloordiv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         return self.__floordiv__(other)
-    def __itruediv__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __itruediv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         return self.__truediv__(other)
-    def __imod__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __imod__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         return self.__mod__(other)
-    def __ipow__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> ColorSystem:
+    def __ipow__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
         return self.__pow__(other)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Comparison Dunders -
     # ------------------------------------------------------------------------------------------------------------------
-    def __gt__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __gt__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
         return all(map(
             (lambda xy: xy[0] > xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
-    def __lt__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __lt__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
         return all(map(
             (lambda xy: xy[0] < xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
-    def __eq__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __eq__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
         return all(map(
             (lambda xy: xy[0] == xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
-    def __ne__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __ne__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
         return all(map(
             (lambda xy: xy[0] != xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
-    def __le__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __le__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
         return all(map(
             (lambda xy: xy[0] <= xy[1]),
             zip(_to_rgb(self), _to_rgb(other))
         ))
-    def __ge__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __ge__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
         return all(map(
             (lambda xy: xy[0] >= xy[1]),
             zip(_to_rgb(self), _to_rgb(other))

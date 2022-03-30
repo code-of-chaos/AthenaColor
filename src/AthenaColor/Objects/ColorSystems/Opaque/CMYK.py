@@ -9,18 +9,17 @@ from __future__ import annotations
 # Custom Packages
 from AthenaColor.Functions.BoilerPlate import (
     Constrain,
-    TestTypes,
-    RoundCorrectly
+    TestTypes
 )
 from ._ColorSystem import (
-    ColorSystem,
+    OpaqueColorSystem,
     _CMYK
 )
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-class CMYK(ColorSystem,_CMYK):
+class CMYK(OpaqueColorSystem,_CMYK):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
@@ -36,28 +35,28 @@ class CMYK(ColorSystem,_CMYK):
     # CMYK Properties
     # ------------------------------------------------------------------------------------------------------------------
     @property
-    def c(self):
+    def c(self) -> int|float:
         return self._c
     @c.setter
     def c(self, value: int | float):
         self._c = Constrain(value, 1)
 
     @property
-    def m(self):
+    def m(self) -> int|float:
         return self._m
     @m.setter
     def m(self, value: int | float):
         self._m = Constrain(value, 1)
 
     @property
-    def y(self):
+    def y(self) -> int|float:
         return self._y
     @y.setter
     def y(self, value: int | float):
         self._y = Constrain(value, 1)
 
     @property
-    def k(self):
+    def k(self) -> int|float:
         return self._k
     @k.setter
     def k(self, value: int | float):
