@@ -27,7 +27,7 @@ class HEXA(RGBA,_HEXA):
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
     def __str__(self) -> str:
-        return rgba_to_hexa(self.r,self.g,self.b)
+        return rgba_to_hexa(self.r,self.g,self.b,self.a)
 
     def __repr__(self) -> str:
-        return f"hexadecimal(r={self.r},g={self.g},b={self.b})"
+        return f"hexadecimal(r={self.r},g={self.g},b={self.b},a={self.a})"

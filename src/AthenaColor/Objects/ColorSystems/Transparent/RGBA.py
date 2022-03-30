@@ -24,13 +24,14 @@ class RGBA(ColorSystem,_RGBA):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,r: int, g: int, b: int):
-        if not TestTypes(types=int,objects=(r,g,b)):
-            raise ValueError(f"RGB values {r=},{g=},{b=} did not consist of integer values")
+    def __init__(self,r: int, g: int, b: int, a:int):
+        if not TestTypes(types=int,objects=(r,g,b,a)):
+            raise ValueError(f"RGB values {r=},{g=},{b=},{a=} did not consist of integer values")
 
         self.r = r
         self.g = g
         self.b = b
+        self.a = a
 
     # ------------------------------------------------------------------------------------------------------------------
     # RGB Properties
