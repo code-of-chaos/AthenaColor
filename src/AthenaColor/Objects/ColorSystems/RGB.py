@@ -7,12 +7,8 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
+from AthenaColor.Functions.BoilerPlate import Constrain
 from ._ColorSystem import ColorSystem
-# ----------------------------------------------------------------------------------------------------------------------
-# - Support Methods -
-# ----------------------------------------------------------------------------------------------------------------------
-def boundary(value:int|float) -> int|float:
-    return min(max(value, 0), 255)
 
 # ------------------------------------------------------------------------------------------------------------------
 # - Color -
@@ -38,7 +34,7 @@ class RGB(ColorSystem):
 
     @r.setter
     def r(self, value: int | float):
-        self._r = round(boundary(value))
+        self._r = round(Constrain(value,255))
 
     @property
     def g(self):
@@ -46,7 +42,7 @@ class RGB(ColorSystem):
 
     @g.setter
     def g(self, value: int | float):
-        self._g = round(boundary(value))
+        self._g = round(Constrain(value,255))
 
     @property
     def b(self):
@@ -54,7 +50,7 @@ class RGB(ColorSystem):
 
     @b.setter
     def b(self, value: int | float):
-        self._b = round(boundary(value))
+        self._b = round(Constrain(value,255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
