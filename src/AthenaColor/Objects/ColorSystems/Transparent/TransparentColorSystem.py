@@ -51,7 +51,9 @@ class _HEXA:
 # ----------------------------------------------------------------------------------------------------------------------
 class TransparentColorSystem(ABC):
     @abstractmethod
-    def __init__(self, *_):...
+    def __init__(self, *_):
+        # no 'OpaqueColorSystem' can be created on its own
+        raise PermissionError
     @abstractmethod
     def __str__(self)->str: ...
     @abstractmethod
@@ -64,42 +66,77 @@ class TransparentColorSystem(ABC):
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     def __add__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
+        """
+        Math Dunder which executes an ADDITION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
+        """
         if type(self) is type(other):
             return type(self)(*CSD.add(self._export(),other._export()))
         else:
             return type(self)(*_to_system(self, *CSD.add(_to_rgba(self),_to_rgba(other))))
 
     def __sub__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
+        """
+        Math Dunder which executes an SUBTRACTION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
+        """
         if type(self) is type(other):
             return type(self)(*CSD.sub(self._export(), other._export()))
         else:
             return type(self)(*_to_system(self, *CSD.sub(_to_rgba(self),_to_rgba(other))))
 
     def __mul__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
+        """
+        Math Dunder which executes an MULTIPLICATION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
+        """
         if type(self) is type(other):
             return type(self)(*CSD.mul(self._export(), other._export()))
         else:
             return type(self)(*_to_system(self, *CSD.mul(_to_rgba(self),_to_rgba(other))))
 
     def __floordiv__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
+        """
+        Math Dunder which executes an FLOOR DIVISION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
+        """
         if type(self) is type(other):
             return type(self)(*CSD.floordiv(self._export(), other._export()))
         else:
             return type(self)(*_to_system(self, *CSD.floordiv(_to_rgba(self),_to_rgba(other))))
 
     def __truediv__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
+        """
+        Math Dunder which executes an DIVISION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
+        """
         if type(self) is type(other):
             return type(self)(*CSD.truediv(self._export(), other._export()))
         else:
             return type(self)(*_to_system(self, *CSD.truediv(_to_rgba(self),_to_rgba(other))))
 
     def __mod__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
+        """
+        Math Dunder which executes an MODULO operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
+        """
         if type(self) is type(other):
             return type(self)(*CSD.mod(self._export(), other._export()))
         else:
             return type(self)(*_to_system(self, *CSD.mod(_to_rgba(self),_to_rgba(other))))
 
     def __pow__(self, other: TransparentColorSystem | int | float | tuple) -> TransparentColorSystem:
+        """
+        Math Dunder which executes an POWER operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
+        """
         if type(self) is type(other):
             return type(self)(*CSD.pow(self._export(), other._export()))
         else:
@@ -124,36 +161,60 @@ class TransparentColorSystem(ABC):
     # - Comparison Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     def __gt__(self, other: TransparentColorSystem | int | float | tuple) -> bool:
+        """
+        Comparison Dunder which compares for GREATER THAN.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        """
         if type(self) is type(other):
             return CSD.gt(self._export(), other._export())
         else:
             return CSD.gt(_to_rgba(self), _to_rgba(other))
 
     def __lt__(self, other: TransparentColorSystem | int | float | tuple) -> bool:
+        """
+        Comparison Dunder which compares for SMALLER THAN.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        """
         if type(self) is type(other):
             return CSD.lt(self._export(), other._export())
         else:
             return CSD.lt(_to_rgba(self), _to_rgba(other))
 
     def __eq__(self, other: TransparentColorSystem | int | float | tuple) -> bool:
+        """
+        Comparison Dunder which compares for EQUALITY.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        """
         if type(self) is type(other):
             return CSD.eq(self._export(), other._export())
         else:
             return CSD.eq(_to_rgba(self), _to_rgba(other))
 
     def __ne__(self, other: TransparentColorSystem | int | float | tuple) -> bool:
+        """
+        Comparison Dunder which compares for INEQUALITY.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        """
         if type(self) is type(other):
             return CSD.ne(self._export(), other._export())
         else:
             return CSD.ne(_to_rgba(self), _to_rgba(other))
 
     def __le__(self, other: TransparentColorSystem | int | float | tuple) -> bool:
+        """
+        Comparison Dunder which compares for SMALLER OR EQUAL TO.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        """
         if type(self) is type(other):
             return CSD.le(self._export(), other._export())
         else:
             return CSD.le(_to_rgba(self), _to_rgba(other))
 
     def __ge__(self, other: TransparentColorSystem | int | float | tuple) -> bool:
+        """
+        Comparison Dunder which compares for GREATER OR EQUAL TO.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        """
         if type(self) is type(other):
             return CSD.ge(self._export(), other._export())
         else:

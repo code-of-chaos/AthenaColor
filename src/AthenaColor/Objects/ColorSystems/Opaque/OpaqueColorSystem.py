@@ -78,7 +78,9 @@ class _HSV:
 # ----------------------------------------------------------------------------------------------------------------------
 class OpaqueColorSystem(ABC):
     @abstractmethod
-    def __init__(self, *_):...
+    def __init__(self, *_):
+        # no 'OpaqueColorSystem' can be created on its own
+        raise PermissionError
     @abstractmethod
     def __str__(self)->str: ...
     @abstractmethod
@@ -92,8 +94,9 @@ class OpaqueColorSystem(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     def __add__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
-        Math Dunder which executes an addition operator on the RGB notations of its own and the other class.
-        Reassembles the RGB values to the current object's needed values
+        Math Dunder which executes an ADDITION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
         """
         if type(self) is type(other):
             return type(self)(*CSD.add(self._export(),other._export()))
@@ -103,8 +106,9 @@ class OpaqueColorSystem(ABC):
 
     def __sub__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
-        Math Dunder which executes a subtraction operator on the RGB notations of its own and the other class.
-        Reassembles the RGB values to the current object's needed values
+        Math Dunder which executes an SUBTRACTION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
         """
         if type(self) is type(other):
             return type(self)(*CSD.sub(self._export(),other._export()))
@@ -113,8 +117,9 @@ class OpaqueColorSystem(ABC):
 
     def __mul__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
-        Math Dunder which executes a multiplication operator on the RGB notations of its own and the other class.
-        Reassembles the RGB values to the current object's needed values
+        Math Dunder which executes an MULTIPLICATION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
         """
         if type(self) is type(other):
             return type(self)(*CSD.mul(self._export(),other._export()))
@@ -123,8 +128,9 @@ class OpaqueColorSystem(ABC):
 
     def __floordiv__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
-        Math Dunder which executes a floor division operator on the RGB notations of its own and the other class.
-        Reassembles the RGB values to the current object's needed values
+        Math Dunder which executes an FLOOR DIVISION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
         """
         if type(self) is type(other):
             return type(self)(*CSD.floordiv(self._export(),other._export()))
@@ -133,8 +139,9 @@ class OpaqueColorSystem(ABC):
 
     def __truediv__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
-        Math Dunder which executes a division operator on the RGB notations of its own and the other class.
-        Reassembles the RGB values to the current object's needed values
+        Math Dunder which executes an DIVISION operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
         """
         if type(self) is type(other):
             return type(self)(*CSD.truediv(self._export(),other._export()))
@@ -143,8 +150,9 @@ class OpaqueColorSystem(ABC):
 
     def __mod__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
-        Math Dunder which executes a modulo operator on the RGB notations of its own and the other class.
-        Reassembles the RGB values to the current object's needed values
+        Math Dunder which executes an MODULO operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
         """
         if type(self) is type(other):
             return type(self)(*CSD.mod(self._export(),other._export()))
@@ -153,8 +161,9 @@ class OpaqueColorSystem(ABC):
 
     def __pow__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
-        Math Dunder which executes a power operator on the RGB notations of its own and the other class.
-        Reassembles the RGB values to the current object's needed values
+        Math Dunder which executes an POWER operator between the left- and righthand side of the operation.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
+        The returned object will be a new instance of the lefthand-object's class.
         """
         if type(self) is type(other):
             return type(self)(*CSD.pow(self._export(),other._export()))
@@ -181,8 +190,8 @@ class OpaqueColorSystem(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     def __gt__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
-        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
-        Tests for greater than the other
+        Comparison Dunder which compares for GREATER THAN.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
         """
         if type(self) is type(other):
             return CSD.gt(self._export(),other._export())
@@ -191,8 +200,8 @@ class OpaqueColorSystem(ABC):
 
     def __lt__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
-        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
-        Tests for smaller than the other
+        Comparison Dunder which compares for SMALLER THAN.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
         """
         if type(self) is type(other):
             return CSD.lt(self._export(),other._export())
@@ -201,8 +210,8 @@ class OpaqueColorSystem(ABC):
 
     def __eq__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
-        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
-        Tests for equality to the other
+        Comparison Dunder which compares for EQUALITY.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
         """
         if type(self) is type(other):
             return CSD.eq(self._export(),other._export())
@@ -211,8 +220,8 @@ class OpaqueColorSystem(ABC):
 
     def __ne__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
-        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
-        Tests for inequality to the other
+        Comparison Dunder which compares for INEQUALITY.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
         """
         if type(self) is type(other):
             return CSD.ne(self._export(),other._export())
@@ -221,8 +230,8 @@ class OpaqueColorSystem(ABC):
 
     def __le__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
-        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
-        Tests for smaller than or equality to the other
+        Comparison Dunder which compares for SMALLER OR EQUAL TO.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
         """
         if type(self) is type(other):
             return CSD.le(self._export(),other._export())
@@ -231,8 +240,8 @@ class OpaqueColorSystem(ABC):
 
     def __ge__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
-        Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
-        Tests for greater than or equality to the other
+        Comparison Dunder which compares for GREATER OR EQUAL TO.
+        If the two sides of the operation are NOT of the same type, it will convert both types to an RGB format.
         """
         if type(self) is type(other):
             return CSD.ge(self._export(),other._export())
