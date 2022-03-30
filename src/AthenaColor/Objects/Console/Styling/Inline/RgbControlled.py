@@ -6,12 +6,9 @@
 # Custom Library
 
 # Custom Packages
-from ...Objects import (
-    RGB,
-    HtmlColors
-)
-from ...Functions import AnsiEscape
-from ...BASE import end_codes
+from AthenaColor.Objects import RGB
+from AthenaColor.Functions import ColorSequence
+import AthenaColor.Data.HtmlColors as HtmlColors
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
@@ -25,10 +22,10 @@ class RgbControlled:
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
     def custom(self, color:RGB):
-        return AnsiEscape(self.param_code + str(color), end_code=end_codes.color)
+        return ColorSequence(self.param_code + str(color))
 
     def rgb(self, r:int,g:int,b:int):
-        return AnsiEscape(self.param_code + str(RGB(r,g,b)), end_code=end_codes.color)
+        return ColorSequence(self.param_code + str(RGB(r, g, b)))
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -

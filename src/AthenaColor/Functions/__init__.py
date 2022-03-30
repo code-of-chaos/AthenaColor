@@ -1,6 +1,6 @@
 from .AnsiSquences import (
-    AnsiEscape,
-    NestedSequence
+    ColorSequence,
+    NestedColorSequence
 )
 from .ColorConversion import (
     rgb_to_hexadecimal,

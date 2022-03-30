@@ -13,7 +13,7 @@ import sys
 # ----------------------------------------------------------------------------------------------------------------------
 # - INIT class -
 # ----------------------------------------------------------------------------------------------------------------------
-class Init:
+class _InitClass:
     esc_hex = "\x1b"
     esc_octal = "\033"
     esc_uni = "\u001b"
@@ -37,25 +37,35 @@ class Init:
         else:
             raise ValueError("escape_code not defined correctly")
 
-init = Init()
+init = _InitClass()
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - AthenaColor Imports -
 # ----------------------------------------------------------------------------------------------------------------------
-from AthenaColor.Styling.Inline import (
+from .Objects.Console import (
     Fore,
     Back,
-    Style
+    Underline, #technically present but doesn't work in PyCharm
+    Style,
+
+    ForeNest,
+    BackNest,
+    UnderlineNest, #technically present but doesn't work in PyCharm
+    StyleNest
 )
 
-from AthenaColor.Styling.Nested import (
-    Fore    as ForeNest ,
-    Back    as BackNest ,
-    Style   as StyleNest
-)
+class ColorSystems:
+    from AthenaColor.Objects import (
+        RGB,
+        HEX,
+        CMYK,
+        HSL,
+        HSV
+    )
 
-from AthenaColor.Objects import (
-    RGB,
-    HtmlColors,
-    hexadecimal
-)
+# ----------------------------------------------------------------------------------------------------------------------
+# - Import other systems -
+# ----------------------------------------------------------------------------------------------------------------------
+import AthenaColor.Data
+import AthenaColor.Functions
+import AthenaColor.Objects

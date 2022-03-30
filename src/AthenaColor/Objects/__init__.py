@@ -1,7 +1,5 @@
-from .HtmlColors import HtmlColors
+# Color Systems
+from .ColorSystems import *
 
-
-from .ColorSystems import (
-    RGB,
-    hexadecimal
-)
+# Console
+from .Console import *

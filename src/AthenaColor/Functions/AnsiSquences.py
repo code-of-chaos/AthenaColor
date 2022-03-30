@@ -7,17 +7,17 @@
 
 # Custom Packages
 from AthenaColor import init
-from AthenaColor.BASE import end_codes
+import AthenaColor.Data.ConsoleCodes as ConsoleCodes
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def AnsiEscape(code: str | int,end_code:str) -> str:
-    return f'{init.esc}[{code}{end_code}'
+def ColorSequence(code: str | int) -> str:
+    return f'{init.esc}[{code}{ConsoleCodes.color}'
 
-def NestedSequence(*obj, control_code: str | int,reset_code:str|int=None, sep:str=" ", **_) -> str:
-    color = AnsiEscape(code=control_code,end_code=end_codes.color)
-    reset = AnsiEscape(code=reset_code,end_code=end_codes.color) if reset_code is not None else ''
+def NestedColorSequence(*obj, control_code: str | int,reset_code:str|int=None, sep:str=" ", **_) -> str:
+    color = ColorSequence(code=control_code)
+    reset = ColorSequence(code=reset_code) if reset_code is not None else ''
 
     content = [
         f"{color}{o}{reset}"
