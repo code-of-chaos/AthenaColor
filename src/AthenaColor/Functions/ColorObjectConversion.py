@@ -18,6 +18,7 @@ from AthenaColor.Objects.ColorSystems.Transparent import (
     HEXA ,
 )
 import AthenaColor.Functions.ColorTupleConversion as CTC
+from AthenaColor import init
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - OPAQUE COLORS -
@@ -117,15 +118,15 @@ def to_RGBA(color:RGBA|HEXA|RGB|HEX|CMYK|HSL|HSV) -> RGBA:
         return RGBA(*CTC.hexa_to_rgba(str(color)))
     # below conversions will set the A part of RGBA to 1
     elif isinstance(color, RGB):
-        return RGBA(r=color.r, g=color.g, b=color.b,a=1)
+        return RGBA(r=color.r, g=color.g, b=color.b,a=init.transparent_default_float)
     elif isinstance(color, HEX):
-        return RGBA(*CTC.hex_to_rgb(str(color)))
+        return RGBA(*CTC.hex_to_rgb(str(color)),a=init.transparent_default_float)
     elif isinstance(color, HSV):
-        return RGBA(*CTC.hsv_to_rgb(h=color.h, s=color.s, v=color.v),a=1)
+        return RGBA(*CTC.hsv_to_rgb(h=color.h, s=color.s, v=color.v),a=init.transparent_default_float)
     elif isinstance(color, HSL):
-        return RGBA(*CTC.hsl_to_rgb(h=color.h, s=color.s, l=color.l),a=1)
+        return RGBA(*CTC.hsl_to_rgb(h=color.h, s=color.s, l=color.l),a=init.transparent_default_float)
     elif isinstance(color, CMYK):
-        return RGBA(*CTC.cmyk_to_rgb(c=color.c, m=color.m, y=color.y, k=color.k),a=1)
+        return RGBA(*CTC.cmyk_to_rgb(c=color.c, m=color.m, y=color.y, k=color.k),a=init.transparent_default_float)
     else:
         raise ValueError(f"No known Transparent Color system: {color=}")
 
@@ -136,14 +137,14 @@ def to_HEXA(color:RGBA|HEXA) -> HEXA:
         return color
     # below conversions will set the A part of HEXA to ff
     elif isinstance(color, RGB):
-        return HEXA(CTC.rgb_to_hex(r=color.r, g=color.g, b=color.b)+"ff")
+        return HEXA(CTC.rgb_to_hex(r=color.r, g=color.g, b=color.b)+init.transparent_default_str)
     elif isinstance(color, HEX):
-        return HEXA(str(color)+"ff")
+        return HEXA(str(color)+init.transparent_default_str)
     elif isinstance(color, HSV):
-        return HEXA(*CTC.hsv_to_hex(h=color.h, s=color.s, v=color.v)+"ff")
+        return HEXA(*CTC.hsv_to_hex(h=color.h, s=color.s, v=color.v)+init.transparent_default_str)
     elif isinstance(color, HSL):
-        return HEXA(*CTC.hsl_to_hex(h=color.h, s=color.s, l=color.l)+"ff")
+        return HEXA(*CTC.hsl_to_hex(h=color.h, s=color.s, l=color.l)+init.transparent_default_str)
     elif isinstance(color, CMYK):
-        return HEXA(*CTC.cmyk_to_hex(c=color.c, m=color.m, y=color.y, k=color.k)+"ff")
+        return HEXA(*CTC.cmyk_to_hex(c=color.c, m=color.m, y=color.y, k=color.k)+init.transparent_default_str)
     else:
         raise ValueError(f"No known Transparent Color system: {color=}")
