@@ -13,24 +13,22 @@ from AthenaColor.Functions.BoilerPlate import Constrain
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
-def _to_rgba(color:TransparentColorSystem|_RGBA|_HEXA|int|float|tuple):
-    match color:
-        case _RGBA() | _HEXA():
-            return color.r, color.g, color.b,color.a
-        case tuple() if len(color) == 4 and all(map(lambda x: isinstance(x, (int, float)), color)):
-            return tuple(Constrain(x, 255) for x in color)
-        case int() | float():
-            c = Constrain(color, 255)
-            return c,c,c,c
-        case _:
-            return NotImplemented
+def _to_rgba(color:TransparentColorSystem|_RGBA|_HEXA|int|float|tuple)->tuple[int|float,int|float,int|float,int|float]:
+    if isinstance(color, (_RGBA, _HEXA)):
+        return color.r, color.g, color.b, color.a
+    elif isinstance(color, tuple) and len(color) == 3 and all(map(lambda x: isinstance(x, (int, float)), color)):
+        return color
+    elif isinstance(color, (int, float)):
+        c = Constrain(color, 255)
+        return c,c,c,c
+    else:
+        return NotImplemented
 
-def _to_system(color:TransparentColorSystem|_RGBA|_HEXA, r:int,g:int,b:int,a:int):
-    match color:
-        case _RGBA() | _HEXA():
-            color.r, color.g, color.b, color.a = r,g,b,a
-        case _:
-            return NotImplemented
+def _to_system(color:TransparentColorSystem|_RGBA|_HEXA, r:int,g:int,b:int,a:int)->tuple[int|float,int|float,int|float,int|float]:
+    if isinstance(color, (_RGBA, _HEXA)):
+        color.r, color.g, color.b, color.a = r, g, b, a
+    else:
+        return NotImplemented
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Various Supported Color Systems -

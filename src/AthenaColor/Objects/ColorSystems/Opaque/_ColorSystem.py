@@ -14,36 +14,34 @@ from AthenaColor.Functions.BoilerPlate import Constrain
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
-def _to_rgb(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple):
-    match color:
-        case _RGB(r=r,g=g,b=b) | _HEX(r=r,g=g,b=b):
-            return r,g,b
-        case _CMYK(c=c,m=m,y=y,k=k):
-            return cmyk_to_rgb(c,m,y,k)
-        case _HSL(h=h,s=s,l=l):
-            return hsl_to_rgb(h,s,l)
-        case _HSV(h=h,s=s,v=v):
-            return hsv_to_rgb(h,s,v)
-        case tuple() if len(color) == 3 and all(map(lambda x: isinstance(x, (int, float)), color)):
-            return tuple(Constrain(x, 255) for x in color)
-        case int() | float():
-            c = Constrain(color, 255)
-            return c,c,c
-        case _:
-            return NotImplemented
+def _to_rgb(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple)->tuple[int|float,int|float,int|float]:
+    if isinstance(color, (_RGB, _HEX)):
+        return color.r, color.g, color.b
+    elif isinstance(color, _CMYK):
+        return cmyk_to_rgb(color.c, color.m, color.y, color.k)
+    elif isinstance(color, _HSL):
+        return hsl_to_rgb(color.h, color.s, color.l)
+    elif isinstance(color, _HSV):
+        return hsl_to_rgb(color.h, color.s, color.v)
+    elif isinstance(color, tuple) and len(color) == 3 and all(map(lambda x: isinstance(x, (int, float)),color)):
+        return color
+    elif isinstance(color, (int, float)):
+        c = Constrain(color, 255)
+        return c,c,c
+    else:
+        return NotImplemented
 
-def _to_system(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV, r:int,g:int,b:int):
-    match color:
-        case _RGB() | _HEX():
-            color.r, color.g, color.b = r,g,b
-        case _CMYK():
-            color.c, color.m, color.y, color.k = rgb_to_cmyk(r,g,b)
-        case _HSL():
-            color.h, color.s, color.l = rgb_to_hsl(r,g,b)
-        case _HSV():
-            color.h, color.s, color.v = rgb_to_hsv(r,g,b)
-        case _:
-            return NotImplemented
+def _to_system(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV, r:int,g:int,b:int)->tuple[int|float,int|float,int|float]:
+    if isinstance(color, (_RGB, _HEX)):
+        color.r, color.g, color.b = r, g, b
+    elif isinstance(color, _CMYK):
+        color.c, color.m, color.y, color.k = rgb_to_cmyk(r, g, b)
+    elif isinstance(color, _HSL):
+        color.h, color.s, color.l = rgb_to_hsl(r, g, b)
+    elif isinstance(color, _HSV):
+        color.h, color.s, color.v = rgb_to_hsv(r, g, b)
+    else:
+        return NotImplemented
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Various Supported Color Systems -
