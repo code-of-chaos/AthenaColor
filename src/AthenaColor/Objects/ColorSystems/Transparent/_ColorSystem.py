@@ -67,7 +67,7 @@ class ColorSystem(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     def __add__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> ColorSystem:
         r, g, b, a = map(
-            (lambda xy: xy[0] + xy[1]) ,
+            (lambda c: c[0] + c[1]) ,
             zip(_to_rgba(self), _to_rgba(other))
         )
         _to_system(self, r, g, b, a)
@@ -75,7 +75,7 @@ class ColorSystem(ABC):
 
     def __sub__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> ColorSystem:
         r, g, b, a = map(
-            (lambda xy: xy[0] - xy[1]),
+            (lambda c: c[0] - c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         )
         _to_system(self, r, g, b, a)
@@ -83,7 +83,7 @@ class ColorSystem(ABC):
 
     def __mul__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> ColorSystem:
         r, g, b, a = map(
-            (lambda xy: xy[0] * xy[1]),
+            (lambda c: c[0] * c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         )
         _to_system(self, r, g, b, a)
@@ -91,7 +91,7 @@ class ColorSystem(ABC):
 
     def __floordiv__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> ColorSystem:
         r, g, b, a = map(
-            (lambda xy: xy[0] // xy[1]),
+            (lambda c: c[0] // c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         )
         _to_system(self, r, g, b, a)
@@ -99,7 +99,7 @@ class ColorSystem(ABC):
 
     def __truediv__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> ColorSystem:
         r, g, b, a = map(
-            (lambda xy: xy[0] / xy[1]),
+            (lambda c: c[0] / c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         )
         _to_system(self, r, g, b, a)
@@ -107,7 +107,7 @@ class ColorSystem(ABC):
 
     def __mod__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> ColorSystem:
         r, g, b, a = map(
-            (lambda xy: xy[0] % xy[1]),
+            (lambda c: c[0] % c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         )
         _to_system(self, r, g, b, a)
@@ -115,7 +115,7 @@ class ColorSystem(ABC):
 
     def __pow__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> ColorSystem:
         r, g, b, a = map(
-            (lambda xy: xy[0] ** xy[1]),
+            (lambda c: c[0] ** c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         )
         _to_system(self, r, g, b, a)
@@ -141,31 +141,31 @@ class ColorSystem(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     def __gt__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
         return all(map(
-            (lambda xy: xy[0] > xy[1]),
+            (lambda c: c[0] > c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         ))
     def __lt__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
         return all(map(
-            (lambda xy: xy[0] < xy[1]),
+            (lambda c: c[0] < c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         ))
     def __eq__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
         return all(map(
-            (lambda xy: xy[0] == xy[1]),
+            (lambda c: c[0] == c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         ))
     def __ne__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
         return all(map(
-            (lambda xy: xy[0] != xy[1]),
+            (lambda c: c[0] != c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         ))
     def __le__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
         return all(map(
-            (lambda xy: xy[0] <= xy[1]),
+            (lambda c: c[0] <= c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         ))
     def __ge__(self, other: ColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
         return all(map(
-            (lambda xy: xy[0] >= xy[1]),
+            (lambda c: c[0] >= c[1]),
             zip(_to_rgba(self), _to_rgba(other))
         ))
