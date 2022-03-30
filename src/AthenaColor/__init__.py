@@ -9,33 +9,55 @@ import sys
 # Custom Library
 
 # Custom Packages
+from .Data.ConsoleCodes import (
+    esc_hex,
+    esc_octal,
+    esc_uni
+)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - INIT class -
 # ----------------------------------------------------------------------------------------------------------------------
 class _InitClass:
-    esc_hex = "\x1b"
-    esc_octal = "\033"
-    esc_uni = "\u001b"
+    _esc:str
+    _rgb_round_05_up:bool
 
-    esc = esc_hex
-
-    def __init__(self, escape_code:str=None):
-        self.set_esc(escape_code)
-
+    def __init__(self):
         # prep the console for colors
         if sys.platform == 'win32':
             os.system("color")
-            
-    @classmethod
-    def set_esc(cls, escape_code:str=None):
-        # define escape codes
-        if escape_code is None:
-            cls.esc = cls.esc_hex
-        elif escape_code in [cls.esc_hex,cls.esc_octal, cls.esc_octal]:
-            cls.esc = escape_code
+        self.esc = esc_hex
+        self.rgb_round_05_up = True
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # - ANSI esc character -
+    # ------------------------------------------------------------------------------------------------------------------
+    @staticmethod
+    def esc_list():
+        return esc_hex,esc_octal,esc_uni
+    @property
+    def esc(self):
+        return self._esc
+    @esc.setter
+    def esc(self,value:str):
+        if value in [esc_octal,esc_hex, esc_uni]:
+            self._esc = value
         else:
             raise ValueError("escape_code not defined correctly")
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # - RGB rounding -
+    # ------------------------------------------------------------------------------------------------------------------
+    @property
+    def rgb_round_05_up(self):
+        return self._rgb_round_05_up
+    @rgb_round_05_up.setter
+    def rgb_round_05_up(self, value: bool):
+        if isinstance(value, bool):
+            self._rgb_round_05_up = value
+        else:
+            raise ValueError("rgb_round_05_up not defined correctly")
+
 
 init = _InitClass()
 

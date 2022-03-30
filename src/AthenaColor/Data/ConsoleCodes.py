@@ -18,3 +18,7 @@ cursor_line_next = "E"
 cursor_line_previous = "F"
 cursor_to_column = "G"
 color = "m"
+
+esc_hex = "\x1b"
+esc_octal = "\033"
+esc_uni = "\u001b"
