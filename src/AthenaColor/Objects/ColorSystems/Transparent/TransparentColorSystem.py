@@ -9,6 +9,7 @@ from abc import ABC, abstractmethod
 
 # Custom Packages
 from AthenaColor.Functions.BoilerPlate import Constrain
+import AthenaColor.Functions.ColorSystemDunders as CSD
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support functions -
@@ -54,63 +55,61 @@ class TransparentColorSystem(ABC):
     @abstractmethod
     def __repr__(self)->str: ...
 
+    @abstractmethod
+    def _recieve(self, *_):...
+    @abstractmethod
+    def _export(self) -> tuple:...
+
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     def __add__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> TransparentColorSystem:
-        r, g, b, a = map(
-            (lambda c: c[0] + c[1]) ,
-            zip(_to_rgba(self), _to_rgba(other))
-        )
-        _to_system(self, r, g, b, a)
+        if type(self) is type(other):
+            self._recieve(CSD.add(self._export(),other._export()))
+        else:
+            _to_system(self, *CSD.add(_to_rgba(self),_to_rgba(other)))
         return self
 
     def __sub__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> TransparentColorSystem:
-        r, g, b, a = map(
-            (lambda c: c[0] - c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        )
-        _to_system(self, r, g, b, a)
+        if type(self) is type(other):
+            self._recieve(CSD.sub(self._export(), other._export()))
+        else:
+            _to_system(self, *CSD.sub(_to_rgba(self), _to_rgba(other)))
         return self
 
     def __mul__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> TransparentColorSystem:
-        r, g, b, a = map(
-            (lambda c: c[0] * c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        )
-        _to_system(self, r, g, b, a)
+        if type(self) is type(other):
+            self._recieve(CSD.mul(self._export(), other._export()))
+        else:
+            _to_system(self, *CSD.mul(_to_rgba(self), _to_rgba(other)))
         return self
 
     def __floordiv__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> TransparentColorSystem:
-        r, g, b, a = map(
-            (lambda c: c[0] // c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        )
-        _to_system(self, r, g, b, a)
+        if type(self) is type(other):
+            self._recieve(CSD.floordiv(self._export(), other._export()))
+        else:
+            _to_system(self, *CSD.floordiv(_to_rgba(self), _to_rgba(other)))
         return self
 
     def __truediv__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> TransparentColorSystem:
-        r, g, b, a = map(
-            (lambda c: c[0] / c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        )
-        _to_system(self, r, g, b, a)
+        if type(self) is type(other):
+            self._recieve(CSD.truediv(self._export(), other._export()))
+        else:
+            _to_system(self, *CSD.truediv(_to_rgba(self), _to_rgba(other)))
         return self
 
     def __mod__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> TransparentColorSystem:
-        r, g, b, a = map(
-            (lambda c: c[0] % c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        )
-        _to_system(self, r, g, b, a)
+        if type(self) is type(other):
+            self._recieve(CSD.mod(self._export(), other._export()))
+        else:
+            _to_system(self, *CSD.mod(_to_rgba(self), _to_rgba(other)))
         return self
 
     def __pow__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> TransparentColorSystem:
-        r, g, b, a = map(
-            (lambda c: c[0] ** c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        )
-        _to_system(self, r, g, b, a)
+        if type(self) is type(other):
+            self._recieve(CSD.pow(self._export(), other._export()))
+        else:
+            _to_system(self, *CSD.pow(_to_rgba(self), _to_rgba(other)))
         return self
 
     def __iadd__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> TransparentColorSystem:
@@ -132,32 +131,37 @@ class TransparentColorSystem(ABC):
     # - Comparison Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     def __gt__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
-        return all(map(
-            (lambda c: c[0] > c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        ))
+        if type(self) is type(other):
+            return CSD.gt(self._export(), other._export())
+        else:
+            return CSD.gt(_to_rgba(self), _to_rgba(other))
+
     def __lt__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
-        return all(map(
-            (lambda c: c[0] < c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        ))
+        if type(self) is type(other):
+            return CSD.lt(self._export(), other._export())
+        else:
+            return CSD.lt(_to_rgba(self), _to_rgba(other))
+
     def __eq__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
-        return all(map(
-            (lambda c: c[0] == c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        ))
+        if type(self) is type(other):
+            return CSD.eq(self._export(), other._export())
+        else:
+            return CSD.eq(_to_rgba(self), _to_rgba(other))
+
     def __ne__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
-        return all(map(
-            (lambda c: c[0] != c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        ))
+        if type(self) is type(other):
+            return CSD.ne(self._export(), other._export())
+        else:
+            return CSD.ne(_to_rgba(self), _to_rgba(other))
+
     def __le__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
-        return all(map(
-            (lambda c: c[0] <= c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        ))
+        if type(self) is type(other):
+            return CSD.le(self._export(), other._export())
+        else:
+            return CSD.le(_to_rgba(self), _to_rgba(other))
+
     def __ge__(self, other: TransparentColorSystem | int | float | tuple[int|float,int|float,int|float,int|float]) -> bool:
-        return all(map(
-            (lambda c: c[0] >= c[1]),
-            zip(_to_rgba(self), _to_rgba(other))
-        ))
+        if type(self) is type(other):
+            return CSD.ge(self._export(), other._export())
+        else:
+            return CSD.ge(_to_rgba(self), _to_rgba(other))

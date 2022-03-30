@@ -28,11 +28,16 @@ class RGBA(TransparentColorSystem,_RGBA):
     def __init__(self,r: int, g: int, b: int, a:int):
         if not TestTypes(types=(int,float),objects=(r,g,b,a)):
             raise ValueError(f"RGB values {r=},{g=},{b=},{a=} did not consist of integer values")
+        self._recieve(r,g,b,a)
 
+    def _recieve(self, r,g,b,a):
         self.r = r
         self.g = g
         self.b = b
         self.a = a
+
+    def _export(self) -> tuple:
+         return self.r,self.g,self.b,self.a
 
     # ------------------------------------------------------------------------------------------------------------------
     # RGB Properties
