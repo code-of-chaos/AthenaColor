@@ -6,11 +6,12 @@
 # Custom Library
 
 # Custom Packages
-from .RGB import RGB
-from ...Functions.ColorConversion import (
-    hexadecimal_to_rgb,
+from AthenaColor.Functions.ColorConversion_Tuples import (
+    hex_to_rgb,
     rgb_to_hexadecimal
 )
+from .RGB import RGB
+
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
@@ -18,7 +19,7 @@ from ...Functions.ColorConversion import (
 # inherits from rgb as it is just another notation of the rgb format
 class HEX(RGB):
     def __init__(self, hex_value:str):
-        self.r,self.g,self.b = hexadecimal_to_rgb(hex_value)
+        self.r,self.g,self.b = hex_to_rgb(hex_value)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
