@@ -14,7 +14,7 @@ from AthenaColor.Functions.BoilerPlate import Constrain
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
-def _to_rgb(color):
+def _to_rgb(color:ColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple):
     match color:
         case _RGB(r=r,g=g,b=b) | _HEX(r=r,g=g,b=b):
             return r,g,b
@@ -32,7 +32,7 @@ def _to_rgb(color):
         case _:
             return NotImplemented
 
-def _to_system(color:object, r:int,g:int,b:int):
+def _to_system(color:ColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV, r:int,g:int,b:int):
     match color:
         case _RGB() | _HEX():
             color.r, color.g, color.b = r,g,b
