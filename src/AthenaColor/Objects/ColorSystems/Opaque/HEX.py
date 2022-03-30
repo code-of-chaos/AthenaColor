@@ -11,7 +11,7 @@ from AthenaColor.Functions.ColorTupleConversion import (
     rgb_to_hex
 )
 from .RGB import RGB
-from ._OpaqueColorSystem import _HEX
+from .OpaqueColorSystem import _HEX
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

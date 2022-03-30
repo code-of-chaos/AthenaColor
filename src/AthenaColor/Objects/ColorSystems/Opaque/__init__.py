@@ -1,4 +1,4 @@
-from ._OpaqueColorSystem import OpaqueColorSystem
+from .OpaqueColorSystem import OpaqueColorSystem
 
 from .RGB import RGB
 from .HEX import HEX

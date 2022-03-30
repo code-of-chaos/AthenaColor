@@ -13,7 +13,7 @@ from AthenaColor.Functions.BoilerPlate import (
     TestTypes,
     RoundCorrectly
 )
-from ._TransparentColorSystem import (
+from .TransparentColorSystem import (
     TransparentColorSystem,
     _RGBA
 )

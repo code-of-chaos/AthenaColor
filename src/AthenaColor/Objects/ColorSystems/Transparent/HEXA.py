@@ -11,7 +11,7 @@ from AthenaColor.Functions.ColorTupleConversion import (
     rgba_to_hexa
 )
 from .RGBA import RGBA
-from ._TransparentColorSystem import _HEXA
+from .TransparentColorSystem import _HEXA
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

@@ -11,7 +11,7 @@ from AthenaColor.Functions.BoilerPlate import (
     Constrain,
     TestTypes
 )
-from ._OpaqueColorSystem import (
+from .OpaqueColorSystem import (
     OpaqueColorSystem,
     _HSV
 )
