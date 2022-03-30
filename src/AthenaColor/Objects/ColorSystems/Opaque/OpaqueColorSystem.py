@@ -15,7 +15,7 @@ import AthenaColor.Functions.ColorSystemDunders as CSD
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
-def _to_rgb(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple)->tuple[int|float,int|float,int|float]:
+def _to_rgb(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple)->tuple:
     if isinstance(color, (_RGB, _HEX)):
         return color.r, color.g, color.b
     elif isinstance(color, _CMYK):
@@ -32,7 +32,7 @@ def _to_rgb(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV|int|float|tuple)->
     else:
         return NotImplemented
 
-def _to_system(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV, r:int,g:int,b:int)->tuple[int|float,int|float,int|float]:
+def _to_system(color:OpaqueColorSystem|_RGB|_HEX|_CMYK|_HSL|_HSV, r:int,g:int,b:int)->tuple:
     if isinstance(color, (_RGB, _HEX)):
         color.r, color.g, color.b = r, g, b
     elif isinstance(color, _CMYK):
@@ -90,7 +90,7 @@ class OpaqueColorSystem(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
-    def __add__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __add__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
         Math Dunder which executes an addition operator on the RGB notations of its own and the other class.
         Reassembles the RGB values to the current object's needed values
@@ -101,7 +101,7 @@ class OpaqueColorSystem(ABC):
             _to_system(self, *CSD.add(_to_rgb(self),_to_rgb(other)))
         return self
 
-    def __sub__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __sub__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
         Math Dunder which executes a subtraction operator on the RGB notations of its own and the other class.
         Reassembles the RGB values to the current object's needed values
@@ -112,7 +112,7 @@ class OpaqueColorSystem(ABC):
             _to_system(self, *CSD.sub(_to_rgb(self),_to_rgb(other)))
         return self
 
-    def __mul__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __mul__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
         Math Dunder which executes a multiplication operator on the RGB notations of its own and the other class.
         Reassembles the RGB values to the current object's needed values
@@ -123,7 +123,7 @@ class OpaqueColorSystem(ABC):
             _to_system(self, *CSD.mul(_to_rgb(self),_to_rgb(other)))
         return self
 
-    def __floordiv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __floordiv__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
         Math Dunder which executes a floor division operator on the RGB notations of its own and the other class.
         Reassembles the RGB values to the current object's needed values
@@ -134,7 +134,7 @@ class OpaqueColorSystem(ABC):
             _to_system(self, *CSD.floordiv(_to_rgb(self),_to_rgb(other)))
         return self
 
-    def __truediv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __truediv__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
         Math Dunder which executes a division operator on the RGB notations of its own and the other class.
         Reassembles the RGB values to the current object's needed values
@@ -145,7 +145,7 @@ class OpaqueColorSystem(ABC):
             _to_system(self, *CSD.truediv(_to_rgb(self),_to_rgb(other)))
         return self
 
-    def __mod__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __mod__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
         Math Dunder which executes a modulo operator on the RGB notations of its own and the other class.
         Reassembles the RGB values to the current object's needed values
@@ -156,7 +156,7 @@ class OpaqueColorSystem(ABC):
             _to_system(self, *CSD.mod(_to_rgb(self),_to_rgb(other)))
         return self
 
-    def __pow__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __pow__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         """
         Math Dunder which executes a power operator on the RGB notations of its own and the other class.
         Reassembles the RGB values to the current object's needed values
@@ -167,25 +167,25 @@ class OpaqueColorSystem(ABC):
             _to_system(self, *CSD.pow(_to_rgb(self),_to_rgb(other)))
         return self
 
-    def __iadd__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __iadd__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         return self.__add__(other)
-    def __isub__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __isub__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         return self.__sub__(other)
-    def __imul__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __imul__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         return self.__mul__(other)
-    def __ifloordiv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __ifloordiv__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         return self.__floordiv__(other)
-    def __itruediv__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __itruediv__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         return self.__truediv__(other)
-    def __imod__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __imod__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         return self.__mod__(other)
-    def __ipow__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> OpaqueColorSystem:
+    def __ipow__(self, other: OpaqueColorSystem | int | float | tuple) -> OpaqueColorSystem:
         return self.__pow__(other)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Comparison Dunders -
     # ------------------------------------------------------------------------------------------------------------------
-    def __gt__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __gt__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
         Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
         Tests for greater than the other
@@ -195,7 +195,7 @@ class OpaqueColorSystem(ABC):
         else:
             return CSD.gt(_to_rgb(self),_to_rgb(other))
 
-    def __lt__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __lt__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
         Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
         Tests for smaller than the other
@@ -205,7 +205,7 @@ class OpaqueColorSystem(ABC):
         else:
             return CSD.lt(_to_rgb(self),_to_rgb(other))
 
-    def __eq__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __eq__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
         Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
         Tests for equality to the other
@@ -215,7 +215,7 @@ class OpaqueColorSystem(ABC):
         else:
             return CSD.eq(_to_rgb(self),_to_rgb(other))
 
-    def __ne__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __ne__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
         Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
         Tests for inequality to the other
@@ -225,7 +225,7 @@ class OpaqueColorSystem(ABC):
         else:
             return CSD.ne(_to_rgb(self),_to_rgb(other))
 
-    def __le__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __le__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
         Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
         Tests for smaller than or equality to the other
@@ -235,7 +235,7 @@ class OpaqueColorSystem(ABC):
         else:
             return CSD.le(_to_rgb(self),_to_rgb(other))
 
-    def __ge__(self, other: OpaqueColorSystem | int | float | tuple[int|float,int|float,int|float]) -> bool:
+    def __ge__(self, other: OpaqueColorSystem | int | float | tuple) -> bool:
         """
         Comparison Dunder which compares the RGB notations of its own and the other class against eachother.
         Tests for greater than or equality to the other
