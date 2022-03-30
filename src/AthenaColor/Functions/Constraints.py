@@ -6,10 +6,10 @@
 # Custom Library
 
 # Custom Packages
-from ..BoilerPlate import Constrain
+from .BoilerPlate import Constrain
 
 # ----------------------------------------------------------------------------------------------------------------------
-# - Constraints for ColorSystems -
+# - Constraints for OPAQUE COLORSs -
 # ----------------------------------------------------------------------------------------------------------------------
 def ConstrainHSV(h,s,v)->tuple[int|float,int|float,int|float]:
     s,v = map(lambda x: Constrain(x, 1), (s,v))
@@ -26,3 +26,10 @@ def ConstrainRGB(r,g,b)->tuple[int|float,int|float,int|float]:
 def ConstrainCMYK(c,m,y,k)->tuple[int|float,int|float,int|float,int|float]:
     c,m,y,k = map(lambda x: Constrain(x, 1), (c,m,y,k))
     return c,m,y,k
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - Constraints for TRANSPARENT COLORSs -
+# ----------------------------------------------------------------------------------------------------------------------
+def ConstrainRGBA(r,g,b,a)->tuple[int|float,int|float,int|float,int|float]:
+    r,g,b,a = map(lambda x: Constrain(x, 255), (r,g,b,a))
+    return r,g,b,a

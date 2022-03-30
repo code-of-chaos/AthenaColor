@@ -6,17 +6,22 @@
 # Custom Library
 
 # Custom Packages
-from ..BoilerPlate import (
+from .BoilerPlate import (
     NormalizeRgb,
     RoundCorrectly
 )
 from .TestValues import (
     testRGB,testHSV,testHSL,testCMYK,testHEX,
+    testHEXA,testRGBA
 )
 from .Constraints import (
     ConstrainHSV, ConstrainHSL, ConstrainRGB, ConstrainCMYK,
+    ConstrainRGBA
 )
 
+# ----------------------------------------------------------------------------------------------------------------------
+# - OPAQUE COLORS -
+# ----------------------------------------------------------------------------------------------------------------------
 # ----------------------------------------------------------------------------------------------------------------------
 # - RGB -
 # ----------------------------------------------------------------------------------------------------------------------
@@ -244,3 +249,27 @@ def hsv_to_hsl(h:float,s:float,v:float) -> tuple[float,float,float]:
 @testCMYK
 def cmyk_to_hsl(c:float,m:float,y:float,k:float) -> tuple[float,float,float]:
     return rgb_to_hsl(*cmyk_to_rgb(*ConstrainCMYK(c,m,y,k)))
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - TRANSPARENT COLORS -
+# ----------------------------------------------------------------------------------------------------------------------
+@testHEXA
+def hexa_to_rgba(hexadecimal:str) -> tuple[int,int,int,int]:
+    # Form hex value in usable state (cast away the '#' value)
+    if hexadecimal[0] == "#":
+        hex_v = hexadecimal[1:]
+    elif len(hexadecimal) == 8:
+        hex_v = hexadecimal
+    else:
+        raise ValueError("Hexadecimal was given in an incorrect format")
+
+    # Actually convert to rgb integers
+    r, g, b, a = tuple(
+        int(hex_v[i:i + 2], 16)
+        for i in (0, 2, 4,6)
+    )
+
+    return r, g, b, a
+@testRGBA
+def rgba_to_hexa(r:int,g:int,b:int,a:int) -> str:
+    return '#%02x%02x%02x%02x' % ConstrainRGBA(r,g,b,a)

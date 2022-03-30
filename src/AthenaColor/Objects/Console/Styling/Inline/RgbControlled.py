@@ -6,7 +6,7 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Objects import RGB
+from AthenaColor.Objects.ColorSystems.Opaque import RGB
 from AthenaColor.Functions import ColorSequence
 import AthenaColor.Data.HtmlColors as HtmlColors
 

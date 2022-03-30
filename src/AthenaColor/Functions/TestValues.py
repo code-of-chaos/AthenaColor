@@ -6,12 +6,11 @@
 # Custom Library
 
 # Custom Packages
-from ..BoilerPlate import TestTypes
+from .BoilerPlate import TestTypes
 
 # ----------------------------------------------------------------------------------------------------------------------
-# - Support Decorators for testing -
+# - Support Decorators for testing OPAQUE COLORS-
 # ----------------------------------------------------------------------------------------------------------------------
-
 # RGB tests
 def testRGB(fnc):
     def wrapper(*args,**kwargs):
@@ -64,5 +63,30 @@ def testCMYK(fnc):
                 objects=(arguments:= args if not kwargs else (*args,*kwargs.values()))
         ):
             raise ValueError(f"CMYK values {arguments=} did not consist of integer or float values")
+        return fnc(*args,**kwargs)
+    return wrapper
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - Support Decorators for testing TRANSPARENT COLORS-
+# ----------------------------------------------------------------------------------------------------------------------
+# RGB tests
+def testRGBA(fnc):
+    def wrapper(*args,**kwargs):
+        if not TestTypes(
+                types=int,
+                objects=(arguments:= args if not kwargs else (*args,*kwargs.values()))
+        ):
+            raise ValueError(f"RGBA values {arguments=} did not consist of integer values")
+        return fnc(*args,**kwargs)
+    return wrapper
+
+# HEX tests
+def testHEXA(fnc):
+    def wrapper(*args,**kwargs):
+        if not TestTypes(
+                types=str,
+                objects=(arguments:= args if not kwargs else (*args,*kwargs.values()))
+        ):
+            raise ValueError(f"HEXA values {arguments=} did not consist of a string value")
         return fnc(*args,**kwargs)
     return wrapper

@@ -55,12 +55,16 @@ from .Objects.Console import (
 )
 
 class ColorSystems:
-    from AthenaColor.Objects import (
+    from AthenaColor.Objects.ColorSystems.Opaque import (
         RGB,
         HEX,
         CMYK,
         HSL,
         HSV
+    )
+    from AthenaColor.Objects.ColorSystems.Transparent import (
+        RGBA,
+        HEXA,
     )
 
 # ----------------------------------------------------------------------------------------------------------------------

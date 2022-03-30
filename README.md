@@ -14,7 +14,7 @@ A *No Dependency* python package for displaying the full spectrum of RGB colors 
  
 ---
 ## Content and Examples
- For examples on how to use the package, go to [the wiki examples](https://github.com/DirectiveAthena/VerSC-AthenaColor/wiki/Examples) on the Github Repo.
+ For examples on how to use the package, go to [the wiki examples](https://github.com/DirectiveAthena/VerSC-AthenaColor/wiki/Examples) on the GitHub Repo.
 
 To immediately  see what the package can do, run the package itself (will call the `__main__.py` file in the package):
 
