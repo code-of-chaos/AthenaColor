@@ -1,4 +1,4 @@
-from ._ColorSystem import TransparentColorSystem
+from ._TransparentColorSystem import TransparentColorSystem
 
 from .RGBA import RGBA
 from .HEXA import HEXA
