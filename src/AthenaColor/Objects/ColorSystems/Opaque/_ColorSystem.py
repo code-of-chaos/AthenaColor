@@ -14,7 +14,7 @@ from AthenaColor.Functions.BoilerPlate import Constrain
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support functions -
 # ----------------------------------------------------------------------------------------------------------------------
-def _to_rgb(n:object) -> tuple[int|float,int|float,int|float]:
+def _to_rgb(n:object) -> tuple[int|float,int|float,int|float]|tuple[int|float,...]:
     if isinstance(n, (_RGB, _HEX)):
         return n.r, n.g, n.b
     elif isinstance(n, _CMYK):
@@ -23,8 +23,9 @@ def _to_rgb(n:object) -> tuple[int|float,int|float,int|float]:
         return hsl_to_rgb(n.h, n.s, n.l)
     elif isinstance(n, _HSV):
         return hsl_to_rgb(n.h, n.s, n.v)
-    elif isinstance(n, tuple) and len(n)==3:
-        return n
+    elif isinstance(n, tuple) and len(n) == 3 and all(map(lambda x: isinstance(x, (int, float)), n)):
+        n_ = tuple(Constrain(x,255) for x in n)
+        return n_
     elif isinstance(n, (int,float)):
         n_ = Constrain(n, 255)
         return n_,n_,n_
