@@ -7,7 +7,7 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from .ColorSystem import ColorSystem
+from ._ColorSystem import ColorSystem
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Methods -
 # ----------------------------------------------------------------------------------------------------------------------
