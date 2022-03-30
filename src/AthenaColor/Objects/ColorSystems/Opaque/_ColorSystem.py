@@ -8,7 +8,7 @@ from abc import ABC, abstractmethod
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions.ColorConversion import *
+from AthenaColor.Functions.ColorTupleConversion import *
 from AthenaColor.Functions.BoilerPlate import Constrain
 
 # ----------------------------------------------------------------------------------------------------------------------
