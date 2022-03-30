@@ -53,16 +53,16 @@ class _RGB:
     g:int
     b:int
 
+class _HEX:
+    r:int
+    g:int
+    b:int
+
 class _CMYK:
     c:float
     m:float
     y:float
     k:float
-
-class _HEX:
-    r:int
-    g:int
-    b:int
 
 class _HSL:
     h:float

@@ -39,6 +39,8 @@ class HSV(OpaqueColorSystem,_HSV):
         return self._h
     @h.setter
     def h(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._h = Constrain(value, 360)
 
     @property
@@ -46,6 +48,8 @@ class HSV(OpaqueColorSystem,_HSV):
         return self._s
     @s.setter
     def s(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._s = Constrain(value, 1)
 
     @property
@@ -53,6 +57,8 @@ class HSV(OpaqueColorSystem,_HSV):
         return self._v
     @v.setter
     def v(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._v = Constrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------

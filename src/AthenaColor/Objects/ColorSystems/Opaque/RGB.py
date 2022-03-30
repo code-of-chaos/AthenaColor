@@ -41,6 +41,8 @@ class RGB(OpaqueColorSystem,_RGB):
         return self._r
     @r.setter
     def r(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._r = RoundCorrectly(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
     @property
@@ -48,6 +50,8 @@ class RGB(OpaqueColorSystem,_RGB):
         return self._g
     @g.setter
     def g(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._g = RoundCorrectly(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
     @property
@@ -55,6 +59,8 @@ class RGB(OpaqueColorSystem,_RGB):
         return self._b
     @b.setter
     def b(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._b = RoundCorrectly(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
     # ------------------------------------------------------------------------------------------------------------------

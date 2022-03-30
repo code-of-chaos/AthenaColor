@@ -25,7 +25,7 @@ import AthenaColor.Functions.ColorTupleConversion as CTC
 # ----------------------------------------------------------------------------------------------------------------------
 # - RGB -
 # ----------------------------------------------------------------------------------------------------------------------
-def to_rgb(color:RGB|HEX|CMYK|HSL|HSV) -> RGB:
+def to_RGB(color:RGB|HEX|CMYK|HSL|HSV) -> RGB:
     match color:
         case RGB():
             return color
@@ -43,7 +43,7 @@ def to_rgb(color:RGB|HEX|CMYK|HSL|HSV) -> RGB:
 # ----------------------------------------------------------------------------------------------------------------------
 # - Hexadecimal -
 # ----------------------------------------------------------------------------------------------------------------------
-def to_hex(color:RGB|HEX|CMYK|HSL|HSV) -> HEX:
+def to_HEX(color:RGB|HEX|CMYK|HSL|HSV) -> HEX:
     match color:
         case RGB():
             return HEX(CTC.rgb_to_hex(r=color.r, g=color.g, b=color.b))
@@ -61,7 +61,7 @@ def to_hex(color:RGB|HEX|CMYK|HSL|HSV) -> HEX:
 # ----------------------------------------------------------------------------------------------------------------------
 # - HSV -
 # ----------------------------------------------------------------------------------------------------------------------
-def to_hsv(color:RGB|HEX|CMYK|HSL|HSV) -> HSV:
+def to_HSV(color:RGB|HEX|CMYK|HSL|HSV) -> HSV:
     match color:
         case RGB():
             return HSV(*CTC.rgb_to_hsv(r=color.r, g=color.g, b=color.b))
@@ -79,7 +79,7 @@ def to_hsv(color:RGB|HEX|CMYK|HSL|HSV) -> HSV:
 # ----------------------------------------------------------------------------------------------------------------------
 # - HSL -
 # ----------------------------------------------------------------------------------------------------------------------
-def to_hsl(color:RGB|HEX|CMYK|HSL|HSV) -> HSL:
+def to_HSL(color:RGB|HEX|CMYK|HSL|HSV) -> HSL:
     match color:
         case RGB():
             return HSL(*CTC.rgb_to_hsl(r=color.r, g=color.g, b=color.b))
@@ -97,7 +97,7 @@ def to_hsl(color:RGB|HEX|CMYK|HSL|HSV) -> HSL:
 # ----------------------------------------------------------------------------------------------------------------------
 # - CMYK -
 # ----------------------------------------------------------------------------------------------------------------------
-def to_cmyk(color:RGB|HEX|CMYK|HSL|HSV) -> CMYK:
+def to_CMYK(color:RGB|HEX|CMYK|HSL|HSV) -> CMYK:
     match color:
         case RGB():
             return CMYK(*CTC.rgb_to_cmyk(r=color.r, g=color.g, b=color.b))
@@ -115,7 +115,7 @@ def to_cmyk(color:RGB|HEX|CMYK|HSL|HSV) -> CMYK:
 # ----------------------------------------------------------------------------------------------------------------------
 # - TRANSPARENT COLORS -
 # ----------------------------------------------------------------------------------------------------------------------A
-def to_rgba(color:RGBA|HEXA) -> RGBA:
+def to_RGBA(color:RGBA|HEXA) -> RGBA:
     match color:
         case RGBA():
             return color
@@ -124,7 +124,7 @@ def to_rgba(color:RGBA|HEXA) -> RGBA:
         case _:
             raise ValueError(f"No known Transparent Color system: {color=}")
 
-def to_hexa(color:RGBA|HEXA) -> HEXA:
+def to_HEXA(color:RGBA|HEXA) -> HEXA:
     match color:
         case RGBA():
             return HEXA(*CTC.rgba_to_hexa(r=color.r, g=color.g, b=color.b, a=color.a))

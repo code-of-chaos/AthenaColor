@@ -39,6 +39,8 @@ class CMYK(OpaqueColorSystem,_CMYK):
         return self._c
     @c.setter
     def c(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._c = Constrain(value, 1)
 
     @property
@@ -46,6 +48,8 @@ class CMYK(OpaqueColorSystem,_CMYK):
         return self._m
     @m.setter
     def m(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._m = Constrain(value, 1)
 
     @property
@@ -53,6 +57,8 @@ class CMYK(OpaqueColorSystem,_CMYK):
         return self._y
     @y.setter
     def y(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._y = Constrain(value, 1)
 
     @property
@@ -60,6 +66,8 @@ class CMYK(OpaqueColorSystem,_CMYK):
         return self._k
     @k.setter
     def k(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
         self._k = Constrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
