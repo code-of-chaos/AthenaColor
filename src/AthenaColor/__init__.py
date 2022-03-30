@@ -5,6 +5,7 @@
 from __future__ import annotations
 import os
 import sys
+
 # Custom Library
 
 # Custom Packages
@@ -13,11 +14,7 @@ import sys
 # - INIT class -
 # ----------------------------------------------------------------------------------------------------------------------
 class _InitClass:
-    from .Data.ConsoleCodes import (
-        esc_hex,
-        esc_octal,
-        esc_uni
-    )
+    from .Data.ConsoleCodes import (esc_hex,esc_octal,esc_uni)
     _esc:str
     _rgb_round_05_up:bool
 
@@ -31,8 +28,6 @@ class _InitClass:
     # ------------------------------------------------------------------------------------------------------------------
     # - ANSI esc character -
     # ------------------------------------------------------------------------------------------------------------------
-    def esc_list(self):
-        return self.esc_hex,self.esc_octal,self.esc_uni
     @property
     def esc(self):
         return self._esc
@@ -42,6 +37,8 @@ class _InitClass:
             self._esc = value
         else:
             raise ValueError("escape_code not defined correctly")
+    def esc_list(self):
+        return self.esc_hex,self.esc_octal,self.esc_uni
 
     # ------------------------------------------------------------------------------------------------------------------
     # - RGB rounding -
@@ -55,7 +52,6 @@ class _InitClass:
             self._rgb_round_05_up = value
         else:
             raise ValueError("rgb_round_05_up not defined correctly")
-
 
 init = _InitClass()
 
