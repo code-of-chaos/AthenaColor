@@ -26,11 +26,9 @@ class HSL(OpaqueColorSystem,_HSL):
     def __init__(self,h: int|float, s: int|float, l: int|float):
         if not TestTypes(types=(int,float),objects=(h,s,l)):
             raise ValueError(f"HSL values {h=},{s=},{l=} did not consist of integer or float values")
-        self.h = h
-        self.s = s
-        self.l = l
+        self.h,self.s,self.l = h,s,l
 
-    def _export(self) -> tuple:
+    def _export(self) -> tuple[HSL.h,HSL.s,HSL.l]:
          return self.h,self.s,self.l
 
     # ------------------------------------------------------------------------------------------------------------------

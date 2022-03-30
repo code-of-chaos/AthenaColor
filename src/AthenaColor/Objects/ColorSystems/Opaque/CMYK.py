@@ -26,12 +26,9 @@ class CMYK(OpaqueColorSystem,_CMYK):
     def __init__(self, c:int|float, m:int|float, y:int|float, k:int|float):
         if not TestTypes(types=(int,float), objects=(c,m,y,k)):
             raise ValueError(f"CMYK values {c=},{m=},{y=},{k=} did not consist of integer or float values")
-        self.c = c
-        self.m = m
-        self.y = y
-        self.k = k
+        self.c,self.m,self.y,self.k = c,m,y,k
 
-    def _export(self) -> tuple:
+    def _export(self) -> tuple[CMYK.c,CMYK.m,CMYK.y,CMYK.k]:
          return self.c,self.m,self.y,self.k
 
     # ------------------------------------------------------------------------------------------------------------------

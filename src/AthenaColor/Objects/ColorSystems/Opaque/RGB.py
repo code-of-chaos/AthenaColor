@@ -28,11 +28,9 @@ class RGB(OpaqueColorSystem,_RGB):
     def __init__(self,r: int, g: int, b: int):
         if not TestTypes(types=(int,float),objects=(r,g,b)):
             raise ValueError(f"RGB values {r=},{g=},{b=} did not consist of integer values")
-        self.r = r
-        self.g = g
-        self.b = b
+        self.r,self.g,self.b = r,g,b
 
-    def _export(self) -> tuple:
+    def _export(self) -> tuple[RGB.r,RGB.g,RGB.b]:
          return self.r,self.g,self.b
 
     # ------------------------------------------------------------------------------------------------------------------

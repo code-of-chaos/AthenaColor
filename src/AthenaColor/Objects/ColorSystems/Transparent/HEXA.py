@@ -23,7 +23,6 @@ class HEXA(RGBA,_HEXA):
             raise ValueError(f"HEXA value {hex_value=} did not consist of a string value")
         self.r,self.g,self.b,self.a = hexa_to_rgba(hex_value)
 
-
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------

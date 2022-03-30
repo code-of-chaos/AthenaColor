@@ -26,11 +26,9 @@ class HSV(OpaqueColorSystem,_HSV):
     def __init__(self,h: int|float, s: int|float, v: int|float):
         if not TestTypes(types=(int,float),objects=(h,s,v)):
             raise ValueError(f"HSV values {h=},{s=},{v=} did not consist of integer or float values")
-        self.h = h
-        self.s = s
-        self.v = v
+        self.h,self.s,self.v = h,s,v
 
-    def _export(self) -> tuple:
+    def _export(self) -> tuple[HSV.h,HSV.s,HSV.v]:
          return self.h,self.s,self.v
 
     # ------------------------------------------------------------------------------------------------------------------
