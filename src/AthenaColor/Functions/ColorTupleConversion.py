@@ -8,7 +8,7 @@
 # Custom Packages
 from .BoilerPlate import (
     NormalizeRgb,
-    RoundCorrectly
+    RouhdHalfUp
 )
 from .TestValues import (
     testRGB,testHSV,testHSL,testCMYK,testHEX,
@@ -70,9 +70,9 @@ def hsv_to_rgb(h:float,s:float,v:float) -> tuple[int,int,int]:
     m = v-C
 
     return (
-        RoundCorrectly((r_ + m) * 255),
-        RoundCorrectly((g_ + m) * 255),
-        RoundCorrectly((b_ + m) * 255)
+        RouhdHalfUp((r_ + m) * 255),
+        RouhdHalfUp((g_ + m) * 255),
+        RouhdHalfUp((b_ + m) * 255)
     )
 
 @testCMYK
@@ -83,9 +83,9 @@ def cmyk_to_rgb(c:float,m:float,y:float,k:float) -> tuple[int,int,int]:
     """
     c,m,y,k = ConstrainCMYK(c,m,y,k)
     return (
-        RoundCorrectly(255 * (1 - c) * (1 - k)),  #r
-        RoundCorrectly(255 * (1 - m) * (1 - k)),  #g
-        RoundCorrectly(255 * (1 - y) * (1 - k))  #b
+        RouhdHalfUp(255 * (1 - c) * (1 - k)),  #r
+        RouhdHalfUp(255 * (1 - m) * (1 - k)),  #g
+        RouhdHalfUp(255 * (1 - y) * (1 - k))  #b
     )
 
 @testHSL
@@ -111,9 +111,9 @@ def hsl_to_rgb(h:float,s:float,l:float) -> tuple[int,int,int]:
     m = l-(C/2)
 
     return (
-        RoundCorrectly((r_ + m) * 255),
-        RoundCorrectly((g_ + m) * 255),
-        RoundCorrectly((b_ + m) * 255)
+        RouhdHalfUp((r_ + m) * 255),
+        RouhdHalfUp((g_ + m) * 255),
+        RouhdHalfUp((b_ + m) * 255)
     )
 
 # ----------------------------------------------------------------------------------------------------------------------

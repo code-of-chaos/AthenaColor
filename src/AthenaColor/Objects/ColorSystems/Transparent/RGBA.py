@@ -11,7 +11,7 @@ from AthenaColor import init
 from AthenaColor.Functions.BoilerPlate import (
     Constrain,
     TestTypes,
-    RoundCorrectly
+    RouhdHalfUp
 )
 from .TransparentColorSystem import (
     TransparentColorSystem,
@@ -43,7 +43,7 @@ class RGBA(TransparentColorSystem,_RGBA):
     def r(self, value: int | float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._r = RoundCorrectly(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
+        self._r = RouhdHalfUp(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
     @property
     def g(self) -> int:
@@ -52,7 +52,7 @@ class RGBA(TransparentColorSystem,_RGBA):
     def g(self, value: int | float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._g = RoundCorrectly(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
+        self._g = RouhdHalfUp(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
     @property
     def b(self) -> int:
@@ -61,7 +61,7 @@ class RGBA(TransparentColorSystem,_RGBA):
     def b(self, value: int | float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._b = RoundCorrectly(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
+        self._b = RouhdHalfUp(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
     @property
     def a(self) -> int:
@@ -70,7 +70,7 @@ class RGBA(TransparentColorSystem,_RGBA):
     def a(self, value: int | float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._a = RoundCorrectly(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
+        self._a = RouhdHalfUp(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods

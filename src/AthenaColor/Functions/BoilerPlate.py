@@ -32,7 +32,7 @@ def Constrain(value:int|float, maximum:int|float, minimum:int|float=0) -> int|fl
     """
     return max(min(value, maximum),minimum)
 
-def RoundCorrectly(value:int|float) -> int:
+def RouhdHalfUp(value:int|float) -> int: # becasue Twidi didn't like RoundCorrectly :P
     """
     Round a given number to the nearest integer value.
     In comparision to the standerd round(), it rounds values which land exactly on 0.5 to the upperbound.
