@@ -6,7 +6,7 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Objects.ColorSystems.Opaque import RGB
+from AthenaColor.Objects.ColorSystems import RGB
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

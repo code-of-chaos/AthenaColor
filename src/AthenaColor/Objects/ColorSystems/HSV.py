@@ -11,15 +11,15 @@ from AthenaColor.Functions.BoilerPlate import (
     Constrain,
     TestTypes
 )
-from .OpaqueColorSystem import (
-    OpaqueColorSystem,
-    _HSV
+from ._ColorSystem import (
+    ColorSystem,
 )
+from ._Bases import _HSV
 
 # ------------------------------------------------------------------------------------------------------------------
 # - Color -
 # ------------------------------------------------------------------------------------------------------------------
-class HSV(OpaqueColorSystem,_HSV):
+class HSV(ColorSystem, _HSV):
     """
     Color Object for HSL values.
     The h value is a float value which ranges between 0 and 360, including.

@@ -6,7 +6,6 @@
 # Custom Library
 
 # Custom Packages
-import AthenaColor
 from AthenaColor.Data.Examples import *
 
 # ----------------------------------------------------------------------------------------------------------------------

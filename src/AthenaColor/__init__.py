@@ -103,17 +103,14 @@ from .Objects.Console import (
     UnderlineNest, #technically present but doesn't work in PyCharm
     StyleNest
 )
-
-from AthenaColor.Objects.ColorSystems.Opaque import (
+from AthenaColor.Objects.ColorSystems import (
     RGB,
     HEX,
-    CMYK,
-    HSL,
-    HSV
-)
-from AthenaColor.Objects.ColorSystems.Transparent import (
     RGBA,
     HEXA,
+    HSL,
+    HSV,
+    CMYK
 )
 
 # ----------------------------------------------------------------------------------------------------------------------

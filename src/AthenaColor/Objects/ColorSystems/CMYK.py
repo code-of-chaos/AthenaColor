@@ -11,15 +11,15 @@ from AthenaColor.Functions.BoilerPlate import (
     Constrain,
     TestTypes
 )
-from .OpaqueColorSystem import (
-    OpaqueColorSystem,
-    _CMYK
+from ._ColorSystem import (
+    ColorSystem,
 )
+from ._Bases import _CMYK
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-class CMYK(OpaqueColorSystem,_CMYK):
+class CMYK(ColorSystem, _CMYK):
     """
     Color Object for CMYK values.
     All c,m,y,k values are float values which range between 0 and 1, including

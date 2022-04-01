@@ -13,29 +13,29 @@ from AthenaColor.Functions.BoilerPlate import (
     TestTypes,
     RoundHalfUp
 )
-from .OpaqueColorSystem import (
-    OpaqueColorSystem,
-    _RGB
+from ._ColorSystem import (
+    ColorSystem,
 )
+from ._Bases import _RGBA
 
 # ------------------------------------------------------------------------------------------------------------------
 # - Color -
 # ------------------------------------------------------------------------------------------------------------------
-class RGB(OpaqueColorSystem,_RGB):
+class RGBA(ColorSystem,_RGBA):
     """
-    Color Object for RGB values.
-    All r,g,b values are integer values which range between 0 and 255, including.
+    Color Object for RGBA values.
+    All r,g,b,a values are integer values which range between 0 and 255, including.
     """
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,r: int, g: int, b: int):
-        if not TestTypes(types=(int,float),objects=(r,g,b)):
-            raise ValueError(f"RGB values {r=},{g=},{b=} did not consist of integer values")
-        self.r,self.g,self.b = r,g,b
+    def __init__(self,r: int, g: int, b: int, a:int):
+        if not TestTypes(types=(int,float),objects=(r,g,b,a)):
+            raise ValueError(f"RGB values {r=},{g=},{b=},{a=} did not consist of integer values")
+        self.r,self.g,self.b,self.a = r,g,b,a
 
-    def _export(self) -> tuple[RGB.r,RGB.g,RGB.b]:
-         return self.r,self.g,self.b
+    def _export(self) -> tuple[RGBA.r,RGBA.g,RGBA.b,RGBA.a]:
+         return self.r,self.g,self.b,self.a
 
     # ------------------------------------------------------------------------------------------------------------------
     # RGB Properties
@@ -67,12 +67,21 @@ class RGB(OpaqueColorSystem,_RGB):
             raise ValueError
         self._b = RoundHalfUp(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
 
+    @property
+    def a(self) -> int:
+        return self._a
+    @a.setter
+    def a(self, value: int | float):
+        if not isinstance(value, (int,float)):
+            raise ValueError
+        self._a = RoundHalfUp(Constrain(value, 255)) if init.rgb_round_05_up else round(Constrain(value, 255))
+
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
     def __str__(self) -> str:
-        return f"{self.r};{self.g};{self.b}"
+        return f"{self.r};{self.g};{self.b};{self.a}"
 
     def __repr__(self) -> str:
-        return f"RGB(r={self.r},g={self.g},b={self.b})"
+        return f"RGBA(r={self.r},g={self.g},b={self.b},a={self.a})"
