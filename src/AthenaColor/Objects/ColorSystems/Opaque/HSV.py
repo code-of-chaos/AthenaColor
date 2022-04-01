@@ -20,6 +20,11 @@ from .OpaqueColorSystem import (
 # - Color -
 # ------------------------------------------------------------------------------------------------------------------
 class HSV(OpaqueColorSystem,_HSV):
+    """
+    Color Object for HSL values.
+    The h value is a float value which ranges between 0 and 360, including.
+    Both s,v values are float values which range between 0 and 1, including.
+    """
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------

@@ -55,12 +55,24 @@ class TransparentColorSystem(ABC):
         # no 'OpaqueColorSystem' can be created on its own
         raise PermissionError
     @abstractmethod
-    def __str__(self)->str: ...
-    @abstractmethod
-    def __repr__(self)->str: ...
+    def __str__(self)->str:
+        """
+        Returns a string with the various elements in a ';' separated string.
+        """
 
     @abstractmethod
-    def _export(self) -> tuple:...
+    def __repr__(self)->str:
+        """
+        Returns a string, starting with the name of the class, followed by the various elements.
+        example: 'RGB(r=255,g=255,b=255)'
+        """
+
+    @abstractmethod
+    def _export(self) -> tuple:
+        """
+        'Private' method of a color object. Used internally in dunder operations.
+        Done to not need specific dunders for each separate color class.
+        """
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -

@@ -18,10 +18,14 @@ from .TransparentColorSystem import _HEXA
 # ----------------------------------------------------------------------------------------------------------------------
 # inherits from rgb as it is just another notation of the rgb format
 class HEXA(RGBA,_HEXA):
+    """
+    Color Object for HEXA values.
+    Inherits from RGBA as this is just another notation for RGBA values.
+    """
     def __init__(self, hex_value:str):
         if not isinstance(hex_value,str):
             raise ValueError(f"HEXA value {hex_value=} did not consist of a string value")
-        self.r,self.g,self.b,self.a = hexa_to_rgba(hex_value)
+        super().__init__(*hexa_to_rgba(hex_value))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods

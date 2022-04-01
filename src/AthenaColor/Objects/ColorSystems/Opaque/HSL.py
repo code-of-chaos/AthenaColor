@@ -20,6 +20,11 @@ from .OpaqueColorSystem import (
 # - Color -
 # ------------------------------------------------------------------------------------------------------------------
 class HSL(OpaqueColorSystem,_HSL):
+    """
+    Color Object for HSL values.
+    The h value is a float value which ranges between 0 and 360, including.
+    Both s,l values are float values which range between 0 and 1, including.
+    """
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
