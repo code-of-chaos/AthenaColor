@@ -82,4 +82,4 @@ class CMYK(OpaqueColorSystem,_CMYK):
         return f"{self.c};{self.m};{self.y};{self.k}"
 
     def __repr__(self) -> str:
-        return f"CMYK(c={self.c}, m={self.m}, y={self.y}, k={self.k})"
+        return f"CMYK(c={self.c},m={self.m},y={self.y},k={self.k})"

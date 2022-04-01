@@ -7,12 +7,16 @@
 
 # Custom Packages
 import AthenaColor
+from AthenaColor.Data.Examples import *
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def main():
-    pass
+    new_color()
+    color_calculation_same()
+    color_calculation_different()
+    color_calculation_multiple()
 
 if __name__ == "__main__":
     main()

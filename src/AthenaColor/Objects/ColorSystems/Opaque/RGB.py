@@ -75,4 +75,4 @@ class RGB(OpaqueColorSystem,_RGB):
         return f"{self.r};{self.g};{self.b}"
 
     def __repr__(self) -> str:
-        return f"RGB(r={self.r}, g={self.g}, b={self.b})"
+        return f"RGB(r={self.r},g={self.g},b={self.b})"

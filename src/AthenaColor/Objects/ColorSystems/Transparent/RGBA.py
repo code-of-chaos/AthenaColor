@@ -84,4 +84,4 @@ class RGBA(TransparentColorSystem,_RGBA):
         return f"{self.r};{self.g};{self.b};{self.a}"
 
     def __repr__(self) -> str:
-        return f"RGB(r={self.r}, g={self.g}, b={self.b},a={self.a})"
+        return f"RGB(r={self.r},g={self.g},b={self.b},a={self.a})"

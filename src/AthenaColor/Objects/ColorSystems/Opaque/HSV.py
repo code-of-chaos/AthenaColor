@@ -74,4 +74,4 @@ class HSV(OpaqueColorSystem,_HSV):
         return f"{self.h};{self.s};{self.v}"
 
     def __repr__(self) -> str:
-        return f"HSV(h={self.h}, s={self.s}, v={self.v})"
+        return f"HSV(h={self.h},s={self.s},v={self.v})"

@@ -74,4 +74,4 @@ class HSL(OpaqueColorSystem,_HSL):
         return f"{self.h};{self.s};{self.l}"
 
     def __repr__(self) -> str:
-        return f"HSL(h={self.h}, s={self.s}, l={self.l})"
+        return f"HSL(h={self.h},s={self.s},l={self.l})"
