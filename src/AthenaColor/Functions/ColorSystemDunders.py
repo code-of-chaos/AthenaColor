@@ -64,6 +64,8 @@ def mod(left:tuple, right:tuple)->tuple:
         (lambda lr: lr[0] % lr[1]),
         zip(left, right)
     ))
+
+# noinspection PyShadowingBuiltins
 def pow(left:tuple, right:tuple)->tuple:
     """
     Zips two tuples together and POWERS the elements of the zipped pairs together.

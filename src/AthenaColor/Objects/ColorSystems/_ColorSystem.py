@@ -32,7 +32,7 @@ def calculation_dunder(func:Callable,left:ColorSystem,right:ColorSystem|int|floa
     elif isinstance(right, ColorSystem):
         return type(left)(*func(left._export(),map_color(left,right)))
     elif isinstance(right, (int, float)):
-        return type(left)(*func(left._export(),(right, right, right)))
+        return type(left)(*func(left._export(),(right,)*len(left._export())))
     elif isinstance(right, tuple) and len(right) == len(left._export()):
         return type(left)(*func(left._export(),right))
     else:
@@ -45,7 +45,7 @@ def comparison_dunder(func:Callable,left:ColorSystem,right:ColorSystem|int|float
     elif isinstance(right, ColorSystem):
         return func(left._export(),map_color(left,right))
     elif isinstance(right, (int, float)):
-        return func(left._export(), (right, right, right))
+        return func(left._export(), (right,)*len(left._export()))
     elif isinstance(right, tuple) and len(right) == len(left._export()):
         return func(left._export(), right)
     else:
