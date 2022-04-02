@@ -32,7 +32,7 @@ class HEX(RGB,_HEX):
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
     def __str__(self) -> str:
-        return rgb_to_hex(self.r,self.g,self.b)
+        return rgb_to_hex(*self.export())
 
     def __repr__(self) -> str:
         return f"HEX(r={self.r},g={self.g},b={self.b})"

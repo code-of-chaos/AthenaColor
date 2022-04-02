@@ -34,7 +34,7 @@ class RGBA(ColorSystem,_RGBA):
             raise ValueError(f"RGB values {r=},{g=},{b=},{a=} did not consist of integer values")
         self.r,self.g,self.b,self.a = r,g,b,a
 
-    def _export(self) -> tuple[RGBA.r,RGBA.g,RGBA.b,RGBA.a]:
+    def export(self) -> tuple[RGBA.r, RGBA.g, RGBA.b, RGBA.a]:
          return self.r,self.g,self.b,self.a
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -80,8 +80,5 @@ class RGBA(ColorSystem,_RGBA):
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
-    def __str__(self) -> str:
-        return f"{self.r};{self.g};{self.b};{self.a}"
-
     def __repr__(self) -> str:
         return f"RGBA(r={self.r},g={self.g},b={self.b},a={self.a})"

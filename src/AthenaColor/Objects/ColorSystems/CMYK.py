@@ -32,7 +32,7 @@ class CMYK(ColorSystem, _CMYK):
             raise ValueError(f"CMYK values {c=},{m=},{y=},{k=} did not consist of integer or float values")
         self.c,self.m,self.y,self.k = c,m,y,k
 
-    def _export(self) -> tuple[CMYK.c,CMYK.m,CMYK.y,CMYK.k]:
+    def export(self) -> tuple[CMYK.c, CMYK.m, CMYK.y, CMYK.k]:
          return self.c,self.m,self.y,self.k
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -78,8 +78,5 @@ class CMYK(ColorSystem, _CMYK):
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
-    def __str__(self) -> str:
-        return f"{self.c};{self.m};{self.y};{self.k}"
-
     def __repr__(self) -> str:
         return f"CMYK(c={self.c},m={self.m},y={self.y},k={self.k})"

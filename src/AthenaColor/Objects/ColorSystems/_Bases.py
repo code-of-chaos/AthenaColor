@@ -15,14 +15,14 @@ class _RGB:
     g:int
     b:int
 
-    def _export(self) -> tuple:...
+    def export(self) -> tuple:...
 
 class _HEX:
     r:int
     g:int
     b:int
 
-    def _export(self) -> tuple:...
+    def export(self) -> tuple:...
 
 class _CMYK:
     c:float
@@ -30,21 +30,21 @@ class _CMYK:
     y:float
     k:float
 
-    def _export(self) -> tuple:...
+    def export(self) -> tuple:...
 
 class _HSL:
     h:float
     s:float
     l:float
 
-    def _export(self) -> tuple:...
+    def export(self) -> tuple:...
 
 class _HSV:
     h:float
     s:float
     v:float
 
-    def _export(self) -> tuple:...
+    def export(self) -> tuple:...
 
 class _RGBA:
     r:int
@@ -52,7 +52,7 @@ class _RGBA:
     b:int
     a:int
 
-    def _export(self) -> tuple:...
+    def export(self) -> tuple:...
 
 class _HEXA:
     r:int
@@ -60,4 +60,4 @@ class _HEXA:
     b:int
     a:int
 
-    def _export(self) -> tuple:...
+    def export(self) -> tuple:...

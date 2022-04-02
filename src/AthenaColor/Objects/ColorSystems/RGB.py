@@ -34,7 +34,7 @@ class RGB(ColorSystem, _RGB):
             raise ValueError(f"RGB values {r=},{g=},{b=} did not consist of integer values")
         self.r,self.g,self.b = r,g,b
 
-    def _export(self) -> tuple[RGB.r,RGB.g,RGB.b]:
+    def export(self) -> tuple[RGB.r, RGB.g, RGB.b]:
          return self.r,self.g,self.b
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -71,8 +71,5 @@ class RGB(ColorSystem, _RGB):
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
-    def __str__(self) -> str:
-        return f"{self.r};{self.g};{self.b}"
-
     def __repr__(self) -> str:
         return f"RGB(r={self.r},g={self.g},b={self.b})"

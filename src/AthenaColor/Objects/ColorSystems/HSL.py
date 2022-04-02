@@ -33,7 +33,7 @@ class HSL(ColorSystem, _HSL):
             raise ValueError(f"HSL values {h=},{s=},{l=} did not consist of integer or float values")
         self.h,self.s,self.l = h,s,l
 
-    def _export(self) -> tuple[HSL.h,HSL.s,HSL.l]:
+    def export(self) -> tuple[HSL.h, HSL.s, HSL.l]:
          return self.h,self.s,self.l
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -70,8 +70,5 @@ class HSL(ColorSystem, _HSL):
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
-    def __str__(self) -> str:
-        return f"{self.h};{self.s};{self.l}"
-
     def __repr__(self) -> str:
         return f"HSL(h={self.h},s={self.s},l={self.l})"

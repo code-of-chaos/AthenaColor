@@ -33,7 +33,7 @@ class HSV(ColorSystem, _HSV):
             raise ValueError(f"HSV values {h=},{s=},{v=} did not consist of integer or float values")
         self.h,self.s,self.v = h,s,v
 
-    def _export(self) -> tuple[HSV.h,HSV.s,HSV.v]:
+    def export(self) -> tuple[HSV.h, HSV.s, HSV.v]:
          return self.h,self.s,self.v
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -70,8 +70,5 @@ class HSV(ColorSystem, _HSV):
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
-    def __str__(self) -> str:
-        return f"{self.h};{self.s};{self.v}"
-
     def __repr__(self) -> str:
         return f"HSV(h={self.h},s={self.s},v={self.v})"

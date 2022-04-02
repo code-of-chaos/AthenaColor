@@ -32,7 +32,7 @@ class HEXA(RGBA,_HEXA):
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
     def __str__(self) -> str:
-        return rgba_to_hexa(self.r,self.g,self.b,self.a)
+        return rgba_to_hexa(*self.export())
 
     def __repr__(self) -> str:
         return f"HEXA(r={self.r},g={self.g},b={self.b},a={self.a})"
