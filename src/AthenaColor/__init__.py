@@ -116,6 +116,6 @@ from AthenaColor.Objects.ColorSystems import (
 # ----------------------------------------------------------------------------------------------------------------------
 # - Import other systems -
 # ----------------------------------------------------------------------------------------------------------------------
-import AthenaColor.Data
-import AthenaColor.Functions
-import AthenaColor.Objects
+from . import Data
+from . import Functions
+from . import Objects

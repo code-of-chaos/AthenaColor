@@ -168,7 +168,7 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        return type(self)(*dunder_func(func=CSD.floordiv(), left=self, right=other))
+        return type(self)(*dunder_func(func=CSD.floordiv, left=self, right=other))
 
     # noinspection PyTypeChecker
     def __truediv__(self, other: ColorSystem | int | float | tuple) -> ColorSystem:
@@ -177,7 +177,7 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        return type(self)(*dunder_func(func=CSD.truediv(), left=self, right=other))
+        return type(self)(*dunder_func(func=CSD.truediv, left=self, right=other))
 
     # noinspection PyTypeChecker
     def __mod__(self, other: ColorSystem | int | float | tuple) -> ColorSystem:
