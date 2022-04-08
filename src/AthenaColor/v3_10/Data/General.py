@@ -10,13 +10,21 @@
 # Custom Library
 
 # Custom Packages
-import AthenaColor
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def main():
-    pass
+class EscCodes:
+    hex = "\x1b"
+    octal = "\033"
+    uni = "\u001b"
 
-if __name__ == '__main__':
-    main()
+class ConsoleCodes:
+    cursor_line_up = "A"
+    cursor_line_down = "B"
+    cursor_right = "C"
+    cursor_left = "D"
+    cursor_line_next = "E"
+    cursor_line_previous = "F"
+    cursor_to_column = "G"
+    color = "m"

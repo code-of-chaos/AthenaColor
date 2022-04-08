@@ -6,17 +6,28 @@
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
+import math
 
 # Custom Library
 
 # Custom Packages
-import AthenaColor
+from .TypeTesting import InputTest
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def main():
-    pass
+@InputTest.Custom(types=(int, float))
+def Normalize(value:int|float, factor:int|float=100)->float:
+    return value/factor
 
-if __name__ == '__main__':
-    main()
+@InputTest.Custom(types=(int, float))
+def Constrain(value:int|float, maximum:int|float, minimum:int|float=0) -> int|float:
+    return max(min(value, maximum),minimum)
+
+
+@InputTest.Custom(types=(int, float))
+def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
+    if value - (value_:=math.floor(value)) < 0.5:
+        return value_
+    else:
+        return math.ceil(value)
