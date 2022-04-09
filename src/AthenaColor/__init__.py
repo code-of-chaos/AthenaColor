@@ -34,7 +34,6 @@ if _PyMayor == 3:
         from .v3_08 import *
     elif _PyMinor == 7:
         from .v3_07 import *
-        raise RuntimeError(ErrorText_Development)
     else:
         raise RuntimeError(ErrorText_Never)
 else:
