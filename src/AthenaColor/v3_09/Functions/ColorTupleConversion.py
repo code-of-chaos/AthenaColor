@@ -21,7 +21,7 @@ from AthenaColor.v3_09.BoilerPlate.Union import IntFloat
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def NormalizeRgb(r:int,g:int,b:int) -> tuple[float,...]:
-    return tuple(map(lambda x: Normalize(x,255) , (r,g,b)))
+    return Normalize(r,255),Normalize(g,255),Normalize(b,255)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - RGB -
