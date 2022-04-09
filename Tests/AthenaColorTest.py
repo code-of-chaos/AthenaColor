@@ -17,47 +17,71 @@ from AthenaColor import *
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-class AthenaColorTest(unittest.TestCase):
+class ColorObjects_RGB(unittest.TestCase):
+    @staticmethod
+    def CreateColor(r=127,g=127,b=127) -> RGB:
+        return RGB(r,g,b)
     # ------------------------------------------------------------------------------------------------------------------
     # - BASIC Color Object Testing -
     # ------------------------------------------------------------------------------------------------------------------
-    def test_ColorObjects_RGB(self):
-        self.assertEqual(
-            repr(RGB(1,2,3)),
-            "RGB(r=1,g=2,b=3)"
-        )
-        self.assertEqual(
-            repr(RGB(321,654,987)),
-            "RGB(r=255,g=255,b=255)"
-        )
-    def test_ColorObjects_RGBA(self):
-        self.assertEqual(
-            repr(RGBA(1,2,3,4)),
-            "RGBA(r=1,g=2,b=3,a=4)"
-        )
-        self.assertEqual(
-            repr(RGBA(321,654,987, -1)),
-            "RGBA(r=255,g=255,b=255,a=0)"
-        )
+    def test_repr(self):
+        self.assertEqual(repr(self.CreateColor()),"RGB(r=127,g=127,b=127)")
 
-    def test_ColorObjects_HEX(self):
-        self.assertEqual(
-            repr(HEX("#001122")),
-            "HEX(r=0,g=17,b=34)"
-        )
-        self.assertEqual(
-            repr(HEX("#FFAABB")),
-            "HEX(r=255,g=170,b=187)"
-        )
-    def test_ColorObjects_HEXA(self):
-        self.assertEqual(
-            repr(HEXA("#00112233")),
-            "HEXA(r=0,g=17,b=34,a=51)"
-        )
-        self.assertEqual(
-            repr(HEXA("#BBCCAAFF")),
-            "HEXA(r=187,g=204,b=170,a=255)"
-        )
+    def test_str(self):
+        self.assertEqual(repr(self.CreateColor()),"127;127;127")
+
+    def test_dunder_comparison_tuples(self):
+        self.assertTrue(self.CreateColor() == (127,127,127))
+        self.assertTrue(self.CreateColor() != (0,0,0))
+        self.assertTrue(self.CreateColor() < (200,200,200))
+        self.assertTrue(self.CreateColor() > (0,0,0))
+        self.assertTrue(self.CreateColor() <= (127,128,129))
+        self.assertTrue(self.CreateColor() >= (0,0,127))
+
+    def test_dunder_comparison_objects(self):
+        self.assertTrue(self.CreateColor() == RGB(127,127,127))
+        self.assertTrue(self.CreateColor() != RGB(0,0,0))
+        self.assertTrue(self.CreateColor() <  RGB(200,200,200))
+        self.assertTrue(self.CreateColor() >  RGB(0,0,0))
+        self.assertTrue(self.CreateColor() <= RGB(127,128,129))
+        self.assertTrue(self.CreateColor() >= RGB(0,0,127))
+
+        self.assertTrue(self.CreateColor() == HEX("#7F7F7F"))
+        self.assertTrue(self.CreateColor() != HEX("#000000"))
+        self.assertTrue(self.CreateColor() <  HEX("#C8C8C8"))
+        self.assertTrue(self.CreateColor() >  HEX("#000000"))
+        self.assertTrue(self.CreateColor() <= HEX("#7F8081"))
+        self.assertTrue(self.CreateColor() >= HEX("#00007F"))
+
+        self.assertTrue(self.CreateColor() == HSL(0,0,.498))
+        self.assertTrue(self.CreateColor() != HSL(0,0,0))
+        self.assertTrue(self.CreateColor() <  HSL(0,0,.784))
+        self.assertTrue(self.CreateColor() >  HSL(0,0,0))
+        self.assertTrue(self.CreateColor() <= HSL(210,.008,.502))
+        self.assertTrue(self.CreateColor() >= HSL(240,1,.249))
+
+        self.assertTrue(self.CreateColor() == HSV(0,0,.498))
+        self.assertTrue(self.CreateColor() != HSV(0,0,0))
+        self.assertTrue(self.CreateColor() <  HSV(0,0,.784))
+        self.assertTrue(self.CreateColor() >  HSV(0,0,0))
+        self.assertTrue(self.CreateColor() <= HSV(210,.016,.506))
+        self.assertTrue(self.CreateColor() >= HSV(240,1,.498))
+
+        self.assertTrue(self.CreateColor() == CMYK(0,0,0,.502))
+        self.assertTrue(self.CreateColor() != CMYK(0,0,0,0))
+        self.assertTrue(self.CreateColor() <  CMYK(0,0,0,0.22))
+        self.assertTrue(self.CreateColor() >  CMYK(0,0,0,1))
+        self.assertTrue(self.CreateColor() <= CMYK(.02,.01,0,.49))
+        self.assertTrue(self.CreateColor() >= CMYK(1,1,0,.505))
+
+    def test_dunder_math_tuple(self):
+        self.assertEqual(self.CreateColor()-(500,500,500), RGB(r=0, g=0, b=0))
+        self.assertEqual(self.CreateColor()+(500,500,500), RGB(r=255, g=255, b=255))
+        self.assertEqual(self.CreateColor()/(3,3,3), RGB(r=42, g=42, b=42))
+        self.assertEqual(self.CreateColor()//(4,4,4), RGB(r=31, g=31, b=31))
+        self.assertEqual(self.CreateColor()*(2,2,2), RGB(r=254, g=254, b=254))
+        self.assertEqual(self.CreateColor(3,3,3)**(4,4,4), RGB(r=81, g=81, b=81))
+        self.assertEqual(self.CreateColor()%(4,4,4), RGB(r=3, g=3, b=3))
 
 if __name__ == '__main__':
     unittest.main()
