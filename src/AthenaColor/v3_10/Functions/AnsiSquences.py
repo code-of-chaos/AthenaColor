@@ -7,7 +7,7 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.v3_10.InitClass import AthenaColorInitClass
+from AthenaColor.v3_10.InitClass import init
 from AthenaColor.v3_10.Data.General import ConsoleCodes
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -18,7 +18,7 @@ def ColorSequence(control_code:str|int)->str:
     Used for quick assembly of correct Ansi Escape functions
     Used the escape code defined in AthenaColor init
     """
-    return f'{AthenaColorInitClass.esc}[{control_code}{ConsoleCodes.color}'
+    return f'{init.esc}[{control_code}{ConsoleCodes.color}'
 
 def NestedColorSequence(*obj, control_code:str|int,reset_code:str|int=None, sep:str=" ") -> str:
     """

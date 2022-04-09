@@ -114,7 +114,7 @@ class ColorSystem(ABC):
         """
         Returns a string with the various color system elements in a ';' separated string.
         """
-        return ";".join(self.export())
+        return ";".join(str(c) for c in self.export())
 
     @abstractmethod
     def __repr__(self)->str:

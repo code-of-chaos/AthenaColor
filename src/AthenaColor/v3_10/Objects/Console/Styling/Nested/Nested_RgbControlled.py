@@ -16,7 +16,6 @@ from AthenaColor.v3_10.Data.HtmlColors import HtmlColorObjects as HtmlColors
 # ----------------------------------------------------------------------------------------------------------------------
 class Nested_RgbControlled:
     param_code:str
-    _sufix:str
 
     def __init__(self, param_code:str,reset_code:int):
         self._param_code:str = param_code
