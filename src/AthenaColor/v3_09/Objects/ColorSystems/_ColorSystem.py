@@ -20,7 +20,7 @@ from AthenaColor.v3_09.Objects.ColorSystems._BASE_ColorSystem import (
     BASE_HEXA as _HEXA,
 )
 from AthenaColor.v3_09.Functions.ColorTupleConversion import *
-from AthenaColor import init
+from AthenaColor.v3_09.InitClass import init
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Methods -

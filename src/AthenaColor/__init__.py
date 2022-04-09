@@ -30,7 +30,6 @@ if _PyMayor == 3:
         from .v3_10 import *
     elif _PyMinor == 9:
         from .v3_09 import *
-        raise RuntimeError(ErrorText_Development)
     elif _PyMinor == 8:
         from .v3_08 import *
         raise RuntimeError(ErrorText_Development)
