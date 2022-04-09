@@ -8,7 +8,7 @@ from typing import Union
 
 # Custom Packages
 import AthenaColor.v3_08.Functions.ColorTupleConversion as CTC
-from AthenaColor.v3_08.InitClass import AthenaColorInitClass
+from AthenaColor.v3_08.InitClass import init
 from AthenaColor.v3_08.Objects.ColorSystems import (
     RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA
 )
@@ -126,7 +126,7 @@ def to_CMYK(color:Colors) -> CMYK:
 # ----------------------------------------------------------------------------------------------------------------------A
 def to_RGBA(color:Colors) -> RGBA:
     """
-    Function which converts any Color Object to a RGBA object.
+    Function which converts any Color Object to an RGBA object.
     """
     if isinstance(color, RGBA):
         return RGBA(*color.export())
@@ -134,13 +134,13 @@ def to_RGBA(color:Colors) -> RGBA:
         return RGBA(*CTC.hexa_to_rgba(str(color)))
     # below conversions will set the A part of RGBA to 1
     elif isinstance(color, (RGB,HEX)):
-        return RGBA(*color.export(), a=AthenaColorInitClass.transparentDefault[1])
+        return RGBA(*color.export(), a=init.transparentDefault[1])
     elif isinstance(color, HSV):
-        return RGBA(*CTC.hsv_to_rgb(*color.export()), a=AthenaColorInitClass.transparentDefault[1])
+        return RGBA(*CTC.hsv_to_rgb(*color.export()), a=init.transparentDefault[1])
     elif isinstance(color, HSL):
-        return RGBA(*CTC.hsl_to_rgb(*color.export()), a=AthenaColorInitClass.transparentDefault[1])
+        return RGBA(*CTC.hsl_to_rgb(*color.export()), a=init.transparentDefault[1])
     elif isinstance(color, CMYK):
-        return RGBA(*CTC.cmyk_to_rgb(*color.export()), a=AthenaColorInitClass.transparentDefault[1])
+        return RGBA(*CTC.cmyk_to_rgb(*color.export()), a=init.transparentDefault[1])
     else:
         return NotImplemented
 
@@ -154,12 +154,12 @@ def to_HEXA(color:Colors) -> HEXA:
         return HEXA(*color.export())
     # below conversions will set the A part of HEXA to ff
     elif isinstance(color, (RGB,HEX)):
-        return HEXA(*CTC.rgb_to_hex(*color.export()) + AthenaColorInitClass.transparentDefault[0])
+        return HEXA(*CTC.rgb_to_hex(*color.export()) + init.transparentDefault[0])
     elif isinstance(color, HSV):
-        return HEXA(*CTC.hsv_to_hex(*color.export()) + AthenaColorInitClass.transparentDefault[0])
+        return HEXA(*CTC.hsv_to_hex(*color.export()) + init.transparentDefault[0])
     elif isinstance(color, HSL):
-        return HEXA(*CTC.hsl_to_hex(*color.export()) + AthenaColorInitClass.transparentDefault[0])
+        return HEXA(*CTC.hsl_to_hex(*color.export()) + init.transparentDefault[0])
     elif isinstance(color, CMYK):
-        return HEXA(*CTC.cmyk_to_hex(*color.export()) + AthenaColorInitClass.transparentDefault[0])
+        return HEXA(*CTC.cmyk_to_hex(*color.export()) + init.transparentDefault[0])
     else:
         return NotImplemented
