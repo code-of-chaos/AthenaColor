@@ -23,7 +23,7 @@ def TestTypes(types: Any, objects:Union[object,tuple[object,...]]) -> bool:
     Runs an isinstance(object,(type,...)) against multiple objects.
     All have to pass, for the function to return a TRUE
     """
-    return all(map(lambda n: isinstance(n, types),objects))
+    return all(isinstance(n, types) for n in objects)
 
 class InputTest:
     """
