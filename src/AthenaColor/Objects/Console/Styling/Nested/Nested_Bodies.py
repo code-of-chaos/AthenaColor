@@ -6,39 +6,29 @@
 # Custom Library
 
 # Custom Packages
-import AthenaColor
+from .RgbControlledNest import RgbControlledNest
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
+__all__=[
+    "ForeNest", "BackNest", "UnderlineNest"
+]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def main():
-    print(f"{AthenaColor.Fore.Crimson}This is a test{AthenaColor.Style.Reset}")
-    print(AthenaColor.ForeNest.Azure(
-        "help",
-        AthenaColor.StyleNest.Bold(
-            "this is a test"
-        ),
-        "yahoo!"
-    ))
+ForeNest = RgbControlledNest(
+    param_code= f"38;2;",
+    reset_code=39
+)
 
-    color1 = AthenaColor.RGB(1,2,3)
-    print(color1)
-    print(repr(color1))
-    color2 = AthenaColor.HSV(60,.3,.8)
-    print(color2)
-    print(repr(color2))
-    print(repr(color1 - color2))
-    print(repr(color2 ** color2))
-    print(repr(color1 // color2))
-    print(repr(color2 % color1))
-    print(repr(color1 * color2))
+BackNest = RgbControlledNest(
+    param_code= f"48;2;",
+    reset_code=49
+)
 
-
-    pass
-
-if __name__ == '__main__':
-    main()
+UnderlineNest = RgbControlledNest(
+    param_code= f"58;2;",
+    reset_code=24
+)

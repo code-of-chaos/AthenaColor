@@ -1,44 +1,37 @@
 # ----------------------------------------------------------------------------------------------------------------------
-# - Package Imports -
-# ----------------------------------------------------------------------------------------------------------------------
-# General Packages
-
-# Custom Library
-
-# Custom Packages
-import AthenaColor
-
-# ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------------------------------------------------
+# - Package Imports -
+# ----------------------------------------------------------------------------------------------------------------------
+# General Packages
+from __future__ import annotations
+import math
+
+# Custom Library
+
+# Custom Packages
+from AthenaColor.Functions.TypeTesting import InputTest
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - All -
+# ----------------------------------------------------------------------------------------------------------------------
+__all__ = [
+    "Normalize", "RoundHalfUp"
+]
+
+# ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def main():
-    print(f"{AthenaColor.Fore.Crimson}This is a test{AthenaColor.Style.Reset}")
-    print(AthenaColor.ForeNest.Azure(
-        "help",
-        AthenaColor.StyleNest.Bold(
-            "this is a test"
-        ),
-        "yahoo!"
-    ))
+@InputTest.Custom(types=(int, float))
+def Normalize(value:int|float, factor:int|float=100)->float:
+    return value/factor
 
-    color1 = AthenaColor.RGB(1,2,3)
-    print(color1)
-    print(repr(color1))
-    color2 = AthenaColor.HSV(60,.3,.8)
-    print(color2)
-    print(repr(color2))
-    print(repr(color1 - color2))
-    print(repr(color2 ** color2))
-    print(repr(color1 // color2))
-    print(repr(color2 % color1))
-    print(repr(color1 * color2))
-
-
-    pass
-
-if __name__ == '__main__':
-    main()
+@InputTest.Custom(types=(int, float))
+def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
+    value_ = math.floor(value)
+    if value - value_ < 0.5:
+        return value_
+    else:
+        return math.ceil(value)
