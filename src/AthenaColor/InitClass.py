@@ -25,6 +25,7 @@ class AthenaColorInitClass:
     _esc=EscCodes.hex
     _roundUp = True
     _transparentDefault = ("ff",255)
+    _decimalPlaces = 3
 
     def __init__(self):
         # prep the console for colors
@@ -63,6 +64,16 @@ class AthenaColorInitClass:
             if not value_int in range(256):
                 raise ValueError
             self._transparentDefault = (value,value_int)
+        else:
+            raise ValueError
+
+    @property
+    def decimalPlaces(self) -> int:
+        return self._decimalPlaces
+    @decimalPlaces.setter
+    def decimalPlaces(self,value):
+        if isinstance(value,int) and value >= 0:
+            self._decimalPlaces = value
         else:
             raise ValueError
 

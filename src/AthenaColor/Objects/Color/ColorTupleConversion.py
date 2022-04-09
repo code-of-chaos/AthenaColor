@@ -9,7 +9,7 @@ from typing import Tuple
 
 # Custom Packages
 from AthenaColor.Functions.General import (
-    Normalize,RoundHalfUp
+    Normalize,RoundHalfUp,RoundToDecimals
 )
 from AthenaColor.Functions.Constraints import (
     ConstrainHSV, ConstrainHSL, ConstrainRGB, ConstrainCMYK,ConstrainRGBA
@@ -189,9 +189,9 @@ def rgb_to_hsv(r:int,g:int,b:int) -> Tuple[float,float,float]:
         Hue = 60 * (((r_-g_)/Delta)+4)
 
     return (
-        Hue,
-        (Delta/Max if Max != 0 else 0),
-        Max
+        RoundToDecimals(Hue),
+        RoundToDecimals(Delta/Max if Max != 0 else 0),
+        RoundToDecimals(Max)
     )
 
 @InputTest.str
@@ -232,10 +232,10 @@ def rgb_to_cmyk(r:int,g:int,b:int) -> Tuple[float,float,float,float]:
     k = 1 - max(r_, g_, b_)
 
     return (
-        (1 - r_ - k) / (1 - k),
-        (1 - g_ - k) / (1 - k),
-        (1 - b_ - k) / (1 - k),
-        k
+        RoundToDecimals((1 - r_ - k) / (1 - k)),
+        RoundToDecimals((1 - g_ - k) / (1 - k)),
+        RoundToDecimals((1 - b_ - k) / (1 - k)),
+        RoundToDecimals(k)
     )
 
 @InputTest.str
@@ -294,9 +294,9 @@ def rgb_to_hsl(r:int,g:int,b:int) -> Tuple[float,float,float]:
     Lum = (Max+Min)/2
 
     return (
-        Hue,    # H
-        (Delta/(1-abs((2*Lum)-1)) if Delta != 0 else 0),
-        Lum     # L
+        RoundToDecimals(Hue),    # H
+        RoundToDecimals(Delta/(1-abs((2*Lum)-1)) if Delta != 0 else 0),
+        RoundToDecimals(Lum)     # L
     )
 
 @InputTest.str

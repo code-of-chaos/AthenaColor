@@ -8,7 +8,7 @@
 __all__ = [
     "init",
     "ColorTupleConversion","ColorObjectConversion",
-    "RGB","RGBA","HEX","HEXA","HSV","HSL",
+    "RGB","RGBA","HEX","HEXA","HSV","HSL","CMYK",
     "Fore","Back","Underline","Style","Basic",
     "ForeNest","BackNest","UnderlineNest","StyleNest","BasicNest"
 ]

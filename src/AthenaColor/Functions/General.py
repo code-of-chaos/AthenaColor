@@ -29,6 +29,10 @@ def Normalize(value:int|float, factor:int|float=100)->float:
     return value/factor
 
 @InputTest.Custom(types=(int, float))
+def RoundToDecimals(value:float, decimals=3):
+    return round(value, decimals)
+
+@InputTest.Custom(types=(int, float))
 def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
     value_ = math.floor(value)
     if value - value_ < 0.5:
