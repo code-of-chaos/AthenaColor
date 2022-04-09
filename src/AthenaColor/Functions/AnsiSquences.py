@@ -7,9 +7,8 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-
-from AthenaColor.Data.General import ConsoleCodes
 from AthenaColor.InitClass import init
+from AthenaColor.Data.General import ConsoleCodes
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
