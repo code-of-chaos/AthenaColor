@@ -8,7 +8,7 @@ A *No Dependency* python package for displaying the full spectrum of RGB colors 
 
 --- 
 ## Details and features 
-- *Nested* and *Inline* options to print Style and Color makeup to the Console
+- *Nested* and *Inline* options to print StyleNest and Color makeup to the Console
 - 140 predefined extended HTML colors, see [here](https://github.com/DirectiveAthena/VerSC-AthenaColor/wiki/Predefined-Colors) for the full list
 - By using the `rgb` object, you have access to print any color you want
  

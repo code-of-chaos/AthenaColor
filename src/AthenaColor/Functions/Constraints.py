@@ -2,51 +2,45 @@
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
+from __future__ import annotations
+from typing import Tuple
 
 # Custom Library
 
 # Custom Packages
-from .BoilerPlate import Constrain
+from AthenaColor.Functions.TypeTesting import InputTest
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - All -
+# ----------------------------------------------------------------------------------------------------------------------
+__all__ = [
+    "Constrain", "ConstrainRGB","ConstrainHSL","ConstrainRGBA","ConstrainHSV","ConstrainCMYK"
+]
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - Code -
+# ----------------------------------------------------------------------------------------------------------------------
+@InputTest.Custom(types=(int, float))
+def Constrain(value:int|float, maximum:int|float, minimum:int|float=0) -> int|float:
+    return max(min(value, maximum),minimum)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Constraints for OPAQUE COLORSs -
 # ----------------------------------------------------------------------------------------------------------------------
-def ConstrainHSV(h:int|float,s:int|float,v:int|float)->tuple[int|float,int|float,int|float]:
-    """
-    Constrains the inserted h value to a range between 0 and 360.
-    The s and v values are constrained between 0 and 1
-    """
-    s,v = map(lambda x: Constrain(x, 1), (s,v))
-    return Constrain(h, 360),s,v
+def ConstrainHSV(h:int|float,s:int|float,v:int|float)->Tuple[int|float,int|float,int|float]:
+    return Constrain(h, 360),Constrain(s,1),Constrain(v,1)
 
-def ConstrainHSL(h:int|float,s:int|float,l:int|float)->tuple[int|float,int|float,int|float]:
-    """
-    Constrains the inserted h value to a range between 0 and 360.
-    The s and l values are constrained between 0 and 1
-    """
-    s,l = map(lambda x: Constrain(x, 1), (s,l))
-    return Constrain(h, 360),s,l
+def ConstrainHSL(h:int|float,s:int|float,l:int|float)->Tuple[int|float,int|float,int|float]:
+    return Constrain(h, 360),Constrain(s,1),Constrain(l,1)
 
-def ConstrainRGB(r:int,g:int,b:int)->tuple[int,int,int]:
-    """
-    Constrains the inserted r,g,b values to a range between 0 and 255.
-    """
-    r,g,b = map(lambda x: Constrain(x, 255), (r,g,b))
-    return r,g,b
+def ConstrainRGB(r:int,g:int,b:int)->Tuple[int,int,int]:
+    return Constrain(r, 255),Constrain(g, 255),Constrain(b, 255)
 
-def ConstrainCMYK(c:int|float,m:int|float,y:int|float,k:int|float)->tuple[int|float,int|float,int|float,int|float]:
-    """
-    Constrains the inserted c,m,y,k values to a range between 0 and 1.
-    """
-    c,m,y,k = map(lambda x: Constrain(x, 1), (c,m,y,k))
-    return c,m,y,k
+def ConstrainCMYK(c:int|float,m:int|float,y:int|float,k:int|float)->Tuple[int|float,int|float,int|float,int|float]:
+    return Constrain(c,1),Constrain(m,1),Constrain(y,1),Constrain(k,1)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Constraints for TRANSPARENT COLORSs -
 # ----------------------------------------------------------------------------------------------------------------------
-def ConstrainRGBA(r:int,g:int,b:int,a:int)->tuple[int,int,int,int]:
-    """
-    Constrains the inserted r,g,b,a values to a range between 0 and 255.
-    """
-    r,g,b,a = map(lambda x: Constrain(x, 255), (r,g,b,a))
-    return r,g,b,a
+def ConstrainRGBA(r:int,g:int,b:int,a:int)->Tuple[int,int,int,int]:
+    return Constrain(r, 255),Constrain(g, 255),Constrain(b, 255),Constrain(a, 255)

@@ -7,16 +7,22 @@ from functools import partialmethod
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Objects.ColorSystems import RGB
+from AthenaColor.Objects.Color.ColorSystem import RGB
 from AthenaColor.Functions.AnsiSquences import NestedColorSequence
-import AthenaColor.Data.HtmlColors as HtmlColors
+from AthenaColor.Data.HtmlColors import HtmlColorObjects as HtmlColors
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - All -
+# ----------------------------------------------------------------------------------------------------------------------
+__all__=[
+    "RgbControlledNest"
+]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-class Nested_RgbControlled:
+class RgbControlledNest:
     param_code:str
-    _sufix:str
 
     def __init__(self, param_code:str,reset_code:int):
         self._param_code:str = param_code
@@ -29,8 +35,7 @@ class Nested_RgbControlled:
         return NestedColorSequence(*obj, control_code=self._param_code + str(color), reset_code=self._reset, **kwargs)
 
     def rgb(self,*obj, r:int,g:int,b:int, **kwargs) -> str:
-        return NestedColorSequence(*obj, control_code=self._param_code + str(RGB(r, g, b)), reset_code=self._reset,
-                                   **kwargs)
+        return NestedColorSequence(*obj, control_code=self._param_code + str(RGB(r, g, b)), reset_code=self._reset,**kwargs)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -

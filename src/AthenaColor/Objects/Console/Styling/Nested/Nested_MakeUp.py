@@ -10,67 +10,96 @@ from functools import partial
 from AthenaColor.Functions.AnsiSquences import NestedColorSequence
 
 # ----------------------------------------------------------------------------------------------------------------------
-# - Style Sequences -
+# - All -
 # ----------------------------------------------------------------------------------------------------------------------
-Reset                       = partial(NestedColorSequence, control_code=0)
-Bold                        = partial(NestedColorSequence, control_code=1, reset_code=22)
-NoBold                      = partial(NestedColorSequence, control_code=22, reset_code=1)
-Dim                         = partial(NestedColorSequence, control_code=2, reset_code=22)
-NoDim                       = partial(NestedColorSequence, control_code=22, reset_code=2)
-Italic                      = partial(NestedColorSequence, control_code=3, reset_code=23)
-NoItalic                    = partial(NestedColorSequence, control_code=23, reset_code=3)
-Underline                   = partial(NestedColorSequence, control_code=4, reset_code=24)
-NoUnderline                 = partial(NestedColorSequence, control_code=24, reset_code=4)
-BlinkSlow                   = partial(NestedColorSequence, control_code=5, reset_code=25)
-NoBlinkSlow                 = partial(NestedColorSequence, control_code=25, reset_code=5)
-BlinkRapid                  = partial(NestedColorSequence, control_code=6, reset_code=25)
-NoBlinkRapid                = partial(NestedColorSequence, control_code=25, reset_code=6)
-Reversed                    = partial(NestedColorSequence, control_code=7, reset_code=27)
-NoReversed                  = partial(NestedColorSequence, control_code=27, reset_code=7)
-Conceal                     = partial(NestedColorSequence, control_code=8, reset_code=28)
-NoConceal                   = partial(NestedColorSequence, control_code=28, reset_code=8)
-Crossed                     = partial(NestedColorSequence, control_code=9, reset_code=29)
-NoCrossed                   = partial(NestedColorSequence, control_code=29, reset_code=9)
-FontPrimary                 = partial(NestedColorSequence, control_code=10, reset_code=10)
-FontSecond1                 = partial(NestedColorSequence, control_code=11, reset_code=10)
-FontSecond2                 = partial(NestedColorSequence, control_code=12, reset_code=10)
-FontSecond3                 = partial(NestedColorSequence, control_code=13, reset_code=10)
-FontSecond4                 = partial(NestedColorSequence, control_code=14, reset_code=10)
-FontSecond5                 = partial(NestedColorSequence, control_code=15, reset_code=10)
-FontSecond6                 = partial(NestedColorSequence, control_code=16, reset_code=10)
-FontSecond8                 = partial(NestedColorSequence, control_code=17, reset_code=10)
-FontSecond9                 = partial(NestedColorSequence, control_code=18, reset_code=10)
-FontSecond10                = partial(NestedColorSequence, control_code=19, reset_code=10)
-NoFont                      = partial(NestedColorSequence, control_code=10)
-Fraktur                     = partial(NestedColorSequence, control_code=20)
-UnderlineDouble             = partial(NestedColorSequence, control_code=21, reset_code=24)
-NoUnderlineDouble           = partial(NestedColorSequence, control_code=24, reset_code=21)
-PropSpacing                 = partial(NestedColorSequence, control_code=26, reset_code=26)
-NoPropSpacing               = partial(NestedColorSequence, control_code=26, reset_code=26)
-NoForeground                = partial(NestedColorSequence, control_code=39)
-NoBackground                = partial(NestedColorSequence, control_code=49)
-Frame                       = partial(NestedColorSequence, control_code=51, reset_code=54)
-NoFrame                     = partial(NestedColorSequence, control_code=54, reset_code=51)
-Circle                      = partial(NestedColorSequence, control_code=52, reset_code=54)
-NoCircle                    = partial(NestedColorSequence, control_code=54, reset_code=52)
-OverLine                    = partial(NestedColorSequence, control_code=53, reset_code=55)
-NoOverLine                  = partial(NestedColorSequence, control_code=55, reset_code=53)
-UnderColourDefault          = partial(NestedColorSequence, control_code=59)
-IdeogramUnderLine           = partial(NestedColorSequence, control_code=60, reset_code=65)
-IdeogramUnderLineDouble     = partial(NestedColorSequence, control_code=61, reset_code=65)
-IdeogramOverLine            = partial(NestedColorSequence, control_code=62, reset_code=65)
-IdeogramOverLineDouble      = partial(NestedColorSequence, control_code=63, reset_code=65)
-IdeogramStress              = partial(NestedColorSequence, control_code=64, reset_code=65)
-NoIdeogram                  = partial(NestedColorSequence, control_code=65)
-SuperScript                 = partial(NestedColorSequence, control_code=73, reset_code=75)
-SubScript                   = partial(NestedColorSequence, control_code=74, reset_code=75)
-NoScript                    = partial(NestedColorSequence, control_code=75)
-
+__all__=[
+    "StyleNest", "BasicNest"
+]
 
 # ----------------------------------------------------------------------------------------------------------------------
-# - Basic Sequences -
+# - StyleNest Sequences -
 # ----------------------------------------------------------------------------------------------------------------------
-class Basic:
+class StyleNest:
+    # noinspection PyUnresolvedReferences
+    __all__ = [
+        "Reset",
+        "Italic",
+        "NoItalic",
+        "Bold",
+        "NoBold",
+        "UnderlineNest",
+        "NoUnderline",
+        "Crossed",
+        "NoCrossed",
+        "Reversed",
+        "NoReversed",
+        "Frame",
+        "NoFrame",
+        "Circle",
+        "NoCircle",
+        "UnderlineDouble",
+        "NoForeground",
+        "NoBackground"
+    ]
+
+    Reset = partial(NestedColorSequence, control_code=0)
+    Bold = partial(NestedColorSequence, control_code=1, reset_code=22)
+    NoBold = partial(NestedColorSequence, control_code=22, reset_code=1)
+    Dim = partial(NestedColorSequence, control_code=2, reset_code=22)
+    NoDim = partial(NestedColorSequence, control_code=22, reset_code=2)
+    Italic = partial(NestedColorSequence, control_code=3, reset_code=23)
+    NoItalic = partial(NestedColorSequence, control_code=23, reset_code=3)
+    Underline = partial(NestedColorSequence, control_code=4, reset_code=24)
+    NoUnderline = partial(NestedColorSequence, control_code=24, reset_code=4)
+    BlinkSlow = partial(NestedColorSequence, control_code=5, reset_code=25)
+    NoBlinkSlow = partial(NestedColorSequence, control_code=25, reset_code=5)
+    BlinkRapid = partial(NestedColorSequence, control_code=6, reset_code=25)
+    NoBlinkRapid = partial(NestedColorSequence, control_code=25, reset_code=6)
+    Reversed = partial(NestedColorSequence, control_code=7, reset_code=27)
+    NoReversed = partial(NestedColorSequence, control_code=27, reset_code=7)
+    Conceal = partial(NestedColorSequence, control_code=8, reset_code=28)
+    NoConceal = partial(NestedColorSequence, control_code=28, reset_code=8)
+    Crossed = partial(NestedColorSequence, control_code=9, reset_code=29)
+    NoCrossed = partial(NestedColorSequence, control_code=29, reset_code=9)
+    FontPrimary = partial(NestedColorSequence, control_code=10, reset_code=10)
+    FontSecond1 = partial(NestedColorSequence, control_code=11, reset_code=10)
+    FontSecond2 = partial(NestedColorSequence, control_code=12, reset_code=10)
+    FontSecond3 = partial(NestedColorSequence, control_code=13, reset_code=10)
+    FontSecond4 = partial(NestedColorSequence, control_code=14, reset_code=10)
+    FontSecond5 = partial(NestedColorSequence, control_code=15, reset_code=10)
+    FontSecond6 = partial(NestedColorSequence, control_code=16, reset_code=10)
+    FontSecond8 = partial(NestedColorSequence, control_code=17, reset_code=10)
+    FontSecond9 = partial(NestedColorSequence, control_code=18, reset_code=10)
+    FontSecond10 = partial(NestedColorSequence, control_code=19, reset_code=10)
+    NoFont = partial(NestedColorSequence, control_code=10)
+    Fraktur = partial(NestedColorSequence, control_code=20)
+    UnderlineDouble = partial(NestedColorSequence, control_code=21, reset_code=24)
+    NoUnderlineDouble = partial(NestedColorSequence, control_code=24, reset_code=21)
+    PropSpacing = partial(NestedColorSequence, control_code=26, reset_code=26)
+    NoPropSpacing = partial(NestedColorSequence, control_code=26, reset_code=26)
+    NoForeground = partial(NestedColorSequence, control_code=39)
+    NoBackground = partial(NestedColorSequence, control_code=49)
+    Frame = partial(NestedColorSequence, control_code=51, reset_code=54)
+    NoFrame = partial(NestedColorSequence, control_code=54, reset_code=51)
+    Circle = partial(NestedColorSequence, control_code=52, reset_code=54)
+    NoCircle = partial(NestedColorSequence, control_code=54, reset_code=52)
+    OverLine = partial(NestedColorSequence, control_code=53, reset_code=55)
+    NoOverLine = partial(NestedColorSequence, control_code=55, reset_code=53)
+    UnderColourDefault = partial(NestedColorSequence, control_code=59)
+    IdeogramUnderLine = partial(NestedColorSequence, control_code=60, reset_code=65)
+    IdeogramUnderLineDouble = partial(NestedColorSequence, control_code=61, reset_code=65)
+    IdeogramOverLine = partial(NestedColorSequence, control_code=62, reset_code=65)
+    IdeogramOverLineDouble = partial(NestedColorSequence, control_code=63, reset_code=65)
+    IdeogramStress = partial(NestedColorSequence, control_code=64, reset_code=65)
+    NoIdeogram = partial(NestedColorSequence, control_code=65)
+    SuperScript = partial(NestedColorSequence, control_code=73, reset_code=75)
+    SubScript = partial(NestedColorSequence, control_code=74, reset_code=75)
+    NoScript = partial(NestedColorSequence, control_code=75)
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - BasicNest Sequences -
+# ----------------------------------------------------------------------------------------------------------------------
+class BasicNest:
     class Fore:
         Black           = partial(NestedColorSequence, color_code=30, reset_code=39)
         Red             = partial(NestedColorSequence, color_code=31, reset_code=39)

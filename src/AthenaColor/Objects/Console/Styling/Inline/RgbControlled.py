@@ -2,13 +2,22 @@
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
+from __future__ import annotations
 
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Objects.ColorSystems import RGB
+from AthenaColor.Objects.Color.ColorTupleConversion import cmyk_to_rgb,hsv_to_rgb,hsl_to_rgb
 from AthenaColor.Functions.AnsiSquences import ColorSequence
-import AthenaColor.Data.HtmlColors as HtmlColors
+from AthenaColor.Data.HtmlColors import HtmlColorTuples
+from AthenaColor.Objects.Color.ColorSystem import RGB, RGBA, HEX, HEXA, HSV, HSL, CMYK
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - All -
+# ----------------------------------------------------------------------------------------------------------------------
+__all__=[
+    "RgbControlled"
+]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
@@ -21,290 +30,300 @@ class RgbControlled:
     # ------------------------------------------------------------------------------------------------------------------
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
-    def custom(self, color:RGB) -> str:
-        return ColorSequence(self.param_code + str(color))
-
-    def rgb(self, r:int,g:int,b:int) -> str:
-        return ColorSequence(self.param_code + str(RGB(r, g, b)))
+    def custom(self, color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> str:
+        if isinstance(color, (RGB,RGBA,HEX,HEXA)):
+            color_str = f"{color.r};{color.g};{color.b}"
+        elif isinstance(color,HSL):
+            r,g,b = hsl_to_rgb(color.h,color.s,color.l)
+            color_str = f"{r};{g};{b}"
+        elif isinstance(color,HSV):
+            r,g,b = hsv_to_rgb(color.h,color.s,color.v)
+            color_str = f"{r};{g};{b}"
+        elif isinstance(color,CMYK):
+            r,g,b = cmyk_to_rgb(color.c,color.m,color.y,color.k)
+            color_str = f"{r};{g};{b}"
+        else:
+            raise ValueError
+        return ColorSequence(self.param_code + color_str)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -
     # ------------------------------------------------------------------------------------------------------------------
     @property
-    def Maroon              (self): return self.custom(HtmlColors.Maroon)
+    def Maroon              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Maroon))
     @property
-    def DarkRed             (self): return self.custom(HtmlColors.DarkRed)
+    def DarkRed             (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkRed))
     @property
-    def Brown               (self): return self.custom(HtmlColors.Brown)
+    def Brown               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Brown))
     @property
-    def Firebrick           (self): return self.custom(HtmlColors.Firebrick)
+    def Firebrick           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Firebrick))
     @property
-    def Crimson             (self): return self.custom(HtmlColors.Crimson)
+    def Crimson             (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Crimson))
     @property
-    def Red                 (self): return self.custom(HtmlColors.Red)
+    def Red                 (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Red))
     @property
-    def Tomato              (self): return self.custom(HtmlColors.Tomato)
+    def Tomato              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Tomato))
     @property
-    def Coral               (self): return self.custom(HtmlColors.Coral)
+    def Coral               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Coral))
     @property
-    def IndianRed           (self): return self.custom(HtmlColors.IndianRed)
+    def IndianRed           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.IndianRed))
     @property
-    def LightCoral          (self): return self.custom(HtmlColors.LightCoral)
+    def LightCoral          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightCoral))
     @property
-    def DarkSalmon          (self): return self.custom(HtmlColors.DarkSalmon)
+    def DarkSalmon          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkSalmon))
     @property
-    def Salmon              (self): return self.custom(HtmlColors.Salmon)
+    def Salmon              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Salmon))
     @property
-    def LightSalmon         (self): return self.custom(HtmlColors.LightSalmon)
+    def LightSalmon         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightSalmon))
     @property
-    def OrangeRed           (self): return self.custom(HtmlColors.OrangeRed)
+    def OrangeRed           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.OrangeRed))
     @property
-    def DarkOrange          (self): return self.custom(HtmlColors.DarkOrange)
+    def DarkOrange          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkOrange))
     @property
-    def Orange              (self): return self.custom(HtmlColors.Orange)
+    def Orange              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Orange))
     @property
-    def Gold                (self): return self.custom(HtmlColors.Gold)
+    def Gold                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Gold))
     @property
-    def DarkGoldenRod       (self): return self.custom(HtmlColors.DarkGoldenRod)
+    def DarkGoldenRod       (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkGoldenRod))
     @property
-    def GoldenRod           (self): return self.custom(HtmlColors.GoldenRod)
+    def GoldenRod           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.GoldenRod))
     @property
-    def PaleGoldenRod       (self): return self.custom(HtmlColors.PaleGoldenRod)
+    def PaleGoldenRod       (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.PaleGoldenRod))
     @property
-    def DarkKhaki           (self): return self.custom(HtmlColors.DarkKhaki)
+    def DarkKhaki           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkKhaki))
     @property
-    def Khaki               (self): return self.custom(HtmlColors.Khaki)
+    def Khaki               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Khaki))
     @property
-    def Olive               (self): return self.custom(HtmlColors.Olive)
+    def Olive               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Olive))
     @property
-    def Yellow              (self): return self.custom(HtmlColors.Yellow)
+    def Yellow              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Yellow))
     @property
-    def YellowGreen         (self): return self.custom(HtmlColors.YellowGreen)
+    def YellowGreen         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.YellowGreen))
     @property
-    def DarkOliveGreen      (self): return self.custom(HtmlColors.DarkOliveGreen)
+    def DarkOliveGreen      (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkOliveGreen))
     @property
-    def OliveDrab           (self): return self.custom(HtmlColors.OliveDrab)
+    def OliveDrab           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.OliveDrab))
     @property
-    def LawnGreen           (self): return self.custom(HtmlColors.LawnGreen)
+    def LawnGreen           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LawnGreen))
     @property
-    def Chartreuse          (self): return self.custom(HtmlColors.Chartreuse)
+    def Chartreuse          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Chartreuse))
     @property
-    def GreenYellow         (self): return self.custom(HtmlColors.GreenYellow)
+    def GreenYellow         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.GreenYellow))
     @property
-    def DarkGreen           (self): return self.custom(HtmlColors.DarkGreen)
+    def DarkGreen           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkGreen))
     @property
-    def Green               (self): return self.custom(HtmlColors.Green)
+    def Green               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Green))
     @property
-    def ForestGreen         (self): return self.custom(HtmlColors.ForestGreen)
+    def ForestGreen         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.ForestGreen))
     @property
-    def Lime                (self): return self.custom(HtmlColors.Lime)
+    def Lime                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Lime))
     @property
-    def LimeGreen           (self): return self.custom(HtmlColors.LimeGreen)
+    def LimeGreen           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LimeGreen))
     @property
-    def LightGreen          (self): return self.custom(HtmlColors.LightGreen)
+    def LightGreen          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightGreen))
     @property
-    def PaleGreen           (self): return self.custom(HtmlColors.PaleGreen)
+    def PaleGreen           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.PaleGreen))
     @property
-    def DarkSeaGreen        (self): return self.custom(HtmlColors.DarkSeaGreen)
+    def DarkSeaGreen        (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkSeaGreen))
     @property
-    def MediumSpringGreen   (self): return self.custom(HtmlColors.MediumSpringGreen)
+    def MediumSpringGreen   (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MediumSpringGreen))
     @property
-    def SpringGreen         (self): return self.custom(HtmlColors.SpringGreen)
+    def SpringGreen         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.SpringGreen))
     @property
-    def SeaGreen            (self): return self.custom(HtmlColors.SeaGreen)
+    def SeaGreen            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.SeaGreen))
     @property
-    def MediumAquaMarine    (self): return self.custom(HtmlColors.MediumAquaMarine)
+    def MediumAquaMarine    (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MediumAquaMarine))
     @property
-    def MediumSeaGreen      (self): return self.custom(HtmlColors.MediumSeaGreen)
+    def MediumSeaGreen      (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MediumSeaGreen))
     @property
-    def LightSeaGreen       (self): return self.custom(HtmlColors.LightSeaGreen)
+    def LightSeaGreen       (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightSeaGreen))
     @property
-    def DarkSlateGray       (self): return self.custom(HtmlColors.DarkSlateGray)
+    def DarkSlateGray       (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkSlateGray))
     @property
-    def Teal                (self): return self.custom(HtmlColors.Teal)
+    def Teal                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Teal))
     @property
-    def DarkCyan            (self): return self.custom(HtmlColors.DarkCyan)
+    def DarkCyan            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkCyan))
     @property
-    def Aqua                (self): return self.custom(HtmlColors.Aqua)
+    def Aqua                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Aqua))
     @property
-    def Cyan                (self): return self.custom(HtmlColors.Cyan)
+    def Cyan                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Cyan))
     @property
-    def LightCyan           (self): return self.custom(HtmlColors.LightCyan)
+    def LightCyan           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightCyan))
     @property
-    def DarkTurquoise       (self): return self.custom(HtmlColors.DarkTurquoise)
+    def DarkTurquoise       (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkTurquoise))
     @property
-    def Turquoise           (self): return self.custom(HtmlColors.Turquoise)
+    def Turquoise           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Turquoise))
     @property
-    def MediumTurquoise     (self): return self.custom(HtmlColors.MediumTurquoise)
+    def MediumTurquoise     (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MediumTurquoise))
     @property
-    def PaleTurquoise       (self): return self.custom(HtmlColors.PaleTurquoise)
+    def PaleTurquoise       (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.PaleTurquoise))
     @property
-    def AquaMarine          (self): return self.custom(HtmlColors.AquaMarine)
+    def AquaMarine          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.AquaMarine))
     @property
-    def PowderBlue          (self): return self.custom(HtmlColors.PowderBlue)
+    def PowderBlue          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.PowderBlue))
     @property
-    def CadetBlue           (self): return self.custom(HtmlColors.CadetBlue)
+    def CadetBlue           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.CadetBlue))
     @property
-    def SteelBlue           (self): return self.custom(HtmlColors.SteelBlue)
+    def SteelBlue           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.SteelBlue))
     @property
-    def CornFlowerBlue      (self): return self.custom(HtmlColors.CornFlowerBlue)
+    def CornFlowerBlue      (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.CornFlowerBlue))
     @property
-    def DeepSkyBlue         (self): return self.custom(HtmlColors.DeepSkyBlue)
+    def DeepSkyBlue         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DeepSkyBlue))
     @property
-    def DodgerBlue          (self): return self.custom(HtmlColors.DodgerBlue)
+    def DodgerBlue          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DodgerBlue))
     @property
-    def LightBlue           (self): return self.custom(HtmlColors.LightBlue)
+    def LightBlue           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightBlue))
     @property
-    def SkyBlue             (self): return self.custom(HtmlColors.SkyBlue)
+    def SkyBlue             (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.SkyBlue))
     @property
-    def LightSkyBlue        (self): return self.custom(HtmlColors.LightSkyBlue)
+    def LightSkyBlue        (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightSkyBlue))
     @property
-    def MidnightBlue        (self): return self.custom(HtmlColors.MidnightBlue)
+    def MidnightBlue        (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MidnightBlue))
     @property
-    def Navy                (self): return self.custom(HtmlColors.Navy)
+    def Navy                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Navy))
     @property
-    def DarkBlue            (self): return self.custom(HtmlColors.DarkBlue)
+    def DarkBlue            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkBlue))
     @property
-    def MediumBlue          (self): return self.custom(HtmlColors.MediumBlue)
+    def MediumBlue          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MediumBlue))
     @property
-    def Blue                (self): return self.custom(HtmlColors.Blue)
+    def Blue                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Blue))
     @property
-    def RoyalBlue           (self): return self.custom(HtmlColors.RoyalBlue)
+    def RoyalBlue           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.RoyalBlue))
     @property
-    def BlueViolet          (self): return self.custom(HtmlColors.BlueViolet)
+    def BlueViolet          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.BlueViolet))
     @property
-    def Indigo              (self): return self.custom(HtmlColors.Indigo)
+    def Indigo              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Indigo))
     @property
-    def DarkSlateBlue       (self): return self.custom(HtmlColors.DarkSlateBlue)
+    def DarkSlateBlue       (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkSlateBlue))
     @property
-    def SlateBlue           (self): return self.custom(HtmlColors.SlateBlue)
+    def SlateBlue           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.SlateBlue))
     @property
-    def MediumSlateBlue     (self): return self.custom(HtmlColors.MediumSlateBlue)
+    def MediumSlateBlue     (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MediumSlateBlue))
     @property
-    def MediumPurple        (self): return self.custom(HtmlColors.MediumPurple)
+    def MediumPurple        (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MediumPurple))
     @property
-    def DarkMagenta         (self): return self.custom(HtmlColors.DarkMagenta)
+    def DarkMagenta         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkMagenta))
     @property
-    def DarkViolet          (self): return self.custom(HtmlColors.DarkViolet)
+    def DarkViolet          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkViolet))
     @property
-    def DarkOrchid          (self): return self.custom(HtmlColors.DarkOrchid)
+    def DarkOrchid          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkOrchid))
     @property
-    def MediumOrchid        (self): return self.custom(HtmlColors.MediumOrchid)
+    def MediumOrchid        (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MediumOrchid))
     @property
-    def Purple              (self): return self.custom(HtmlColors.Purple)
+    def Purple              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Purple))
     @property
-    def Thistle             (self): return self.custom(HtmlColors.Thistle)
+    def Thistle             (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Thistle))
     @property
-    def Plum                (self): return self.custom(HtmlColors.Plum)
+    def Plum                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Plum))
     @property
-    def Violet              (self): return self.custom(HtmlColors.Violet)
+    def Violet              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Violet))
     @property
-    def Magenta             (self): return self.custom(HtmlColors.Magenta)
+    def Magenta             (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Magenta))
     @property
-    def Orchid              (self): return self.custom(HtmlColors.Orchid)
+    def Orchid              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Orchid))
     @property
-    def MediumVioletRed     (self): return self.custom(HtmlColors.MediumVioletRed)
+    def MediumVioletRed     (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MediumVioletRed))
     @property
-    def PaleVioletRed       (self): return self.custom(HtmlColors.PaleVioletRed)
+    def PaleVioletRed       (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.PaleVioletRed))
     @property
-    def DeepPink            (self): return self.custom(HtmlColors.DeepPink)
+    def DeepPink            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DeepPink))
     @property
-    def HotPink             (self): return self.custom(HtmlColors.HotPink)
+    def HotPink             (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.HotPink))
     @property
-    def LightPink           (self): return self.custom(HtmlColors.LightPink)
+    def LightPink           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightPink))
     @property
-    def Pink                (self): return self.custom(HtmlColors.Pink)
+    def Pink                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Pink))
     @property
-    def AntiqueWhite        (self): return self.custom(HtmlColors.AntiqueWhite)
+    def AntiqueWhite        (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.AntiqueWhite))
     @property
-    def Beige               (self): return self.custom(HtmlColors.Beige)
+    def Beige               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Beige))
     @property
-    def Bisque              (self): return self.custom(HtmlColors.Bisque)
+    def Bisque              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Bisque))
     @property
-    def BlanchedAlmond      (self): return self.custom(HtmlColors.BlanchedAlmond)
+    def BlanchedAlmond      (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.BlanchedAlmond))
     @property
-    def Wheat               (self): return self.custom(HtmlColors.Wheat)
+    def Wheat               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Wheat))
     @property
-    def CornSilk            (self): return self.custom(HtmlColors.CornSilk)
+    def CornSilk            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.CornSilk))
     @property
-    def LemonChiffon        (self): return self.custom(HtmlColors.LemonChiffon)
+    def LemonChiffon        (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LemonChiffon))
     @property
-    def LightGoldenRodYellow(self): return self.custom(HtmlColors.LightGoldenRodYellow)
+    def LightGoldenRodYellow(self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightGoldenRodYellow))
     @property
-    def LightYellow         (self): return self.custom(HtmlColors.LightYellow)
+    def LightYellow         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightYellow))
     @property
-    def SaddleBrown         (self): return self.custom(HtmlColors.SaddleBrown)
+    def SaddleBrown         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.SaddleBrown))
     @property
-    def Sienna              (self): return self.custom(HtmlColors.Sienna)
+    def Sienna              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Sienna))
     @property
-    def Chocolate           (self): return self.custom(HtmlColors.Chocolate)
+    def Chocolate           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Chocolate))
     @property
-    def Peru                (self): return self.custom(HtmlColors.Peru)
+    def Peru                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Peru))
     @property
-    def SandyBrown          (self): return self.custom(HtmlColors.SandyBrown)
+    def SandyBrown          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.SandyBrown))
     @property
-    def BurlyWood           (self): return self.custom(HtmlColors.BurlyWood)
+    def BurlyWood           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.BurlyWood))
     @property
-    def Tan                 (self): return self.custom(HtmlColors.Tan)
+    def Tan                 (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Tan))
     @property
-    def RosyBrown           (self): return self.custom(HtmlColors.RosyBrown)
+    def RosyBrown           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.RosyBrown))
     @property
-    def Moccasin            (self): return self.custom(HtmlColors.Moccasin)
+    def Moccasin            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Moccasin))
     @property
-    def NavajoWhite         (self): return self.custom(HtmlColors.NavajoWhite)
+    def NavajoWhite         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.NavajoWhite))
     @property
-    def PeachPuff           (self): return self.custom(HtmlColors.PeachPuff)
+    def PeachPuff           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.PeachPuff))
     @property
-    def MistyRose           (self): return self.custom(HtmlColors.MistyRose)
+    def MistyRose           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MistyRose))
     @property
-    def LavenderBlush       (self): return self.custom(HtmlColors.LavenderBlush)
+    def LavenderBlush       (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LavenderBlush))
     @property
-    def Linen               (self): return self.custom(HtmlColors.Linen)
+    def Linen               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Linen))
     @property
-    def OldLace             (self): return self.custom(HtmlColors.OldLace)
+    def OldLace             (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.OldLace))
     @property
-    def PapayaWhip          (self): return self.custom(HtmlColors.PapayaWhip)
+    def PapayaWhip          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.PapayaWhip))
     @property
-    def WeaShell            (self): return self.custom(HtmlColors.WeaShell)
+    def WeaShell            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.WeaShell))
     @property
-    def MintCream           (self): return self.custom(HtmlColors.MintCream)
+    def MintCream           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.MintCream))
     @property
-    def SlateGray           (self): return self.custom(HtmlColors.SlateGray)
+    def SlateGray           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.SlateGray))
     @property
-    def LightSlateGray      (self): return self.custom(HtmlColors.LightSlateGray)
+    def LightSlateGray      (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightSlateGray))
     @property
-    def LightSteelBlue      (self): return self.custom(HtmlColors.LightSteelBlue)
+    def LightSteelBlue      (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightSteelBlue))
     @property
-    def Lavender            (self): return self.custom(HtmlColors.Lavender)
+    def Lavender            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Lavender))
     @property
-    def FloralWhite         (self): return self.custom(HtmlColors.FloralWhite)
+    def FloralWhite         (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.FloralWhite))
     @property
-    def AliceBlue           (self): return self.custom(HtmlColors.AliceBlue)
+    def AliceBlue           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.AliceBlue))
     @property
-    def GhostWhite          (self): return self.custom(HtmlColors.GhostWhite)
+    def GhostWhite          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.GhostWhite))
     @property
-    def Honeydew            (self): return self.custom(HtmlColors.Honeydew)
+    def Honeydew            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Honeydew))
     @property
-    def Ivory               (self): return self.custom(HtmlColors.Ivory)
+    def Ivory               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Ivory))
     @property
-    def Azure               (self): return self.custom(HtmlColors.Azure)
+    def Azure               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Azure))
     @property
-    def Snow                (self): return self.custom(HtmlColors.Snow)
+    def Snow                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Snow))
     @property
-    def Black               (self): return self.custom(HtmlColors.Black)
+    def Black               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Black))
     @property
-    def DimGray             (self): return self.custom(HtmlColors.DimGray)
+    def DimGray             (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DimGray))
     @property
-    def Gray                (self): return self.custom(HtmlColors.Gray)
+    def Gray                (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Gray))
     @property
-    def DarkGray            (self): return self.custom(HtmlColors.DarkGray)
+    def DarkGray            (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.DarkGray))
     @property
-    def Silver              (self): return self.custom(HtmlColors.Silver)
+    def Silver              (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Silver))
     @property
-    def LightGray           (self): return self.custom(HtmlColors.LightGray)
+    def LightGray           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.LightGray))
     @property
-    def Gainsboro           (self): return self.custom(HtmlColors.Gainsboro)
+    def Gainsboro           (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.Gainsboro))
     @property
-    def WhiteSmoke          (self): return self.custom(HtmlColors.WhiteSmoke)
+    def WhiteSmoke          (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.WhiteSmoke))
     @property
-    def White               (self): return self.custom(HtmlColors.White)
+    def White               (self): return ColorSequence(self.param_code + ";".join(str(c) for c in HtmlColorTuples.White))

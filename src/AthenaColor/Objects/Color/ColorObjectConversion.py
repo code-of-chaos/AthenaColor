@@ -2,25 +2,22 @@
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
+from __future__ import annotations
 
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Objects.ColorSystems import (
-    RGB ,
-    HEX ,
-    CMYK,
-    HSL ,
-    HSV ,
-    RGBA,
-    HEXA,
-)
-import AthenaColor.Functions.ColorTupleConversion as CTC
-from AthenaColor import init
+from AthenaColor.InitClass import init
+import AthenaColor.Objects.Color.ColorTupleConversion as CTC
+from AthenaColor.Objects.Color.ColorSystem import RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA
 
 # ----------------------------------------------------------------------------------------------------------------------
-# - OPAQUE COLORS -
+# - All -
 # ----------------------------------------------------------------------------------------------------------------------
+__all__ = [
+    "to_RGB", "to_RGBA", "to_HSV", "to_HSL", "to_HEX", "to_HEXA", "to_CMYK"
+]
+
 # ----------------------------------------------------------------------------------------------------------------------
 # - RGB -
 # ----------------------------------------------------------------------------------------------------------------------
@@ -107,7 +104,7 @@ def to_HSL(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSL:
 # ----------------------------------------------------------------------------------------------------------------------
 # - CMYK -
 # ----------------------------------------------------------------------------------------------------------------------
-def to_CMYK(color:RGB|HEX|CMYK|HSL|HSV) -> CMYK:
+def to_CMYK(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> CMYK:
     """
     Function which converts any Color Object to an CMYK object.
     """
@@ -127,9 +124,9 @@ def to_CMYK(color:RGB|HEX|CMYK|HSL|HSV) -> CMYK:
 # ----------------------------------------------------------------------------------------------------------------------
 # - TRANSPARENT COLORS -
 # ----------------------------------------------------------------------------------------------------------------------A
-def to_RGBA(color:RGBA|HEXA|RGB|HEX|CMYK|HSL|HSV) -> RGBA:
+def to_RGBA(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGBA:
     """
-    Function which converts any Color Object to a RGBA object.
+    Function which converts any Color Object to an RGBA object.
     """
     if isinstance(color, RGBA):
         return RGBA(*color.export())
@@ -137,17 +134,17 @@ def to_RGBA(color:RGBA|HEXA|RGB|HEX|CMYK|HSL|HSV) -> RGBA:
         return RGBA(*CTC.hexa_to_rgba(str(color)))
     # below conversions will set the A part of RGBA to 1
     elif isinstance(color, (RGB,HEX)):
-        return RGBA(*color.export(), a=init.transparent_default_float)
+        return RGBA(*color.export(), a=init.transparentDefault[1])
     elif isinstance(color, HSV):
-        return RGBA(*CTC.hsv_to_rgb(*color.export()), a=init.transparent_default_float)
+        return RGBA(*CTC.hsv_to_rgb(*color.export()), a=init.transparentDefault[1])
     elif isinstance(color, HSL):
-        return RGBA(*CTC.hsl_to_rgb(*color.export()), a=init.transparent_default_float)
+        return RGBA(*CTC.hsl_to_rgb(*color.export()), a=init.transparentDefault[1])
     elif isinstance(color, CMYK):
-        return RGBA(*CTC.cmyk_to_rgb(*color.export()), a=init.transparent_default_float)
+        return RGBA(*CTC.cmyk_to_rgb(*color.export()), a=init.transparentDefault[1])
     else:
         return NotImplemented
 
-def to_HEXA(color:RGBA|HEXA|RGB|HEX|CMYK|HSL|HSV) -> HEXA:
+def to_HEXA(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEXA:
     """
     Function which converts any Color Object to an HEXA object.
     """
@@ -157,12 +154,12 @@ def to_HEXA(color:RGBA|HEXA|RGB|HEX|CMYK|HSL|HSV) -> HEXA:
         return HEXA(*color.export())
     # below conversions will set the A part of HEXA to ff
     elif isinstance(color, (RGB,HEX)):
-        return HEXA(*CTC.rgb_to_hex(*color.export()) + init.transparent_default_str)
+        return HEXA(*CTC.rgb_to_hex(*color.export()) + init.transparentDefault[0])
     elif isinstance(color, HSV):
-        return HEXA(*CTC.hsv_to_hex(*color.export()) + init.transparent_default_str)
+        return HEXA(*CTC.hsv_to_hex(*color.export()) + init.transparentDefault[0])
     elif isinstance(color, HSL):
-        return HEXA(*CTC.hsl_to_hex(*color.export()) + init.transparent_default_str)
+        return HEXA(*CTC.hsl_to_hex(*color.export()) + init.transparentDefault[0])
     elif isinstance(color, CMYK):
-        return HEXA(*CTC.cmyk_to_hex(*color.export()) + init.transparent_default_str)
+        return HEXA(*CTC.cmyk_to_hex(*color.export()) + init.transparentDefault[0])
     else:
         return NotImplemented

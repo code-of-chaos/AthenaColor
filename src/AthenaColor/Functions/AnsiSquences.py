@@ -2,30 +2,36 @@
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
+from __future__ import annotations
 
 # Custom Library
 
 # Custom Packages
-from __future__ import annotations
+from AthenaColor.InitClass import init
+from AthenaColor.Data.General import ConsoleCodes
 
-from AthenaColor import init
-import AthenaColor.Data.ConsoleCodes as ConsoleCodes
+# ----------------------------------------------------------------------------------------------------------------------
+# - All -
+# ----------------------------------------------------------------------------------------------------------------------
+__all__ = [
+    "ColorSequence", "NestedColorSequence"
+]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def ColorSequence(control_code:str|int)->str:
+def ColorSequence(control_code:int|str)->str:
     """
     Used for quick assembly of correct Ansi Escape functions
     Used the escape code defined in AthenaColor init
     """
     return f'{init.esc}[{control_code}{ConsoleCodes.color}'
 
-def NestedColorSequence(*obj, control_code:str|int,reset_code:str|int=None, sep:str=" ") -> str:
+def NestedColorSequence(*obj, control_code:int|str,reset_code:int|str=None, sep:str=" ") -> str:
     """
-    Used by Nested Console Style Makeup operations like ForeNest, BackNest, StyleNest.
+    Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
     Function wraps every obj in the properly defined control- and reset codes.
-    THis is made to prevent Style makeup bleed
+    This is made to prevent style makeup bleed
     """
     color = ColorSequence(control_code=control_code)
     reset = ColorSequence(control_code=reset_code) if reset_code is not None else ''
