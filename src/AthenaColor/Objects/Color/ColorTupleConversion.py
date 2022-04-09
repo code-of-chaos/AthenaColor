@@ -132,7 +132,7 @@ def rgb_to_hex(r:int,g:int,b:int) -> str:
     Function to convert a rgb to a hexadecimal string.
     Does not create a HEX object.
     """
-    return '#%02x%02x%02x' % ConstrainRGB(r,g,b)
+    return '#%02x%02x%02x' % ConstrainRGB(int(r),int(g),int(b))
 
 @InputTest.number
 def hsv_to_hex(h:int|float,s:int|float, v:int|float) -> str:

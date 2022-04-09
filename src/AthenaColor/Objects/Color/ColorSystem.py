@@ -344,6 +344,37 @@ class HEX(RGB):
     def __repr__(self) -> str:
         return f"HEX(r={self.r},g={self.g},b={self.b})"
 
+    # ------------------------------------------------------------------------------------------------------------------
+    # - Math Dunders -
+    # ------------------------------------------------------------------------------------------------------------------
+    # noinspection PyTypeChecker
+    def __add__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgb_to_hex(*dunder_func(func=CSD.add, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgb_to_hex(*dunder_func(func=CSD.sub, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgb_to_hex(*dunder_func(func=CSD.mul, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgb_to_hex(*dunder_func(func=CSD.floordiv, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgb_to_hex(*dunder_func(func=CSD.truediv, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgb_to_hex(*dunder_func(func=CSD.mod, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgb_to_hex(*dunder_func(func=CSD.pow, left=self, right=other)))
+
 # ------------------------------------------------------------------------------------------------------------------
 # - RGBA -
 # ------------------------------------------------------------------------------------------------------------------
@@ -432,6 +463,38 @@ class HEXA(RGBA):
 
     def __repr__(self) -> str:
         return f"HEXA(r={self.r},g={self.g},b={self.b},a={self.a})"
+
+
+    # ------------------------------------------------------------------------------------------------------------------
+    # - Math Dunders -
+    # ------------------------------------------------------------------------------------------------------------------
+    # noinspection PyTypeChecker
+    def __add__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.add, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.sub, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.mul, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.floordiv, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.truediv, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.mod, left=self, right=other)))
+
+    # noinspection PyTypeChecker
+    def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.pow, left=self, right=other)))
 
 # ------------------------------------------------------------------------------------------------------------------
 # - HSV -
