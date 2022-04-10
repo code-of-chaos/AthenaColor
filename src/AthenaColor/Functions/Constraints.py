@@ -8,7 +8,7 @@ from typing import Tuple
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions.TypeTesting import InputTest
+from AthenaColor.Functions.StrictTyping import StrictInput
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -20,7 +20,7 @@ __all__ = [
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-@InputTest.Custom(types=(int, float))
+@StrictInput.Custom(types=(int, float))
 def Constrain(value:int|float, maximum:int|float, minimum:int|float=0) -> int|float:
     return max(min(value, maximum),minimum)
 

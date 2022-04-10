@@ -13,7 +13,7 @@ import AthenaColor.Functions.DunderFunctions as CSD
 from AthenaColor.Objects.Color.ColorTupleConversion import *
 from AthenaColor.InitClass import init
 from AthenaColor.Functions.Constraints import Constrain
-from AthenaColor.Functions.TypeTesting import TestTypes
+from AthenaColor.Functions.StrictTyping import StrictType, StrictError
 from AthenaColor.Functions.General import RoundHalfUp,RoundToDecimals
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -276,9 +276,11 @@ class RGB(ColorSystem):
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
     def __init__(self,r: int, g: int, b: int):
-        if not TestTypes(types=(int,float),objects=(r,g,b)):
+        try:
+            StrictType(types=(int, float), objects=(r, g, b))
+            self.r,self.g,self.b = r,g,b
+        except StrictError:
             raise ValueError(f"RGB values r={r},g={g},b={b} did not consist of integer values")
-        self.r,self.g,self.b = r,g,b
 
     def export(self) -> Tuple[int,int,int]:
          return self.r,self.g,self.b
@@ -387,9 +389,11 @@ class RGBA(ColorSystem):
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
     def __init__(self,r: int, g: int, b: int, a:int):
-        if not TestTypes(types=(int,float),objects=(r,g,b,a)):
+        try:
+            StrictType(types=(int,float),objects=(r,g,b,a))
+            self.r,self.g,self.b,self.a = r,g,b,a
+        except StrictError:
             raise ValueError(f"RGB values r={r},g={g},b={b},a={a} did not consist of integer values")
-        self.r,self.g,self.b,self.a = r,g,b,a
 
     def export(self) -> Tuple[int,int,int,int]:
          return self.r,self.g,self.b,self.a
@@ -509,9 +513,11 @@ class HSV(ColorSystem):
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
     def __init__(self,h: int|float, s: int|float, v: int|float):
-        if not TestTypes(types=(int,float),objects=(h,s,v)):
+        try:
+            StrictType(types=(int,float),objects=(h,s,v))
+            self.h,self.s,self.v = h,s,v
+        except StrictError:
             raise ValueError(f"HSV values h={h},s={s},v={v} did not consist of integer or float values")
-        self.h,self.s,self.v = h,s,v
 
     def export(self) -> Tuple[int|float,int|float,int|float]:
          return self.h,self.s,self.v
@@ -567,9 +573,11 @@ class HSL(ColorSystem):
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
     def __init__(self,h: int|float, s: int|float, l: int|float):
-        if not TestTypes(types=(int,float),objects=(h,s,l)):
+        try:
+            StrictType(types=(int,float),objects=(h,s,l))
+            self.h,self.s,self.l = h,s,l
+        except StrictError:
             raise ValueError(f"HSL values h={h},s={s},l={l} did not consist of integer or float values")
-        self.h,self.s,self.l = h,s,l
 
     def export(self) -> Tuple[int|float,int|float,int|float]:
          return self.h,self.s,self.l
@@ -624,9 +632,11 @@ class CMYK(ColorSystem):
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
     def __init__(self, c:int|float, m:int|float, y:int|float, k:int|float):
-        if not TestTypes(types=(int,float), objects=(c,m,y,k)):
+        try:
+            StrictType(types=(int,float), objects=(c,m,y,k))
+            self.c, self.m, self.y, self.k = c, m, y, k
+        except StrictError:
             raise ValueError(f"CMYK values c={c},m={m},y={y},k={k} did not consist of integer or float values")
-        self.c,self.m,self.y,self.k = c,m,y,k
 
     def export(self) -> Tuple[int|float,int|float,int|float,int|float]:
          return self.c,self.m,self.y,self.k

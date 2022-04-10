@@ -8,37 +8,27 @@ A *No Dependency* python package for displaying the full spectrum of RGB colors 
 --- 
 ## Details and features 
 - *Nested* and *Inline* options to print StyleNest and Color makeup to the Console
-- 140 predefined extended HTML colors, see [here](https://github.com/DirectiveAthena/VerSC-AthenaColor/wiki/Predefined-Colors) for the full list
-- By using the `rgb` object, you have access to print any color you want
+- 140 predefined extended HTML colors
+- By using the `RGB` object, you have access to print any RGB color to the console you desire
  
 ---
-## Content and Examples
- For examples on how to use the package, go to [the wiki examples](https://github.com/DirectiveAthena/VerSC-AthenaColor/wiki/Examples) on the GitHub Repo.
+## Documentation
+Full documentation can be found at:
+**[directiveathena.com/athenacolor-docu](https://www.directiveathena.com/athenacolor-docu)** (redirect to Obsidian.md publish site)
 
-To immediately  see what the package can do, run the package itself (will call the `__main__.py` file in the package):
-
-```console 
-python -m AthenaColor
-```
-
-The following image is a print out of how the code above should print out:
-(The actual list of style Colors and makeup goes on for all 140 colors)
-
-<img src="https://github.com/DirectiveAthena/VerSC-AthenaColor/blob/master/Resources/PyCharmOutput.png?raw=true"/>
- 
 ---
 ## Install
 To install the package in your Python environment
 
 ```console 
-pip install AthenaColor
+pip install AthenaColor --upgrade
 ```
 
 ---
 
 ## Links 
 Project files can be found at:    
-- [GitHub Repo](https://github.com/DirectiveAthena/VSC-AthenaColor)     
+- [GitHub Repo](https://github.com/DirectiveAthena/VerSC-AthenaColor)     
 - [Pypi link](https://pypi.org/project/AthenaColor/)    
 
 ---
