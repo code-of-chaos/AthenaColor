@@ -67,7 +67,7 @@ def map_color(left:ColorSystem,right:ColorSystem) -> tuple:
         if isinstance(right, (RGB,HEX)):
             return rgb_to_hsv(*right.export())
         elif isinstance(right,HSL):
-            return hsv_to_hsl(*right.export())
+            return hsl_to_hsv(*right.export())
         elif isinstance(right,HSV):
             return right.export()
         elif isinstance(right,CMYK):
