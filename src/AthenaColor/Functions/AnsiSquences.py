@@ -39,4 +39,4 @@ def NestedColorSequence(*obj, control_code:int|str,reset_code:int|str=None, sep:
     if len(obj) == 1:
         return  ''.join([f"{color}{o}{reset}"for o in obj])
     else:
-        return sep.join([f"{color}{o}{reset}"for o in obj])
+        return f"{color}{sep}{reset}".join([f"{color}{o}{reset}"for o in obj])
