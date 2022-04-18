@@ -77,6 +77,9 @@ class AthenaColorInitClass:
         else:
             raise ValueError
 
+    def __repr__(self) -> str:
+        return f"AthenaColorInitClass(roundUp={self._roundUp}, esc={self._esc}, transparentDefault={self.transparentDefault},decimalPlaces={self.decimalPlaces})"
+
 # ----------------------------------------------------------------------------------------------------------------------
 # - Init Object -
 # ----------------------------------------------------------------------------------------------------------------------
