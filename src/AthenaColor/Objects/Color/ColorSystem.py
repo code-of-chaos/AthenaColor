@@ -275,7 +275,7 @@ class RGB(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,r: int, g: int, b: int):
+    def __init__(self,r:int=0, g:int=0, b:int=0):
         try:
             StrictType(types=(int, float), objects=(r, g, b))
             self.r,self.g,self.b = r,g,b
@@ -331,7 +331,7 @@ class HEX(RGB):
     Color Object for HEX values.
     Inherits from RGB as this is just another notation for RGB values.
     """
-    def __init__(self, hex_value:str):
+    def __init__(self, hex_value:str="#000000"):
         if not isinstance(hex_value,str):
             raise ValueError(f"HEX value hex_value={hex_value} did not consist of a string value")
         super().__init__(*hex_to_rgb(hex_value))
@@ -388,7 +388,7 @@ class RGBA(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,r: int, g: int, b: int, a:int):
+    def __init__(self,r:int=0, g:int=0, b:int=0, a:int=0):
         try:
             StrictType(types=(int,float),objects=(r,g,b,a))
             self.r,self.g,self.b,self.a = r,g,b,a
@@ -453,7 +453,7 @@ class HEXA(RGBA):
     Color Object for HEXA values.
     Inherits from RGBA as this is just another notation for RGBA values.
     """
-    def __init__(self, hex_value:str):
+    def __init__(self, hex_value:str="#00000000"):
         if not isinstance(hex_value,str):
             raise ValueError(f"HEXA value hex_value={hex_value} did not consist of a string value")
         super().__init__(*hexa_to_rgba(hex_value))
@@ -572,7 +572,7 @@ class HSL(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,h: int|float, s: int|float, l: int|float):
+    def __init__(self,h:int|float=0, s:int|float=0, l:int|float=0):
         try:
             StrictType(types=(int,float),objects=(h,s,l))
             self.h,self.s,self.l = h,s,l
@@ -631,7 +631,7 @@ class CMYK(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self, c:int|float, m:int|float, y:int|float, k:int|float):
+    def __init__(self, c:int|float=0, m:int|float=0, y:int|float=0, k:int|float=0):
         try:
             StrictType(types=(int,float), objects=(c,m,y,k))
             self.c, self.m, self.y, self.k = c, m, y, k
