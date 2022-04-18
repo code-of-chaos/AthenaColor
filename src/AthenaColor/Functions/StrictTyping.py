@@ -104,14 +104,16 @@ class StrictOutput:
     @staticmethod
     def int(fnc):
         def wrapper(*args, **kwargs):
-            StrictType(types=int, objects=(result:=fnc(*args, **kwargs)))
+            result = fnc(*args, **kwargs)
+            StrictType(types=int, objects=result)
             return result
         return wrapper
 
     @staticmethod
     def str(fnc):
         def wrapper(*args, **kwargs):
-            StrictType(types=str, objects=(result:=fnc(*args, **kwargs)))
+            result = fnc(*args, **kwargs)
+            StrictType(types=str, objects=result)
             return result
 
         return wrapper
@@ -119,7 +121,8 @@ class StrictOutput:
     @staticmethod
     def float(fnc):
         def wrapper(*args, **kwargs):
-            StrictType(types=float, objects=(result:=fnc(*args, **kwargs)))
+            result = fnc(*args, **kwargs)
+            StrictType(types=float, objects=result)
             return result
 
         return wrapper
@@ -129,7 +132,8 @@ class StrictOutput:
     def Custom(types):
         def decorator(fnc):
             def wrapper(*args, **kwargs):
-                StrictType(types=types, objects=(result:=fnc(*args, **kwargs)))
+                result = fnc(*args, **kwargs)
+                StrictType(types=types, objects=result)
                 return result
             return wrapper
         return decorator
