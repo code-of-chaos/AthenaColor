@@ -20,12 +20,12 @@ class ColorObjects_HEX(unittest.TestCase):
 
     def dunder_tests(self, equal, notEqual, greater, less, greaterEqual, lessEqual):
         color = self.CreateColor()
-        self.assertEqual(color, equal)  # color == equal
-        self.assertNotEqual(color, notEqual)  # color != notEqual
-        self.assertGreater(color, greater)  # color >  greater
-        self.assertLess(color, less)  # color <  less
-        self.assertGreaterEqual(color, greaterEqual)  # color >= greaterEqual
-        self.assertLessEqual(color, lessEqual)  # color <= lessEqual
+        self.assertEqual(       color, equal)       # color == equal
+        self.assertNotEqual(    color, notEqual)    # color != notEqual
+        self.assertGreater(     color, greater)     # color >  greater
+        self.assertLess(        color, less)        # color <  less
+        self.assertGreaterEqual(color, greaterEqual)# color >= greaterEqual
+        self.assertLessEqual(   color, lessEqual)   # color <= lessEqual
 
     # ------------------------------------------------------------------------------------------------------------------
     # - BASIC Color Object Testing -
