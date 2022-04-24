@@ -25,6 +25,18 @@ class ColorObjects_RGB(unittest.TestCase):
     # ------------------------------------------------------------------------------------------------------------------
     # - BASIC Color Object Testing -
     # ------------------------------------------------------------------------------------------------------------------
+    def test_input(self):
+        with self.assertRaises(ValueError):
+            RGB("a","b","c")
+        with self.assertRaises(ValueError):
+            RGB(b"a",b"b",b"c")
+        with self.assertRaises(TypeError):
+            RGB(**{"a":1,"b":2,"c":3})
+        with self.assertRaises(ValueError):
+            RGB(**{"r":"a","g":"b","b":"c"})
+        with self.assertRaises(TypeError):
+            RGB(*(255,255,255,255))
+
     def test_repr(self):
         self.assertEqual(repr(self.CreateColor()),"RGB(r=32,g=64,b=128)")
 

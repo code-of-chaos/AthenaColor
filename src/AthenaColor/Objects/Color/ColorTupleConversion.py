@@ -41,7 +41,7 @@ def hex_to_rgb(hexadecimal:str) -> Tuple[int, ...]:
     Does not create an RGB object.
     """
     # Form hex value in usable state (cast away the '#' value)
-    if hexadecimal[0] == "#":
+    if hexadecimal[0] == "#" and len(hexadecimal) == 7:
         hex_v = hexadecimal[1:]
     elif len(hexadecimal) == 6:
         hex_v = hexadecimal

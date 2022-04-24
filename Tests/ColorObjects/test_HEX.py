@@ -18,9 +18,21 @@ class ColorObjects_HEX(unittest.TestCase):
     def CreateColor(hex_str = "#204080") -> HEX:
         return HEX(hex_str)
 
-# ------------------------------------------------------------------------------------------------------------------
+    # ------------------------------------------------------------------------------------------------------------------
     # - BASIC Color Object Testing -
     # ------------------------------------------------------------------------------------------------------------------
+    def test_input(self):
+        with self.assertRaises(ValueError):
+            HEX(1)
+        with self.assertRaises(ValueError):
+            HEX(b"#123456")
+        with self.assertRaises(ValueError):
+            HEX("#123456789")
+        with self.assertRaises(ValueError):
+            HEX(**{"hex_value":1})
+        with self.assertRaises(TypeError):
+            HEX(**{"hex_value":"#123456","a":1})
+
     def test_repr(self):
         self.assertEqual(repr(self.CreateColor()),"HEX(r=32,g=64,b=128)")
 
