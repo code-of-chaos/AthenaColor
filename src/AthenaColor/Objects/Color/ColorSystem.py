@@ -142,7 +142,10 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        return type(self)(*dunder_func(func=CSD.add, left=self, right=other))
+        result = dunder_func(func=CSD.add, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return type(self)(*result)
 
     # noinspection PyTypeChecker
     def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -151,7 +154,10 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        return type(self)(*dunder_func(func=CSD.sub, left=self, right=other))
+        result = dunder_func(func=CSD.sub, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return type(self)(*result)
 
     # noinspection PyTypeChecker
     def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -160,7 +166,10 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        return type(self)(*dunder_func(func=CSD.mul, left=self, right=other))
+        result = dunder_func(func=CSD.mul, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return type(self)(*result)
 
     # noinspection PyTypeChecker
     def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -169,7 +178,10 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        return type(self)(*dunder_func(func=CSD.floordiv, left=self, right=other))
+        result = dunder_func(func=CSD.floordiv, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return type(self)(*result)
 
     # noinspection PyTypeChecker
     def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -178,7 +190,10 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        return type(self)(*dunder_func(func=CSD.truediv, left=self, right=other))
+        result = dunder_func(func=CSD.truediv, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return type(self)(*result)
 
     # noinspection PyTypeChecker
     def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -187,7 +202,10 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        return type(self)(*dunder_func(func=CSD.mod, left=self, right=other))
+        result = dunder_func(func=CSD.mod, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return type(self)(*result)
 
     # noinspection PyTypeChecker
     def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -196,7 +214,10 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        return type(self)(*dunder_func(func=CSD.pow, left=self, right=other))
+        result = dunder_func(func=CSD.pow, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return type(self)(*result)
 
     def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
         return self.__add__(other)
