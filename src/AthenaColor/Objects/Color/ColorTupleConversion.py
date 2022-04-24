@@ -231,6 +231,9 @@ def rgb_to_cmyk(r:int,g:int,b:int) -> Tuple[float,float,float,float]:
     r_, g_, b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
     k = 1 - max(r_, g_, b_)
 
+    if k == 1:
+        return 0,0,0,RoundToDecimals(k)
+
     return (
         RoundToDecimals((1 - r_ - k) / (1 - k)),
         RoundToDecimals((1 - g_ - k) / (1 - k)),
