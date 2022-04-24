@@ -47,7 +47,7 @@ class AthenaColorInitClass:
     def esc(self):
         return self._esc
     @esc.setter
-    def esc(self,value:bool):
+    def esc(self,value):
         if value in (EscCodes.hex,EscCodes.uni,EscCodes.octal):
             self._esc = value
         else:
@@ -90,7 +90,14 @@ class AthenaColorInitClass:
             raise ValueError
 
     def __repr__(self) -> str:
-        return f"AthenaColorInitClass(roundUp={self._roundUp}, esc={self._esc}, transparentDefault={self.transparentDefault},decimalPlaces={self.decimalPlaces})"
+        return f"""
+AthenaColorInitClass(
+roundUp={self._roundUp}, 
+esc={self._esc.encode()}, 
+transparentDefault={self.transparentDefault}, 
+decimalPlaces={self.decimalPlaces}, 
+stringSeparation='{self.stringSeparation}'
+)""".replace("\n","")
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Init Object -
