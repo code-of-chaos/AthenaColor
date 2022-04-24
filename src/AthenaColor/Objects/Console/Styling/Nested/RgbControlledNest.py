@@ -7,7 +7,7 @@ from functools import partialmethod
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Objects.Color.ColorSystem import RGB
+from AthenaColor.Objects.Color.ColorSystem import RGB,HEX
 from AthenaColor.Functions.AnsiSquences import NestedColorSequence
 from AthenaColor.Data.HtmlColors import HtmlColorObjects as HtmlColors
 
@@ -31,11 +31,13 @@ class RgbControlledNest:
     # ------------------------------------------------------------------------------------------------------------------
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
-    def custom(self,*obj, color:RGB, **kwargs) -> str:
-        return NestedColorSequence(*obj, control_code=self._param_code + str(color), reset_code=self._reset, **kwargs)
+    def custom(self,*obj, color:RGB|HEX, **kwargs) -> str:
+        # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
+        return NestedColorSequence(*obj, control_code=self._param_code + ";".join(*color.export()), reset_code=self._reset, **kwargs)
 
     def rgb(self,*obj, r:int,g:int,b:int, **kwargs) -> str:
-        return NestedColorSequence(*obj, control_code=self._param_code + str(RGB(r, g, b)), reset_code=self._reset,**kwargs)
+        # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
+        return NestedColorSequence(*obj, control_code=self._param_code + ";".join(*RGB(r, g, b).export()), reset_code=self._reset,**kwargs)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -
