@@ -8,6 +8,7 @@ import math
 # Custom Library
 
 # Custom Packages
+from AthenaColor.InitClass import init
 from AthenaColor.Functions.StrictTyping import StrictInput
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -25,7 +26,7 @@ def Normalize(value:int|float, factor:int|float=100)->float:
     return value/factor
 
 @StrictInput.Custom(types=(int, float))
-def RoundToDecimals(value:float, decimals=3):
+def RoundToDecimals(value:float, decimals=init.decimalPlaces):
     return round(value, decimals)
 
 @StrictInput.Custom(types=(int, float))

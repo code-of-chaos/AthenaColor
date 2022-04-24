@@ -553,7 +553,7 @@ class HSV(ColorSystem):
     def h(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._h = RoundToDecimals(Constrain(value, 360), init.decimalPlaces)
+        self._h = RoundToDecimals(Constrain(value, 360))
 
     @property
     def s(self) -> int|float:
@@ -562,7 +562,7 @@ class HSV(ColorSystem):
     def s(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._s = RoundToDecimals(Constrain(value, 1), init.decimalPlaces)
+        self._s = RoundToDecimals(Constrain(value, 1))
 
     @property
     def v(self) -> int|float:
@@ -571,7 +571,7 @@ class HSV(ColorSystem):
     def v(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._v = RoundToDecimals(Constrain(value, 1), init.decimalPlaces)
+        self._v = RoundToDecimals(Constrain(value, 1))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -613,7 +613,7 @@ class HSL(ColorSystem):
     def h(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._h = RoundToDecimals(Constrain(value, 360), init.decimalPlaces)
+        self._h = RoundToDecimals(Constrain(value, 360))
 
     @property
     def s(self) -> int|float:
@@ -622,7 +622,7 @@ class HSL(ColorSystem):
     def s(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._s = RoundToDecimals(Constrain(value, 1), init.decimalPlaces)
+        self._s = RoundToDecimals(Constrain(value, 1))
 
     @property
     def l(self) -> int|float:
@@ -631,7 +631,7 @@ class HSL(ColorSystem):
     def l(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._l = RoundToDecimals(Constrain(value, 1), init.decimalPlaces)
+        self._l = RoundToDecimals(Constrain(value, 1))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -672,7 +672,7 @@ class CMYK(ColorSystem):
     def c(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._c = RoundToDecimals(Constrain(value, 1), init.decimalPlaces)
+        self._c = RoundToDecimals(Constrain(value, 1))
 
     @property
     def m(self) -> int|float:
@@ -681,7 +681,7 @@ class CMYK(ColorSystem):
     def m(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._m = RoundToDecimals(Constrain(value, 1), init.decimalPlaces)
+        self._m = RoundToDecimals(Constrain(value, 1))
 
     @property
     def y(self) -> int|float:
@@ -690,7 +690,7 @@ class CMYK(ColorSystem):
     def y(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._y = RoundToDecimals(Constrain(value, 1), init.decimalPlaces)
+        self._y = RoundToDecimals(Constrain(value, 1))
 
     @property
     def k(self) -> int|float:
@@ -699,7 +699,7 @@ class CMYK(ColorSystem):
     def k(self, value: int|float):
         if not isinstance(value, (int,float)):
             raise ValueError
-        self._k = RoundToDecimals(Constrain(value, 1), init.decimalPlaces)
+        self._k = RoundToDecimals(Constrain(value, 1))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
