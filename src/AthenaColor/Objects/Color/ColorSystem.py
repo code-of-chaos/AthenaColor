@@ -115,7 +115,7 @@ class ColorSystem(ABC):
         """
         Returns a string with the various color system elements in a ';' separated string.
         """
-        return ";".join(str(c) for c in self.export())
+        return init.stringSeparation.join(str(c) for c in self.export())
 
     @abstractmethod
     def __repr__(self)->str:
@@ -512,7 +512,7 @@ class HSV(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,h: int|float, s: int|float, v: int|float):
+    def __init__(self,h: int|float=0.0, s: int|float=0.0, v: int|float=0.0):
         try:
             StrictType(types=(int,float),objects=(h,s,v))
             self.h,self.s,self.v = h,s,v

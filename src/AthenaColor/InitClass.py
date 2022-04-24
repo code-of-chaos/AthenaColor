@@ -26,6 +26,7 @@ class AthenaColorInitClass:
     _roundUp = True
     _transparentDefault = ("ff",255)
     _decimalPlaces = 3
+    _stringSeparation = ";"
 
     def __init__(self):
         # prep the console for colors
@@ -74,6 +75,17 @@ class AthenaColorInitClass:
     def decimalPlaces(self,value):
         if isinstance(value,int) and value >= 0:
             self._decimalPlaces = value
+        else:
+            raise ValueError
+
+    @property
+    def stringSeparation(self) -> str:
+        return self._stringSeparation
+
+    @stringSeparation.setter
+    def stringSeparation(self, value:str):
+        if isinstance(value,str):
+            self._stringSeparation = value
         else:
             raise ValueError
 
