@@ -25,6 +25,8 @@ class ColorObjects_RGB(unittest.TestCase):
     # ------------------------------------------------------------------------------------------------------------------
     # - BASIC Color Object Testing -
     # ------------------------------------------------------------------------------------------------------------------
+    # noinspection PyTypeChecker
+    # noinspection PyArgumentList
     def test_input(self):
         with self.assertRaises(ValueError):
             RGB("a","b","c")

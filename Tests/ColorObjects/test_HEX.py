@@ -21,6 +21,7 @@ class ColorObjects_HEX(unittest.TestCase):
     # ------------------------------------------------------------------------------------------------------------------
     # - BASIC Color Object Testing -
     # ------------------------------------------------------------------------------------------------------------------
+    # noinspection PyTypeChecker
     def test_input(self):
         with self.assertRaises(ValueError):
             HEX(1)
