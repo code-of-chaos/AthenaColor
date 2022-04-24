@@ -6,10 +6,9 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
+from AthenaColor import *
 
 # Custom Packages
-import AthenaColor.Objects.Color.ColorObjectConversion
-from AthenaColor import *
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -20,123 +19,254 @@ from AthenaColor import *
 # ----------------------------------------------------------------------------------------------------------------------
 class ColorObjects_RGB(unittest.TestCase):
     @staticmethod
-    def CreateColor(r=127,g=127,b=127) -> RGB:
+    def CreateColor(r=32,g=64,b=128) -> RGB:
         return RGB(r,g,b)
-
-    def dunder_tests(self,equal,notEqual,greater,less,greaterEqual,lessEqual):
-        color = self.CreateColor()
-        self.assertEqual(       color, equal)       # color == equal
-        self.assertNotEqual(    color, notEqual)    # color != notEqual
-        self.assertGreater(     color, greater)     # color >  greater
-        self.assertLess(        color, less)        # color <  less
-        self.assertGreaterEqual(color, greaterEqual)# color >= greaterEqual
-        self.assertLessEqual(   color, lessEqual)   # color <= lessEqual
 
     # ------------------------------------------------------------------------------------------------------------------
     # - BASIC Color Object Testing -
     # ------------------------------------------------------------------------------------------------------------------
     def test_repr(self):
-        self.assertEqual(repr(self.CreateColor()),"RGB(r=127,g=127,b=127)")
+        self.assertEqual(repr(self.CreateColor()),"RGB(r=32,g=64,b=128)")
 
     def test_str(self):
-        self.assertEqual(str(self.CreateColor()),"127;127;127")
+        self.assertEqual(str(self.CreateColor()),"32;64;128")
 
-    def test_dunder_comparison_tuples(self):
-        self.dunder_tests(
-            equal=(127,127,127),
-            notEqual=(0,0,0),
-            greater=(0,0,0),
-            less=(200,200,200),
-            greaterEqual=(0,0,127),
-            lessEqual=(127,128,129)
-        )
+    def test_dunder_tuples(self):
+        color = self.CreateColor()
+        # Comparison
+        self.assertEqual(       color, (32,64,128))
+        self.assertNotEqual(    color, (0,0,0))
+        self.assertGreater(     color, (0,0,0))
+        self.assertLess(        color, (255,255,255))
+        self.assertGreaterEqual(color, (0,0,128))
+        self.assertLessEqual(   color, (255,255,128))
 
-    def test_dunder_comparison_integers(self):
-        self.dunder_tests(
-            equal=127,
-            notEqual=0,
-            greater=0,
-            less=200,
-            greaterEqual=0,
-            lessEqual=128
-        )
-
-    def test_dunder_comparison_RGB(self):
-        self.dunder_tests(
-            equal=          RGB(127,127,127),
-            notEqual=       RGB(0,0,0),
-            greater=        RGB(0,0,0),
-            less=           RGB(200,200,200),
-            greaterEqual=   RGB(0,0,127),
-            lessEqual=      RGB(127,128,129)
-        )
-
-    def test_dunder_comparison_HEX(self):
-        self.dunder_tests(
-            equal=          HEX("#7F7F7F"),
-            notEqual=       HEX("#000000"),
-            greater=        HEX("#000000"),
-            less=           HEX("#C8C8C8"),
-            greaterEqual=   HEX("#00007F"),
-            lessEqual=      HEX("#7F8081")
-        )
-
-    def test_dunder_comparison_HSL(self):
-        self.dunder_tests(
-            equal=          HSL(0,0,.498),
-            notEqual=       HSL(0,0,0),
-            greater=        HSL(0,0,0),
-            less=           HSL(0,0,.784),
-            greaterEqual=   HSL(240,1,.249),
-            lessEqual=      HSL(210,.008,.502)
-        )
-
-    def test_dunder_comparison_HSV(self):
-        self.dunder_tests(
-            equal=          HSV(0,0,.498),
-            notEqual=       HSV(0,0,0),
-            greater=        HSV(0,0,0),
-            less=           HSV(0,0,.784),
-            greaterEqual=   HSV(240,1,.498),
-            lessEqual=      HSV(210,.016,.506),
-        )
-
-    def test_dunder_comparison_CMYK(self):
-        self.dunder_tests(
-            equal=          CMYK(0,0,0,.502),
-            notEqual=       CMYK(0,0,0,0),
-            greater=        CMYK(0,0,0,.9),
-            less=           CMYK(0,0,0,0),
-            greaterEqual=   CMYK(1,1,0,.505),
-            lessEqual=      CMYK(.02,.01,0,.49),
-        )
-
-    def test_dunder_math_tuple(self):
+        # math
         self.assertEqual(
-            self.CreateColor() - (500,500,500),
-            RGB(r=0, g=0, b=0)
+            color + (32,64,128),
+            RGB(64,128,255)
         )
         self.assertEqual(
-            self.CreateColor() + (500,500,500),
-            RGB(r=255, g=255, b=255)
+            color - (32,64,128),
+            RGB(0,0,0)
         )
         self.assertEqual(
-            self.CreateColor() / (3,3,3),
-            RGB(r=42, g=42, b=42)
+            color * (4,3,2),
+            RGB(128,192,255)
         )
         self.assertEqual(
-            self.CreateColor() // (4,4,4),
-            RGB(r=31, g=31, b=31)
+            color / (4,3,2),
+            RGB(8,21,64)
         )
         self.assertEqual(
-            self.CreateColor() * (2,2,2),
-            RGB(r=254, g=254, b=254)
+            color // (9,7,5),
+            RGB(3,9,25)
         )
         self.assertEqual(
-            self.CreateColor(3,3,3) ** (4,4,4),
-            RGB(r=81, g=81, b=81)
+            color ** (2,2.5,1),
+            RGB(255,255,128)
         )
         self.assertEqual(
-            self.CreateColor() % (4,4,4),
-            RGB(r=3, g=3, b=3)
+            color % (9,7,5),
+            RGB(5,1,3)
+        )
+
+    def test_dunder_RGB(self):
+        color = self.CreateColor()
+        # Comparison
+        self.assertEqual(       color, RGB(32,64,128))
+        self.assertNotEqual(    color, RGB(0,0,0))
+        self.assertGreater(     color, RGB(0,0,0))
+        self.assertLess(        color, RGB(255,255,255))
+        self.assertGreaterEqual(color, RGB(0,0,128))
+        self.assertLessEqual(   color, RGB(255,255,128))
+
+        # math
+        self.assertEqual(
+            color + RGB(32, 64, 128),
+            RGB(64, 128, 255)
+        )
+        self.assertEqual(
+            color - RGB(32, 64, 128),
+            RGB(0, 0, 0)
+        )
+        self.assertEqual(
+            color * RGB(4, 3, 2),
+            RGB(128, 192, 255)
+        )
+        self.assertEqual(
+            color / RGB(4, 3, 2),
+            RGB(8, 21, 64)
+        )
+        self.assertEqual(
+            color // RGB(9, 7, 5),
+            RGB(3, 9, 25)
+        )
+        self.assertEqual(
+            color ** RGB(2, 2, 1),
+            RGB(255, 255, 128)
+        )
+        self.assertEqual(
+            color % RGB(9, 7, 5),
+            RGB(5, 1, 3)
+        )
+
+    def test_dunder_HEX(self):
+        color = self.CreateColor()
+        # Comparison
+        self.assertEqual(       color, HEX("#204080"))
+        self.assertNotEqual(    color, HEX("#000000"))
+        self.assertGreater(     color, HEX("#000000"))
+        self.assertLess(        color, HEX("#FFFFFF"))
+        self.assertGreaterEqual(color, HEX("#000000"))
+        self.assertLessEqual(   color, HEX("#FFFF80"))
+
+        # math
+        self.assertEqual(
+            color + HEX("#abcdef"),
+            RGB(203,255,255)
+        )
+        self.assertEqual(
+            color - HEX("#00bb55"),
+            RGB(32,0,43)
+        )
+        self.assertEqual(
+            color * HEX("#020302"),
+            RGB(64,192,255)
+        )
+        self.assertEqual(
+            color / HEX("#020302"),
+            RGB(16,21,64)
+        )
+        self.assertEqual(
+            color // HEX("#050709"),
+            RGB(6,9,14)
+        )
+        self.assertEqual(
+            color ** HEX("#020101"),
+            RGB(255,64,128)
+        )
+        self.assertEqual(
+            color % HEX("#121664"),
+            RGB(14,20,28)
+        )
+
+    def test_dunder_HSL(self):
+        color = self.CreateColor()
+        # Comparison
+        self.assertEqual(       color, HSL(220,0.6,.314))
+        self.assertNotEqual(    color, HSL(0,0,0))
+        self.assertGreater(     color, HSL(0,0,0))
+        self.assertLess(        color, HSL(359,1,1))
+        self.assertGreaterEqual(color, HSL(220,0,0))
+        self.assertLessEqual(   color, HSL(180.0,1.0,0.563))
+
+        # math
+        self.assertEqual(
+            color + HSL(0.125,0.5,0.1),
+            RGB(70,77,141)
+        )
+        self.assertEqual(
+            color - HSL(0.125,0.5,0.1),
+            RGB(0,51,115)
+        )
+        self.assertEqual(
+            color * HSL(0,0,0.01),
+            RGB(96,192,255)
+        )
+        self.assertEqual(
+            color / HSL(0,0,0.01),
+            RGB(11,21,43)
+        )
+        self.assertEqual(
+            color // HSL(0,0,0.01),
+            RGB(10,21,42)
+        )
+        self.assertEqual(
+            color ** HSL(0,0,0.006),
+            RGB(255,255,255)
+        )
+        self.assertEqual(
+            color % HSL(0,0.2,0.1),
+            RGB(1,4,8)
+        )
+
+    def test_dunder_HSV(self):
+        color = self.CreateColor()
+        # Comparison
+        self.assertEqual(       color, HSV(220,0.75,.502))
+        self.assertNotEqual(    color, HSV(0,0,0))
+        self.assertGreater(     color, HSV(0,0.0,0.063))
+        self.assertLess(        color, HSV(0,0.0,1.0))
+        self.assertGreaterEqual(color, HSV(0.0,0.5,0.125))
+        self.assertLessEqual(   color, HSV(180.0,0.875,1.0))
+
+        # math
+        self.assertEqual(
+            color + HSV(0,0.2,0.1),
+            RGB(58,84,148)
+        )
+        self.assertEqual(
+            color - HSV(0,0.2,0.1),
+            RGB(6,44,108)
+        )
+        self.assertEqual(
+            color * HSV(0,0,0.01),
+            RGB(96,192,255)
+        )
+        self.assertEqual(
+            color / HSV(0,0,0.01),
+            RGB(11,21,43)
+        )
+        self.assertEqual(
+            color // HSV(0,0,0.01),
+            RGB(10,21,42)
+        )
+        self.assertEqual(
+            color ** HSV(0,0,0.006),
+            RGB(255,255,255)
+        )
+        self.assertEqual(
+            color % HSV(0,0.2,0.1),
+            RGB(6,4,8)
+        )
+
+    def test_dunder_CMYK(self):
+        color = self.CreateColor()
+        # Comparison
+        self.assertEqual(       color, CMYK(0.75,0.5,0.0,0.498))
+        self.assertNotEqual(    color, CMYK(1.0,1.0,1.0,1.0))
+        self.assertGreater(     color, CMYK(1.0,1.0,1.0,1.0))
+        self.assertLess(        color, CMYK(0.0,0.0,0.0,0.0))
+        self.assertGreaterEqual(color, CMYK(0.0,0.0,0.0,0.875))
+        self.assertLessEqual(   color, CMYK(0.5,0.0,0.0,0.498))
+
+        # math
+        self.assertEqual(
+            color + CMYK(.9,.9,.75,.1),
+            RGB(55,87,185)
+        )
+        self.assertEqual(
+            color - CMYK(.9,.9,.75,.1),
+            RGB(9,41,71)
+        )
+        self.assertEqual(
+            color * CMYK(.9,.9,.75,.9),
+            RGB(96,192,255)
+        )
+        self.assertEqual(
+            color / CMYK(.9,.9,.75,.9),
+            RGB(11,21,21)
+        )
+        self.assertEqual(
+            color // CMYK(.9,.9,.75,.9),
+            RGB(10,21,21)
+        )
+        self.assertEqual(
+            color ** CMYK(1,0,0,0),
+            RGB(1,255,255)
+        )
+        self.assertEqual(
+            color % CMYK(0.5,0.5,0.5,0),
+            RGB(32,64,0)
         )
