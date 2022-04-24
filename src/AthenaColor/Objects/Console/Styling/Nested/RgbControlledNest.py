@@ -2,6 +2,7 @@
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
+from __future__ import annotations
 from functools import partialmethod
 
 # Custom Library
