@@ -34,11 +34,11 @@ class RgbControlledNest:
     # ------------------------------------------------------------------------------------------------------------------
     def custom(self,*obj, color:RGB|HEX, **kwargs) -> str:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
-        return NestedColorSequence(*obj, control_code=self._param_code + ";".join(*color.export()), reset_code=self._reset, **kwargs)
+        return NestedColorSequence(*obj, control_code=self._param_code + ";".join(str(c) for c in color.export()), reset_code=self._reset, **kwargs)
 
     def rgb(self,*obj, r:int,g:int,b:int, **kwargs) -> str:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
-        return NestedColorSequence(*obj, control_code=self._param_code + ";".join(*RGB(r, g, b).export()), reset_code=self._reset,**kwargs)
+        return NestedColorSequence(*obj, control_code=self._param_code + ";".join(str(c) for c in RGB(r, g, b).export()), reset_code=self._reset,**kwargs)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -
