@@ -36,7 +36,4 @@ def NestedColorSequence(*obj, control_code:int|str,reset_code:int|str=None, sep:
     color = ColorSequence(control_code=control_code)
     reset = ColorSequence(control_code=reset_code) if reset_code is not None else ''
 
-    if len(obj) == 1:
-        return  ''.join([f"{color}{o}{reset}"for o in obj])
-    else:
-        return f"{color}{sep}{reset}".join([f"{color}{o}{reset}"for o in obj])
+    return f"{color}{sep}{reset}".join([f"{color}{o}{reset}"for o in obj])
