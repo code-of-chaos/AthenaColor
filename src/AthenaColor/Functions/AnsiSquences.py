@@ -27,13 +27,13 @@ def ColorSequence(control_code:int|str)->str:
     """
     return f'{init.esc}[{control_code}{ConsoleCodes.color}'
 
-def NestedColorSequence(*obj, control_code:int|str,reset_code:int|str=None, sep:str=" ") -> str:
+def NestedColorSequence(*obj, control_code:int|str=None,reset_code:int|str=None, sep:str=" ") -> str:
     """
     Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
     Function wraps every obj in the properly defined control- and reset codes.
     This is made to prevent style makeup bleed
     """
-    color = ColorSequence(control_code=control_code)
+    color = ColorSequence(control_code=control_code) if control_code is not None else ''
     reset = ColorSequence(control_code=reset_code) if reset_code is not None else ''
 
     return f"{color}{sep}{reset}".join([f"{color}{o}{reset}"for o in obj])
