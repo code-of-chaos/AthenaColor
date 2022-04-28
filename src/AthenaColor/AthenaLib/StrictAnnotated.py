@@ -3,8 +3,10 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # Direct import from the AthenaLib
 #   Done to be a true dependency less package
-#   One addition is done, which is the init variable to enable or disable this functionality
-
+#   Some changes:
+#       - init variable to enable or disable this functionality
+#       - Compatibilty changes 3.7 to 3.10
+#
 # ----------------------------------------------------------------------------------------------------------------------
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
@@ -48,7 +50,8 @@ def _PrepFunction(fnc:Callable, method:bool=False) -> tuple[inspect.FullArgSpec,
     # Fix any Subscripted Generics so only the base type is checked
     try:
         annotation = get_type_hints(fnc)
-    except TypeError:
+    except TypeError: # a union was found basically
+        # Fix for pre 3.10 stuff
         annotation = {}
         for k, v in fncspec.annotations.items():
             if isinstance(v, str):
