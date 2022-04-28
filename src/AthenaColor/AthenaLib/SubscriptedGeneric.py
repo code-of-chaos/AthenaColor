@@ -3,35 +3,18 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
-from typing import Iterable
+from typing import _GenericAlias, Iterable
 
 # Custom Library
 
 # Custom Packages
 
 # ----------------------------------------------------------------------------------------------------------------------
-# - Support Code -
-# ----------------------------------------------------------------------------------------------------------------------
-
-# SubscriptedGenericTypes = Union[_UnionGenericAlias,GenericAlias,_GenericAlias,UnionType]
-
-# ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def fix_SubscriptedGeneric(annotation:type) -> type:
-    print(annotation)
-
-    # if isinstance(annotation, _UnionGenericAlias):
-    #     for a in annotation.__args__:
-    #         if isinstance(a, GenericAlias|_GenericAlias):
-    #             return a.__origin__
-    #
-    # if isinstance(annotation, GenericAlias|_GenericAlias):
-    #     return annotation.__origin__
-    #
-    # elif isinstance(annotation, UnionType):
-    #     return Union[tuple(a.__origin__ if isinstance(a, GenericAlias|_GenericAlias) else a for a in annotation.__args__)]
-
+def fix_SubscriptedGeneric(annotation) -> type:
+    if isinstance(annotation, _GenericAlias):
+        return annotation.__origin__
     return annotation
 
 def fix_SubscriptedGeneric_Full(Iter:Iterable|dict) -> Iterable|dict:

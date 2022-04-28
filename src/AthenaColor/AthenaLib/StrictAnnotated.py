@@ -11,7 +11,7 @@
 # General Packages
 from __future__ import annotations
 import inspect
-from typing import Callable,get_type_hints
+from typing import Callable,get_type_hints,Tuple, List
 
 # Custom Library
 
@@ -46,7 +46,17 @@ def _PrepFunction(fnc:Callable, method:bool=False) -> tuple[inspect.FullArgSpec,
         fncspec_args.append(fncspec.varargs)
 
     # Fix any Subscripted Generics so only the base type is checked
-    return fncspec,fncspec_args, fix_SubscriptedGeneric_Full(get_type_hints(fnc))
+    try:
+        annotation = get_type_hints(fnc)
+    except TypeError:
+        annotation = {}
+        for k, v in fncspec.annotations.items():
+            if isinstance(v, str):
+                annotation[k] = eval(v.replace("|",","))
+            else:
+                annotation[k] = v
+
+    return fncspec,fncspec_args, fix_SubscriptedGeneric_Full(annotation)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
