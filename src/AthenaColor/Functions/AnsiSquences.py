@@ -9,6 +9,7 @@ from __future__ import annotations
 # Custom Packages
 from AthenaColor.InitClass import init
 from AthenaColor.Data.General import ConsoleCodes
+from AthenaColor.AthenaLib.StrictAnnotated import StrictAnnotated
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -20,6 +21,7 @@ __all__ = [
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
+@StrictAnnotated
 def ColorSequence(control_code:int|str)->str:
     """
     Used for quick assembly of correct Ansi Escape functions
@@ -27,6 +29,7 @@ def ColorSequence(control_code:int|str)->str:
     """
     return f'{init.esc}[{control_code}{ConsoleCodes.color}'
 
+@StrictAnnotated
 def NestedColorSequence(*obj, control_code:int|str=None,reset_code:int|str=None, sep:str=" ") -> str:
     """
     Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.

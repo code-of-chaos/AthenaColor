@@ -9,7 +9,7 @@ import math
 
 # Custom Packages
 from AthenaColor.InitClass import init
-from AthenaColor.Functions.StrictTyping import StrictInput
+from AthenaColor.AthenaLib.StrictAnnotated import StrictAnnotated
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -21,15 +21,15 @@ __all__ = [
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-@StrictInput.Custom(types=(int, float))
+@StrictAnnotated
 def Normalize(value:int|float, factor:int|float=100)->float:
     return value/factor
 
-@StrictInput.Custom(types=(int, float))
-def RoundToDecimals(value:float, decimals=init.decimalPlaces):
+@StrictAnnotated
+def RoundToDecimals(value:int|float, decimals=init.decimalPlaces):
     return round(value, decimals)
 
-@StrictInput.Custom(types=(int, float))
+@StrictAnnotated
 def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
     value_ = math.floor(value)
     if value - value_ < 0.5:

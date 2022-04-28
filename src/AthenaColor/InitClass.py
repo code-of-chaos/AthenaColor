@@ -27,11 +27,23 @@ class AthenaColorInitClass:
     _transparentDefault = ("ff",255)
     _decimalPlaces = 3
     _stringSeparation = ";"
+    _strictAnnotated=True
 
     def __init__(self):
         # prep the console for colors
         if sys.platform == 'win32':
             os.system("color")
+
+    @property
+    def stictAnnotated(self):
+        return self._strictAnnotated
+
+    @stictAnnotated.setter
+    def stictAnnotated(self, value:bool):
+        if isinstance(value,bool):
+            self._strictAnnotated = value
+        else:
+            raise ValueError
 
     @property
     def roundUp(self):

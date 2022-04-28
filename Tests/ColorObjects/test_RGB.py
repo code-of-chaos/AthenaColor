@@ -9,6 +9,7 @@ import unittest
 from AthenaColor import *
 
 # Custom Packages
+from AthenaColor.AthenaLib.StrictAnnotated import StrictError
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -28,13 +29,13 @@ class ColorObjects_RGB(unittest.TestCase):
     # noinspection PyTypeChecker
     # noinspection PyArgumentList
     def test_input(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(StrictError):
             RGB("a","b","c")
-        with self.assertRaises(ValueError):
+        with self.assertRaises(StrictError):
             RGB(b"a",b"b",b"c")
         with self.assertRaises(TypeError):
             RGB(**{"a":1,"b":2,"c":3})
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             RGB(**{"r":"a","g":"b","b":"c"})
         with self.assertRaises(TypeError):
             RGB(*(255,255,255,255))

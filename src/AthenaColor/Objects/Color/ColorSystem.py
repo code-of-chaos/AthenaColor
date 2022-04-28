@@ -13,8 +13,8 @@ import AthenaColor.Functions.DunderFunctions as CSD
 from AthenaColor.Objects.Color.ColorTupleConversion import *
 from AthenaColor.InitClass import init
 from AthenaColor.Functions.Constraints import Constrain
-from AthenaColor.Functions.StrictTyping import StrictType, StrictError
 from AthenaColor.Functions.General import RoundHalfUp,RoundToDecimals
+from AthenaColor.AthenaLib.StrictAnnotated import StrictAnnotated, StrictAnnotatedMethod
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -296,12 +296,9 @@ class RGB(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    def __init__(self,r:int=0, g:int=0, b:int=0):
-        try:
-            StrictType(types=(int, float), objects=(r, g, b))
-            self.r,self.g,self.b = r,g,b
-        except StrictError:
-            raise ValueError(f"RGB values r={r},g={g},b={b} did not consist of integer values")
+    @StrictAnnotatedMethod
+    def __init__(self,r:int|float=0, g:int|float=0, b:int|float=0):
+        self.r, self.g, self.b = r, g, b
 
     def export(self) -> Tuple[int,int,int]:
          return self.r,self.g,self.b
@@ -409,12 +406,9 @@ class RGBA(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
+    @StrictAnnotatedMethod
     def __init__(self,r:int=0, g:int=0, b:int=0, a:int=0):
-        try:
-            StrictType(types=(int,float),objects=(r,g,b,a))
-            self.r,self.g,self.b,self.a = r,g,b,a
-        except StrictError:
-            raise ValueError(f"RGB values r={r},g={g},b={b},a={a} did not consist of integer values")
+        self.r,self.g,self.b,self.a = r,g,b,a
 
     def export(self) -> Tuple[int,int,int,int]:
          return self.r,self.g,self.b,self.a
@@ -474,9 +468,8 @@ class HEXA(RGBA):
     Color Object for HEXA values.
     Inherits from RGBA as this is just another notation for RGBA values.
     """
+    @StrictAnnotatedMethod
     def __init__(self, hex_value:str="#00000000"):
-        if not isinstance(hex_value,str):
-            raise ValueError(f"HEXA value hex_value={hex_value} did not consist of a string value")
         super().__init__(*hexa_to_rgba(hex_value))
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -533,12 +526,9 @@ class HSV(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
+    @StrictAnnotatedMethod
     def __init__(self,h: int|float=0.0, s: int|float=0.0, v: int|float=0.0):
-        try:
-            StrictType(types=(int,float),objects=(h,s,v))
-            self.h,self.s,self.v = h,s,v
-        except StrictError:
-            raise ValueError(f"HSV values h={h},s={s},v={v} did not consist of integer or float values")
+        self.h,self.s,self.v = h,s,v
 
     def export(self) -> Tuple[int|float,int|float,int|float]:
          return self.h,self.s,self.v
@@ -593,12 +583,9 @@ class HSL(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
+    @StrictAnnotatedMethod
     def __init__(self,h:int|float=0, s:int|float=0, l:int|float=0):
-        try:
-            StrictType(types=(int,float),objects=(h,s,l))
-            self.h,self.s,self.l = h,s,l
-        except StrictError:
-            raise ValueError(f"HSL values h={h},s={s},l={l} did not consist of integer or float values")
+        self.h,self.s,self.l = h,s,l
 
     def export(self) -> Tuple[int|float,int|float,int|float]:
          return self.h,self.s,self.l
@@ -652,12 +639,9 @@ class CMYK(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
+    @StrictAnnotatedMethod
     def __init__(self, c:int|float=0, m:int|float=0, y:int|float=0, k:int|float=0):
-        try:
-            StrictType(types=(int,float), objects=(c,m,y,k))
-            self.c, self.m, self.y, self.k = c, m, y, k
-        except StrictError:
-            raise ValueError(f"CMYK values c={c},m={m},y={y},k={k} did not consist of integer or float values")
+        self.c, self.m, self.y, self.k = c, m, y, k
 
     def export(self) -> Tuple[int|float,int|float,int|float,int|float]:
          return self.c,self.m,self.y,self.k

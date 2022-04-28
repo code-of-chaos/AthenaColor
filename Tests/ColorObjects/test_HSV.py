@@ -9,6 +9,7 @@ import unittest
 from AthenaColor import *
 
 # Custom Packages
+from AthenaColor.AthenaLib.StrictAnnotated import StrictError
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
@@ -23,11 +24,11 @@ class ColorObjects_HSV(unittest.TestCase):
     # ------------------------------------------------------------------------------------------------------------------
     # noinspection PyTypeChecker
     def test_input(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(StrictError):
             HSV("a","b","c")
-        with self.assertRaises(ValueError):
+        with self.assertRaises(StrictError):
             HSV(b"a",b"b",b"c")
-        with self.assertRaises(ValueError):
+        with self.assertRaises(StrictError):
             HSV(**{"h":"a","s":"b","v":"c"})
         with self.assertRaises(TypeError):
             HSV(**{"h":1,"s":2,"v":3,"x":"n"})

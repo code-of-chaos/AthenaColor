@@ -14,7 +14,7 @@ from AthenaColor.Functions.General import (
 from AthenaColor.Functions.Constraints import (
     ConstrainHSV, ConstrainHSL, ConstrainRGB, ConstrainCMYK,ConstrainRGBA
 )
-from AthenaColor.Functions.StrictTyping import StrictInput
+from AthenaColor.AthenaLib.StrictAnnotated import StrictAnnotated
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -28,13 +28,14 @@ __all__ = [
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
+@StrictAnnotated
 def NormalizeRgb(r:int,g:int,b:int) -> Tuple[float, ...]:
     return Normalize(r,255),Normalize(g,255),Normalize(b,255)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - RGB -
 # ----------------------------------------------------------------------------------------------------------------------
-@StrictInput.str
+@StrictAnnotated
 def hex_to_rgb(hexadecimal:str) -> Tuple[int, ...]:
     """
     Function to convert a hexadecimal string to a rgb tuple.
@@ -54,7 +55,7 @@ def hex_to_rgb(hexadecimal:str) -> Tuple[int, ...]:
         for i in (0, 2, 4)
     )
 
-@StrictInput.number
+@StrictAnnotated
 def hsv_to_rgb(h:int|float,s:int|float,v:int|float) -> Tuple[int,int,int]:
     """
     Function to convert a hsv tuple to a rgb tuple.
@@ -82,7 +83,7 @@ def hsv_to_rgb(h:int|float,s:int|float,v:int|float) -> Tuple[int,int,int]:
         RoundHalfUp((b_ + m) * 255)
     )
 
-@StrictInput.number
+@StrictAnnotated
 def cmyk_to_rgb(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[int,int,int]:
     """
     Function to convert a cmyk tuple to a rgb tuple.
@@ -95,7 +96,7 @@ def cmyk_to_rgb(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[int,in
         RoundHalfUp(255 * (1 - y) * (1 - k))  #b
     )
 
-@StrictInput.number
+@StrictAnnotated
 def hsl_to_rgb(h:int|float,s:int|float,l:int|float) -> Tuple[int,int,int]:
     """
     Function to convert a hsl tuple to a rgb tuple.
@@ -126,15 +127,15 @@ def hsl_to_rgb(h:int|float,s:int|float,l:int|float) -> Tuple[int,int,int]:
 # ----------------------------------------------------------------------------------------------------------------------
 # - Hexadecimal -
 # ----------------------------------------------------------------------------------------------------------------------
-@StrictInput.number
-def rgb_to_hex(r:int,g:int,b:int) -> str:
+@StrictAnnotated
+def rgb_to_hex(r:int|float,g:int|float,b:int|float) -> str:
     """
     Function to convert a rgb to a hexadecimal string.
     Does not create a HEX object.
     """
     return '#%02x%02x%02x' % ConstrainRGB(int(r),int(g),int(b))
 
-@StrictInput.number
+@StrictAnnotated
 def hsv_to_hex(h:int|float,s:int|float, v:int|float) -> str:
     """
     Function to convert a hsv to a hexadecimal string.
@@ -142,7 +143,7 @@ def hsv_to_hex(h:int|float,s:int|float, v:int|float) -> str:
     """
     return rgb_to_hex(*hsv_to_rgb(*ConstrainHSV(h,s,v)))
 
-@StrictInput.number
+@StrictAnnotated
 def cmyk_to_hex(c:int|float,m:int|float,y:int|float,k:int|float) -> str:
     """
     Function to convert a cmyk to a hexadecimal string.
@@ -150,7 +151,7 @@ def cmyk_to_hex(c:int|float,m:int|float,y:int|float,k:int|float) -> str:
     """
     return rgb_to_hex(*cmyk_to_rgb(*ConstrainCMYK(c,m,y,k)))
 
-@StrictInput.number
+@StrictAnnotated
 def hsl_to_hex(h:int|float,s:int|float,l:int|float) -> str:
     """
     Function to convert a hsl to a hexadecimal string.
@@ -162,7 +163,7 @@ def hsl_to_hex(h:int|float,s:int|float,l:int|float) -> str:
 # ----------------------------------------------------------------------------------------------------------------------
 # - HSV -
 # ----------------------------------------------------------------------------------------------------------------------
-@StrictInput.number
+@StrictAnnotated
 def rgb_to_hsv(r:int,g:int,b:int) -> Tuple[float,float,float]:
     """
     Function to convert a rgb tuple to a hsv tuple.
@@ -194,7 +195,7 @@ def rgb_to_hsv(r:int,g:int,b:int) -> Tuple[float,float,float]:
         RoundToDecimals(Max)
     )
 
-@StrictInput.str
+@StrictAnnotated
 def hex_to_hsv(hexadecimal:str) -> Tuple[float,float,float]:
     """
     Function to convert a hexadecimal string to a hsv tuple.
@@ -202,7 +203,7 @@ def hex_to_hsv(hexadecimal:str) -> Tuple[float,float,float]:
     """
     return rgb_to_hsv(*hex_to_rgb(hexadecimal))
 
-@StrictInput.number
+@StrictAnnotated
 def cmyk_to_hsv(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[float,float,float]:
     """
     Function to convert a cmyk tuple to a hsv tuple.
@@ -210,7 +211,7 @@ def cmyk_to_hsv(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[float,
     """
     return rgb_to_hsv(*cmyk_to_rgb(*ConstrainCMYK(c,m,y,k)))
 
-@StrictInput.number
+@StrictAnnotated
 def hsl_to_hsv(h:int|float,s:int|float,l:int|float) -> Tuple[float,float,float]:
     """
     Function to convert a hsl tuple to a hsv tuple.
@@ -221,7 +222,7 @@ def hsl_to_hsv(h:int|float,s:int|float,l:int|float) -> Tuple[float,float,float]:
 # ----------------------------------------------------------------------------------------------------------------------
 # - CMYK -
 # ----------------------------------------------------------------------------------------------------------------------
-@StrictInput.number
+@StrictAnnotated
 def rgb_to_cmyk(r:int,g:int,b:int) -> Tuple[float,float,float,float]:
     """
     Function to convert a rgb tuple to a cmyk tuple.
@@ -241,7 +242,7 @@ def rgb_to_cmyk(r:int,g:int,b:int) -> Tuple[float,float,float,float]:
         RoundToDecimals(k)
     )
 
-@StrictInput.str
+@StrictAnnotated
 def hex_to_cmyk(hexadecimal:str) -> Tuple[float,float,float,float]:
     """
     Function to convert a hexadecimal string to a cmyk tuple.
@@ -249,7 +250,7 @@ def hex_to_cmyk(hexadecimal:str) -> Tuple[float,float,float,float]:
     """
     return rgb_to_cmyk(*hex_to_rgb(hexadecimal))
 
-@StrictInput.number
+@StrictAnnotated
 def hsv_to_cmyk(h:int|float,s:int|float,v:int|float) -> Tuple[float,float,float,float]:
     """
     Function to convert a hsv tuple to a cmyk tuple.
@@ -257,7 +258,7 @@ def hsv_to_cmyk(h:int|float,s:int|float,v:int|float) -> Tuple[float,float,float,
     """
     return rgb_to_cmyk(*hsv_to_rgb(*ConstrainHSV(h,s,v)))
 
-@StrictInput.number
+@StrictAnnotated
 def hsl_to_cmyk(h:int|float,s:int|float,l:int|float) -> Tuple[float,float,float,float]:
     """
     Function to convert a hsl tuple to a cmyk tuple.
@@ -268,7 +269,7 @@ def hsl_to_cmyk(h:int|float,s:int|float,l:int|float) -> Tuple[float,float,float,
 # ----------------------------------------------------------------------------------------------------------------------
 # - HSL -
 # ----------------------------------------------------------------------------------------------------------------------
-@StrictInput.number
+@StrictAnnotated
 def rgb_to_hsl(r:int,g:int,b:int) -> Tuple[float,float,float]:
     """
     Function to convert a rgb tuple to a hsl tuple.
@@ -302,7 +303,7 @@ def rgb_to_hsl(r:int,g:int,b:int) -> Tuple[float,float,float]:
         RoundToDecimals(Lum)     # L
     )
 
-@StrictInput.str
+@StrictAnnotated
 def hex_to_hsl(hexadecimal:str) -> Tuple[float,float,float]:
     """
     Function to convert a hexadecimal string to a hsl tuple.
@@ -310,7 +311,7 @@ def hex_to_hsl(hexadecimal:str) -> Tuple[float,float,float]:
     """
     return rgb_to_hsl(*hex_to_rgb(hexadecimal))
 
-@StrictInput.number
+@StrictAnnotated
 def hsv_to_hsl(h:int|float,s:int|float,v:int|float) -> Tuple[float,float,float]:
     """
     Function to convert a hsv tuple to a hsl tuple.
@@ -318,7 +319,7 @@ def hsv_to_hsl(h:int|float,s:int|float,v:int|float) -> Tuple[float,float,float]:
     """
     return rgb_to_hsl(*hsv_to_rgb(*ConstrainHSV(h,s,v)))
 
-@StrictInput.number
+@StrictAnnotated
 def cmyk_to_hsl(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[float,float,float]:
     """
     Function to convert a cmyk tuple to a hsl tuple.
@@ -329,7 +330,7 @@ def cmyk_to_hsl(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[float,
 # ----------------------------------------------------------------------------------------------------------------------
 # - TRANSPARENT COLORS -
 # ----------------------------------------------------------------------------------------------------------------------
-@StrictInput.str
+@StrictAnnotated
 def hexa_to_rgba(hexadecimal:str) -> Tuple[int,...]:
     """
     Function to convert a hexadecimal string to a rgb tuple.
@@ -347,7 +348,7 @@ def hexa_to_rgba(hexadecimal:str) -> Tuple[int,...]:
         int(hex_v[i:i + 2], 16)
         for i in (0, 2, 4,6)
     )
-@StrictInput.number
+@StrictAnnotated
 def rgba_to_hexa(r:int,g:int,b:int,a:int) -> str:
     """
     Function to convert a rgba tuple to a hexa string.
