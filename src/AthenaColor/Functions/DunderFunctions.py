@@ -12,7 +12,7 @@ from __future__ import annotations
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 __all__ = [
-    "add", "sub", "mul", "truediv", "floordiv", "mod", "pow",
+    "add", "sub", "mul", "truediv", "floordiv", "mod", "power",
     "gt", "ge", "lt", "le", "eq", "ne"
 ]
 
@@ -54,8 +54,8 @@ def mod(left:tuple, right:tuple)->tuple:
         lr[0] % lr[1]
         for lr in zip(left, right)
     )
-# noinspection PyShadowingBuiltins
-def pow(left:tuple, right:tuple)->tuple:
+
+def power(left:tuple, right:tuple)->tuple:
     return tuple(
         lr[0] ** lr[1]
         for lr in zip(left, right)

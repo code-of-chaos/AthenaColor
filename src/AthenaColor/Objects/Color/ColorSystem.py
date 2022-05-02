@@ -213,7 +213,7 @@ class ColorSystem(ABC):
         The returned object will be a new instance of the left-hand object's class.
         If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
-        result = dunder_func(func=CSD.pow, left=self, right=other)
+        result = dunder_func(func=CSD.power, left=self, right=other)
         if result is NotImplemented:
             return result
         return type(self)(*result)
@@ -392,7 +392,7 @@ class HEX(RGB):
 
     # noinspection PyTypeChecker
     def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgb_to_hex(*dunder_func(func=CSD.pow, left=self, right=other)))
+        return type(self)(rgb_to_hex(*dunder_func(func=CSD.power, left=self, right=other)))
 
 # ------------------------------------------------------------------------------------------------------------------
 # - RGBA -
@@ -513,7 +513,7 @@ class HEXA(RGBA):
 
     # noinspection PyTypeChecker
     def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.pow, left=self, right=other)))
+        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.power, left=self, right=other)))
 
 # ------------------------------------------------------------------------------------------------------------------
 # - HSV -

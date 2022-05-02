@@ -35,5 +35,6 @@ def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrec
         return math.ceil(value)
 
 def StrictType(object_, type_) -> Any:
-    assert isinstance(object_, type_),f"{object_} was not of the type: {type_}"
+    if not isinstance(object_, type_):
+        raise TypeError(f"{object_} was not of the type: {type_}")
     return object_
