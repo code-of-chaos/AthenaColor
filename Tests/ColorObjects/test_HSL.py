@@ -9,7 +9,6 @@ import unittest
 from AthenaColor import *
 
 # Custom Packages
-from AthenaColor.AthenaLib.StrictAnnotated import StrictError
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
@@ -24,12 +23,6 @@ class ColorObjects_HSL(unittest.TestCase):
     # ------------------------------------------------------------------------------------------------------------------
     # noinspection PyTypeChecker
     def test_input(self):
-        with self.assertRaises(StrictError):
-            HSL("a","b","c")
-        with self.assertRaises(StrictError):
-            HSL(b"a",b"b",b"c")
-        with self.assertRaises(StrictError):
-            HSL(**{"h":"a","s":"b","l":"c"})
         with self.assertRaises(TypeError):
             HSL(**{"h":1,"s":2,"l":3,"x":"n"})
 

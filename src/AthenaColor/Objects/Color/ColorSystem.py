@@ -5,8 +5,7 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Callable, Tuple
-
-# Custom Library
+# Custom)Library
 
 # Custom Packages
 import AthenaColor.Functions.DunderFunctions as CSD
@@ -14,7 +13,7 @@ from AthenaColor.Objects.Color.ColorTupleConversion import *
 from AthenaColor.InitClass import init
 from AthenaColor.Functions.Constraints import Constrain
 from AthenaColor.Functions.General import RoundHalfUp,RoundToDecimals
-from AthenaColor.AthenaLib.StrictAnnotated import StrictAnnotated, StrictAnnotatedMethod
+from AthenaColor.Functions.General import StrictType
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -296,7 +295,6 @@ class RGB(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    @StrictAnnotatedMethod
     def __init__(self,r:int|float=0, g:int|float=0, b:int|float=0):
         self.r, self.g, self.b = r, g, b
 
@@ -311,27 +309,30 @@ class RGB(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._r = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        if init.roundUp:
+            self._r = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
+        else:
+            self._r = round(Constrain(StrictType(value, (int,float)), 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._g = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        if init.roundUp:
+            self._g = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
+        else:
+            self._g = round(Constrain(StrictType(value, (int,float)), 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._b = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        if init.roundUp:
+            self._b = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
+        else:
+            self._b = round(Constrain(StrictType(value, (int,float)), 255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -350,9 +351,7 @@ class HEX(RGB):
     Inherits from RGB as this is just another notation for RGB values.
     """
     def __init__(self, hex_value:str="#000000"):
-        if not isinstance(hex_value,str):
-            raise ValueError(f"HEX value hex_value={hex_value} did not consist of a string value")
-        super().__init__(*hex_to_rgb(hex_value))
+        super().__init__(*hex_to_rgb(StrictType(hex_value, str)))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -406,7 +405,6 @@ class RGBA(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    @StrictAnnotatedMethod
     def __init__(self,r:int=0, g:int=0, b:int=0, a:int=0):
         self.r,self.g,self.b,self.a = r,g,b,a
 
@@ -421,36 +419,40 @@ class RGBA(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._r = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        if init.roundUp:
+            self._r = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
+        else:
+            self._r = round(Constrain(StrictType(value, (int,float)), 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._g = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        if init.roundUp:
+            self._g = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
+        else:
+            self._g = round(Constrain(StrictType(value, (int,float)), 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._b = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        if init.roundUp:
+            self._b = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
+        else:
+            self._b = round(Constrain(StrictType(value, (int,float)), 255))
 
     @property
     def a(self) -> int:
         return self._a
     @a.setter
     def a(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._a = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        if init.roundUp:
+            self._a = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
+        else:
+            self._a = round(Constrain(StrictType(value, (int,float)), 255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -468,7 +470,6 @@ class HEXA(RGBA):
     Color Object for HEXA values.
     Inherits from RGBA as this is just another notation for RGBA values.
     """
-    @StrictAnnotatedMethod
     def __init__(self, hex_value:str="#00000000"):
         super().__init__(*hexa_to_rgba(hex_value))
 
@@ -526,7 +527,6 @@ class HSV(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    @StrictAnnotatedMethod
     def __init__(self,h: int|float=0.0, s: int|float=0.0, v: int|float=0.0):
         self.h,self.s,self.v = h,s,v
 
@@ -541,27 +541,21 @@ class HSV(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._h = RoundToDecimals(Constrain(value, 360))
+        self._h = RoundToDecimals(Constrain(StrictType(value, (int,float)), 360))
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._s = RoundToDecimals(Constrain(value, 1))
+        self._s = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
 
     @property
     def v(self) -> int|float:
         return self._v
     @v.setter
     def v(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._v = RoundToDecimals(Constrain(value, 1))
+        self._v = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -583,7 +577,6 @@ class HSL(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    @StrictAnnotatedMethod
     def __init__(self,h:int|float=0, s:int|float=0, l:int|float=0):
         self.h,self.s,self.l = h,s,l
 
@@ -598,27 +591,21 @@ class HSL(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._h = RoundToDecimals(Constrain(value, 360))
+        self._h = RoundToDecimals(Constrain(StrictType(value, (int,float)), 360))
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._s = RoundToDecimals(Constrain(value, 1))
+        self._s = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
 
     @property
     def l(self) -> int|float:
         return self._l
     @l.setter
     def l(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._l = RoundToDecimals(Constrain(value, 1))
+        self._l = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -639,7 +626,6 @@ class CMYK(ColorSystem):
     # ------------------------------------------------------------------------------------------------------------------
     # INIT method
     # ------------------------------------------------------------------------------------------------------------------
-    @StrictAnnotatedMethod
     def __init__(self, c:int|float=0, m:int|float=0, y:int|float=0, k:int|float=0):
         self.c, self.m, self.y, self.k = c, m, y, k
 
@@ -654,36 +640,28 @@ class CMYK(ColorSystem):
         return self._c
     @c.setter
     def c(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._c = RoundToDecimals(Constrain(value, 1))
+        self._c = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
 
     @property
     def m(self) -> int|float:
         return self._m
     @m.setter
     def m(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._m = RoundToDecimals(Constrain(value, 1))
+        self._m = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
 
     @property
     def y(self) -> int|float:
         return self._y
     @y.setter
     def y(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._y = RoundToDecimals(Constrain(value, 1))
+        self._y = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
 
     @property
     def k(self) -> int|float:
         return self._k
     @k.setter
     def k(self, value: int|float):
-        if not isinstance(value, (int,float)):
-            raise ValueError
-        self._k = RoundToDecimals(Constrain(value, 1))
+        self._k = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods

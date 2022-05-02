@@ -11,6 +11,7 @@ from functools import partialmethod
 from AthenaColor.Objects.Color.ColorSystem import RGB,HEX
 from AthenaColor.Functions.AnsiSquences import NestedColorSequence
 from AthenaColor.Data.HtmlColors import HtmlColorObjects as HtmlColors
+from AthenaColor.Functions.General import StrictType
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -34,9 +35,10 @@ class RgbControlledNest:
     # ------------------------------------------------------------------------------------------------------------------
     def custom(self,*obj, color:RGB|HEX, **kwargs) -> str:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
+        color = StrictType(color,(RGB,HEX))
         return NestedColorSequence(
             *obj,
-            control_code=self._param_code + ";".join(str(c) for c in color.export()),
+            control_code=f"{self._param_code}{color.r};{color.g};{color.b}",
             reset_code=self._reset,
             **kwargs
         )
