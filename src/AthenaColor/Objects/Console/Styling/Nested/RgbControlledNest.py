@@ -9,7 +9,7 @@ from functools import partialmethod
 
 # Custom Packages
 from AthenaColor.Objects.Color.ColorSystem import RGB,HEX
-from AthenaColor.Functions.AnsiSquences import NestedColorSequence
+from AthenaColor.Functions.ANSIsquences import NestedColorSequence
 from AthenaColor.Data.HtmlColors import HtmlColorObjects as HtmlColors
 from AthenaColor.Functions.General import StrictType
 
