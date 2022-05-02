@@ -24,11 +24,9 @@ __all__=[
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class RgbControlledNest:
-    param_code:str
-
     def __init__(self, param_code:str,reset_code:int):
-        self._param_code:str = param_code
-        self._reset:int = reset_code
+        self._param_code:str = StrictType(param_code, str)
+        self._reset:int = StrictType(reset_code, int)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Methods -
@@ -45,9 +43,10 @@ class RgbControlledNest:
 
     def rgb(self,*obj, r:int,g:int,b:int, **kwargs) -> str:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
+        color =  RGB(r, g, b)
         return NestedColorSequence(
             *obj,
-            control_code=self._param_code + ";".join(str(c) for c in RGB(r, g, b).export()),
+            control_code=f"{self._param_code}{color.r};{color.g};{color.b}",
             reset_code=self._reset,
             **kwargs
         )
