@@ -7,17 +7,26 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-import AthenaColor
+from .RgbControlled import RgbControlled
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
+__all__=[
+    "Fore","Back", "Underline"
+]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def main():
-    print(AthenaColor.init)
+Fore = RgbControlled(
+    param_code= f"38;2;",
+)
 
-if __name__ == '__main__':
-    main()
+Back = RgbControlled(
+    param_code= f"48;2;",
+)
+
+Underline = RgbControlled(
+    param_code= f"58;2;",
+)

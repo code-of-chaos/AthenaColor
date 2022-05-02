@@ -7,17 +7,29 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-import AthenaColor
+from .RgbControlledNest import RgbControlledNest
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
+__all__=[
+    "ForeNest", "BackNest", "UnderlineNest"
+]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def main():
-    print(AthenaColor.init)
+ForeNest = RgbControlledNest(
+    param_code= f"38;2;",
+    reset_code=39
+)
 
-if __name__ == '__main__':
-    main()
+BackNest = RgbControlledNest(
+    param_code= f"48;2;",
+    reset_code=49
+)
+
+UnderlineNest = RgbControlledNest(
+    param_code= f"58;2;",
+    reset_code=24
+)
