@@ -23,13 +23,13 @@ class ColorObjects_HEX(unittest.TestCase):
     # ------------------------------------------------------------------------------------------------------------------
     # noinspection PyTypeChecker
     def test_input(self):
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(TypeError):
             HEX(1)
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(TypeError):
             HEX(b"#123456")
         with self.assertRaises(ValueError):
             HEX("#123456789")
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(TypeError):
             HEX(**{"hex_value":1})
         with self.assertRaises(TypeError):
             HEX(**{"hex_value":"#123456","a":1})

@@ -3,7 +3,6 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
-import math
 from typing import Any
 
 # Custom Library
@@ -24,15 +23,13 @@ __all__ = [
 def Normalize(value:int|float, factor:int|float=100)->float:
     return value/factor
 
-def RoundToDecimals(value:int|float, decimals=init.decimalPlaces):
+def RoundToDecimals(value:int|float, decimals:int=None):
+    if decimals is None:
+        decimals = init.decimalPlaces
     return round(value, decimals)
 
 def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
-    value_ = math.floor(value)
-    if value - value_ < 0.5:
-        return value_
-    else:
-        return math.ceil(value)
+    return int(value + 0.5) # thanks for tedthetwonk for refinement
 
 def StrictType(object_, type_) -> Any:
     if not isinstance(object_, type_):

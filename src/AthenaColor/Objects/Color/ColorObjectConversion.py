@@ -26,7 +26,9 @@ def to_RGB(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGB:
     """
     Function which converts any Color Object to an RGB object
     """
-    if isinstance(color, (RGB,HEX)):
+    if isinstance(color, HEX):
+        return RGB(*CTC.hex_to_rgb(str(color)))
+    elif isinstance(color, RGB):
         return RGB(*color.export())
     elif isinstance(color,(RGBA,HEXA)):
         return RGB(*color.export()[:-1])
@@ -48,15 +50,15 @@ def to_HEX(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEX:
     Function which converts any Color Object to an HEX object.
     """
     if isinstance(color, (RGB,HEX)):
-        return HEX(*color.export())
+        return HEX(CTC.rgb_to_hex(*color.export()))
     elif isinstance(color,(RGBA,HEXA)):
-        return HEX(*color.export()[:-1])
+        return HEX(CTC.rgb_to_hex(*color.export()[:-1]))
     elif isinstance(color, HSV):
-        return HEX(*CTC.hsv_to_hex(*color.export()))
+        return HEX(CTC.hsv_to_hex(*color.export()))
     elif isinstance(color, HSL):
-        return HEX(*CTC.hsl_to_hex(*color.export()))
+        return HEX(CTC.hsl_to_hex(*color.export()))
     elif isinstance(color, CMYK):
-        return HEX(*CTC.cmyk_to_hex(*color.export()))
+        return HEX(CTC.cmyk_to_hex(*color.export()))
     else:
         return NotImplemented
 
@@ -149,17 +151,17 @@ def to_HEXA(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEXA:
     Function which converts any Color Object to an HEXA object.
     """
     if isinstance(color, RGBA):
-        return HEXA(*CTC.rgba_to_hexa(*color.export(), a=color.a))
+        return HEXA(CTC.rgba_to_hexa(*color.export()))
     elif isinstance(color, HEXA):
-        return HEXA(*color.export())
+        return HEXA(str(color))
     # below conversions will set the A part of HEXA to ff
     elif isinstance(color, (RGB,HEX)):
-        return HEXA(*CTC.rgb_to_hex(*color.export()) + init.transparentDefault[0])
+        return HEXA(CTC.rgb_to_hex(*color.export()) + init.transparentDefault[0])
     elif isinstance(color, HSV):
-        return HEXA(*CTC.hsv_to_hex(*color.export()) + init.transparentDefault[0])
+        return HEXA(CTC.hsv_to_hex(*color.export()) + init.transparentDefault[0])
     elif isinstance(color, HSL):
-        return HEXA(*CTC.hsl_to_hex(*color.export()) + init.transparentDefault[0])
+        return HEXA(CTC.hsl_to_hex(*color.export()) + init.transparentDefault[0])
     elif isinstance(color, CMYK):
-        return HEXA(*CTC.cmyk_to_hex(*color.export()) + init.transparentDefault[0])
+        return HEXA(CTC.cmyk_to_hex(*color.export()) + init.transparentDefault[0])
     else:
         return NotImplemented

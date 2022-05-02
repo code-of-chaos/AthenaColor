@@ -218,7 +218,7 @@ class ColorObjects_HSL(unittest.TestCase):
         )
         self.assertEqual(
             color / HSV(30, .5, 0.75),
-            HSL(2.021,1,1)
+            HSL(2,1,1)
         )
         self.assertEqual(
             color // HSV(30, .5, 0.75),
@@ -230,7 +230,7 @@ class ColorObjects_HSL(unittest.TestCase):
         )
         self.assertEqual(
             color % HSV(30, .5, 0.75),
-            HSL(0.632,0.074,0.187)
+            HSL(0,0.074,0.187)
         )
 
     def test_dunder_CMYK(self):

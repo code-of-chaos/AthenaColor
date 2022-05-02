@@ -30,7 +30,7 @@ class ColorObjects_RGB(unittest.TestCase):
     def test_input(self):
         with self.assertRaises(TypeError):
             RGB(**{"a":1,"b":2,"c":3})
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(TypeError):
             RGB(**{"r":"a","g":"b","b":"c"})
         with self.assertRaises(TypeError):
             RGB(*(255,255,255,255))

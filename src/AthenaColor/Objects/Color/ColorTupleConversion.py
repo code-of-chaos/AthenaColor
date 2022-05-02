@@ -4,6 +4,7 @@
 # General Packages
 from __future__ import annotations
 from typing import Tuple
+import math
 
 # Custom Library
 
@@ -68,16 +69,15 @@ def hsv_to_rgb(h:int|float,s:int|float,v:int|float) -> Tuple[int,int,int]:
     )
 
     C = v*s
-    h_ = h/60
-    X = C*(1-abs((h_%2)-1))
+    X = C*(1-math.fabs(math.fmod(h/60.0,2)-1))
 
     # map rgb correctly
-    if      0   <= h_ < 1:  r_,g_,b_ = C,X,0
-    elif    1   <= h_ < 2:  r_,g_,b_ = X,C,0
-    elif    2   <= h_ < 3:  r_,g_,b_ = 0,C,X
-    elif    3   <= h_ < 4:  r_,g_,b_ = 0,X,C
-    elif    4   <= h_ < 5:  r_,g_,b_ = X,0,C
-    else:                   r_,g_,b_ = C,0,X # 5 <= h_ < 6
+    if      0   <= h < 60 :  r_,g_,b_ = C,X,0
+    elif    60  <= h < 120:  r_,g_,b_ = X,C,0
+    elif    120 <= h < 180:  r_,g_,b_ = 0,C,X
+    elif    180 <= h < 240:  r_,g_,b_ = 0,X,C
+    elif    240 <= h < 300:  r_,g_,b_ = X,0,C
+    else:                    r_,g_,b_ = C,0,X # 5 <= h_ < 6
 
     m = v-C
 
@@ -115,17 +115,16 @@ def hsl_to_rgb(h:int|float,s:int|float,l:int|float) -> Tuple[int,int,int]:
         StrictType(l, numbers)
     )
 
-    C = (1-abs((2*l)-1))*s
-    X = C*(1-abs(((h/60)%2)-1))
-    h_ = h/60
+    C = (1-math.fabs((2*l)-1))*s
+    X = C*(1-math.fabs(math.fmod(h/60,2)-1))
 
     # map rgb correctly
-    if      0   <= h_ < 1:  r_,g_,b_ = C,X,0
-    elif    1   <= h_ < 2:  r_,g_,b_ = X,C,0
-    elif    2   <= h_ < 3:  r_,g_,b_ = 0,C,X
-    elif    3   <= h_ < 4:  r_,g_,b_ = 0,X,C
-    elif    4   <= h_ < 5:  r_,g_,b_ = X,0,C
-    else:                   r_,g_,b_ = C,0,X # 5 <= h_ < 6
+    if      0   <= h < 60 :  r_,g_,b_ = C,X,0
+    elif    60  <= h < 120:  r_,g_,b_ = X,C,0
+    elif    120 <= h < 180:  r_,g_,b_ = 0,C,X
+    elif    180 <= h < 240:  r_,g_,b_ = 0,X,C
+    elif    240 <= h < 300:  r_,g_,b_ = X,0,C
+    else:                    r_,g_,b_ = C,0,X
 
     m = l-(C/2)
 
@@ -193,14 +192,14 @@ def rgb_to_hsv(r:int,g:int,b:int) -> Tuple[float,float,float]:
     if Delta == 0:
         Hue = 0
     elif r_ == Max:            # Red value is Max
-        Hue = 60 * (((g_-b_)/Delta)%6.)
+        Hue = 60 * math.fmod(((g_-b_)/Delta),6.)
     elif g_ == Max:          # Green value is Max
         Hue = 60 * (((b_-r_)/Delta)+2)
     else:                   # Blue value is Max
         Hue = 60 * (((r_-g_)/Delta)+4)
 
     return (
-        RoundToDecimals(Hue),
+        round(Hue),
         RoundToDecimals(Delta/Max if Max != 0 else 0),
         RoundToDecimals(Max)
     )
@@ -308,7 +307,7 @@ def rgb_to_hsl(r:int,g:int,b:int) -> Tuple[float,float,float]:
     Lum = (Max+Min)/2
 
     return (
-        RoundToDecimals(Hue),    # H
+        round(Hue),    # H
         RoundToDecimals(Delta/(1-abs((2*Lum)-1)) if Delta != 0 else 0),
         RoundToDecimals(Lum)     # L
     )
