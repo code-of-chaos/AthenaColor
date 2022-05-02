@@ -19,11 +19,17 @@ from AthenaColor.InitClass import init
 from AthenaColor.Objects.Color.ColorSystem import (
     RGB,RGBA,HEX,HEXA,HSV,HSL,CMYK
 )
-from AthenaColor.Objects.Console.Styling.Inline import (
-    Fore,Back,Underline,Style,Basic
+from AthenaColor.Objects.Console.Styling.Inline.Bodies import (
+    Fore,Back,Underline
 )
-from AthenaColor.Objects.Console.Styling.Nested import (
-    ForeNest,BackNest,UnderlineNest,StyleNest,BasicNest
+from AthenaColor.Objects.Console.Styling.Inline.MakeUp import (
+    Style,Basic
+)
+from AthenaColor.Objects.Console.Styling.Nested.Nested_Bodies import (
+    ForeNest,BackNest,UnderlineNest
+)
+from AthenaColor.Objects.Console.Styling.Nested.Nested_MakeUp import (
+    StyleNest,BasicNest
 )
 from AthenaColor.Objects.Color import (
     ColorTupleConversion, ColorObjectConversion
