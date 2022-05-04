@@ -9,7 +9,7 @@ from __future__ import annotations
 # Custom Packages
 from AthenaColor.InitClass import init
 import AthenaColor.Objects.Color.ColorTupleConversion as CTC
-from AthenaColor.Objects.Color.ColorSystem import RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA
+from AthenaColor.Objects.Color.ColorSystem import ColorSystem,RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -22,7 +22,7 @@ __all__ = [
 # - RGB -
 # ----------------------------------------------------------------------------------------------------------------------
 # noinspection PyProtectedMember
-def to_RGB(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGB:
+def to_RGB(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGB:
     """
     Function which converts any Color Object to an RGB object
     """
@@ -45,7 +45,7 @@ def to_RGB(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGB:
 # - Hexadecimal -
 # ----------------------------------------------------------------------------------------------------------------------
 # noinspection PyProtectedMember
-def to_HEX(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEX:
+def to_HEX(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEX:
     """
     Function which converts any Color Object to an HEX object.
     """
@@ -66,7 +66,7 @@ def to_HEX(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEX:
 # - HSV -
 # ----------------------------------------------------------------------------------------------------------------------
 # noinspection PyProtectedMember
-def to_HSV(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSV:
+def to_HSV(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSV:
     """
     Function which converts any Color Object to an HSV object.
     """
@@ -86,7 +86,7 @@ def to_HSV(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSV:
 # ----------------------------------------------------------------------------------------------------------------------
 # - HSL -
 # ----------------------------------------------------------------------------------------------------------------------
-def to_HSL(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSL:
+def to_HSL(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSL:
     """
     Function which converts any Color Object to an HSL object.
     """
@@ -106,7 +106,7 @@ def to_HSL(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSL:
 # ----------------------------------------------------------------------------------------------------------------------
 # - CMYK -
 # ----------------------------------------------------------------------------------------------------------------------
-def to_CMYK(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> CMYK:
+def to_CMYK(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> CMYK:
     """
     Function which converts any Color Object to an CMYK object.
     """
@@ -126,7 +126,7 @@ def to_CMYK(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> CMYK:
 # ----------------------------------------------------------------------------------------------------------------------
 # - TRANSPARENT COLORS -
 # ----------------------------------------------------------------------------------------------------------------------A
-def to_RGBA(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGBA:
+def to_RGBA(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGBA:
     """
     Function which converts any Color Object to an RGBA object.
     """
@@ -146,7 +146,7 @@ def to_RGBA(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGBA:
     else:
         return NotImplemented
 
-def to_HEXA(color:RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEXA:
+def to_HEXA(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEXA:
     """
     Function which converts any Color Object to an HEXA object.
     """

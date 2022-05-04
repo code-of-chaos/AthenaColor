@@ -218,20 +218,20 @@ class ColorSystem(ABC):
             return result
         return type(self)(*result)
 
-    def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__add__(other)
-    def __isub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__sub__(other)
-    def __imul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__mul__(other)
-    def __ifloordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__floordiv__(other)
-    def __itruediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__truediv__(other)
-    def __imod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__mod__(other)
-    def __ipow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__pow__(other)
+    @abstractmethod
+    def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:...
+    @abstractmethod
+    def __isub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:...
+    @abstractmethod
+    def __imul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:...
+    @abstractmethod
+    def __ifloordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:...
+    @abstractmethod
+    def __itruediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:...
+    @abstractmethod
+    def __imod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:...
+    @abstractmethod
+    def __ipow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:...
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Comparison Dunders -
@@ -340,6 +340,49 @@ class RGB(ColorSystem):
     # String magic methods
     def __repr__(self) -> str:
         return f"RGB(r={self.r},g={self.g},b={self.b})"
+
+    def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.add, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b = value
+        return self
+    def __isub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.sub, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b = value
+        return self
+    def __imul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mul, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b = value
+        return self
+    def __ifloordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.floordiv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b = value
+        return self
+    def __itruediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.truediv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b = value
+        return self
+    def __imod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mod, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b = value
+        return self
+    def __ipow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.power, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b = value
+        return self
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - HEX -
@@ -453,13 +496,56 @@ class RGBA(ColorSystem):
             self._a = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
         else:
             self._a = round(Constrain(StrictType(value, (int,float)), 255))
-
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
     # String magic methods
     def __repr__(self) -> str:
         return f"RGBA(r={self.r},g={self.g},b={self.b},a={self.a})"
+
+    def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.add, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b, self.a = value
+        return self
+    def __isub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.sub, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b, self.a = value
+        return self
+    def __imul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mul, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b, self.a = value
+        return self
+    def __ifloordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.floordiv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b, self.a = value
+        return self
+    def __itruediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.truediv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b, self.a = value
+        return self
+    def __imod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mod, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b, self.a = value
+        return self
+    def __ipow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.power, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.r, self.g, self.b, self.a = value
+        return self
+
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
@@ -564,6 +650,50 @@ class HSV(ColorSystem):
     def __repr__(self) -> str:
         return f"HSV(h={self.h},s={self.s},v={self.v})"
 
+    def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.add, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.v = value
+        return self
+    def __isub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.sub, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.v = value
+        return self
+    def __imul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mul, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.v = value
+        return self
+    def __ifloordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.floordiv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.v = value
+        return self
+    def __itruediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.truediv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.v = value
+        return self
+    def __imod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mod, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.v = value
+        return self
+    def __ipow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.power, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.v = value
+        return self
+
+
 
 # ------------------------------------------------------------------------------------------------------------------
 # - HSL -
@@ -613,6 +743,49 @@ class HSL(ColorSystem):
     # String magic methods
     def __repr__(self) -> str:
         return f"HSL(h={self.h},s={self.s},l={self.l})"
+
+    def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.add, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.l = value
+        return self
+    def __isub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.sub, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.l = value
+        return self
+    def __imul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mul, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.l = value
+        return self
+    def __ifloordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.floordiv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.l = value
+        return self
+    def __itruediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.truediv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.l = value
+        return self
+    def __imod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mod, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.l = value
+        return self
+    def __ipow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.power, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.h,self.s,self.l = value
+        return self
 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -669,3 +842,46 @@ class CMYK(ColorSystem):
     # String magic methods
     def __repr__(self) -> str:
         return f"CMYK(c={self.c},m={self.m},y={self.y},k={self.k})"
+
+    def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.add, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.c,self.m,self.y,self.k = value
+        return self
+    def __isub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.sub, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.c,self.m,self.y,self.k = value
+        return self
+    def __imul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mul, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.c,self.m,self.y,self.k = value
+        return self
+    def __ifloordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.floordiv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.c,self.m,self.y,self.k = value
+        return self
+    def __itruediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.truediv, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.c,self.m,self.y,self.k = value
+        return self
+    def __imod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.mod, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.c,self.m,self.y,self.k = value
+        return self
+    def __ipow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
+        value = dunder_func(func=CSD.power, left=self, right=other)
+        if value is NotImplemented:
+            return value
+        self.c,self.m,self.y,self.k = value
+        return self
