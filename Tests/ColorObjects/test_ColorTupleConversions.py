@@ -7,7 +7,6 @@ import unittest
 
 # Custom Library
 from AthenaColor.Objects.Color.ColorTupleConversion import *
-from AthenaColor.Objects.Color.ColorTupleConversion import NormalizeRgb
 
 # Custom Packages
 # ----------------------------------------------------------------------------------------------------------------------
