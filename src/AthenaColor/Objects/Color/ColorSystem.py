@@ -137,6 +137,11 @@ class ColorSystem(ABC):
         """
         return all(a!=0 for a in self.export())
 
+    def __round__(self, n=None) -> ColorSystem:
+        """
+        Returns a new object, with its values rounded to n
+        """
+        return type(self)(*(round(value,n) for value in self.export()))
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
@@ -410,7 +415,11 @@ class HEX(RGB):
         return rgb_to_hex(*self.export())
 
     def __repr__(self) -> str:
-        return f"HEX(r={self.r},g={self.g},b={self.b})"
+        return f"""HEX(hex_value="{rgb_to_hex(*self.export())}")"""
+
+    # Cast dunders
+    def __round__(self, n=None):
+        return type(self)(rgb_to_hex(*(round(value,n) for value in self.export())))
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
@@ -573,7 +582,11 @@ class HEXA(RGBA):
         return rgba_to_hexa(*self.export())
 
     def __repr__(self) -> str:
-        return f"HEXA(r={self.r},g={self.g},b={self.b},a={self.a})"
+        return f"""HEXA(hex_value="{rgba_to_hexa(*self.export())}")"""
+
+    # Cast dunders
+    def __round__(self, n=None):
+        return type(self)(rgba_to_hexa(*(round(value,n) for value in self.export())))
 
 
     # ------------------------------------------------------------------------------------------------------------------
