@@ -5,6 +5,7 @@
 from __future__ import annotations
 import copy
 import math
+import operator
 import unittest
 
 # Custom Library
@@ -42,6 +43,8 @@ class DunderTesting(BulkTests):
             (math.floor,(),                 {},         (64,25,18),     {},         RGB(r=64,g=25,b=18)), # doesn't really impact the RGB or HEX objects, but exsists nonetheless
             (math.ceil, (),                 {},         (64,25,18),     {},         RGB(r=64,g=25,b=18)), # doesn't really impact the RGB or HEX objects, but exsists nonetheless
             (copy.copy, (),                 {},         (52,128,255),   {},         RGB(52,128,255)),
+            (operator.contains,(52,),       {},         (52,128,255),   {},         True),
+            (operator.contains,(12,),       {},         (52,128,255),   {},         False),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
