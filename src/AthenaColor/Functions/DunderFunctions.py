@@ -61,6 +61,9 @@ def power(left:tuple, right:tuple)->tuple:
         for lr in zip(left, right)
     )
 
+def divmod_function(left:tuple, right:tuple)->tuple:
+    return floordiv(left,right), mod(left,right)
+
 # ----------------------------------------------------------------------------------------------------------------------
 # - Comparator Dunders -
 # ----------------------------------------------------------------------------------------------------------------------

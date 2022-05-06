@@ -135,13 +135,14 @@ class ColorSystem(ABC):
         """
         Returns a True value if all values of the Color System are not 0
         """
-        return all(a!=0 for a in self.export())
+        return any(color!=0 for color in self.export())
 
     def __round__(self, n=None) -> ColorSystem:
         """
         Returns a new object, with its values rounded to n
         """
-        return type(self)(*(round(value,n) for value in self.export()))
+        return self.__class__(*(round(value,n) for value in self.export()))
+
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
@@ -155,7 +156,7 @@ class ColorSystem(ABC):
         result = dunder_func(func=CSD.add, left=self, right=other)
         if result is NotImplemented:
             return result
-        return type(self)(*result)
+        return self.__class__(*result)
 
     # noinspection PyTypeChecker
     def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -167,7 +168,7 @@ class ColorSystem(ABC):
         result = dunder_func(func=CSD.sub, left=self, right=other)
         if result is NotImplemented:
             return result
-        return type(self)(*result)
+        return self.__class__(*result)
 
     # noinspection PyTypeChecker
     def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -179,7 +180,7 @@ class ColorSystem(ABC):
         result = dunder_func(func=CSD.mul, left=self, right=other)
         if result is NotImplemented:
             return result
-        return type(self)(*result)
+        return self.__class__(*result)
 
     # noinspection PyTypeChecker
     def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -191,7 +192,7 @@ class ColorSystem(ABC):
         result = dunder_func(func=CSD.floordiv, left=self, right=other)
         if result is NotImplemented:
             return result
-        return type(self)(*result)
+        return self.__class__(*result)
 
     # noinspection PyTypeChecker
     def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -203,7 +204,7 @@ class ColorSystem(ABC):
         result = dunder_func(func=CSD.truediv, left=self, right=other)
         if result is NotImplemented:
             return result
-        return type(self)(*result)
+        return self.__class__(*result)
 
     # noinspection PyTypeChecker
     def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -215,7 +216,7 @@ class ColorSystem(ABC):
         result = dunder_func(func=CSD.mod, left=self, right=other)
         if result is NotImplemented:
             return result
-        return type(self)(*result)
+        return self.__class__(*result)
 
     # noinspection PyTypeChecker
     def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
@@ -227,7 +228,13 @@ class ColorSystem(ABC):
         result = dunder_func(func=CSD.power, left=self, right=other)
         if result is NotImplemented:
             return result
-        return type(self)(*result)
+        return self.__class__(*result)
+
+    def __divmod__(self, other: ColorSystem|int|float|tuple):
+        result = dunder_func(func=CSD.divmod_function, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return (*(self.__class__(*colors) for colors in result),)
 
     @abstractmethod
     def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:...
@@ -419,38 +426,44 @@ class HEX(RGB):
 
     # Cast dunders
     def __round__(self, n=None):
-        return type(self)(rgb_to_hex(*(round(value,n) for value in self.export())))
+        return self.__class__(rgb_to_hex(*(round(value,n) for value in self.export())))
+
+    def __divmod__(self, other: ColorSystem|int|float|tuple):
+        result = dunder_func(func=CSD.divmod_function, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return (*(self.__class__(rgb_to_hex(*colors)) for colors in result),)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     # noinspection PyTypeChecker
     def __add__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgb_to_hex(*dunder_func(func=CSD.add, left=self, right=other)))
+        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.add, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgb_to_hex(*dunder_func(func=CSD.sub, left=self, right=other)))
+        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.sub, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgb_to_hex(*dunder_func(func=CSD.mul, left=self, right=other)))
+        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.mul, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgb_to_hex(*dunder_func(func=CSD.floordiv, left=self, right=other)))
+        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.floordiv, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgb_to_hex(*dunder_func(func=CSD.truediv, left=self, right=other)))
+        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.truediv, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgb_to_hex(*dunder_func(func=CSD.mod, left=self, right=other)))
+        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.mod, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgb_to_hex(*dunder_func(func=CSD.power, left=self, right=other)))
+        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.power, left=self, right=other)))
 
 # ------------------------------------------------------------------------------------------------------------------
 # - RGBA -
@@ -586,7 +599,13 @@ class HEXA(RGBA):
 
     # Cast dunders
     def __round__(self, n=None):
-        return type(self)(rgba_to_hexa(*(round(value,n) for value in self.export())))
+        return self.__class__(rgba_to_hexa(*(round(value,n) for value in self.export())))
+
+    def __divmod__(self, other: ColorSystem|int|float|tuple):
+        result = dunder_func(func=CSD.divmod_function, left=self, right=other)
+        if result is NotImplemented:
+            return result
+        return (*(self.__class__(rgba_to_hexa(*colors)) for colors in result),)
 
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -594,31 +613,31 @@ class HEXA(RGBA):
     # ------------------------------------------------------------------------------------------------------------------
     # noinspection PyTypeChecker
     def __add__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.add, left=self, right=other)))
+        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.add, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.sub, left=self, right=other)))
+        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.sub, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.mul, left=self, right=other)))
+        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.mul, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.floordiv, left=self, right=other)))
+        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.floordiv, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.truediv, left=self, right=other)))
+        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.truediv, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.mod, left=self, right=other)))
+        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.mod, left=self, right=other)))
 
     # noinspection PyTypeChecker
     def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return type(self)(rgba_to_hexa(*dunder_func(func=CSD.power, left=self, right=other)))
+        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.power, left=self, right=other)))
 
 # ------------------------------------------------------------------------------------------------------------------
 # - HSV -
