@@ -18,8 +18,8 @@ class Functions_ANSIsequences(unittest.TestCase):
     def nested(nested):
         return NestedColorSequence(
         # objects
-        "This is a test",
-        nested,
+        ("This is a test",
+        nested),
         # color/styling, reset and seperation
         control_code="38;2;128;0;0",
         reset_code=0,
@@ -40,8 +40,8 @@ class Functions_ANSIsequences(unittest.TestCase):
         self.assertEqual(
             NestedColorSequence(
                 # objects
-                "This is a test",
-                "For real",
+                ("This is a test",
+                "For real"),
                 # color/styling, reset and seperation
                 control_code="38;2;128;0;0",
                 reset_code=0,
@@ -54,8 +54,8 @@ f"""[38;2;128;0;0mThis is a test
             self.nested(self.nested(
                 NestedColorSequence(
                 # objects
-                "This is a test",
-                "For real",
+                ("This is a test",
+                "For real"),
                 # color/styling, reset and seperation
                 control_code="38;2;128;0;0",
                 reset_code=0,
