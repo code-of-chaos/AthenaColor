@@ -149,7 +149,7 @@ class StyleNest:
     @staticmethod
     def SubScript(*obj, sep=" "):                  return NCS(obj,  control_code=74, reset_code=75, sep=sep)
     @staticmethod
-    def NoScript(*obj, sep=" "):                   return NCS(obj,  control_code=75, sep=sep)
+    def NoScript(*obj, sep=" "):                   return NCSNO(obj,  control_code=75, sep=sep)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - BasicNest Sequences -
