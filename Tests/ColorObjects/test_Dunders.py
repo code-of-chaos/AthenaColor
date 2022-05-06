@@ -30,6 +30,8 @@ class DunderTesting(BulkTests):
             (divmod,    (HSL(180,.5,.5),),  {},         (127,71,54),    {},         (RGB(r=1,g=0,b=0), RGB(r=63,g=71,b=54))),
             (int,       (),                 {},         (127,127,127),  {},         127),
             (int,       (),                 {},         (64,25,18),     {},         35),
+            (float,     (),                 {},         (127,127,127),  {},         127),
+            (float,     (),                 {},         (64,25,18),     {},         35.666666666666664),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -62,6 +64,8 @@ class DunderTesting(BulkTests):
             (divmod,    (HSL(180,.5,.5),),  {},         (127,71,54,28),     {},         (RGBA(r=1,g=0,b=0,a=0), RGBA(r=63,g=71,b=54,a=28))),
             (int,       (),                 {},         (127,127,127,127),  {},         127),
             (int,       (),                 {},         (64,25,18,127),     {},         58),
+            (float,     (),                 {},         (127,127,127,127),  {},         127),
+            (float,     (),                 {},         (64,25,18,127),     {},         58.5),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -98,6 +102,8 @@ class DunderTesting(BulkTests):
             (divmod,    (HSV(8,.025,.02),), {},         (180,.5,.5),            {},         (HSV(h=22,s=1,v=1), HSV(h=4,s=0.025,v=0.02))),
             (int,       (),                 {},         (180,.5,.5),            {},         60),
             (int,       (),                 {},         (289,.25,.145),         {},         96),
+            (float,     (),                 {},         (180,.5,.5),            {},         60.333333333333336),
+            (float,     (),                 {},         (289,.25,.145),         {},         96.46499999999999),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -117,6 +123,8 @@ class DunderTesting(BulkTests):
             (divmod,    (HSL(8,.025,.02),), {},         (180,.5,.5),            {},         (HSL(h=22,s=1,l=1), HSL(h=4,s=0.025,l=0.02))),
             (int,       (),                 {},         (180,.5,.5),            {},         60),
             (int,       (),                 {},         (289,.25,.145),         {},         96),
+            (float,     (),                 {},         (180,.5,.5),            {},         60.333333333333336),
+            (float,     (),                 {},         (289,.25,.145),         {},         96.46499999999999),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -137,5 +145,7 @@ class DunderTesting(BulkTests):
             (divmod,    (CMYK(8,.025,.02, 0.01),),  {},         (.5,.5,.5,.5),                      {},         (CMYK(c=0.0,m=1,y=1,k=1), CMYK(c=0.5,m=0.025,y=0.02,k=0.01))),
             (int,       (),                         {},         (.5,.5,.5,.5),                      {},         0),
             (int,       (),                         {},         (.125,.25,.145,.75),                {},         0),
+            (float,     (),                         {},         (.5,.5,.5,.5),                      {},         0.5),
+            (float,     (),                         {},         (.125,.25,.145,.75),                {},         0.3175),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)

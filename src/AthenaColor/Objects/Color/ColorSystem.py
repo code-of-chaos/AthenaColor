@@ -145,10 +145,16 @@ class ColorSystem(ABC):
 
     def __int__(self) -> int:
         """
-        Returns the average value of all Color Elements
+        Returns the average value of all Color Elements as an integer value
+        """
+        return int(self.__float__())
+
+    def __float__(self) -> float:
+        """
+        Returns the average value of all Color Elements as a float value
         """
         values = self.export()
-        return int(sum(values)/len(values))
+        return sum(values)/len(values)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
