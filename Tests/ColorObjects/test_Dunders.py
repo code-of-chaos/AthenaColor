@@ -3,6 +3,8 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
+
+import math
 import unittest
 
 # Custom Library
@@ -37,6 +39,8 @@ class DunderTesting(BulkTests):
             (max,       (),                 {},         (52,128,255),   {},         255),
             (min,       (),                 {},         (52,128,255),   {},         52),
             (hash,      (),                 {},         (52,128,255),   {},         335258822),
+            (math.floor,(),                 {},         (64,25,18),     {},         RGB(r=64,g=25,b=18)), # doesn't really impact the RGB or HEX objects, but exsists nonetheless
+            (math.ceil, (),                 {},         (64,25,18),     {},         RGB(r=64,g=25,b=18)), # doesn't really impact the RGB or HEX objects, but exsists nonetheless
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -75,6 +79,8 @@ class DunderTesting(BulkTests):
             (len,       (),                 {},         (64,25,18,127),     {},         4),
             (hash,      (),                 {},         (64,25,18,127),     {},         -502044045),
             (hash,      (),                 {},         (64,25,18,127),     {},         -502044045),
+            (math.floor,(),                 {},         (64,25,18,127),     {},         RGBA(r=64,g=25,b=18,a=127)),
+            (math.ceil, (),                 {},         (64,25,18,127),     {},         RGBA(r=64,g=25,b=18,a=127)),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -116,6 +122,8 @@ class DunderTesting(BulkTests):
             (float,     (),                 {},         (289,.25,.145),         {},         96.46499999999999),
             (len,       (),                 {},         (289,.25,.145),         {},         3),
             (hash,      (),                 {},         (289,.25,.145),         {},         1367479895),
+            (math.floor,(),                 {},         (289,.25,.145),         {},         HSV(289,0,0)),
+            (math.ceil, (),                 {},         (289,.25,.145),         {},         HSV(289,1,1)),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -139,6 +147,8 @@ class DunderTesting(BulkTests):
             (float,     (),                 {},         (289,.25,.145),         {},         96.46499999999999),
             (len,       (),                 {},         (289,.25,.145),         {},         3),
             (hash,      (),                 {},         (289,.25,.145),         {},         1367479895),
+            (math.floor,(),                 {},         (289,.25,.145),         {},         HSL(289,0,0)),
+            (math.ceil, (),                 {},         (289,.25,.145),         {},         HSL(289,1,1)),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -163,5 +173,7 @@ class DunderTesting(BulkTests):
             (float,     (),                         {},         (.125,.25,.145,.75),                {},         0.3175),
             (len,       (),                         {},         (.125,.25,.145,.75),                {},         4),
             (hash,      (),                         {},         (.125,.25,.145,.75),                {},         -629847754),
+            (math.floor,(),                         {},         (.125,.25,.145,.75),                {},         CMYK(0,0,0,0)),
+            (math.ceil, (),                         {},         (.125,.25,.145,.75),                {},         CMYK(1,1,1,1)),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)

@@ -174,10 +174,17 @@ class ColorSystem(ABC):
     def __hash__(self):
         return hash(self.export())
 
-    def __floor__(self): #math.floor
+    def __floor__(self) -> ColorSystem: #math.floor
         self._value_setter(
-            *(math.floor(value) for value in self)
+            tuple(math.floor(value) for value in self)
         )
+        return self
+
+    def __ceil__(self) -> ColorSystem: #math.ceil
+        self._value_setter(
+            tuple(math.ceil(value) for value in self)
+        )
+        return self
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
@@ -384,6 +391,10 @@ class RGB(ColorSystem):
          return self.r,self.g,self.b
 
     def _value_setter(self, values:tuple):
+        if not isinstance(values, tuple):
+            raise TypeError
+        elif len(values) != len(self):
+            raise ValueError
         self.r, self.g, self.b = values
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -507,7 +518,11 @@ class RGBA(ColorSystem):
          return self.r,self.g,self.b,self.a
 
     def _value_setter(self, values:tuple):
-        self.r, self.g, self.b = values
+        if not isinstance(values, tuple):
+            raise TypeError
+        elif len(values) != len(self):
+            raise ValueError
+        self.r, self.g, self.b, self.a = values
 
     # ------------------------------------------------------------------------------------------------------------------
     # RGB Properties
@@ -642,7 +657,11 @@ class HSV(ColorSystem):
          return self.h,self.s,self.v
 
     def _value_setter(self, values:tuple):
-        self.r, self.g, self.b = values
+        if not isinstance(values, tuple):
+            raise TypeError
+        elif len(values) != len(self):
+            raise ValueError
+        self.h,self.s,self.v = values
 
     # ------------------------------------------------------------------------------------------------------------------
     # RGB Properties
@@ -694,7 +713,11 @@ class HSL(ColorSystem):
          return self.h,self.s,self.l
 
     def _value_setter(self, values:tuple):
-        self.r, self.g, self.b = values
+        if not isinstance(values, tuple):
+            raise TypeError
+        elif len(values) != len(self):
+            raise ValueError
+        self.h,self.s,self.l = values
 
     # ------------------------------------------------------------------------------------------------------------------
     # RGB Properties
@@ -745,7 +768,11 @@ class CMYK(ColorSystem):
          return self.c,self.m,self.y,self.k
 
     def _value_setter(self, values:tuple):
-        self.r, self.g, self.b = values
+        if not isinstance(values, tuple):
+            raise TypeError
+        elif len(values) != len(self):
+            raise ValueError
+        self.c,self.m,self.y,self.k = values
 
     # ------------------------------------------------------------------------------------------------------------------
     # CMYK Properties
