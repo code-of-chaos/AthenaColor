@@ -140,6 +140,13 @@ class ColorSystem(ABC):
         Done to not need specific dunders for each separate color class.
         """
 
+    def average(self) -> float:
+        """
+        Returns the average value of all Color Elements as a float value
+        """
+        values = self.export()
+        return sum(values)/len(values)
+
     def __bool__(self) -> bool:
         """
         Returns a True value if any values of the Color System are not 0
@@ -151,19 +158,6 @@ class ColorSystem(ABC):
         Returns a new object, with its values rounded to n
         """
         return self.__class__(*(round(value,n) for value in self))
-
-    def __int__(self) -> int:
-        """
-        Returns the average value of all Color Elements as an integer value
-        """
-        return int(self.__float__())
-
-    def __float__(self) -> float:
-        """
-        Returns the average value of all Color Elements as a float value
-        """
-        values = self.export()
-        return sum(values)/len(values)
     
     def __iter__(self):
         return iter(self.export())
@@ -174,18 +168,6 @@ class ColorSystem(ABC):
     def __hash__(self):
         return hash(self.export())
 
-    def __floor__(self) -> ColorSystem: #math.floor
-        self._value_setter(
-            tuple(math.floor(value) for value in self)
-        )
-        return self
-
-    def __ceil__(self) -> ColorSystem: #math.ceil
-        self._value_setter(
-            tuple(math.ceil(value) for value in self)
-        )
-        return self
-
     def __abs__(self) -> ColorSystem:
         return self.__class__(*(abs(value) for value in self))
 
@@ -194,9 +176,6 @@ class ColorSystem(ABC):
 
     def __contains__(self, item):
         return item in self.export()
-
-    def __trunc__(self) -> ColorSystem:
-        return self.__class__(*(math.trunc(value) for value in self))
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
@@ -403,10 +382,6 @@ class RGB(ColorSystem):
          return self.r,self.g,self.b
 
     def _value_setter(self, values:tuple):
-        if not isinstance(values, tuple):
-            raise TypeError
-        elif len(values) != len(self):
-            raise ValueError
         self.r, self.g, self.b = values
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -533,10 +508,6 @@ class RGBA(ColorSystem):
          return self.r,self.g,self.b,self.a
 
     def _value_setter(self, values:tuple):
-        if not isinstance(values, tuple):
-            raise TypeError
-        elif len(values) != len(self):
-            raise ValueError
         self.r, self.g, self.b, self.a = values
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -674,10 +645,6 @@ class HSV(ColorSystem):
          return self.h,self.s,self.v
 
     def _value_setter(self, values:tuple):
-        if not isinstance(values, tuple):
-            raise TypeError
-        elif len(values) != len(self):
-            raise ValueError
         self.h,self.s,self.v = values
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -730,10 +697,6 @@ class HSL(ColorSystem):
          return self.h,self.s,self.l
 
     def _value_setter(self, values:tuple):
-        if not isinstance(values, tuple):
-            raise TypeError
-        elif len(values) != len(self):
-            raise ValueError
         self.h,self.s,self.l = values
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -785,10 +748,6 @@ class CMYK(ColorSystem):
          return self.c,self.m,self.y,self.k
 
     def _value_setter(self, values:tuple):
-        if not isinstance(values, tuple):
-            raise TypeError
-        elif len(values) != len(self):
-            raise ValueError
         self.c,self.m,self.y,self.k = values
 
     # ------------------------------------------------------------------------------------------------------------------
