@@ -131,6 +131,12 @@ class ColorSystem(ABC):
         Done to not need specific dunders for each separate color class.
         """
 
+    def __bool__(self) -> bool:
+        """
+        Returns a True value if all values of the Color System are not 0
+        """
+        return all(a!=0 for a in self.export())
+
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
