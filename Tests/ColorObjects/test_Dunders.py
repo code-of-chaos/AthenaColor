@@ -32,6 +32,7 @@ class DunderTesting(BulkTests):
             (int,       (),                 {},         (64,25,18),     {},         35),
             (float,     (),                 {},         (127,127,127),  {},         127),
             (float,     (),                 {},         (64,25,18),     {},         35.666666666666664),
+            (sum,       (),                 {},         (127,127,127),  {},         381),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
