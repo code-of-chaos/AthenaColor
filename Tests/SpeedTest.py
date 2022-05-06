@@ -20,17 +20,21 @@ def ConversionInline():
     a = RGB(255, 255, 255)
     a -= CMYK(.1, .1, .1, .1)
 
-if __name__ == '__main__':
-    print(
-        "Conversion: ",
-        ForeNest.Red(
-            timeit.repeat(lambda: Conversion(), number=1_000_000, repeat=5)
-        )
-    )
+def TextInline():
+    a = f"{Fore.Red}SOMETHING{Style.NoForeground}"
+    b = f"{Style.Bold}Bold{Style.NoBold}"
+    c = f"{Back.Blue}I'M BLUE{Style.NoBackground}"
+    return a,b,c
 
-    print(
-        "ConversionInline: ",
-        ForeNest.Red(
-            timeit.repeat(lambda: ConversionInline(), number=1_000_000, repeat=5)
-        )
-    )
+def TextNested():
+    a = ForeNest.Red("SOMETHING")
+    b = StyleNest.Bold("Bold")
+    c = BackNest.Blue("I'M BLUE")
+    return a,b,c
+
+if __name__ == '__main__':
+    # print(f"Conversion:{ForeNest.Red(timeit.repeat(lambda: Conversion(), number=1_000_000, repeat=5))}")
+    # print(f"ConversionInline:{ForeNest.Red(timeit.repeat(lambda: ConversionInline(), number=1_000_000, repeat=5))}")
+    print(f"TextInline:{ForeNest.Red(timeit.repeat(lambda: TextInline(), number=1_000_000, repeat=5))}")
+    print(f"TextNested:{ForeNest.Red(timeit.repeat(lambda: TextNested(), number=1_000_000, repeat=5))}")
+
