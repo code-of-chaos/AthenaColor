@@ -34,6 +34,9 @@ class DunderTesting(BulkTests):
             (float,     (),                 {},         (64,25,18),     {},         35.666666666666664),
             (sum,       (),                 {},         (127,127,127),  {},         381),
             (len,       (),                 {},         (127,127,127),  {},         3),
+            (max,       (),                 {},         (52,128,255),   {},         255),
+            (min,       (),                 {},         (52,128,255),   {},         52),
+            (hash,      (),                 {},         (52,128,255),   {},         335258822),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -47,6 +50,7 @@ class DunderTesting(BulkTests):
             (bool,      (),     {},         ("#000000",),   {},         False),
             (bool,      (),     {},         ("#000001",),   {},         True),
             (divmod,    (8,),   {},         ("#7f4736",),   {},         (HEX("#0f0806"), HEX("#070706"))),
+            (hash,      (),     {},         ("#000001",),   {},         1105321676),
 
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
@@ -69,6 +73,8 @@ class DunderTesting(BulkTests):
             (float,     (),                 {},         (127,127,127,127),  {},         127),
             (float,     (),                 {},         (64,25,18,127),     {},         58.5),
             (len,       (),                 {},         (64,25,18,127),     {},         4),
+            (hash,      (),                 {},         (64,25,18,127),     {},         -502044045),
+            (hash,      (),                 {},         (64,25,18,127),     {},         -502044045),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -86,6 +92,7 @@ class DunderTesting(BulkTests):
             (divmod,    (RGBA(8,4,2,1),),   {},         ("#7f473612",), {},         (HEXA(hex_value="#0f111b12"), HEXA(hex_value="#07030000"))),
             (divmod,    (HEXA("#0f111b12"),),{},        ("#7f473612",), {},         (HEXA(hex_value="#08040201"), HEXA(hex_value="#07030000"))),
             (divmod,    (HSL(180,.5,.5),),  {},         ("#7f473612",), {},         (HEXA(hex_value="#01000000"), HEXA(hex_value="#3f473612"))),
+            (hash,      (),                 {},         ("#00000100",), {},         -855659026),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -108,6 +115,7 @@ class DunderTesting(BulkTests):
             (float,     (),                 {},         (180,.5,.5),            {},         60.333333333333336),
             (float,     (),                 {},         (289,.25,.145),         {},         96.46499999999999),
             (len,       (),                 {},         (289,.25,.145),         {},         3),
+            (hash,      (),                 {},         (289,.25,.145),         {},         1367479895),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -130,6 +138,7 @@ class DunderTesting(BulkTests):
             (float,     (),                 {},         (180,.5,.5),            {},         60.333333333333336),
             (float,     (),                 {},         (289,.25,.145),         {},         96.46499999999999),
             (len,       (),                 {},         (289,.25,.145),         {},         3),
+            (hash,      (),                 {},         (289,.25,.145),         {},         1367479895),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -153,5 +162,6 @@ class DunderTesting(BulkTests):
             (float,     (),                         {},         (.5,.5,.5,.5),                      {},         0.5),
             (float,     (),                         {},         (.125,.25,.145,.75),                {},         0.3175),
             (len,       (),                         {},         (.125,.25,.145,.75),                {},         4),
+            (hash,      (),                         {},         (.125,.25,.145,.75),                {},         -629847754),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
