@@ -37,69 +37,12 @@ def dunder_func(func:Callable,left:ColorSystem,right:ColorSystem|int|float|tuple
     else:
         return NotImplemented
 
-def map_color(left:ColorSystem,right:ColorSystem) -> tuple:
-    if isinstance(left, (RGB,HEX,)):
-        if isinstance(right, (RGB,HEX)):
-            return right.export()
-        elif isinstance(right,HSL):
-            return hsl_to_rgb(*right.export())
-        elif isinstance(right,HSV):
-            return hsv_to_rgb(*right.export())
-        elif isinstance(right,CMYK):
-            return cmyk_to_rgb(*right.export())
-        elif isinstance(right, (RGBA,HEXA)):
-            return (*right.export()[:-1],)
-
-    elif isinstance(left, HSL):
-        if isinstance(right, (RGB,HEX)):
-            return rgb_to_hsl(*right.export())
-        elif isinstance(right,HSL):
-            return (*right.export(),)
-        elif isinstance(right,HSV):
-            return hsv_to_hsl(*right.export())
-        elif isinstance(right,CMYK):
-            return cmyk_to_hsl(*right.export())
-        elif isinstance(right, (RGBA,HEXA)):
-            return rgb_to_hsl(*right.export()[:-1])
-
-    elif isinstance(left, HSV):
-        if isinstance(right, (RGB,HEX)):
-            return rgb_to_hsv(*right.export())
-        elif isinstance(right,HSL):
-            return hsl_to_hsv(*right.export())
-        elif isinstance(right,HSV):
-            return (*right.export(),)
-        elif isinstance(right,CMYK):
-            return cmyk_to_hsv(*right.export())
-        elif isinstance(right, (RGBA,HEXA)):
-            return rgb_to_hsv(*right.export()[:-1])
-
-    elif isinstance(left, CMYK):
-        if isinstance(right, (RGB,HEX)):
-            return rgb_to_cmyk(*right.export())
-        elif isinstance(right,HSL):
-            return hsl_to_cmyk(*right.export())
-        elif isinstance(right,HSV):
-            return hsv_to_cmyk(*right.export())
-        elif isinstance(right,CMYK):
-            return (*right.export(),)
-        elif isinstance(right, (RGBA,HEXA)):
-            return rgb_to_cmyk(*right.export()[:-1])
-
-    elif isinstance(left, (RGBA,HEXA)):
-        if isinstance(right, (RGB,HEX)):
-            return (*right.export(), init.transparentDefault[1])
-        elif isinstance(right,HSL):
-            return (*hsl_to_rgb(*right.export()), init.transparentDefault[1])
-        elif isinstance(right,HSV):
-            return (*hsv_to_rgb(*right.export()), init.transparentDefault[1])
-        elif isinstance(right,CMYK):
-            return (*cmyk_to_rgb(*right.export()), init.transparentDefault[1])
-        elif isinstance(right, (RGBA,HEXA)):
-            return (*right.export(),)
-
-    # If nothing has matched, this will return ->
-    return NotImplemented
+def map_color(left,right) -> tuple:
+    try:
+        a = color_conversions_mapped[type(left)][type(right)]
+        return a(right)
+    except KeyError:
+        return NotImplemented
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Actual Color System -
@@ -111,51 +54,25 @@ class ColorSystem(ABC):
         raise PermissionError
 
     def __str__(self)->str:
-        """
-        Returns a string with the various color system elements in a ';' separated string.
-        """
         return init.stringSeparation.join(str(c) for c in self)
 
     @abstractmethod
-    def __repr__(self)->str:
-        """
-        Returns a string, starting with the name of the class, followed by the various elements.
-        example: 'RGB(r=255,g=255,b=255)'
-        """
+    def __repr__(self)->str:...
 
     @abstractmethod
-    def export(self) -> tuple:
-        """
-        Returns all the object's color system elements.
-        Used internally in dunder operations.
-        Done to not need specific dunders for each separate color class.
-        """
+    def export(self) -> tuple:...
 
     @abstractmethod
-    def _value_setter(self, values:tuple):
-        """
-        Sets all the object's color system elements.
-        Used internally in dunder operations.
-        Done to not need specific dunders for each separate color class.
-        """
+    def _value_setter(self, values:tuple):...
 
     def average(self) -> float:
-        """
-        Returns the average value of all Color Elements as a float value
-        """
         values = self.export()
         return sum(values)/len(values)
 
     def __bool__(self) -> bool:
-        """
-        Returns a True value if any values of the Color System are not 0
-        """
         return any(color!=0 for color in self)
 
     def __round__(self, n=None) -> ColorSystem:
-        """
-        Returns a new object, with its values rounded to n
-        """
         return self.__class__(*(round(value,n) for value in self))
     
     def __iter__(self):
@@ -167,9 +84,6 @@ class ColorSystem(ABC):
     def __hash__(self):
         return hash(self.export())
 
-    def __abs__(self) -> ColorSystem:
-        return self.__class__(*(abs(value) for value in self))
-
     def __copy__(self):
         return eval(repr(self))
 
@@ -179,12 +93,14 @@ class ColorSystem(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
+    # ! Math Dunder which executes an operator between the left- and right-hand side of the operation.
+    #   The returned object will be a new instance of the left-hand object's class.
+    #   If the two sides of the operation are NOT of the same type,
+    #       it will convert the right-hand object to the same type as the left-hand type.
+
     # noinspection PyTypeChecker
     def __add__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
         """
-        Math Dunder which executes an ADDITION operator between the left- and right-hand side of the operation.
-        The returned object will be a new instance of the left-hand object's class.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
         """
         result = dunder_func(func=CSD.add, left=self, right=other)
         if result is NotImplemented:
@@ -193,11 +109,6 @@ class ColorSystem(ABC):
 
     # noinspection PyTypeChecker
     def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        """
-        Math Dunder which executes an SUBTRACTION operator between the left- and right-hand side of the operation.
-        The returned object will be a new instance of the left-hand object's class.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         result = dunder_func(func=CSD.sub, left=self, right=other)
         if result is NotImplemented:
             return result
@@ -205,11 +116,6 @@ class ColorSystem(ABC):
 
     # noinspection PyTypeChecker
     def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        """
-        Math Dunder which executes an MULTIPLICATION operator between the left- and right-hand side of the operation.
-        The returned object will be a new instance of the left-hand object's class.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         result = dunder_func(func=CSD.mul, left=self, right=other)
         if result is NotImplemented:
             return result
@@ -217,11 +123,6 @@ class ColorSystem(ABC):
 
     # noinspection PyTypeChecker
     def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        """
-        Math Dunder which executes an FLOOR DIVISION operator between the left- and right-hand side of the operation.
-        The returned object will be a new instance of the left-hand object's class.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         result = dunder_func(func=CSD.floordiv, left=self, right=other)
         if result is NotImplemented:
             return result
@@ -229,11 +130,6 @@ class ColorSystem(ABC):
 
     # noinspection PyTypeChecker
     def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        """
-        Math Dunder which executes an DIVISION operator between the left- and right-hand side of the operation.
-        The returned object will be a new instance of the left-hand object's class.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         result = dunder_func(func=CSD.truediv, left=self, right=other)
         if result is NotImplemented:
             return result
@@ -241,11 +137,6 @@ class ColorSystem(ABC):
 
     # noinspection PyTypeChecker
     def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        """
-        Math Dunder which executes an MODULO operator between the left- and right-hand side of the operation.
-        The returned object will be a new instance of the left-hand object's class.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         result = dunder_func(func=CSD.mod, left=self, right=other)
         if result is NotImplemented:
             return result
@@ -253,11 +144,6 @@ class ColorSystem(ABC):
 
     # noinspection PyTypeChecker
     def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        """
-        Math Dunder which executes an POWER operator between the left- and right-hand side of the operation.
-        The returned object will be a new instance of the left-hand object's class.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         result = dunder_func(func=CSD.power, left=self, right=other)
         if result is NotImplemented:
             return result
@@ -267,7 +153,7 @@ class ColorSystem(ABC):
         result = dunder_func(func=CSD.divmod_function, left=self, right=other)
         if result is NotImplemented:
             return result
-        return (*(self.__class__(*colors) for colors in result),)
+        return self.__class__(*result[0]), self.__class__(*result[1])
 
     def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
         values = dunder_func(func=CSD.add, left=self, right=other)
@@ -315,52 +201,32 @@ class ColorSystem(ABC):
     # ------------------------------------------------------------------------------------------------------------------
     # - Comparison Dunders -
     # ------------------------------------------------------------------------------------------------------------------
+    # ! Comparison Dunder which executes an operator between the left- and right-hand side of the operation.
+    #   If the two sides of the operation are NOT of the same type,
+    #       it will convert the right-hand object to the same type as the left-hand type.
+
     # noinspection PyTypeChecker
     def __gt__(self, other: ColorSystem|int|float|tuple) -> bool:
-        """
-        Comparison Dunder which compares for GREATER THAN.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         return dunder_func(func=CSD.gt,left=self,right=other)
 
     # noinspection PyTypeChecker
     def __lt__(self, other: ColorSystem|int|float|tuple) -> bool:
-        """
-        Comparison Dunder which compares for SMALLER THAN.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         return dunder_func(func=CSD.lt,left=self,right=other)
 
     # noinspection PyTypeChecker
     def __eq__(self, other: ColorSystem|int|float|tuple) -> bool:
-        """
-        Comparison Dunder which compares for EQUALITY.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         return dunder_func(func=CSD.eq,left=self,right=other)
 
     # noinspection PyTypeChecker
     def __ne__(self, other: ColorSystem|int|float|tuple) -> bool:
-        """
-        Comparison Dunder which compares for INEQUALITY.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         return dunder_func(func=CSD.ne,left=self,right=other)
 
     # noinspection PyTypeChecker
     def __le__(self, other: ColorSystem|int|float|tuple) -> bool:
-        """
-        Comparison Dunder which compares for SMALLER OR EQUAL TO.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         return dunder_func(func=CSD.le,left=self,right=other)
 
     # noinspection PyTypeChecker
     def __ge__(self, other: ColorSystem|int|float|tuple) -> bool:
-        """
-        Comparison Dunder which compares for GREATER OR EQUAL TO.
-        If the two sides of the operation are NOT of the same type, it will convert the right-hand object to the same type as the left-hand type.
-        """
         return dunder_func(func=CSD.ge,left=self,right=other)
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -786,3 +652,70 @@ class CMYK(ColorSystem):
     # String magic methods
     def __repr__(self) -> str:
         return f"CMYK(c={self.c},m={self.m},y={self.y},k={self.k})"
+
+# needs to be placed here, as only after all the defining of all the colors, this map can be made
+color_conversions_mapped ={
+    RGB : {
+        RGB: lambda r: r.export(),
+        HEX: lambda r: r.export(),
+        HSL: lambda r: hsl_to_rgb(*r.export()),
+        HSV: lambda r: hsv_to_rgb(*r.export()),
+        CMYK: lambda r: cmyk_to_rgb(*r.export()),
+        RGBA: lambda r: (*r.export()[:-1],),
+        HEXA: lambda r: (*r.export()[:-1],),
+    },
+    HEX : {
+        RGB: lambda r: r.export(),
+        HEX: lambda r: r.export(),
+        HSL: lambda r: hsl_to_rgb(*r.export()),
+        HSV: lambda r: hsv_to_rgb(*r.export()),
+        CMYK: lambda r: cmyk_to_rgb(*r.export()),
+        RGBA: lambda r: (*r.export()[:-1],),
+        HEXA: lambda r: (*r.export()[:-1],),
+    },
+    HSL : {
+        RGB: lambda r: rgb_to_hsl(*r.export()),
+        HEX: lambda r: rgb_to_hsl(*r.export()),
+        HSL: lambda r: r.export(),
+        HSV: lambda r: hsv_to_hsl(*r.export()),
+        CMYK: lambda r: cmyk_to_hsl(*r.export()),
+        RGBA: lambda r: rgb_to_hsl(*r.export()[:-1]),
+        HEXA: lambda r: rgb_to_hsl(*r.export()[:-1]),
+    },
+    HSV : {
+        RGB: lambda r: rgb_to_hsv(*r.export()),
+        HEX: lambda r: rgb_to_hsv(*r.export()),
+        HSL: lambda r: hsl_to_hsv(*r.export()),
+        HSV: lambda r: r.export(),
+        CMYK: lambda r: cmyk_to_hsv(*r.export()),
+        RGBA: lambda r: rgb_to_hsv(*r.export()[:-1]),
+        HEXA: lambda r: rgb_to_hsv(*r.export()[:-1]),
+    },
+    CMYK : {
+        RGB: lambda r: rgb_to_cmyk(*r.export()),
+        HEX: lambda r: rgb_to_cmyk(*r.export()),
+        HSL: lambda r: hsl_to_cmyk(*r.export()),
+        HSV: lambda r: hsv_to_cmyk(*r.export()),
+        CMYK: lambda r: r.export(),
+        RGBA: lambda r: rgb_to_cmyk(*r.export()[:-1]),
+        HEXA: lambda r: rgb_to_cmyk(*r.export()[:-1]),
+    },
+    RGBA : {
+        RGB: lambda r: (*r.export(), init.transparentDefault[1]),
+        HEX: lambda r: (*r.export(), init.transparentDefault[1]),
+        HSL: lambda r: (*hsl_to_rgb(*r.export()), init.transparentDefault[1]),
+        HSV: lambda r: (*hsv_to_rgb(*r.export()), init.transparentDefault[1]),
+        CMYK: lambda r: (*cmyk_to_rgb(*r.export()), init.transparentDefault[1]),
+        RGBA: lambda r: r.export(),
+        HEXA: lambda r: r.export(),
+    },
+    HEXA : {
+        RGB: lambda r: (*r.export(), init.transparentDefault[1]),
+        HEX: lambda r: (*r.export(), init.transparentDefault[1]),
+        HSL: lambda r: (*hsl_to_rgb(*r.export()), init.transparentDefault[1]),
+        HSV: lambda r: (*hsv_to_rgb(*r.export()), init.transparentDefault[1]),
+        CMYK: lambda r: (*cmyk_to_rgb(*r.export()), init.transparentDefault[1]),
+        RGBA: lambda r: r.export(),
+        HEXA: lambda r: r.export(),
+    },
+}
