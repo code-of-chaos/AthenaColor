@@ -48,13 +48,13 @@ def map_color(left:ColorSystem,right:ColorSystem) -> tuple:
         elif isinstance(right,CMYK):
             return cmyk_to_rgb(*right.export())
         elif isinstance(right, (RGBA,HEXA)):
-            return right.export()[:-1]
+            return (*right.export()[:-1],)
 
     elif isinstance(left, HSL):
         if isinstance(right, (RGB,HEX)):
             return rgb_to_hsl(*right.export())
         elif isinstance(right,HSL):
-            return right.export()
+            return (*right.export(),)
         elif isinstance(right,HSV):
             return hsv_to_hsl(*right.export())
         elif isinstance(right,CMYK):
@@ -68,7 +68,7 @@ def map_color(left:ColorSystem,right:ColorSystem) -> tuple:
         elif isinstance(right,HSL):
             return hsl_to_hsv(*right.export())
         elif isinstance(right,HSV):
-            return right.export()
+            return (*right.export(),)
         elif isinstance(right,CMYK):
             return cmyk_to_hsv(*right.export())
         elif isinstance(right, (RGBA,HEXA)):
@@ -82,21 +82,21 @@ def map_color(left:ColorSystem,right:ColorSystem) -> tuple:
         elif isinstance(right,HSV):
             return hsv_to_cmyk(*right.export())
         elif isinstance(right,CMYK):
-            return right.export()
+            return (*right.export(),)
         elif isinstance(right, (RGBA,HEXA)):
             return rgb_to_cmyk(*right.export()[:-1])
 
     elif isinstance(left, (RGBA,HEXA)):
         if isinstance(right, (RGB,HEX)):
-            return right.export(), init.transparent_default_float
+            return (*right.export(), init.transparentDefault[1])
         elif isinstance(right,HSL):
-            return hsl_to_rgb(*right.export()), init.transparent_default_float
+            return (*hsl_to_rgb(*right.export()), init.transparentDefault[1])
         elif isinstance(right,HSV):
-            return hsv_to_rgb(*right.export()), init.transparent_default_float
+            return (*hsv_to_rgb(*right.export()), init.transparentDefault[1])
         elif isinstance(right,CMYK):
-            return cmyk_to_rgb(*right.export()), init.transparent_default_float
+            return (*cmyk_to_rgb(*right.export()), init.transparentDefault[1])
         elif isinstance(right, (RGBA,HEXA)):
-            return right.export()
+            return (*right.export(),)
 
     # If nothing has matched, this will return ->
     return NotImplemented
@@ -133,7 +133,7 @@ class ColorSystem(ABC):
 
     def __bool__(self) -> bool:
         """
-        Returns a True value if all values of the Color System are not 0
+        Returns a True value if any values of the Color System are not 0
         """
         return any(color!=0 for color in self.export())
 
