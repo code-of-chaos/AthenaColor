@@ -26,16 +26,20 @@ def ColorSequence(control_code:int|str)->str:
     Used for quick assembly of correct Ansi Escape functions
     Used the escape code defined in AthenaColor init
     """
-    return f'{init.esc}[{StrictType(control_code, (int,str))}{ConsoleCodes.color}'
+    return f'{init.esc}[{control_code}m'
 
-def NestedColorSequence(*obj, control_code:int|str=None,reset_code:int|str=None, sep:str=" ") -> str:
+def NestedColorSequence(*obj, control_code:int|str,reset_code:int|str, sep:str=" ") -> str:
     """
     Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
     Function wraps every obj in the properly defined control- and reset codes.
     This is made to prevent style makeup bleed
     """
-    color = ColorSequence(control_code=control_code) if control_code is not None else ''
-    reset = ColorSequence(control_code=reset_code) if reset_code is not None else ''
-    sep_ = StrictType(sep, str)
+    init_esc = init.esc
+    color = f'{init_esc}[{control_code}m'
+    reset = f'{init_esc}[{reset_code}m'
 
-    return f"{color}{sep_}{reset}".join([f"{color}{o}{reset}"for o in obj])
+    # SHHH, don't touch this, this is speed 101
+    text = ""
+    for o in obj[:-1]:
+        text += f"{color}{o}{sep}{reset}" # SEP moved to within the color - reset, as previously, it was color-reset anyways
+    return text + f"{color}{obj[-1]}{reset}"

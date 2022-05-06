@@ -40,6 +40,8 @@ class RgbControlledNest:
             reset_code=self._reset,
             **kwargs
         )
+
+    # same as custom, but without the Strict Type, as the defined colors are known colors,and are types as RGB values
     def _partialmethod(self,*obj, color:RGB|HEX, **kwargs) -> str:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
         return NestedColorSequence(
