@@ -195,6 +195,9 @@ class ColorSystem(ABC):
     def __contains__(self, item):
         return item in self.export()
 
+    def __trunc__(self) -> ColorSystem:
+        return self.__class__(*(math.trunc(value) for value in self))
+
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
