@@ -33,6 +33,7 @@ class DunderTesting(BulkTests):
             (float,     (),                 {},         (127,127,127),  {},         127),
             (float,     (),                 {},         (64,25,18),     {},         35.666666666666664),
             (sum,       (),                 {},         (127,127,127),  {},         381),
+            (len,       (),                 {},         (127,127,127),  {},         3),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -67,6 +68,7 @@ class DunderTesting(BulkTests):
             (int,       (),                 {},         (64,25,18,127),     {},         58),
             (float,     (),                 {},         (127,127,127,127),  {},         127),
             (float,     (),                 {},         (64,25,18,127),     {},         58.5),
+            (len,       (),                 {},         (64,25,18,127),     {},         4),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -105,6 +107,7 @@ class DunderTesting(BulkTests):
             (int,       (),                 {},         (289,.25,.145),         {},         96),
             (float,     (),                 {},         (180,.5,.5),            {},         60.333333333333336),
             (float,     (),                 {},         (289,.25,.145),         {},         96.46499999999999),
+            (len,       (),                 {},         (289,.25,.145),         {},         3),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -126,6 +129,7 @@ class DunderTesting(BulkTests):
             (int,       (),                 {},         (289,.25,.145),         {},         96),
             (float,     (),                 {},         (180,.5,.5),            {},         60.333333333333336),
             (float,     (),                 {},         (289,.25,.145),         {},         96.46499999999999),
+            (len,       (),                 {},         (289,.25,.145),         {},         3),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -148,5 +152,6 @@ class DunderTesting(BulkTests):
             (int,       (),                         {},         (.125,.25,.145,.75),                {},         0),
             (float,     (),                         {},         (.5,.5,.5,.5),                      {},         0.5),
             (float,     (),                         {},         (.125,.25,.145,.75),                {},         0.3175),
+            (len,       (),                         {},         (.125,.25,.145,.75),                {},         4),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
