@@ -29,7 +29,7 @@ def TextInline():
 def TextNested():
     a = ForeNest.Red("SOMETHING")
     b = StyleNest.Bold("Bold")
-    c = BackNest.Blue("I'M BLUE")
+    c = BackNest.Maroon("I'M BLUE")
     return a,b,c
 
 if __name__ == '__main__':
