@@ -32,7 +32,6 @@ class DunderTesting(BulkTests):
             (sum,       (),                 {},         (127,127,127),  {},         381),
             (max,       (),                 {},         (52,128,255),   {},         255),
             (min,       (),                 {},         (52,128,255),   {},         52),
-            (hash,      (),                 {},         (52,128,255),   {},         335258822),
             (copy.copy, (),                 {},         (52,128,255),   {},         RGB(52,128,255)),
             (operator.contains,(52,),       {},         (52,128,255),   {},         True),
             (operator.contains,(12,),       {},         (52,128,255),   {},         False),
@@ -49,7 +48,6 @@ class DunderTesting(BulkTests):
             (bool,      (),     {},         ("#000000",),   {},         False),
             (bool,      (),     {},         ("#000001",),   {},         True),
             (divmod,    (8,),   {},         ("#7f4736",),   {},         (HEX("#0f0806"), HEX("#070706"))),
-            (hash,      (),     {},         ("#000001",),   {},         1105321676),
 
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
@@ -67,8 +65,6 @@ class DunderTesting(BulkTests):
             (divmod,    ((8,4,2,5),),       {},         (127,71,54,28),     {},         (RGBA(r=15,g=17,b=27,a=5), RGBA(r=7,g=3,b=0,a=3))),
             (divmod,    (RGBA(8,4,2,1),),   {},         (127,71,54,28),     {},         (RGBA(r=15,g=17,b=27,a=28), RGBA(r=7,g=3,b=0,a=0))),
             (divmod,    (HSL(180,.5,.5),),  {},         (127,71,54,28),     {},         (RGBA(r=1,g=0,b=0,a=0), RGBA(r=63,g=71,b=54,a=28))),
-            (hash,      (),                 {},         (64,25,18,127),     {},         -502044045),
-            (hash,      (),                 {},         (64,25,18,127),     {},         -502044045),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -86,7 +82,6 @@ class DunderTesting(BulkTests):
             (divmod,    (RGBA(8,4,2,1),),   {},         ("#7f473612",), {},         (HEXA(hex_value="#0f111b12"), HEXA(hex_value="#07030000"))),
             (divmod,    (HEXA("#0f111b12"),),{},        ("#7f473612",), {},         (HEXA(hex_value="#08040201"), HEXA(hex_value="#07030000"))),
             (divmod,    (HSL(180,.5,.5),),  {},         ("#7f473612",), {},         (HEXA(hex_value="#01000000"), HEXA(hex_value="#3f473612"))),
-            (hash,      (),                 {},         ("#00000100",), {},         -855659026),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -104,7 +99,6 @@ class DunderTesting(BulkTests):
             (divmod,    ((8,.025,.02),),    {},         (180,.5,.5),            {},         (HSV(h=22,s=1,v=1), HSV(h=4,s=0.025,v=0.02))),
             (divmod,    (RGB(8,4,2),),      {},         (180,.5,.5),            {},         (HSV(h=9,s=0.0,v=1), HSV(h=0,s=0.5,v=0.004))),
             (divmod,    (HSV(8,.025,.02),), {},         (180,.5,.5),            {},         (HSV(h=22,s=1,v=1), HSV(h=4,s=0.025,v=0.02))),
-            (hash,      (),                 {},         (289,.25,.145),         {},         1367479895),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -122,7 +116,6 @@ class DunderTesting(BulkTests):
             (divmod,    ((8,.025,.02),),    {},         (180,.5,.5),            {},         (HSL(h=22,s=1,l=1), HSL(h=4,s=0.025,l=0.02))),
             (divmod,    (RGB(8,4,2),),      {},         (180,.5,.5),            {},         (HSL(h=9,s=0.0,l=1), HSL(h=0,s=0.5,l=0.02))),
             (divmod,    (HSL(8,.025,.02),), {},         (180,.5,.5),            {},         (HSL(h=22,s=1,l=1), HSL(h=4,s=0.025,l=0.02))),
-            (hash,      (),                 {},         (289,.25,.145),         {},         1367479895),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
 
@@ -141,6 +134,5 @@ class DunderTesting(BulkTests):
             (divmod,    (8,),                       {},         (.5,.5,.5,.5),                      {},         (CMYK(c=0.0,m=0.0,y=0.0,k=0.0), CMYK(c=0.5,m=0.5,y=0.5,k=0.5))),
             (divmod,    ((8,.025,.02, 0.01),),      {},         (.5,.5,.5,.5),                      {},         (CMYK(c=0.0,m=1,y=1,k=1), CMYK(c=0.5,m=0.025,y=0.02,k=0.01))),
             (divmod,    (CMYK(8,.025,.02, 0.01),),  {},         (.5,.5,.5,.5),                      {},         (CMYK(c=0.0,m=1,y=1,k=1), CMYK(c=0.5,m=0.025,y=0.02,k=0.01))),
-            (hash,      (),                         {},         (.125,.25,.145,.75),                {},         -629847754),
         )
         self.Subtest_ObjectOperationBulk(objectType, casesOperation)
