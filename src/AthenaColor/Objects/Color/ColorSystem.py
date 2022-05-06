@@ -186,6 +186,9 @@ class ColorSystem(ABC):
         )
         return self
 
+    def __abs__(self) -> ColorSystem:
+        return self.__class__(*(abs(value) for value in self))
+
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
@@ -469,6 +472,9 @@ class HEX(RGB):
             return result
         return (*(self.__class__(rgb_to_hex(*colors)) for colors in result),)
 
+    def __abs__(self) -> ColorSystem:
+        return self.__class__(rgb_to_hex(*(abs(value) for value in self)))
+
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
@@ -606,6 +612,8 @@ class HEXA(RGBA):
             return result
         return (*(self.__class__(rgba_to_hexa(*colors)) for colors in result),)
 
+    def __abs__(self) -> ColorSystem:
+        return self.__class__(rgba_to_hexa(*(abs(value) for value in self)))
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
