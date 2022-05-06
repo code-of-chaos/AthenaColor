@@ -155,6 +155,9 @@ class ColorSystem(ABC):
         """
         values = self.export()
         return sum(values)/len(values)
+    
+    def __iter__(self):
+        return iter(self.export())
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
