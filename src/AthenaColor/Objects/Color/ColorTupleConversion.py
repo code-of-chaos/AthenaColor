@@ -10,7 +10,7 @@ import math
 
 # Custom Packages
 from AthenaColor.Functions.General import (
-    Normalize,RoundHalfUp,RoundToDecimals, StrictType
+    RoundHalfUp,RoundToDecimals
 )
 from AthenaColor.Functions.Constraints import (
     ConstrainHSV, ConstrainHSL, ConstrainRGB, ConstrainCMYK,ConstrainRGBA
@@ -22,14 +22,14 @@ from AthenaColor.Functions.Constraints import (
 __all__ = [
     "hsl_to_hsv","hsv_to_hsl","hex_to_hsl","hsl_to_hex","hex_to_hsv","hsv_to_hex","rgb_to_hsl","hsl_to_rgb",
     "rgb_to_hsv","hsv_to_rgb","hsv_to_cmyk","cmyk_to_hsv","cmyk_to_hsl","hsl_to_cmyk","hex_to_cmyk","cmyk_to_hex",
-    "rgb_to_cmyk","cmyk_to_rgb","hex_to_rgb","hexa_to_rgba","rgba_to_hexa","rgb_to_hex"
+    "rgb_to_cmyk","cmyk_to_rgb","hex_to_rgb","hexa_to_rgba","rgba_to_hexa","rgb_to_hex", "NormalizeRgb"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def NormalizeRgb(r:int,g:int,b:int) -> Tuple[float, ...]:
-    return Normalize(r,255),Normalize(g,255),Normalize(b,255)
+    return r/255,g/255,b/255
 
 numbers = (int,float)
 
@@ -41,8 +41,6 @@ def hex_to_rgb(hexadecimal:str) -> Tuple[int, ...]:
     Function to convert a hexadecimal string to a rgb tuple.
     Does not create an RGB object.
     """
-    # Type check the hex input
-    StrictType(hexadecimal, str)
     # Form hex value in usable state (cast away the '#' value)
     if hexadecimal[0] == "#" and len(hexadecimal) == 7:
         hex_v = hexadecimal[1:]
@@ -62,11 +60,7 @@ def hsv_to_rgb(h:int|float,s:int|float,v:int|float) -> Tuple[int,int,int]:
     Function to convert a hsv tuple to a rgb tuple.
     Does not create an RGB object.
     """
-    h,s,v = ConstrainHSV(
-        StrictType(h,numbers),
-        StrictType(s,numbers),
-        StrictType(v,numbers)
-    )
+    h,s,v = ConstrainHSV(h,s,v)
 
     C = v*s
     X = C*(1-math.fabs(math.fmod(h/60.0,2)-1))
@@ -92,12 +86,7 @@ def cmyk_to_rgb(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[int,in
     Function to convert a cmyk tuple to a rgb tuple.
     Does not create an RGB object.
     """
-    c,m,y,k = ConstrainCMYK(
-        StrictType(c,numbers),
-        StrictType(m,numbers),
-        StrictType(y,numbers),
-        StrictType(k,numbers),
-    )
+    c,m,y,k = ConstrainCMYK(c,m,y,k)
     return (
         RoundHalfUp(255 * (1 - c) * (1 - k)),  #r
         RoundHalfUp(255 * (1 - m) * (1 - k)),  #g
@@ -109,11 +98,7 @@ def hsl_to_rgb(h:int|float,s:int|float,l:int|float) -> Tuple[int,int,int]:
     Function to convert a hsl tuple to a rgb tuple.
     Does not create an RGB object.
     """
-    h,s,l =ConstrainHSL(
-        StrictType(h, numbers),
-        StrictType(s, numbers),
-        StrictType(l, numbers)
-    )
+    h,s,l =ConstrainHSL(h,s,l)
 
     C = (1-math.fabs((2*l)-1))*s
     X = C*(1-math.fabs(math.fmod(h/60,2)-1))
@@ -175,11 +160,7 @@ def rgb_to_hsv(r:int,g:int,b:int) -> Tuple[float,float,float]:
     Does not create an HSV object.
     """
     # Normalize
-    r_,g_,b_ = NormalizeRgb(*ConstrainRGB(
-        StrictType(r, numbers),
-        StrictType(g, numbers),
-        StrictType(b, numbers)
-    ))
+    r_,g_,b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
 
     # Find max and min
     Max = max(r_, g_, b_)
@@ -234,11 +215,7 @@ def rgb_to_cmyk(r:int,g:int,b:int) -> Tuple[float,float,float,float]:
     Does not create an CMYK object.
     """
     # Normalize
-    r_, g_, b_ = NormalizeRgb(*ConstrainRGB(
-        StrictType(r, numbers),
-        StrictType(g, numbers),
-        StrictType(b, numbers)
-    ))
+    r_, g_, b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
     k = 1 - max(r_, g_, b_)
 
     if k == 1:
@@ -281,11 +258,7 @@ def rgb_to_hsl(r:int,g:int,b:int) -> Tuple[float,float,float]:
     Does not create an HSL object.
     """
     # Normalize
-    r_, g_, b_ = NormalizeRgb(*ConstrainRGB(
-        StrictType(r, numbers),
-        StrictType(g, numbers),
-        StrictType(b, numbers)
-    ))
+    r_, g_, b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
     # Find max and min
     Max = max(r_, g_, b_)
     Min = min(r_, g_, b_)
@@ -342,7 +315,6 @@ def hexa_to_rgba(hexadecimal:str) -> Tuple[int,...]:
     Does not create an RGBA object.
     """
     # Type check the hex input
-    StrictType(hexadecimal, str)
     # Form hex value in usable state (cast away the '#' value)
     if hexadecimal[0] == "#":
         hex_v = hexadecimal[1:]
@@ -361,9 +333,4 @@ def rgba_to_hexa(r:int,g:int,b:int,a:int) -> str:
     Function to convert a rgba tuple to a hexa string.
     Does not create an HEXA object.
     """
-    return '#%02x%02x%02x%02x' % ConstrainRGBA(
-        StrictType(r, numbers),
-        StrictType(g, numbers),
-        StrictType(b, numbers),
-        StrictType(a, numbers),
-    )
+    return '#%02x%02x%02x%02x' % ConstrainRGBA(r,g,b,a)

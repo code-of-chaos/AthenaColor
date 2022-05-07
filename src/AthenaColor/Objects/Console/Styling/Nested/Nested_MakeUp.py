@@ -2,12 +2,12 @@
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
-from functools import partial
 
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions.ANSIsquences import NestedColorSequence
+from AthenaColor.Functions.ANSIsquences import NestedColorSequence,NestedColorSequence_NoReset
+from AthenaColor.Objects.Console.Styling.Inline.MakeUp import Style, Basic
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -19,119 +19,186 @@ __all__=[
 # ----------------------------------------------------------------------------------------------------------------------
 # - StyleNest Sequences -
 # ----------------------------------------------------------------------------------------------------------------------
-class StyleNest:
-    # noinspection PyUnresolvedReferences
-    __all__ = [
-        "Reset",
-        "Italic",
-        "NoItalic",
-        "Bold",
-        "NoBold",
-        "UnderlineNest",
-        "NoUnderline",
-        "Crossed",
-        "NoCrossed",
-        "Reversed",
-        "NoReversed",
-        "Frame",
-        "NoFrame",
-        "Circle",
-        "NoCircle",
-        "UnderlineDouble",
-        "NoForeground",
-        "NoBackground"
-    ]
+NCS = NestedColorSequence            # Done for slight speed increase
+NCSNO = NestedColorSequence_NoReset  # Done for slight speed increase
+sep_ = " "
 
-    Reset = partial(NestedColorSequence, control_code=0)
-    Bold = partial(NestedColorSequence, control_code=1, reset_code=22)
-    NoBold = partial(NestedColorSequence, control_code=22)
-    Dim = partial(NestedColorSequence, control_code=2, reset_code=22)
-    NoDim = partial(NestedColorSequence, control_code=22)
-    Italic = partial(NestedColorSequence, control_code=3, reset_code=23)
-    NoItalic = partial(NestedColorSequence, control_code=23)
-    Underline = partial(NestedColorSequence, control_code=4, reset_code=24)
-    NoUnderline = partial(NestedColorSequence, control_code=24)
-    BlinkSlow = partial(NestedColorSequence, control_code=5, reset_code=25)
-    NoBlinkSlow = partial(NestedColorSequence, control_code=25)
-    BlinkRapid = partial(NestedColorSequence, control_code=6, reset_code=25)
-    NoBlinkRapid = partial(NestedColorSequence, control_code=25)
-    Reversed = partial(NestedColorSequence, control_code=7, reset_code=27)
-    NoReversed = partial(NestedColorSequence, control_code=27)
-    Conceal = partial(NestedColorSequence, control_code=8, reset_code=28)
-    NoConceal = partial(NestedColorSequence, control_code=28)
-    Crossed = partial(NestedColorSequence, control_code=9, reset_code=29)
-    NoCrossed = partial(NestedColorSequence, control_code=29)
-    FontPrimary = partial(NestedColorSequence, control_code=10, reset_code=10)
-    FontSecond1 = partial(NestedColorSequence, control_code=11, reset_code=10)
-    FontSecond2 = partial(NestedColorSequence, control_code=12, reset_code=10)
-    FontSecond3 = partial(NestedColorSequence, control_code=13, reset_code=10)
-    FontSecond4 = partial(NestedColorSequence, control_code=14, reset_code=10)
-    FontSecond5 = partial(NestedColorSequence, control_code=15, reset_code=10)
-    FontSecond6 = partial(NestedColorSequence, control_code=16, reset_code=10)
-    FontSecond8 = partial(NestedColorSequence, control_code=17, reset_code=10)
-    FontSecond9 = partial(NestedColorSequence, control_code=18, reset_code=10)
-    FontSecond10 = partial(NestedColorSequence, control_code=19, reset_code=10)
-    NoFont = partial(NestedColorSequence, control_code=10)
-    Fraktur = partial(NestedColorSequence, control_code=20)
-    UnderlineDouble = partial(NestedColorSequence, control_code=21, reset_code=24)
-    NoUnderlineDouble = partial(NestedColorSequence, control_code=24)
-    PropSpacing = partial(NestedColorSequence, control_code=26, reset_code=26)
-    NoPropSpacing = partial(NestedColorSequence, control_code=26)
-    NoForeground = partial(NestedColorSequence, control_code=39)
-    NoBackground = partial(NestedColorSequence, control_code=49)
-    Frame = partial(NestedColorSequence, control_code=51, reset_code=54)
-    NoFrame = partial(NestedColorSequence, control_code=54)
-    Circle = partial(NestedColorSequence, control_code=52, reset_code=54)
-    NoCircle = partial(NestedColorSequence, control_code=54)
-    OverLine = partial(NestedColorSequence, control_code=53, reset_code=55)
-    NoOverLine = partial(NestedColorSequence, control_code=55)
-    UnderColourDefault = partial(NestedColorSequence, control_code=59)
-    IdeogramUnderLine = partial(NestedColorSequence, control_code=60, reset_code=65)
-    IdeogramUnderLineDouble = partial(NestedColorSequence, control_code=61, reset_code=65)
-    IdeogramOverLine = partial(NestedColorSequence, control_code=62, reset_code=65)
-    IdeogramOverLineDouble = partial(NestedColorSequence, control_code=63, reset_code=65)
-    IdeogramStress = partial(NestedColorSequence, control_code=64, reset_code=65)
-    NoIdeogram = partial(NestedColorSequence, control_code=65)
-    SuperScript = partial(NestedColorSequence, control_code=73, reset_code=75)
-    SubScript = partial(NestedColorSequence, control_code=74, reset_code=75)
-    NoScript = partial(NestedColorSequence, control_code=75)
+class StyleNest:
+    @staticmethod
+    def Reset(*obj,sep=sep_):                      return NCSNO(obj,Style.Reset,sep)
+    @staticmethod
+    def Bold(*obj,sep=sep_):                       return NCS(obj,Style.Bold,Style.NoBold,sep)
+    @staticmethod
+    def NoBold(*obj,sep=sep_):                     return NCSNO(obj,Style.NoBold,sep)
+    @staticmethod
+    def Dim(*obj,sep=sep_):                        return NCS(obj,Style.Dim,Style.NoBold,sep)
+    @staticmethod
+    def NoDim(*obj,sep=sep_):                      return NCSNO(obj,Style.NoBold,sep)
+    @staticmethod
+    def Italic(*obj,sep=sep_):                     return NCS(obj,Style.Italic,Style.NoItalic,sep)
+    @staticmethod
+    def NoItalic(*obj,sep=sep_):                   return NCSNO(obj,Style.NoItalic,sep)
+    @staticmethod
+    def Underline(*obj,sep=sep_):                  return NCS(obj,Style.Underline,Style.NoUnderline,sep)
+    @staticmethod
+    def NoUnderline(*obj,sep=sep_):                return NCSNO(obj,Style.NoUnderline,sep)
+    @staticmethod
+    def BlinkSlow(*obj,sep=sep_):                  return NCS(obj,Style.BlinkSlow,Style.NoBlinkSlow,sep)
+    @staticmethod
+    def NoBlinkSlow(*obj,sep=sep_):                return NCSNO(obj,Style.NoBlinkSlow,sep)
+    @staticmethod
+    def BlinkRapid(*obj,sep=sep_):                 return NCS(obj,Style.BlinkRapid,Style.NoBlinkRapid,sep)
+    @staticmethod
+    def NoBlinkRapid(*obj,sep=sep_):               return NCSNO(obj,Style.NoBlinkRapid,sep)
+    @staticmethod
+    def Reversed(*obj,sep=sep_):                   return NCS(obj,Style.Reversed,Style.NoReversed,sep)
+    @staticmethod
+    def NoReversed(*obj,sep=sep_):                 return NCSNO(obj,Style.NoReversed,sep)
+    @staticmethod
+    def Conceal(*obj,sep=sep_):                    return NCS(obj,Style.Conceal,Style.NoConceal,sep)
+    @staticmethod
+    def NoConceal(*obj,sep=sep_):                  return NCSNO(obj,Style.NoConceal,sep)
+    @staticmethod
+    def Crossed(*obj,sep=sep_):                    return NCS(obj,Style.Crossed,Style.NoCrossed,sep)
+    @staticmethod
+    def NoCrossed(*obj,sep=sep_):                  return NCSNO(obj,Style.NoCrossed,sep)
+    @staticmethod
+    def FontPrimary(*obj,sep=sep_):                return NCS(obj,Style.NoFont,Style.NoFont,sep)
+    @staticmethod
+    def FontSecond1(*obj,sep=sep_):                return NCS(obj,Style.FontSecond1,Style.NoFont,sep)
+    @staticmethod
+    def FontSecond2(*obj,sep=sep_):                return NCS(obj,Style.FontSecond2,Style.NoFont,sep)
+    @staticmethod
+    def FontSecond3(*obj,sep=sep_):                return NCS(obj,Style.FontSecond3,Style.NoFont,sep)
+    @staticmethod
+    def FontSecond4(*obj,sep=sep_):                return NCS(obj,Style.FontSecond4,Style.NoFont,sep)
+    @staticmethod
+    def FontSecond5(*obj,sep=sep_):                return NCS(obj,Style.FontSecond5,Style.NoFont,sep)
+    @staticmethod
+    def FontSecond6(*obj,sep=sep_):                return NCS(obj,Style.FontSecond6,Style.NoFont,sep)
+    @staticmethod
+    def FontSecond8(*obj,sep=sep_):                return NCS(obj,Style.FontSecond8,Style.NoFont,sep)
+    @staticmethod
+    def FontSecond9(*obj,sep=sep_):                return NCS(obj,Style.FontSecond9,Style.NoFont,sep)
+    @staticmethod
+    def FontSecond10(*obj,sep=sep_):               return NCS(obj,Style.FontSecond10,Style.NoFont,sep)
+    @staticmethod
+    def NoFont(*obj,sep=sep_):                     return NCSNO(obj,Style.NoFont,sep)
+    @staticmethod
+    def Fraktur(*obj,sep=sep_):                    return NCSNO(obj,Style.Fraktur,sep)
+    @staticmethod
+    def UnderlineDouble(*obj,sep=sep_):            return NCS(obj,Style.UnderlineDouble,Style.NoUnderline,sep)
+    @staticmethod
+    def NoUnderlineDouble(*obj,sep=sep_):          return NCSNO(obj,Style.NoUnderline,sep)
+    @staticmethod
+    def PropSpacing(*obj,sep=sep_):                return NCS(obj,Style.PropSpacing,Style.NoPropSpacing,sep)
+    @staticmethod
+    def NoPropSpacing(*obj,sep=sep_):              return NCSNO(obj,Style.NoPropSpacing,sep)
+    @staticmethod
+    def NoForeground(*obj,sep=sep_):               return NCSNO(obj,Style.NoForeground,sep)
+    @staticmethod
+    def NoBackground(*obj,sep=sep_):               return NCSNO(obj,Style.NoBackground,sep)
+    @staticmethod
+    def Frame(*obj,sep=sep_):                      return NCS(obj,Style.Frame,Style.NoFrame,sep)
+    @staticmethod
+    def NoFrame(*obj,sep=sep_):                    return NCSNO(obj,Style.NoFrame,sep)
+    @staticmethod
+    def Circle(*obj,sep=sep_):                     return NCS(obj,Style.Circle,Style.NoFrame,sep)
+    @staticmethod
+    def NoCircle(*obj,sep=sep_):                   return NCSNO(obj,Style.NoFrame,sep)
+    @staticmethod
+    def OverLine(*obj,sep=sep_):                   return NCS(obj,Style.OverLine,Style.NoOverLine,sep)
+    @staticmethod
+    def NoOverLine(*obj,sep=sep_):                 return NCSNO(obj,Style.NoOverLine,sep)
+    @staticmethod
+    def UnderColourDefault(*obj,sep=sep_):         return NCSNO(obj,Style.UnderColourDefault,sep)
+    @staticmethod
+    def IdeogramUnderLine(*obj,sep=sep_):          return NCS(obj,Style.IdeogramUnderLine,Style.NoIdeogram,sep)
+    @staticmethod
+    def IdeogramUnderLineDouble(*obj,sep=sep_):    return NCS(obj,Style.IdeogramUnderLineDouble,Style.NoIdeogram,sep)
+    @staticmethod
+    def IdeogramOverLine(*obj,sep=sep_):           return NCS(obj,Style.IdeogramOverLine,Style.NoIdeogram,sep)
+    @staticmethod
+    def IdeogramOverLineDouble(*obj,sep=sep_):     return NCS(obj,Style.IdeogramOverLineDouble,Style.NoIdeogram,sep)
+    @staticmethod
+    def IdeogramStress(*obj,sep=sep_):             return NCS(obj,Style.IdeogramStress,Style.NoIdeogram,sep)
+    @staticmethod
+    def NoIdeogram(*obj,sep=sep_):                 return NCSNO(obj,Style.NoIdeogram,sep)
+    @staticmethod
+    def SuperScript(*obj,sep=sep_):                return NCS(obj,Style.SuperScript,Style.NoScript,sep)
+    @staticmethod
+    def SubScript(*obj,sep=sep_):                  return NCS(obj,Style.SubScript,Style.NoScript,sep)
+    @staticmethod
+    def NoScript(*obj,sep=sep_):                   return NCSNO(obj,Style.NoScript,sep)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - BasicNest Sequences -
 # ----------------------------------------------------------------------------------------------------------------------
 class BasicNest:
     class Fore:
-        Black           = partial(NestedColorSequence, color_code=30, reset_code=39)
-        Red             = partial(NestedColorSequence, color_code=31, reset_code=39)
-        Green           = partial(NestedColorSequence, color_code=32, reset_code=39)
-        Yellow          = partial(NestedColorSequence, color_code=33, reset_code=39)
-        Blue            = partial(NestedColorSequence, color_code=34, reset_code=39)
-        Magenta         = partial(NestedColorSequence, color_code=35, reset_code=39)
-        Cyan            = partial(NestedColorSequence, color_code=36, reset_code=39)
-        White           = partial(NestedColorSequence, color_code=37, reset_code=39)
-        BrightBlack     = partial(NestedColorSequence, color_code=90, reset_code=39)
-        BrightRed       = partial(NestedColorSequence, color_code=91, reset_code=39)
-        BrightGreen     = partial(NestedColorSequence, color_code=92, reset_code=39)
-        BrightYellow    = partial(NestedColorSequence, color_code=93, reset_code=39)
-        BrightBlue      = partial(NestedColorSequence, color_code=94, reset_code=39)
-        BrightMagenta   = partial(NestedColorSequence, color_code=95, reset_code=39)
-        BrightCyan      = partial(NestedColorSequence, color_code=96, reset_code=39)
-        BrightWhite     = partial(NestedColorSequence, color_code=97, reset_code=39)
+        @staticmethod
+        def Black(*obj,sep=sep_):           return NCS(obj, Basic.Fore.Black, Style.NoForeground,sep)
+        @staticmethod
+        def Red(*obj,sep=sep_):             return NCS(obj, Basic.Fore.Red, Style.NoForeground,sep)
+        @staticmethod
+        def Green(*obj,sep=sep_):           return NCS(obj, Basic.Fore.Green, Style.NoForeground,sep)
+        @staticmethod
+        def Yellow(*obj,sep=sep_):          return NCS(obj, Basic.Fore.Yellow, Style.NoForeground,sep)
+        @staticmethod
+        def Blue(*obj,sep=sep_):            return NCS(obj, Basic.Fore.Blue, Style.NoForeground,sep)
+        @staticmethod
+        def Magenta(*obj,sep=sep_):         return NCS(obj, Basic.Fore.Magenta, Style.NoForeground,sep)
+        @staticmethod
+        def Cyan(*obj,sep=sep_):            return NCS(obj, Basic.Fore.Cyan, Style.NoForeground,sep)
+        @staticmethod
+        def White(*obj,sep=sep_):           return NCS(obj, Basic.Fore.White, Style.NoForeground,sep)
+        @staticmethod
+        def BrightBlack(*obj,sep=sep_):     return NCS(obj, Basic.Fore.BrightBlack, Style.NoForeground,sep)
+        @staticmethod
+        def BrightRed(*obj,sep=sep_):       return NCS(obj, Basic.Fore.BrightRed, Style.NoForeground,sep)
+        @staticmethod
+        def BrightGreen(*obj,sep=sep_):     return NCS(obj, Basic.Fore.BrightGreen, Style.NoForeground,sep)
+        @staticmethod
+        def BrightYellow(*obj,sep=sep_):    return NCS(obj, Basic.Fore.BrightYellow, Style.NoForeground,sep)
+        @staticmethod
+        def BrightBlue(*obj,sep=sep_):      return NCS(obj, Basic.Fore.BrightBlue, Style.NoForeground,sep)
+        @staticmethod
+        def BrightMagenta(*obj,sep=sep_):   return NCS(obj, Basic.Fore.BrightMagenta, Style.NoForeground,sep)
+        @staticmethod
+        def BrightCyan(*obj,sep=sep_):      return NCS(obj, Basic.Fore.BrightCyan, Style.NoForeground,sep)
+        @staticmethod
+        def BrightWhite(*obj,sep=sep_):     return NCS(obj, Basic.Fore.BrightWhite, Style.NoForeground,sep)
 
     class Back:
-        Black           = partial(NestedColorSequence, color_code=40, reset_code=49)
-        Red             = partial(NestedColorSequence, color_code=41, reset_code=49)
-        Green           = partial(NestedColorSequence, color_code=42, reset_code=49)
-        Yellow          = partial(NestedColorSequence, color_code=43, reset_code=49)
-        Blue            = partial(NestedColorSequence, color_code=44, reset_code=49)
-        Magenta         = partial(NestedColorSequence, color_code=45, reset_code=49)
-        Cyan            = partial(NestedColorSequence, color_code=46, reset_code=49)
-        White           = partial(NestedColorSequence, color_code=47, reset_code=49)
-        BrightBlack     = partial(NestedColorSequence, color_code=100, reset_code=49)
-        BrightRed       = partial(NestedColorSequence, color_code=101, reset_code=49)
-        BrightGreen     = partial(NestedColorSequence, color_code=102, reset_code=49)
-        BrightYellow    = partial(NestedColorSequence, color_code=103, reset_code=49)
-        BrightBlue      = partial(NestedColorSequence, color_code=104, reset_code=49)
-        BrightMagenta   = partial(NestedColorSequence, color_code=105, reset_code=49)
-        BrightCyan      = partial(NestedColorSequence, color_code=106, reset_code=49)
-        BrightWhite     = partial(NestedColorSequence, color_code=107, reset_code=49)
+        @staticmethod
+        def Black(*obj,sep=sep_):           return NCS(obj, Basic.Back.Black, Style.NoBackground,sep)
+        @staticmethod
+        def Red(*obj,sep=sep_):             return NCS(obj, Basic.Back.Red, Style.NoBackground,sep)
+        @staticmethod
+        def Green(*obj,sep=sep_):           return NCS(obj, Basic.Back.Green, Style.NoBackground,sep)
+        @staticmethod
+        def Yellow(*obj,sep=sep_):          return NCS(obj, Basic.Back.Yellow, Style.NoBackground,sep)
+        @staticmethod
+        def Blue(*obj,sep=sep_):            return NCS(obj, Basic.Back.Blue, Style.NoBackground,sep)
+        @staticmethod
+        def Magenta(*obj,sep=sep_):         return NCS(obj, Basic.Back.Magenta, Style.NoBackground,sep)
+        @staticmethod
+        def Cyan(*obj,sep=sep_):            return NCS(obj, Basic.Back.Cyan, Style.NoBackground,sep)
+        @staticmethod
+        def White(*obj,sep=sep_):           return NCS(obj, Basic.Back.White, Style.NoBackground,sep)
+        @staticmethod
+        def BrightBlack(*obj,sep=sep_):     return NCS(obj, Basic.Back.BrightBlack, Style.NoBackground,sep)
+        @staticmethod
+        def BrightRed(*obj,sep=sep_):       return NCS(obj, Basic.Back.BrightRed, Style.NoBackground,sep)
+        @staticmethod
+        def BrightGreen(*obj,sep=sep_):     return NCS(obj, Basic.Back.BrightGreen, Style.NoBackground,sep)
+        @staticmethod
+        def BrightYellow(*obj,sep=sep_):    return NCS(obj, Basic.Back.BrightYellow, Style.NoBackground,sep)
+        @staticmethod
+        def BrightBlue(*obj,sep=sep_):      return NCS(obj, Basic.Back.BrightBlue, Style.NoBackground,sep)
+        @staticmethod
+        def BrightMagenta(*obj,sep=sep_):   return NCS(obj, Basic.Back.BrightMagenta, Style.NoBackground,sep)
+        @staticmethod
+        def BrightCyan(*obj,sep=sep_):      return NCS(obj, Basic.Back.BrightCyan, Style.NoBackground,sep)
+        @staticmethod
+        def BrightWhite(*obj,sep=sep_):     return NCS(obj, Basic.Back.BrightWhite, Style.NoBackground,sep)

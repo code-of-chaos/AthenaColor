@@ -22,11 +22,6 @@ class Functions_Constraints(unittest.TestCase):
         self.assertEqual(Constrain(value=-1000,maximum=100,minimum=-100),-100)
 
     def test_Constrain_Fail(self):
-        with self.assertRaises(ValueError):
-            Constrain(value=85, maximum=90, minimum=100)
-        with self.assertRaises(ValueError):
-            Constrain(value=85, maximum=90, minimum=100)
-
         with self.assertRaises(TypeError):
             # noinspection PyTypeChecker
             Constrain(value="a", maximum=100)

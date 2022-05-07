@@ -20,8 +20,6 @@ __all__ = [
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def Constrain(value:int|float, maximum:int|float, minimum:int|float=0) -> int|float:
-    if maximum < minimum:
-        raise ValueError(f"maximum={maximum} cannot be smaller than minimum={minimum}")
     return max(min(value, maximum),minimum)
 
 # ----------------------------------------------------------------------------------------------------------------------

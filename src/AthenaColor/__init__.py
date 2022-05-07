@@ -25,9 +25,10 @@ from AthenaColor.Objects.Console.Styling.Inline.Bodies import (
 from AthenaColor.Objects.Console.Styling.Inline.MakeUp import (
     Style,Basic
 )
-from AthenaColor.Objects.Console.Styling.Nested.Nested_Bodies import (
-    ForeNest,BackNest,UnderlineNest
-)
+from AthenaColor.Objects.Console.Styling.Nested.ForeNest import ForeNest
+from AthenaColor.Objects.Console.Styling.Nested.BackNest import BackNest
+from AthenaColor.Objects.Console.Styling.Nested.UnderlineNest import UnderlineNest
+
 from AthenaColor.Objects.Console.Styling.Nested.Nested_MakeUp import (
     StyleNest,BasicNest
 )
