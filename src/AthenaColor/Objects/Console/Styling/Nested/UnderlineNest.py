@@ -32,25 +32,23 @@ class UnderlineNest:
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
     @staticmethod
-    def custom(*obj, color:RGB|HEX, **kwargs) -> str:
+    def custom(*obj, color:RGB|HEX, sep=sep_) -> str:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
-        color = StrictType(color,(RGB,HEX))
         return NestedColorSequence(
             obj,
-            f"\033[58;2;{color.r};{color.g};{color.b}m",
-            Style.NoUnderline,
-            **kwargs
+            f"\033[58;2;{';'.join(*StrictType(color,(RGB,HEX)).export())}m",
+            Style.NoForeground,
+            sep=sep
         )
 
     @staticmethod
-    def rgb(*obj, r:int,g:int,b:int, **kwargs) -> str:
+    def rgb(*obj, r:int,g:int,b:int, sep=sep_) -> str:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
-        r,g,b =  NormalizeRgb(r, g, b)
         return NestedColorSequence(
             obj,
-            f"\033[58;2;{r};{g};{b}m",
-            Style.NoUnderline,
-            **kwargs
+            f"\033[58;2;{';'.join(*NormalizeRgb(r, g, b))}m",
+            Style.NoForeground,
+            sep=sep
         )
 
     # ------------------------------------------------------------------------------------------------------------------
