@@ -10,7 +10,7 @@ import math
 
 # Custom Packages
 from AthenaColor.Functions.General import (
-    Normalize,RoundHalfUp,RoundToDecimals
+    RoundHalfUp,RoundToDecimals
 )
 from AthenaColor.Functions.Constraints import (
     ConstrainHSV, ConstrainHSL, ConstrainRGB, ConstrainCMYK,ConstrainRGBA
@@ -29,7 +29,7 @@ __all__ = [
 # - Support Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def NormalizeRgb(r:int,g:int,b:int) -> Tuple[float, ...]:
-    return Normalize(r,255),Normalize(g,255),Normalize(b,255)
+    return r/255,g/255,b/255
 
 numbers = (int,float)
 

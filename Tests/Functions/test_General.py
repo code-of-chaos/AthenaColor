@@ -15,16 +15,6 @@ from AthenaColor import init
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class Functions_General(unittest.TestCase):
-    def test_Normalize(self):
-        for i in range(1,100):
-            with self.subTest(i=i):
-                self.assertEqual(Normalize(i), i/100)
-
-    def test_Normalize_Factor(self):
-        for i, f in zip(range(1,100),range(100,200)):
-            with self.subTest(i=i):
-                self.assertEqual(Normalize(i, factor=f), i/f)
-
     def test_RoundToDecimals(self):
         for i, f in zip(range(1,24),range(24,56)):
             with self.subTest(i=i, f=f):

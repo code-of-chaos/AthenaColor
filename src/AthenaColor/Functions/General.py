@@ -13,15 +13,12 @@ from AthenaColor.InitClass import init
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 __all__ = [
-    "Normalize", "RoundHalfUp","RoundToDecimals"
+    "RoundHalfUp","RoundToDecimals"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def Normalize(value:int|float, factor:int|float=100)->float:
-    return value/factor
-
 def RoundToDecimals(value:int|float, decimals:int=init.decimalPlaces):
     return round(value, decimals)
 
