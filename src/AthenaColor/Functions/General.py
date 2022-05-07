@@ -3,7 +3,6 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
-from typing import Any
 
 # Custom Library
 
@@ -23,9 +22,7 @@ __all__ = [
 def Normalize(value:int|float, factor:int|float=100)->float:
     return value/factor
 
-def RoundToDecimals(value:int|float, decimals:int=None):
-    if decimals is None:
-        decimals = init.decimalPlaces
+def RoundToDecimals(value:int|float, decimals:int=init.decimalPlaces):
     return round(value, decimals)
 
 def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P

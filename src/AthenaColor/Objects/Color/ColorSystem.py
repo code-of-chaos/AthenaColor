@@ -12,7 +12,6 @@ import AthenaColor.Functions.DunderFunctions as CSD
 from AthenaColor.Objects.Color.ColorTupleConversion import *
 from AthenaColor.InitClass import init
 from AthenaColor.Functions.Constraints import Constrain
-from AthenaColor.Functions.General import RoundHalfUp,RoundToDecimals
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -312,7 +311,6 @@ class RGBA(ColorSystem):
     def b(self, value: int|float):
         self._b = round(Constrain(value, 255))
 
-
     @property
     def a(self) -> int:
         return self._a
@@ -412,21 +410,21 @@ class HSV(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = RoundToDecimals(Constrain(value, 360))
+        self._h = round(Constrain(value, 360), init.decimalPlaces)
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = RoundToDecimals(Constrain(value, 1))
+        self._s = round(Constrain(value, 1), init.decimalPlaces)
 
     @property
     def v(self) -> int|float:
         return self._v
     @v.setter
     def v(self, value: int|float):
-        self._v = RoundToDecimals(Constrain(value, 1))
+        self._v = round(Constrain(value, 1), init.decimalPlaces)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -464,21 +462,21 @@ class HSL(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = RoundToDecimals(Constrain(value, 360))
+        self._h = round(Constrain(value, 360), init.decimalPlaces)
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = RoundToDecimals(Constrain(value, 1))
+        self._s = round(Constrain(value, 1), init.decimalPlaces)
 
     @property
     def l(self) -> int|float:
         return self._l
     @l.setter
     def l(self, value: int|float):
-        self._l = RoundToDecimals(Constrain(value, 1))
+        self._l = round(Constrain(value, 1), init.decimalPlaces)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -515,28 +513,28 @@ class CMYK(ColorSystem):
         return self._c
     @c.setter
     def c(self, value: int|float):
-        self._c = RoundToDecimals(Constrain(value, 1))
+        self._c = round(Constrain(value, 1), init.decimalPlaces)
 
     @property
     def m(self) -> int|float:
         return self._m
     @m.setter
     def m(self, value: int|float):
-        self._m = RoundToDecimals(Constrain(value, 1))
+        self._m = round(Constrain(value, 1), init.decimalPlaces)
 
     @property
     def y(self) -> int|float:
         return self._y
     @y.setter
     def y(self, value: int|float):
-        self._y = RoundToDecimals(Constrain(value, 1))
+        self._y = round(Constrain(value, 1), init.decimalPlaces)
 
     @property
     def k(self) -> int|float:
         return self._k
     @k.setter
     def k(self, value: int|float):
-        self._k = RoundToDecimals(Constrain(value, 1))
+        self._k = round(Constrain(value, 1), init.decimalPlaces)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods

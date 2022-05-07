@@ -26,11 +26,9 @@ class Functions_General(unittest.TestCase):
                 self.assertEqual(Normalize(i, factor=f), i/f)
 
     def test_RoundToDecimals(self):
-        for d in range(1,6):
-            init.decimalPlaces = d
-            for i, f in zip(range(1,24),range(24,56)):
-                with self.subTest(i=i, f=f, d=d):
-                    self.assertEqual(RoundToDecimals(i/f), round(i/f , d))
+        for i, f in zip(range(1,24),range(24,56)):
+            with self.subTest(i=i, f=f):
+                self.assertEqual(RoundToDecimals(i/f), round(i/f , init.decimalPlaces))
 
     # noinspection PyTypeChecker
     def test_RoundToDecimals_Fail(self):
