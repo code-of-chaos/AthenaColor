@@ -44,12 +44,16 @@ def TextNestedBig():
                                     StyleNest.Bold(
                                         StyleNest.Bold(
                                             "Bold"))))))))))
-    return a
+    return
+
+def ObjectCreation():
+    RGB(255, 255, 255)
 
 if __name__ == '__main__':
-    print(f"Conversion:{ForeNest.Red(timeit.repeat(lambda: Conversion(), number=1_000_000, repeat=5))}")
-    print(f"ConversionInline:{ForeNest.Red(timeit.repeat(lambda: ConversionInline(), number=1_000_000, repeat=5))}")
+    # print(f"Conversion:{ForeNest.Red(timeit.repeat(lambda: Conversion(), number=1_000_000, repeat=5))}")
+    # print(f"ConversionInline:{ForeNest.Red(timeit.repeat(lambda: ConversionInline(), number=1_000_000, repeat=5))}")
     # print(f"TextInline:{ForeNest.Red(timeit.repeat(lambda: TextInline(), number=1_000_000, repeat=5))}")
     # print(f"TextNested:{ForeNest.Red(timeit.repeat(lambda: TextNested(), number=1_000_000, repeat=5))}")
     # print(f"TextNestedBig:{ForeNest.Red(timeit.repeat(lambda: TextNestedBig(), number=1_000_000, repeat=5))}")
+    print(f"ObjectCreation:{ForeNest.Red(timeit.repeat(lambda: ObjectCreation(), number=1_000_000, repeat=5))}")
 

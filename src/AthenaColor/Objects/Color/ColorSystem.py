@@ -189,21 +189,21 @@ class RGB(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        self._r = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        self._r = round(Constrain(value, 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        self._g = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        self._g = round(Constrain(value, 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        self._b = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        self._b = round(Constrain(value, 255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -296,21 +296,21 @@ class RGBA(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        self._r = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        self._r = round(Constrain(value, 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        self._g = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        self._g = round(Constrain(value, 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        self._b = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        self._b = round(Constrain(value, 255))
 
 
     @property
@@ -318,7 +318,7 @@ class RGBA(ColorSystem):
         return self._a
     @a.setter
     def a(self, value: int|float):
-        self._a = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+        self._a = round(Constrain(value, 255))
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------

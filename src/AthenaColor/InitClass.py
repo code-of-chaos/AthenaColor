@@ -34,16 +34,6 @@ class AthenaColorInitClass:
             os.system("color")
 
     @property
-    def roundUp(self):
-        return self._roundUp
-    @roundUp.setter
-    def roundUp(self,value:bool):
-        if isinstance(value,bool):
-            self._roundUp = value
-        else:
-            raise ValueError
-
-    @property
     def esc(self):
         return self._esc
     @esc.setter
