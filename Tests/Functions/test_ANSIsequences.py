@@ -21,8 +21,8 @@ class Functions_ANSIsequences(unittest.TestCase):
         ("This is a test",
         nested),
         # color/styling, reset and seperation
-        control_code="38;2;128;0;0",
-        reset_code=0,
+        color_code="\033[38;2;128;0;0m",
+        reset_code="\033[0m",
         sep="\n"
     )
 
@@ -43,8 +43,8 @@ class Functions_ANSIsequences(unittest.TestCase):
                 ("This is a test",
                 "For real"),
                 # color/styling, reset and seperation
-                control_code="38;2;128;0;0",
-                reset_code=0,
+                color_code="\033[38;2;128;0;0m",
+                reset_code="\033[0m",
                 sep="\n"
             ),
 f"""[38;2;128;0;0mThis is a test
@@ -57,8 +57,8 @@ f"""[38;2;128;0;0mThis is a test
                 ("This is a test",
                 "For real"),
                 # color/styling, reset and seperation
-                control_code="38;2;128;0;0",
-                reset_code=0,
+                color_code="\033[38;2;128;0;0m",
+                reset_code="\033[0m",
                 sep="\n"
             ))),
 f"""[38;2;128;0;0mThis is a test

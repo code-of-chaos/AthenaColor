@@ -10,161 +10,22 @@ from __future__ import annotations
 from AthenaColor.Objects.Color.ColorSystem import RGB,HEX, NormalizeRgb
 from AthenaColor.Functions.ANSIsquences import NestedColorSequence
 from AthenaColor.Functions.General import StrictType
+from AthenaColor.Objects.Console.Styling.Inline.Bodies import Underline
+from AthenaColor.Objects.Console.Styling.Inline.MakeUp import Style
+
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 __all__=[
-    "ForeNest"
+    "UnderlineNest"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 NCS = NestedColorSequence # Done for slight speed increase
-resetCode=59
 sep_=" "
-
-# Predefined Strings to speed calls up
-Maroon                  =f"58;2;128;0;0"
-DarkRed                 =f"58;2;139;0;0"
-Brown                   =f"58;2;165;42;42"
-Firebrick               =f"58;2;178;34;34"
-Crimson                 =f"58;2;220;20;60"
-Red                     =f"58;2;255;0;0"
-Tomato                  =f"58;2;255;99;71"
-Coral                   =f"58;2;255;127;80"
-IndianRed               =f"58;2;205;92;92"
-LightCoral              =f"58;2;240;128;128"
-DarkSalmon              =f"58;2;233;150;122"
-Salmon                  =f"58;2;250;128;114"
-LightSalmon             =f"58;2;255;160;122"
-OrangeRed               =f"58;2;255;69;0"
-DarkOrange              =f"58;2;255;140;0"
-Orange                  =f"58;2;255;165;0"
-Gold                    =f"58;2;255;215;0"
-DarkGoldenRod           =f"58;2;184;134;11"
-GoldenRod               =f"58;2;218;165;32"
-PaleGoldenRod           =f"58;2;238;232;170"
-DarkKhaki               =f"58;2;189;183;107"
-Khaki                   =f"58;2;240;230;140"
-Olive                   =f"58;2;128;128;0"
-Yellow                  =f"58;2;255;255;0"
-YellowGreen             =f"58;2;154;205;50"
-DarkOliveGreen          =f"58;2;85;107;47"
-OliveDrab               =f"58;2;107;142;35"
-LawnGreen               =f"58;2;124;252;0"
-Chartreuse              =f"58;2;127;255;0"
-GreenYellow             =f"58;2;173;255;47"
-DarkGreen               =f"58;2;0;100;0"
-Green                   =f"58;2;0;128;0"
-ForestGreen             =f"58;2;34;139;34"
-Lime                    =f"58;2;0;255;0"
-LimeGreen               =f"58;2;50;205;50"
-LightGreen              =f"58;2;144;238;144"
-PaleGreen               =f"58;2;152;251;152"
-DarkSeaGreen            =f"58;2;143;188;143"
-MediumSpringGreen       =f"58;2;0;250;154"
-SpringGreen             =f"58;2;0;255;127"
-SeaGreen                =f"58;2;46;139;87"
-MediumAquaMarine        =f"58;2;102;205;170"
-MediumSeaGreen          =f"58;2;60;179;113"
-LightSeaGreen           =f"58;2;32;178;170"
-DarkSlateGray           =f"58;2;47;79 ;79"
-Teal                    =f"58;2;0;128;128"
-DarkCyan                =f"58;2;0;139;139"
-Aqua                    =f"58;2;0;255;255"
-Cyan                    =f"58;2;0;255;255"
-LightCyan               =f"58;2;224;255;255"
-DarkTurquoise           =f"58;2;0;206;209"
-Turquoise               =f"58;2;64;224;208"
-MediumTurquoise         =f"58;2;72;209;204"
-PaleTurquoise           =f"58;2;175;238;238"
-AquaMarine              =f"58;2;127;255;212"
-PowderBlue              =f"58;2;176;224;230"
-CadetBlue               =f"58;2;95;158;160"
-SteelBlue               =f"58;2;70;130;180"
-CornFlowerBlue          =f"58;2;100;149;237"
-DeepSkyBlue             =f"58;2;0;191;255"
-DodgerBlue              =f"58;2;30;144;255"
-LightBlue               =f"58;2;173;216;230"
-SkyBlue                 =f"58;2;135;206;235"
-LightSkyBlue            =f"58;2;135;206;250"
-MidnightBlue            =f"58;2;25;25;112"
-Navy                    =f"58;2;0;0;128"
-DarkBlue                =f"58;2;0;0;139"
-MediumBlue              =f"58;2;0;0;205"
-Blue                    =f"58;2;0;0;255"
-RoyalBlue               =f"58;2;65;105;225"
-BlueViolet              =f"58;2;138;43;226"
-Indigo                  =f"58;2;75;0;130"
-DarkSlateBlue           =f"58;2;72;61;139"
-SlateBlue               =f"58;2;106;90;205"
-MediumSlateBlue         =f"58;2;123;104;238"
-MediumPurple            =f"58;2;147;112;219"
-DarkMagenta             =f"58;2;139;0;139"
-DarkViolet              =f"58;2;148;0;211"
-DarkOrchid              =f"58;2;153;50;204"
-MediumOrchid            =f"58;2;186;85;211"
-Purple                  =f"58;2;128;0;128"
-Thistle                 =f"58;2;216;191;216"
-Plum                    =f"58;2;221;160;221"
-Violet                  =f"58;2;238;130;238"
-Magenta                 =f"58;2;255;0;255"
-Orchid                  =f"58;2;218;112;214"
-MediumVioletRed         =f"58;2;199;21;133"
-PaleVioletRed           =f"58;2;219;112;147"
-DeepPink                =f"58;2;255;20;147"
-HotPink                 =f"58;2;255;105;180"
-LightPink               =f"58;2;255;182;193"
-Pink                    =f"58;2;255;192;203"
-AntiqueWhite            =f"58;2;250;235;215"
-Beige                   =f"58;2;245;245;220"
-Bisque                  =f"58;2;255;228;196"
-BlanchedAlmond	        =f"58;2;255;235;205"
-Wheat                   =f"58;2;245;222;179"
-CornSilk                =f"58;2;255;248;220"
-LemonChiffon            =f"58;2;255;250;205"
-LightGoldenRodYellow    =f"58;2;250;250;210"
-LightYellow             =f"58;2;255;255;224"
-SaddleBrown             =f"58;2;139;69;19"
-Sienna                  =f"58;2;160;82;45"
-Chocolate               =f"58;2;210;105;30"
-Peru                    =f"58;2;205;133;63"
-SandyBrown              =f"58;2;244;164;96"
-BurlyWood               =f"58;2;222;184;135"
-Tan                     =f"58;2;210;180;140"
-RosyBrown               =f"58;2;188;143;143"
-Moccasin                =f"58;2;255;228;181"
-NavajoWhite             =f"58;2;255;222;173"
-PeachPuff               =f"58;2;255;218;185"
-MistyRose               =f"58;2;255;228;225"
-LavenderBlush           =f"58;2;255;240;245"
-Linen                   =f"58;2;250;240;230"
-OldLace                 =f"58;2;253;245;230"
-PapayaWhip              =f"58;2;255;239;213"
-WeaShell                =f"58;2;255;245;238"
-MintCream               =f"58;2;245;255;250"
-SlateGray               =f"58;2;112;128;144"
-LightSlateGray          =f"58;2;119;136;153"
-LightSteelBlue          =f"58;2;176;196;222"
-Lavender                =f"58;2;230;230;250"
-FloralWhite             =f"58;2;255;250;240"
-AliceBlue               =f"58;2;240;248;255"
-GhostWhite              =f"58;2;248;248;255"
-Honeydew                =f"58;2;240;255;240"
-Ivory                   =f"58;2;255;255;240"
-Azure                   =f"58;2;240;255;255"
-Snow                    =f"58;2;255;250;250"
-Black                   =f"58;2;0;0;0"
-DimGray                 =f"58;2;105;105;105"
-Gray	                =f"58;2;128;128;128"
-DarkGray	            =f"58;2;169;169;169"
-Silver	                =f"58;2;192;192;192"
-LightGray	            =f"58;2;211;211;211"
-Gainsboro               =f"58;2;220;220;220"
-WhiteSmoke              =f"58;2;245;245;245"
-White                   =f"58;2;255;255;255"
 
 class UnderlineNest:
     # ------------------------------------------------------------------------------------------------------------------
@@ -175,9 +36,9 @@ class UnderlineNest:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
         color = StrictType(color,(RGB,HEX))
         return NestedColorSequence(
-            *obj,
-            control_code=f"58;2;{color.r};{color.g};{color.b}",
-            reset_code=resetCode,
+            obj,
+            f"\033[58;2;{color.r};{color.g};{color.b}m",
+            Style.NoUnderline,
             **kwargs
         )
 
@@ -186,9 +47,9 @@ class UnderlineNest:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
         r,g,b =  NormalizeRgb(r, g, b)
         return NestedColorSequence(
-            *obj,
-            control_code=f"58;2;{r};{g};{b}",
-            reset_code=resetCode,
+            obj,
+            f"\033[58;2;{r};{g};{b}m",
+            Style.NoUnderline,
             **kwargs
         )
 
@@ -197,280 +58,280 @@ class UnderlineNest:
     # ------------------------------------------------------------------------------------------------------------------
     # No partial methods, as this was increase the speed impact 2-fold
     @staticmethod
-    def Maroon( *obj, sep=sep_):             return NCS(obj,Maroon,resetCode,sep)
+    def Maroon( *obj, sep=sep_):             return NCS(obj,Underline.Maroon,Style.NoUnderline,sep)
     @staticmethod
-    def DarkRed(*obj, sep=sep_):             return NCS(obj,DarkRed,resetCode,sep)
+    def DarkRed(*obj, sep=sep_):             return NCS(obj,Underline.DarkRed,Style.NoUnderline,sep)
     @staticmethod
-    def Brown(*obj, sep=sep_):               return NCS(obj,Brown,resetCode,sep)
+    def Brown(*obj, sep=sep_):               return NCS(obj,Underline.Brown,Style.NoUnderline,sep)
     @staticmethod
-    def Firebrick(*obj, sep=sep_):           return NCS(obj,Firebrick,resetCode,sep)
+    def Firebrick(*obj, sep=sep_):           return NCS(obj,Underline.Firebrick,Style.NoUnderline,sep)
     @staticmethod
-    def Crimson(*obj, sep=sep_):             return NCS(obj,Crimson,resetCode,sep)
+    def Crimson(*obj, sep=sep_):             return NCS(obj,Underline.Crimson,Style.NoUnderline,sep)
     @staticmethod
-    def Red(*obj, sep=sep_):                 return NCS(obj,Red,resetCode,sep)
+    def Red(*obj, sep=sep_):                 return NCS(obj,Underline.Red,Style.NoUnderline,sep)
     @staticmethod
-    def Tomato(*obj, sep=sep_):              return NCS(obj,Tomato,resetCode,sep)
+    def Tomato(*obj, sep=sep_):              return NCS(obj,Underline.Tomato,Style.NoUnderline,sep)
     @staticmethod
-    def Coral(*obj, sep=sep_):               return NCS(obj,Coral,resetCode,sep)
+    def Coral(*obj, sep=sep_):               return NCS(obj,Underline.Coral,Style.NoUnderline,sep)
     @staticmethod
-    def IndianRed(*obj, sep=sep_):           return NCS(obj,IndianRed,resetCode,sep)
+    def IndianRed(*obj, sep=sep_):           return NCS(obj,Underline.IndianRed,Style.NoUnderline,sep)
     @staticmethod
-    def LightCoral(*obj, sep=sep_):          return NCS(obj,LightCoral,resetCode,sep)
+    def LightCoral(*obj, sep=sep_):          return NCS(obj,Underline.LightCoral,Style.NoUnderline,sep)
     @staticmethod
-    def DarkSalmon(*obj, sep=sep_):          return NCS(obj,DarkSalmon,resetCode,sep)
+    def DarkSalmon(*obj, sep=sep_):          return NCS(obj,Underline.DarkSalmon,Style.NoUnderline,sep)
     @staticmethod
-    def Salmon(*obj, sep=sep_):              return NCS(obj,Salmon,resetCode,sep)
+    def Salmon(*obj, sep=sep_):              return NCS(obj,Underline.Salmon,Style.NoUnderline,sep)
     @staticmethod
-    def LightSalmon(*obj, sep=sep_):         return NCS(obj,LightSalmon,resetCode,sep)
+    def LightSalmon(*obj, sep=sep_):         return NCS(obj,Underline.LightSalmon,Style.NoUnderline,sep)
     @staticmethod
-    def OrangeRed(*obj, sep=sep_):           return NCS(obj,OrangeRed,resetCode,sep)
+    def OrangeRed(*obj, sep=sep_):           return NCS(obj,Underline.OrangeRed,Style.NoUnderline,sep)
     @staticmethod
-    def DarkOrange(*obj, sep=sep_):          return NCS(obj,DarkOrange,resetCode,sep)
+    def DarkOrange(*obj, sep=sep_):          return NCS(obj,Underline.DarkOrange,Style.NoUnderline,sep)
     @staticmethod
-    def Orange(*obj, sep=sep_):              return NCS(obj,Orange,resetCode,sep)
+    def Orange(*obj, sep=sep_):              return NCS(obj,Underline.Orange,Style.NoUnderline,sep)
     @staticmethod
-    def Gold(*obj, sep=sep_):                return NCS(obj,Gold,resetCode,sep)
+    def Gold(*obj, sep=sep_):                return NCS(obj,Underline.Gold,Style.NoUnderline,sep)
     @staticmethod
-    def DarkGoldenRod(*obj, sep=sep_):       return NCS(obj,DarkGoldenRod,resetCode,sep)
+    def DarkGoldenRod(*obj, sep=sep_):       return NCS(obj,Underline.DarkGoldenRod,Style.NoUnderline,sep)
     @staticmethod
-    def GoldenRod(*obj, sep=sep_):           return NCS(obj,GoldenRod,resetCode,sep)
+    def GoldenRod(*obj, sep=sep_):           return NCS(obj,Underline.GoldenRod,Style.NoUnderline,sep)
     @staticmethod
-    def PaleGoldenRod(*obj, sep=sep_):       return NCS(obj,PaleGoldenRod,resetCode,sep)
+    def PaleGoldenRod(*obj, sep=sep_):       return NCS(obj,Underline.PaleGoldenRod,Style.NoUnderline,sep)
     @staticmethod
-    def DarkKhaki(*obj, sep=sep_):           return NCS(obj,DarkKhaki,resetCode,sep)
+    def DarkKhaki(*obj, sep=sep_):           return NCS(obj,Underline.DarkKhaki,Style.NoUnderline,sep)
     @staticmethod
-    def Khaki(*obj, sep=sep_):               return NCS(obj,Khaki,resetCode,sep)
+    def Khaki(*obj, sep=sep_):               return NCS(obj,Underline.Khaki,Style.NoUnderline,sep)
     @staticmethod
-    def Olive(*obj, sep=sep_):               return NCS(obj,Olive,resetCode,sep)
+    def Olive(*obj, sep=sep_):               return NCS(obj,Underline.Olive,Style.NoUnderline,sep)
     @staticmethod
-    def Yellow(*obj, sep=sep_):              return NCS(obj,Yellow,resetCode,sep)
+    def Yellow(*obj, sep=sep_):              return NCS(obj,Underline.Yellow,Style.NoUnderline,sep)
     @staticmethod
-    def YellowGreen(*obj, sep=sep_):         return NCS(obj,YellowGreen,resetCode,sep)
+    def YellowGreen(*obj, sep=sep_):         return NCS(obj,Underline.YellowGreen,Style.NoUnderline,sep)
     @staticmethod
-    def DarkOliveGreen(*obj, sep=sep_):      return NCS(obj,DarkOliveGreen,resetCode,sep)
+    def DarkOliveGreen(*obj, sep=sep_):      return NCS(obj,Underline.DarkOliveGreen,Style.NoUnderline,sep)
     @staticmethod
-    def OliveDrab(*obj, sep=sep_):           return NCS(obj,OliveDrab,resetCode,sep)
+    def OliveDrab(*obj, sep=sep_):           return NCS(obj,Underline.OliveDrab,Style.NoUnderline,sep)
     @staticmethod
-    def LawnGreen(*obj, sep=sep_):           return NCS(obj,LawnGreen,resetCode,sep)
+    def LawnGreen(*obj, sep=sep_):           return NCS(obj,Underline.LawnGreen,Style.NoUnderline,sep)
     @staticmethod
-    def Chartreuse(*obj, sep=sep_):          return NCS(obj,Chartreuse,resetCode,sep)
+    def Chartreuse(*obj, sep=sep_):          return NCS(obj,Underline.Chartreuse,Style.NoUnderline,sep)
     @staticmethod
-    def GreenYellow(*obj, sep=sep_):         return NCS(obj,GreenYellow,resetCode,sep)
+    def GreenYellow(*obj, sep=sep_):         return NCS(obj,Underline.GreenYellow,Style.NoUnderline,sep)
     @staticmethod
-    def DarkGreen(*obj, sep=sep_):           return NCS(obj,DarkGreen,resetCode,sep)
+    def DarkGreen(*obj, sep=sep_):           return NCS(obj,Underline.DarkGreen,Style.NoUnderline,sep)
     @staticmethod
-    def Green(*obj, sep=sep_):               return NCS(obj,Green,resetCode,sep)
+    def Green(*obj, sep=sep_):               return NCS(obj,Underline.Green,Style.NoUnderline,sep)
     @staticmethod
-    def ForestGreen(*obj, sep=sep_):         return NCS(obj,ForestGreen,resetCode,sep)
+    def ForestGreen(*obj, sep=sep_):         return NCS(obj,Underline.ForestGreen,Style.NoUnderline,sep)
     @staticmethod
-    def Lime(*obj, sep=sep_):                return NCS(obj,Lime,resetCode,sep)
+    def Lime(*obj, sep=sep_):                return NCS(obj,Underline.Lime,Style.NoUnderline,sep)
     @staticmethod
-    def LimeGreen(*obj, sep=sep_):           return NCS(obj,LimeGreen,resetCode,sep)
+    def LimeGreen(*obj, sep=sep_):           return NCS(obj,Underline.LimeGreen,Style.NoUnderline,sep)
     @staticmethod
-    def LightGreen(*obj, sep=sep_):          return NCS(obj,LightGreen,resetCode,sep)
+    def LightGreen(*obj, sep=sep_):          return NCS(obj,Underline.LightGreen,Style.NoUnderline,sep)
     @staticmethod
-    def PaleGreen(*obj, sep=sep_):           return NCS(obj,PaleGreen,resetCode,sep)
+    def PaleGreen(*obj, sep=sep_):           return NCS(obj,Underline.PaleGreen,Style.NoUnderline,sep)
     @staticmethod
-    def DarkSeaGreen(*obj, sep=sep_):        return NCS(obj,DarkSeaGreen,resetCode,sep)
+    def DarkSeaGreen(*obj, sep=sep_):        return NCS(obj,Underline.DarkSeaGreen,Style.NoUnderline,sep)
     @staticmethod
-    def MediumSpringGreen(*obj, sep=sep_):   return NCS(obj,MediumSpringGreen,resetCode,sep)
+    def MediumSpringGreen(*obj, sep=sep_):   return NCS(obj,Underline.MediumSpringGreen,Style.NoUnderline,sep)
     @staticmethod
-    def SpringGreen(*obj, sep=sep_):         return NCS(obj,SpringGreen,resetCode,sep)
+    def SpringGreen(*obj, sep=sep_):         return NCS(obj,Underline.SpringGreen,Style.NoUnderline,sep)
     @staticmethod
-    def SeaGreen(*obj, sep=sep_):            return NCS(obj,SeaGreen,resetCode,sep)
+    def SeaGreen(*obj, sep=sep_):            return NCS(obj,Underline.SeaGreen,Style.NoUnderline,sep)
     @staticmethod
-    def MediumAquaMarine(*obj, sep=sep_):    return NCS(obj,MediumAquaMarine,resetCode,sep)
+    def MediumAquaMarine(*obj, sep=sep_):    return NCS(obj,Underline.MediumAquaMarine,Style.NoUnderline,sep)
     @staticmethod
-    def MediumSeaGreen(*obj, sep=sep_):      return NCS(obj,MediumSeaGreen,resetCode,sep)
+    def MediumSeaGreen(*obj, sep=sep_):      return NCS(obj,Underline.MediumSeaGreen,Style.NoUnderline,sep)
     @staticmethod
-    def LightSeaGreen(*obj, sep=sep_):       return NCS(obj,LightSeaGreen,resetCode,sep)
+    def LightSeaGreen(*obj, sep=sep_):       return NCS(obj,Underline.LightSeaGreen,Style.NoUnderline,sep)
     @staticmethod
-    def DarkSlateGray(*obj, sep=sep_):       return NCS(obj,DarkSlateGray,resetCode,sep)
+    def DarkSlateGray(*obj, sep=sep_):       return NCS(obj,Underline.DarkSlateGray,Style.NoUnderline,sep)
     @staticmethod
-    def Teal(*obj, sep=sep_):                return NCS(obj,Teal,resetCode,sep)
+    def Teal(*obj, sep=sep_):                return NCS(obj,Underline.Teal,Style.NoUnderline,sep)
     @staticmethod
-    def DarkCyan(*obj, sep=sep_):            return NCS(obj,DarkCyan,resetCode,sep)
+    def DarkCyan(*obj, sep=sep_):            return NCS(obj,Underline.DarkCyan,Style.NoUnderline,sep)
     @staticmethod
-    def Aqua(*obj, sep=sep_):                return NCS(obj,Aqua,resetCode,sep)
+    def Aqua(*obj, sep=sep_):                return NCS(obj,Underline.Aqua,Style.NoUnderline,sep)
     @staticmethod
-    def Cyan(*obj, sep=sep_):                return NCS(obj,Cyan,resetCode,sep)
+    def Cyan(*obj, sep=sep_):                return NCS(obj,Underline.Cyan,Style.NoUnderline,sep)
     @staticmethod
-    def LightCyan(*obj, sep=sep_):           return NCS(obj,LightCyan,resetCode,sep)
+    def LightCyan(*obj, sep=sep_):           return NCS(obj,Underline.LightCyan,Style.NoUnderline,sep)
     @staticmethod
-    def DarkTurquoise(*obj, sep=sep_):       return NCS(obj,DarkTurquoise,resetCode,sep)
+    def DarkTurquoise(*obj, sep=sep_):       return NCS(obj,Underline.DarkTurquoise,Style.NoUnderline,sep)
     @staticmethod
-    def Turquoise(*obj, sep=sep_):           return NCS(obj,Turquoise,resetCode,sep)
+    def Turquoise(*obj, sep=sep_):           return NCS(obj,Underline.Turquoise,Style.NoUnderline,sep)
     @staticmethod
-    def MediumTurquoise(*obj, sep=sep_):     return NCS(obj,MediumTurquoise,resetCode,sep)
+    def MediumTurquoise(*obj, sep=sep_):     return NCS(obj,Underline.MediumTurquoise,Style.NoUnderline,sep)
     @staticmethod
-    def PaleTurquoise(*obj, sep=sep_):       return NCS(obj,PaleTurquoise,resetCode,sep)
+    def PaleTurquoise(*obj, sep=sep_):       return NCS(obj,Underline.PaleTurquoise,Style.NoUnderline,sep)
     @staticmethod
-    def AquaMarine(*obj, sep=sep_):          return NCS(obj,AquaMarine,resetCode,sep)
+    def AquaMarine(*obj, sep=sep_):          return NCS(obj,Underline.AquaMarine,Style.NoUnderline,sep)
     @staticmethod
-    def PowderBlue(*obj, sep=sep_):          return NCS(obj,PowderBlue,resetCode,sep)
+    def PowderBlue(*obj, sep=sep_):          return NCS(obj,Underline.PowderBlue,Style.NoUnderline,sep)
     @staticmethod
-    def CadetBlue(*obj, sep=sep_):           return NCS(obj,CadetBlue,resetCode,sep)
+    def CadetBlue(*obj, sep=sep_):           return NCS(obj,Underline.CadetBlue,Style.NoUnderline,sep)
     @staticmethod
-    def SteelBlue(*obj, sep=sep_):           return NCS(obj,SteelBlue,resetCode,sep)
+    def SteelBlue(*obj, sep=sep_):           return NCS(obj,Underline.SteelBlue,Style.NoUnderline,sep)
     @staticmethod
-    def CornFlowerBlue(*obj, sep=sep_):      return NCS(obj,CornFlowerBlue,resetCode,sep)
+    def CornFlowerBlue(*obj, sep=sep_):      return NCS(obj,Underline.CornFlowerBlue,Style.NoUnderline,sep)
     @staticmethod
-    def DeepSkyBlue(*obj, sep=sep_):         return NCS(obj,DeepSkyBlue,resetCode,sep)
+    def DeepSkyBlue(*obj, sep=sep_):         return NCS(obj,Underline.DeepSkyBlue,Style.NoUnderline,sep)
     @staticmethod
-    def DodgerBlue(*obj, sep=sep_):          return NCS(obj,DodgerBlue,resetCode,sep)
+    def DodgerBlue(*obj, sep=sep_):          return NCS(obj,Underline.DodgerBlue,Style.NoUnderline,sep)
     @staticmethod
-    def LightBlue(*obj, sep=sep_):           return NCS(obj,LightBlue,resetCode,sep)
+    def LightBlue(*obj, sep=sep_):           return NCS(obj,Underline.LightBlue,Style.NoUnderline,sep)
     @staticmethod
-    def SkyBlue(*obj, sep=sep_):             return NCS(obj,SkyBlue,resetCode,sep)
+    def SkyBlue(*obj, sep=sep_):             return NCS(obj,Underline.SkyBlue,Style.NoUnderline,sep)
     @staticmethod
-    def LightSkyBlue(*obj, sep=sep_):        return NCS(obj,LightSkyBlue,resetCode,sep)
+    def LightSkyBlue(*obj, sep=sep_):        return NCS(obj,Underline.LightSkyBlue,Style.NoUnderline,sep)
     @staticmethod
-    def MidnightBlue(*obj, sep=sep_):        return NCS(obj,MidnightBlue,resetCode,sep)
+    def MidnightBlue(*obj, sep=sep_):        return NCS(obj,Underline.MidnightBlue,Style.NoUnderline,sep)
     @staticmethod
-    def Navy(*obj, sep=sep_):                return NCS(obj,Navy,resetCode,sep)
+    def Navy(*obj, sep=sep_):                return NCS(obj,Underline.Navy,Style.NoUnderline,sep)
     @staticmethod
-    def DarkBlue(*obj, sep=sep_):            return NCS(obj,DarkBlue,resetCode,sep)
+    def DarkBlue(*obj, sep=sep_):            return NCS(obj,Underline.DarkBlue,Style.NoUnderline,sep)
     @staticmethod
-    def MediumBlue(*obj, sep=sep_):          return NCS(obj,MediumBlue,resetCode,sep)
+    def MediumBlue(*obj, sep=sep_):          return NCS(obj,Underline.MediumBlue,Style.NoUnderline,sep)
     @staticmethod
-    def Blue(*obj, sep=sep_):                return NCS(obj,Blue,resetCode,sep)
+    def Blue(*obj, sep=sep_):                return NCS(obj,Underline.Blue,Style.NoUnderline,sep)
     @staticmethod
-    def RoyalBlue(*obj, sep=sep_):           return NCS(obj,RoyalBlue,resetCode,sep)
+    def RoyalBlue(*obj, sep=sep_):           return NCS(obj,Underline.RoyalBlue,Style.NoUnderline,sep)
     @staticmethod
-    def BlueViolet(*obj, sep=sep_):          return NCS(obj,BlueViolet,resetCode,sep)
+    def BlueViolet(*obj, sep=sep_):          return NCS(obj,Underline.BlueViolet,Style.NoUnderline,sep)
     @staticmethod
-    def Indigo(*obj, sep=sep_):              return NCS(obj,Indigo,resetCode,sep)
+    def Indigo(*obj, sep=sep_):              return NCS(obj,Underline.Indigo,Style.NoUnderline,sep)
     @staticmethod
-    def DarkSlateBlue(*obj, sep=sep_):       return NCS(obj,DarkSlateBlue,resetCode,sep)
+    def DarkSlateBlue(*obj, sep=sep_):       return NCS(obj,Underline.DarkSlateBlue,Style.NoUnderline,sep)
     @staticmethod
-    def SlateBlue(*obj, sep=sep_):           return NCS(obj,SlateBlue,resetCode,sep)
+    def SlateBlue(*obj, sep=sep_):           return NCS(obj,Underline.SlateBlue,Style.NoUnderline,sep)
     @staticmethod
-    def MediumSlateBlue(*obj, sep=sep_):     return NCS(obj,MediumSlateBlue,resetCode,sep)
+    def MediumSlateBlue(*obj, sep=sep_):     return NCS(obj,Underline.MediumSlateBlue,Style.NoUnderline,sep)
     @staticmethod
-    def MediumPurple(*obj, sep=sep_):        return NCS(obj,MediumPurple,resetCode,sep)
+    def MediumPurple(*obj, sep=sep_):        return NCS(obj,Underline.MediumPurple,Style.NoUnderline,sep)
     @staticmethod
-    def DarkMagenta(*obj, sep=sep_):         return NCS(obj,DarkMagenta,resetCode,sep)
+    def DarkMagenta(*obj, sep=sep_):         return NCS(obj,Underline.DarkMagenta,Style.NoUnderline,sep)
     @staticmethod
-    def DarkViolet(*obj, sep=sep_):          return NCS(obj,DarkViolet,resetCode,sep)
+    def DarkViolet(*obj, sep=sep_):          return NCS(obj,Underline.DarkViolet,Style.NoUnderline,sep)
     @staticmethod
-    def DarkOrchid(*obj, sep=sep_):          return NCS(obj,DarkOrchid,resetCode,sep)
+    def DarkOrchid(*obj, sep=sep_):          return NCS(obj,Underline.DarkOrchid,Style.NoUnderline,sep)
     @staticmethod
-    def MediumOrchid(*obj, sep=sep_):        return NCS(obj,MediumOrchid,resetCode,sep)
+    def MediumOrchid(*obj, sep=sep_):        return NCS(obj,Underline.MediumOrchid,Style.NoUnderline,sep)
     @staticmethod
-    def Purple(*obj, sep=sep_):              return NCS(obj,Purple,resetCode,sep)
+    def Purple(*obj, sep=sep_):              return NCS(obj,Underline.Purple,Style.NoUnderline,sep)
     @staticmethod
-    def Thistle(*obj, sep=sep_):             return NCS(obj,Thistle,resetCode,sep)
+    def Thistle(*obj, sep=sep_):             return NCS(obj,Underline.Thistle,Style.NoUnderline,sep)
     @staticmethod
-    def Plum(*obj, sep=sep_):                return NCS(obj,Plum,resetCode,sep)
+    def Plum(*obj, sep=sep_):                return NCS(obj,Underline.Plum,Style.NoUnderline,sep)
     @staticmethod
-    def Violet(*obj, sep=sep_):              return NCS(obj,Violet,resetCode,sep)
+    def Violet(*obj, sep=sep_):              return NCS(obj,Underline.Violet,Style.NoUnderline,sep)
     @staticmethod
-    def Magenta(*obj, sep=sep_):             return NCS(obj,Magenta,resetCode,sep)
+    def Magenta(*obj, sep=sep_):             return NCS(obj,Underline.Magenta,Style.NoUnderline,sep)
     @staticmethod
-    def Orchid(*obj, sep=sep_):              return NCS(obj,Orchid,resetCode,sep)
+    def Orchid(*obj, sep=sep_):              return NCS(obj,Underline.Orchid,Style.NoUnderline,sep)
     @staticmethod
-    def MediumVioletRed(*obj, sep=sep_):     return NCS(obj,MediumVioletRed,resetCode,sep)
+    def MediumVioletRed(*obj, sep=sep_):     return NCS(obj,Underline.MediumVioletRed,Style.NoUnderline,sep)
     @staticmethod
-    def PaleVioletRed(*obj, sep=sep_):       return NCS(obj,PaleVioletRed,resetCode,sep)
+    def PaleVioletRed(*obj, sep=sep_):       return NCS(obj,Underline.PaleVioletRed,Style.NoUnderline,sep)
     @staticmethod
-    def DeepPink(*obj, sep=sep_):            return NCS(obj,DeepPink,resetCode,sep)
+    def DeepPink(*obj, sep=sep_):            return NCS(obj,Underline.DeepPink,Style.NoUnderline,sep)
     @staticmethod
-    def HotPink(*obj, sep=sep_):             return NCS(obj,HotPink,resetCode,sep)
+    def HotPink(*obj, sep=sep_):             return NCS(obj,Underline.HotPink,Style.NoUnderline,sep)
     @staticmethod
-    def LightPink(*obj, sep=sep_):           return NCS(obj,LightPink,resetCode,sep)
+    def LightPink(*obj, sep=sep_):           return NCS(obj,Underline.LightPink,Style.NoUnderline,sep)
     @staticmethod
-    def Pink(*obj, sep=sep_):                return NCS(obj,Pink,resetCode,sep)
+    def Pink(*obj, sep=sep_):                return NCS(obj,Underline.Pink,Style.NoUnderline,sep)
     @staticmethod
-    def AntiqueWhite(*obj, sep=sep_):        return NCS(obj,AntiqueWhite,resetCode,sep)
+    def AntiqueWhite(*obj, sep=sep_):        return NCS(obj,Underline.AntiqueWhite,Style.NoUnderline,sep)
     @staticmethod
-    def Beige(*obj, sep=sep_):               return NCS(obj,Beige,resetCode,sep)
+    def Beige(*obj, sep=sep_):               return NCS(obj,Underline.Beige,Style.NoUnderline,sep)
     @staticmethod
-    def Bisque(*obj, sep=sep_):              return NCS(obj,Bisque,resetCode,sep)
+    def Bisque(*obj, sep=sep_):              return NCS(obj,Underline.Bisque,Style.NoUnderline,sep)
     @staticmethod
-    def BlanchedAlmond(*obj, sep=sep_):      return NCS(obj,BlanchedAlmond,resetCode,sep)
+    def BlanchedAlmond(*obj, sep=sep_):      return NCS(obj,Underline.BlanchedAlmond,Style.NoUnderline,sep)
     @staticmethod
-    def Wheat(*obj, sep=sep_):               return NCS(obj,Wheat,resetCode,sep)
+    def Wheat(*obj, sep=sep_):               return NCS(obj,Underline.Wheat,Style.NoUnderline,sep)
     @staticmethod
-    def CornSilk(*obj, sep=sep_):            return NCS(obj,CornSilk,resetCode,sep)
+    def CornSilk(*obj, sep=sep_):            return NCS(obj,Underline.CornSilk,Style.NoUnderline,sep)
     @staticmethod
-    def LemonChiffon(*obj, sep=sep_):        return NCS(obj,LemonChiffon,resetCode,sep)
+    def LemonChiffon(*obj, sep=sep_):        return NCS(obj,Underline.LemonChiffon,Style.NoUnderline,sep)
     @staticmethod
-    def LightGoldenRodYellow(*obj, sep=sep_):return NCS(obj,LightGoldenRodYellow,resetCode,sep)
+    def LightGoldenRodYellow(*obj, sep=sep_):return NCS(obj,Underline.LightGoldenRodYellow,Style.NoUnderline,sep)
     @staticmethod
-    def LightYellow(*obj, sep=sep_):         return NCS(obj,LightYellow,resetCode,sep)
+    def LightYellow(*obj, sep=sep_):         return NCS(obj,Underline.LightYellow,Style.NoUnderline,sep)
     @staticmethod
-    def SaddleBrown(*obj, sep=sep_):         return NCS(obj,SaddleBrown,resetCode,sep)
+    def SaddleBrown(*obj, sep=sep_):         return NCS(obj,Underline.SaddleBrown,Style.NoUnderline,sep)
     @staticmethod
-    def Sienna(*obj, sep=sep_):              return NCS(obj,Sienna,resetCode,sep)
+    def Sienna(*obj, sep=sep_):              return NCS(obj,Underline.Sienna,Style.NoUnderline,sep)
     @staticmethod
-    def Chocolate(*obj, sep=sep_):           return NCS(obj,Chocolate,resetCode,sep)
+    def Chocolate(*obj, sep=sep_):           return NCS(obj,Underline.Chocolate,Style.NoUnderline,sep)
     @staticmethod
-    def Peru(*obj, sep=sep_):                return NCS(obj,Peru,resetCode,sep)
+    def Peru(*obj, sep=sep_):                return NCS(obj,Underline.Peru,Style.NoUnderline,sep)
     @staticmethod
-    def SandyBrown(*obj, sep=sep_):          return NCS(obj,SandyBrown,resetCode,sep)
+    def SandyBrown(*obj, sep=sep_):          return NCS(obj,Underline.SandyBrown,Style.NoUnderline,sep)
     @staticmethod
-    def BurlyWood(*obj, sep=sep_):           return NCS(obj,BurlyWood,resetCode,sep)
+    def BurlyWood(*obj, sep=sep_):           return NCS(obj,Underline.BurlyWood,Style.NoUnderline,sep)
     @staticmethod
-    def Tan(*obj, sep=sep_):                 return NCS(obj,Tan,resetCode,sep)
+    def Tan(*obj, sep=sep_):                 return NCS(obj,Underline.Tan,Style.NoUnderline,sep)
     @staticmethod
-    def RosyBrown(*obj, sep=sep_):           return NCS(obj,RosyBrown,resetCode,sep)
+    def RosyBrown(*obj, sep=sep_):           return NCS(obj,Underline.RosyBrown,Style.NoUnderline,sep)
     @staticmethod
-    def Moccasin(*obj, sep=sep_):            return NCS(obj,Moccasin,resetCode,sep)
+    def Moccasin(*obj, sep=sep_):            return NCS(obj,Underline.Moccasin,Style.NoUnderline,sep)
     @staticmethod
-    def NavajoWhite(*obj, sep=sep_):         return NCS(obj,NavajoWhite,resetCode,sep)
+    def NavajoWhite(*obj, sep=sep_):         return NCS(obj,Underline.NavajoWhite,Style.NoUnderline,sep)
     @staticmethod
-    def PeachPuff(*obj, sep=sep_):           return NCS(obj,PeachPuff,resetCode,sep)
+    def PeachPuff(*obj, sep=sep_):           return NCS(obj,Underline.PeachPuff,Style.NoUnderline,sep)
     @staticmethod
-    def MistyRose(*obj, sep=sep_):           return NCS(obj,MistyRose,resetCode,sep)
+    def MistyRose(*obj, sep=sep_):           return NCS(obj,Underline.MistyRose,Style.NoUnderline,sep)
     @staticmethod
-    def LavenderBlush(*obj, sep=sep_):       return NCS(obj,LavenderBlush,resetCode,sep)
+    def LavenderBlush(*obj, sep=sep_):       return NCS(obj,Underline.LavenderBlush,Style.NoUnderline,sep)
     @staticmethod
-    def Linen(*obj, sep=sep_):               return NCS(obj,Linen,resetCode,sep)
+    def Linen(*obj, sep=sep_):               return NCS(obj,Underline.Linen,Style.NoUnderline,sep)
     @staticmethod
-    def OldLace(*obj, sep=sep_):             return NCS(obj,OldLace,resetCode,sep)
+    def OldLace(*obj, sep=sep_):             return NCS(obj,Underline.OldLace,Style.NoUnderline,sep)
     @staticmethod
-    def PapayaWhip(*obj, sep=sep_):          return NCS(obj,PapayaWhip,resetCode,sep)
+    def PapayaWhip(*obj, sep=sep_):          return NCS(obj,Underline.PapayaWhip,Style.NoUnderline,sep)
     @staticmethod
-    def WeaShell(*obj, sep=sep_):            return NCS(obj,WeaShell,resetCode,sep)
+    def WeaShell(*obj, sep=sep_):            return NCS(obj,Underline.WeaShell,Style.NoUnderline,sep)
     @staticmethod
-    def MintCream(*obj, sep=sep_):           return NCS(obj,MintCream,resetCode,sep)
+    def MintCream(*obj, sep=sep_):           return NCS(obj,Underline.MintCream,Style.NoUnderline,sep)
     @staticmethod
-    def SlateGray(*obj, sep=sep_):           return NCS(obj,SlateGray,resetCode,sep)
+    def SlateGray(*obj, sep=sep_):           return NCS(obj,Underline.SlateGray,Style.NoUnderline,sep)
     @staticmethod
-    def LightSlateGray(*obj, sep=sep_):      return NCS(obj,LightSlateGray,resetCode,sep)
+    def LightSlateGray(*obj, sep=sep_):      return NCS(obj,Underline.LightSlateGray,Style.NoUnderline,sep)
     @staticmethod
-    def LightSteelBlue(*obj, sep=sep_):      return NCS(obj,LightSteelBlue,resetCode,sep)
+    def LightSteelBlue(*obj, sep=sep_):      return NCS(obj,Underline.LightSteelBlue,Style.NoUnderline,sep)
     @staticmethod
-    def Lavender(*obj, sep=sep_):            return NCS(obj,Lavender,resetCode,sep)
+    def Lavender(*obj, sep=sep_):            return NCS(obj,Underline.Lavender,Style.NoUnderline,sep)
     @staticmethod
-    def FloralWhite(*obj, sep=sep_):         return NCS(obj,FloralWhite,resetCode,sep)
+    def FloralWhite(*obj, sep=sep_):         return NCS(obj,Underline.FloralWhite,Style.NoUnderline,sep)
     @staticmethod
-    def AliceBlue(*obj, sep=sep_):           return NCS(obj,AliceBlue,resetCode,sep)
+    def AliceBlue(*obj, sep=sep_):           return NCS(obj,Underline.AliceBlue,Style.NoUnderline,sep)
     @staticmethod
-    def GhostWhite(*obj, sep=sep_):          return NCS(obj,GhostWhite,resetCode,sep)
+    def GhostWhite(*obj, sep=sep_):          return NCS(obj,Underline.GhostWhite,Style.NoUnderline,sep)
     @staticmethod
-    def Honeydew(*obj, sep=sep_):            return NCS(obj,Honeydew,resetCode,sep)
+    def Honeydew(*obj, sep=sep_):            return NCS(obj,Underline.Honeydew,Style.NoUnderline,sep)
     @staticmethod
-    def Ivory(*obj, sep=sep_):               return NCS(obj,Ivory,resetCode,sep)
+    def Ivory(*obj, sep=sep_):               return NCS(obj,Underline.Ivory,Style.NoUnderline,sep)
     @staticmethod
-    def Azure(*obj, sep=sep_):               return NCS(obj,Azure,resetCode,sep)
+    def Azure(*obj, sep=sep_):               return NCS(obj,Underline.Azure,Style.NoUnderline,sep)
     @staticmethod
-    def Snow(*obj, sep=sep_):                return NCS(obj,Snow,resetCode,sep)
+    def Snow(*obj, sep=sep_):                return NCS(obj,Underline.Snow,Style.NoUnderline,sep)
     @staticmethod
-    def Black(*obj, sep=sep_):               return NCS(obj,Black,resetCode,sep)
+    def Black(*obj, sep=sep_):               return NCS(obj,Underline.Black,Style.NoUnderline,sep)
     @staticmethod
-    def DimGray(*obj, sep=sep_):             return NCS(obj,DimGray,resetCode,sep)
+    def DimGray(*obj, sep=sep_):             return NCS(obj,Underline.DimGray,Style.NoUnderline,sep)
     @staticmethod
-    def Gray(*obj, sep=sep_):                return NCS(obj,Gray,resetCode,sep)
+    def Gray(*obj, sep=sep_):                return NCS(obj,Underline.Gray,Style.NoUnderline,sep)
     @staticmethod
-    def DarkGray(*obj, sep=sep_):            return NCS(obj,DarkGray,resetCode,sep)
+    def DarkGray(*obj, sep=sep_):            return NCS(obj,Underline.DarkGray,Style.NoUnderline,sep)
     @staticmethod
-    def Silver(*obj, sep=sep_):              return NCS(obj,Silver,resetCode,sep)
+    def Silver(*obj, sep=sep_):              return NCS(obj,Underline.Silver,Style.NoUnderline,sep)
     @staticmethod
-    def LightGray(*obj, sep=sep_):           return NCS(obj,LightGray,resetCode,sep)
+    def LightGray(*obj, sep=sep_):           return NCS(obj,Underline.LightGray,Style.NoUnderline,sep)
     @staticmethod
-    def Gainsboro(*obj, sep=sep_):           return NCS(obj,Gainsboro,resetCode,sep)
+    def Gainsboro(*obj, sep=sep_):           return NCS(obj,Underline.Gainsboro,Style.NoUnderline,sep)
     @staticmethod
-    def WhiteSmoke(*obj, sep=sep_):          return NCS(obj,WhiteSmoke,resetCode,sep)
+    def WhiteSmoke(*obj, sep=sep_):          return NCS(obj,Underline.WhiteSmoke,Style.NoUnderline,sep)
     @staticmethod
-    def White(*obj, sep=sep_):               return NCS(obj,White,resetCode,sep)
+    def White(*obj, sep=sep_):               return NCS(obj,Underline.White,Style.NoUnderline,sep)
