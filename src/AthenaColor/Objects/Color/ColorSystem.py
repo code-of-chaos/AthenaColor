@@ -4,7 +4,7 @@
 # General Packages
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from typing import Callable, Tuple
+from typing import Tuple
 # Custom Library
 
 # Custom Packages
@@ -25,24 +25,13 @@ __all__ = [
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Methods -
 # ----------------------------------------------------------------------------------------------------------------------
-def dunder_func(func:Callable,left:ColorSystem,right:ColorSystem|int|float|tuple):
-    if type(left) is type(right):
-        return func(left.export(), right.export())
-    elif isinstance(right, ColorSystem):
-        return func(left.export(), map_color(left, right))
-    elif isinstance(right, (int, float)):
-        return func(left.export(), (right,) * len(left.export()))
-    elif isinstance(right, tuple) and len(right) == len(left.export()):
-        return func(left.export(), right)
-    else:
-        return NotImplemented
-
-def map_color(left,right) -> tuple:
-    try:
-        a = color_conversions_mapped[type(left)][type(right)]
-        return a(right)
-    except KeyError:
-        return NotImplemented
+def _ColorConversionInput(fnc):
+    def wrapper(self,other):
+        try:
+            return fnc(self, color_conversions_mapped[type(self)][type(other)](other),)
+        except KeyError:
+            return NotImplemented
+    return wrapper
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Actual Color System -
@@ -90,6 +79,11 @@ class ColorSystem(ABC):
     def __contains__(self, item):
         return item in self.export()
 
+    @ _ColorConversionInput
+    def __divmod__(self, other: tuple) -> tuple:
+        div_ , mod_ = CSD.divmod_function(self.export(), other)
+        return self.__class__(*div_),self.__class__(*mod_)
+
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
@@ -98,136 +92,78 @@ class ColorSystem(ABC):
     #   If the two sides of the operation are NOT of the same type,
     #       it will convert the right-hand object to the same type as the left-hand type.
 
-    # noinspection PyTypeChecker
-    def __add__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        """
-        """
-        result = dunder_func(func=CSD.add, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return self.__class__(*result)
+    @ _ColorConversionInput
+    def __add__(self, other: tuple) -> ColorSystem:
+        return self.__class__(*CSD.add(self.export(), other))
+    @ _ColorConversionInput
+    def __sub__(self, other: tuple) -> ColorSystem:
+        return self.__class__(*CSD.sub(self.export(), other))
+    @ _ColorConversionInput
+    def __mul__(self, other: tuple) -> ColorSystem:
+        return self.__class__(*CSD.mul(self.export(), other))
+    @ _ColorConversionInput
+    def __floordiv__(self, other: tuple) -> ColorSystem:
+        return self.__class__(*CSD.floordiv(self.export(), other))
+    @ _ColorConversionInput
+    def __truediv__(self, other: tuple) -> ColorSystem:
+        return self.__class__(*CSD.truediv(self.export(), other))
+    @ _ColorConversionInput
+    def __mod__(self, other: tuple) -> ColorSystem:
+        return self.__class__(*CSD.mod(self.export(), other))
+    @ _ColorConversionInput
+    def __pow__(self, other: tuple) -> ColorSystem:
+        return self.__class__(*CSD.power(self.export(), other))
 
-    # noinspection PyTypeChecker
-    def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        result = dunder_func(func=CSD.sub, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return self.__class__(*result)
-
-    # noinspection PyTypeChecker
-    def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        result = dunder_func(func=CSD.mul, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return self.__class__(*result)
-
-    # noinspection PyTypeChecker
-    def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        result = dunder_func(func=CSD.floordiv, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return self.__class__(*result)
-
-    # noinspection PyTypeChecker
-    def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        result = dunder_func(func=CSD.truediv, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return self.__class__(*result)
-
-    # noinspection PyTypeChecker
-    def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        result = dunder_func(func=CSD.mod, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return self.__class__(*result)
-
-    # noinspection PyTypeChecker
-    def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        result = dunder_func(func=CSD.power, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return self.__class__(*result)
-
-    def __divmod__(self, other: ColorSystem|int|float|tuple):
-        result = dunder_func(func=CSD.divmod_function, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return self.__class__(*result[0]), self.__class__(*result[1])
-
-    def __iadd__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        values = dunder_func(func=CSD.add, left=self, right=other)
-        if values is NotImplemented:
-            return values
-        self._value_setter(values)
-        return self
-    def __isub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        values = dunder_func(func=CSD.sub, left=self, right=other)
-        if values is NotImplemented:
-            return values
-        self._value_setter(values)
-        return self
-    def __imul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        values = dunder_func(func=CSD.mul, left=self, right=other)
-        if values is NotImplemented:
-            return values
-        self._value_setter(values)
-        return self
-    def __ifloordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        values = dunder_func(func=CSD.floordiv, left=self, right=other)
-        if values is NotImplemented:
-            return values
-        self._value_setter(values)
-        return self
-    def __itruediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        values = dunder_func(func=CSD.truediv, left=self, right=other)
-        if values is NotImplemented:
-            return values
-        self._value_setter(values)
-        return self
-    def __imod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        values = dunder_func(func=CSD.mod, left=self, right=other)
-        if values is NotImplemented:
-            return values
-        self._value_setter(values)
-        return self
-    def __ipow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        values = dunder_func(func=CSD.power, left=self, right=other)
-        if values is NotImplemented:
-            return values
-        self._value_setter(values)
-        return self
+    @ _ColorConversionInput
+    def __iadd__(self, other: tuple) -> ColorSystem:
+        return self._value_setter(CSD.add(self.export(), other))
+    @ _ColorConversionInput
+    def __isub__(self, other: tuple) -> ColorSystem:
+        return self._value_setter(CSD.sub(self.export(), other))
+    @ _ColorConversionInput
+    def __imul__(self, other: tuple) -> ColorSystem:
+        return self._value_setter(CSD.mul(self.export(), other))
+    @ _ColorConversionInput
+    def __ifloordiv__(self, other: tuple) -> ColorSystem:
+        return self._value_setter(CSD.floordiv(self.export(), other))
+    @ _ColorConversionInput
+    def __itruediv__(self, other: tuple) -> ColorSystem:
+        return self._value_setter(CSD.truediv(self.export(), other))
+    @ _ColorConversionInput
+    def __itruediv__(self, other: tuple) -> ColorSystem:
+        return self._value_setter(CSD.truediv(self.export(), other))
+    @ _ColorConversionInput
+    def __imod__(self, other: tuple) -> ColorSystem:
+        return self._value_setter(CSD.mod(self.export(), other))
+    @ _ColorConversionInput
+    def __ipow__(self, other: tuple) -> ColorSystem:
+        return self._value_setter(CSD.power(self.export(), other))
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Comparison Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     # ! Comparison Dunder which executes an operator between the left- and right-hand side of the operation.
     #   If the two sides of the operation are NOT of the same type,
-    #       it will convert the right-hand object to the same type as the left-hand type.
+    #       it will convert the right-hand object to the same tuple format as the left-hand type.
 
-    # noinspection PyTypeChecker
+    @ _ColorConversionInput
     def __gt__(self, other: ColorSystem|int|float|tuple) -> bool:
-        return dunder_func(func=CSD.gt,left=self,right=other)
-
-    # noinspection PyTypeChecker
+        return CSD.gt(self.export(), other)
+    @ _ColorConversionInput
     def __lt__(self, other: ColorSystem|int|float|tuple) -> bool:
-        return dunder_func(func=CSD.lt,left=self,right=other)
-
-    # noinspection PyTypeChecker
+        return CSD.lt(self.export(), other)
+    @ _ColorConversionInput
     def __eq__(self, other: ColorSystem|int|float|tuple) -> bool:
-        return dunder_func(func=CSD.eq,left=self,right=other)
-
-    # noinspection PyTypeChecker
+        return CSD.eq(self.export(), other)
+    @ _ColorConversionInput
     def __ne__(self, other: ColorSystem|int|float|tuple) -> bool:
-        return dunder_func(func=CSD.ne,left=self,right=other)
-
-    # noinspection PyTypeChecker
+        return CSD.ne(self.export(), other)
+    @ _ColorConversionInput
     def __le__(self, other: ColorSystem|int|float|tuple) -> bool:
-        return dunder_func(func=CSD.le,left=self,right=other)
-
-    # noinspection PyTypeChecker
+        return CSD.le(self.export(), other)
+    @ _ColorConversionInput
     def __ge__(self, other: ColorSystem|int|float|tuple) -> bool:
-        return dunder_func(func=CSD.ge,left=self,right=other)
+        return CSD.ge(self.export(), other)
 
 # ------------------------------------------------------------------------------------------------------------------
 # - RGB -
@@ -315,45 +251,35 @@ class HEX(RGB):
     def __round__(self, n=None):
         return self.__class__(rgb_to_hex(*(round(value,n) for value in self.export())))
 
-    def __divmod__(self, other: ColorSystem|int|float|tuple):
-        result = dunder_func(func=CSD.divmod_function, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return (*(self.__class__(rgb_to_hex(*colors)) for colors in result),)
-
-    def __abs__(self) -> ColorSystem:
-        return self.__class__(rgb_to_hex(*(abs(value) for value in self)))
+    @ _ColorConversionInput
+    def __divmod__(self, other: tuple) -> tuple:
+        div_ , mod_ = CSD.divmod_function(self.export(), other)
+        return self.__class__(rgb_to_hex(*div_)),self.__class__(rgb_to_hex(*mod_))
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
-    # noinspection PyTypeChecker
-    def __add__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.add, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.sub, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.mul, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.floordiv, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.truediv, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.mod, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgb_to_hex(*dunder_func(func=CSD.power, left=self, right=other)))
+    @ _ColorConversionInput
+    def __add__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgb_to_hex(*CSD.add(self.export(), other)))
+    @ _ColorConversionInput
+    def __sub__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgb_to_hex(*CSD.sub(self.export(), other)))
+    @ _ColorConversionInput
+    def __mul__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgb_to_hex(*CSD.mul(self.export(), other)))
+    @ _ColorConversionInput
+    def __floordiv__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgb_to_hex(*CSD.floordiv(self.export(), other)))
+    @ _ColorConversionInput
+    def __truediv__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgb_to_hex(*CSD.truediv(self.export(), other)))
+    @ _ColorConversionInput
+    def __mod__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgb_to_hex(*CSD.mod(self.export(), other)))
+    @ _ColorConversionInput
+    def __pow__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgb_to_hex(*CSD.power(self.export(), other)))
 
 # ------------------------------------------------------------------------------------------------------------------
 # - RGBA -
@@ -451,45 +377,35 @@ class HEXA(RGBA):
     def __round__(self, n=None):
         return self.__class__(rgba_to_hexa(*(round(value,n) for value in self.export())))
 
-    def __divmod__(self, other: ColorSystem|int|float|tuple):
-        result = dunder_func(func=CSD.divmod_function, left=self, right=other)
-        if result is NotImplemented:
-            return result
-        return (*(self.__class__(rgba_to_hexa(*colors)) for colors in result),)
-
-    def __abs__(self) -> ColorSystem:
-        return self.__class__(rgba_to_hexa(*(abs(value) for value in self)))
+    @ _ColorConversionInput
+    def __divmod__(self, other: tuple) -> tuple:
+        div_ , mod_ = CSD.divmod_function(self.export(), other)
+        return self.__class__(rgba_to_hexa(*div_)),self.__class__(rgba_to_hexa(*mod_))
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
-    # noinspection PyTypeChecker
-    def __add__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.add, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __sub__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.sub, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __mul__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.mul, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __floordiv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.floordiv, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __truediv__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.truediv, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __mod__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.mod, left=self, right=other)))
-
-    # noinspection PyTypeChecker
-    def __pow__(self, other: ColorSystem|int|float|tuple) -> ColorSystem:
-        return self.__class__(rgba_to_hexa(*dunder_func(func=CSD.power, left=self, right=other)))
+    @ _ColorConversionInput
+    def __add__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgba_to_hexa(*CSD.add(self.export(), other)))
+    @ _ColorConversionInput
+    def __sub__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgba_to_hexa(*CSD.sub(self.export(), other)))
+    @ _ColorConversionInput
+    def __mul__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgba_to_hexa(*CSD.mul(self.export(), other)))
+    @ _ColorConversionInput
+    def __floordiv__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgba_to_hexa(*CSD.floordiv(self.export(), other)))
+    @ _ColorConversionInput
+    def __truediv__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgba_to_hexa(*CSD.truediv(self.export(), other)))
+    @ _ColorConversionInput
+    def __mod__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgba_to_hexa(*CSD.mod(self.export(), other)))
+    @ _ColorConversionInput
+    def __pow__(self, other: tuple) -> ColorSystem:
+        return self.__class__(rgba_to_hexa(*CSD.power(self.export(), other)))
 
 # ------------------------------------------------------------------------------------------------------------------
 # - HSV -
@@ -658,6 +574,9 @@ class CMYK(ColorSystem):
 # needs to be placed here, as only after all the defining of all the colors, this map can be made
 _r_export = lambda r: r.export()
 _r_export_slice = lambda r: r.export()
+_tuple3 = lambda r: (r,r,r)
+_tuple4 = lambda r: (r,r,r,r)
+_same =  lambda r: r
 trnspDef = init.transparentDefault[1]
 color_conversions_mapped ={
     RGB : {
@@ -668,6 +587,9 @@ color_conversions_mapped ={
         CMYK: lambda r: cmyk_to_rgb(*r.export()),
         RGBA: _r_export_slice,
         HEXA: _r_export_slice,
+        int: _tuple3,
+        float: _tuple3,
+        tuple: _same
     },
     HEX : {
         RGB: _r_export,
@@ -677,6 +599,9 @@ color_conversions_mapped ={
         CMYK: lambda r: cmyk_to_rgb(*r.export()),
         RGBA: _r_export_slice,
         HEXA: _r_export_slice,
+        int: _tuple3,
+        float: _tuple3,
+        tuple: _same
     },
     HSL : {
         RGB: lambda r: rgb_to_hsl(*r.export()),
@@ -686,6 +611,9 @@ color_conversions_mapped ={
         CMYK: lambda r: cmyk_to_hsl(*r.export()),
         RGBA: lambda r: rgb_to_hsl(*_r_export_slice(r)),
         HEXA: lambda r: rgb_to_hsl(*_r_export_slice(r)),
+        int: _tuple3,
+        float: _tuple3,
+        tuple: _same
     },
     HSV : {
         RGB: lambda r: rgb_to_hsv(*r.export()),
@@ -695,6 +623,9 @@ color_conversions_mapped ={
         CMYK: lambda r: cmyk_to_hsv(*r.export()),
         RGBA: lambda r: rgb_to_hsv(*_r_export_slice(r)),
         HEXA: lambda r: rgb_to_hsv(*_r_export_slice(r)),
+        int: _tuple3,
+        float: _tuple3,
+        tuple: _same
     },
     CMYK : {
         RGB: lambda r: rgb_to_cmyk(*r.export()),
@@ -704,6 +635,9 @@ color_conversions_mapped ={
         CMYK: _r_export,
         RGBA: lambda r: rgb_to_cmyk(*_r_export_slice(r)),
         HEXA: lambda r: rgb_to_cmyk(*_r_export_slice(r)),
+        int: _tuple4,
+        float: _tuple4,
+        tuple: _same
     },
     RGBA : {
         RGB: lambda r: (*r.export(), trnspDef),
@@ -713,6 +647,9 @@ color_conversions_mapped ={
         CMYK: lambda r: (*cmyk_to_rgb(*r.export()), trnspDef),
         RGBA: _r_export,
         HEXA: _r_export,
+        int: _tuple4,
+        float: _tuple4,
+        tuple: _same
     },
     HEXA : {
         RGB: lambda r: (*r.export(), trnspDef),
@@ -722,5 +659,8 @@ color_conversions_mapped ={
         CMYK: lambda r: (*cmyk_to_rgb(*r.export()), trnspDef),
         RGBA: _r_export,
         HEXA: _r_export,
+        int: _tuple4,
+        float: _tuple4,
+        tuple: _same
     },
 }
