@@ -25,7 +25,7 @@ class ColorObjects_HEX(unittest.TestCase):
     def test_input(self):
         with self.assertRaises(TypeError):
             HEX(1)
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ValueError):
             HEX(b"#123456")
         with self.assertRaises(ValueError):
             HEX("#123456789")

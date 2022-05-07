@@ -14,7 +14,7 @@ from AthenaColor.InitClass import init
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 __all__ = [
-    "Normalize", "RoundHalfUp","RoundToDecimals", "StrictType"
+    "Normalize", "RoundHalfUp","RoundToDecimals"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -30,8 +30,3 @@ def RoundToDecimals(value:int|float, decimals:int=None):
 
 def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
     return int(value + 0.5) # thanks for tedthetwonk for refinement
-
-def StrictType(object_, type_) -> Any:
-    if not isinstance(object_, type_):
-        raise TypeError(f"{object_} was not of the type: {type_}")
-    return object_

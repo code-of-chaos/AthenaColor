@@ -13,7 +13,6 @@ from AthenaColor.Objects.Color.ColorTupleConversion import *
 from AthenaColor.InitClass import init
 from AthenaColor.Functions.Constraints import Constrain
 from AthenaColor.Functions.General import RoundHalfUp,RoundToDecimals
-from AthenaColor.Functions.General import StrictType
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -66,9 +65,6 @@ class ColorSystem(ABC):
     
     def __iter__(self):
         return iter(self.export())
-
-    def __len__(self):
-        return len(self.export())
 
     def __hash__(self):
         return hash(self.export())
@@ -193,30 +189,21 @@ class RGB(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        if init.roundUp:
-            self._r = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
-        else:
-            self._r = round(Constrain(StrictType(value, (int,float)), 255))
+        self._r = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        if init.roundUp:
-            self._g = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
-        else:
-            self._g = round(Constrain(StrictType(value, (int,float)), 255))
+        self._g = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        if init.roundUp:
-            self._b = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
-        else:
-            self._b = round(Constrain(StrictType(value, (int,float)), 255))
+        self._b = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -235,7 +222,7 @@ class HEX(RGB):
     Inherits from RGB as this is just another notation for RGB values.
     """
     def __init__(self, hex_value:str="#000000"):
-        super().__init__(*hex_to_rgb(StrictType(hex_value, str)))
+        super().__init__(*hex_to_rgb(hex_value))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -309,40 +296,29 @@ class RGBA(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        if init.roundUp:
-            self._r = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
-        else:
-            self._r = round(Constrain(StrictType(value, (int,float)), 255))
+        self._r = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        if init.roundUp:
-            self._g = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
-        else:
-            self._g = round(Constrain(StrictType(value, (int,float)), 255))
+        self._g = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        if init.roundUp:
-            self._b = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
-        else:
-            self._b = round(Constrain(StrictType(value, (int,float)), 255))
+        self._b = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
+
 
     @property
     def a(self) -> int:
         return self._a
     @a.setter
     def a(self, value: int|float):
-        if init.roundUp:
-            self._a = RoundHalfUp(Constrain(StrictType(value, (int,float)), 255))
-        else:
-            self._a = round(Constrain(StrictType(value, (int,float)), 255))
+        self._a = RoundHalfUp(Constrain(value, 255)) if init.roundUp else round(Constrain(value, 255))
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
@@ -436,21 +412,21 @@ class HSV(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = RoundToDecimals(Constrain(StrictType(value, (int,float)), 360))
+        self._h = RoundToDecimals(Constrain(value, 360))
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
+        self._s = RoundToDecimals(Constrain(value, 1))
 
     @property
     def v(self) -> int|float:
         return self._v
     @v.setter
     def v(self, value: int|float):
-        self._v = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
+        self._v = RoundToDecimals(Constrain(value, 1))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -488,21 +464,21 @@ class HSL(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = RoundToDecimals(Constrain(StrictType(value, (int,float)), 360))
+        self._h = RoundToDecimals(Constrain(value, 360))
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
+        self._s = RoundToDecimals(Constrain(value, 1))
 
     @property
     def l(self) -> int|float:
         return self._l
     @l.setter
     def l(self, value: int|float):
-        self._l = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
+        self._l = RoundToDecimals(Constrain(value, 1))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -539,28 +515,28 @@ class CMYK(ColorSystem):
         return self._c
     @c.setter
     def c(self, value: int|float):
-        self._c = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
+        self._c = RoundToDecimals(Constrain(value, 1))
 
     @property
     def m(self) -> int|float:
         return self._m
     @m.setter
     def m(self, value: int|float):
-        self._m = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
+        self._m = RoundToDecimals(Constrain(value, 1))
 
     @property
     def y(self) -> int|float:
         return self._y
     @y.setter
     def y(self, value: int|float):
-        self._y = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
+        self._y = RoundToDecimals(Constrain(value, 1))
 
     @property
     def k(self) -> int|float:
         return self._k
     @k.setter
     def k(self, value: int|float):
-        self._k = RoundToDecimals(Constrain(StrictType(value, (int,float)), 1))
+        self._k = RoundToDecimals(Constrain(value, 1))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -573,7 +549,7 @@ class CMYK(ColorSystem):
 # Possible because we now have a __hash__ on any given ColorSystem class
 # needs to be placed here, as only after all the defining of all the colors, this map can be made
 _r_export = lambda r: r.export()
-_r_export_slice = lambda r: r.export()
+_r_export_RGBAtoRGB = lambda r: (r.r, r.g, r.b)
 _tuple3 = lambda r: (r,r,r)
 _tuple4 = lambda r: (r,r,r,r)
 _same =  lambda r: r
@@ -582,11 +558,11 @@ color_conversions_mapped ={
     RGB : {
         RGB: _r_export,
         HEX: _r_export,
-        HSL: lambda r: hsl_to_rgb(*r.export()),
-        HSV: lambda r: hsv_to_rgb(*r.export()),
-        CMYK: lambda r: cmyk_to_rgb(*r.export()),
-        RGBA: _r_export_slice,
-        HEXA: _r_export_slice,
+        HSL: lambda r: hsl_to_rgb(r.h, r.s, r.l),
+        HSV: lambda r: hsv_to_rgb(r.h, r.s, r.v),
+        CMYK: lambda r: cmyk_to_rgb(r.c,r.m,r.y,r.k),
+        RGBA: _r_export_RGBAtoRGB,
+        HEXA: _r_export_RGBAtoRGB,
         int: _tuple3,
         float: _tuple3,
         tuple: _same
@@ -594,57 +570,57 @@ color_conversions_mapped ={
     HEX : {
         RGB: _r_export,
         HEX: _r_export,
-        HSL: lambda r: hsl_to_rgb(*r.export()),
-        HSV: lambda r: hsv_to_rgb(*r.export()),
-        CMYK: lambda r: cmyk_to_rgb(*r.export()),
-        RGBA: _r_export_slice,
-        HEXA: _r_export_slice,
+        HSL: lambda r: hsl_to_rgb(r.h, r.s, r.l),
+        HSV: lambda r: hsv_to_rgb(r.h, r.s, r.v),
+        CMYK: lambda r: cmyk_to_rgb(r.c,r.m,r.y,r.k),
+        RGBA: _r_export_RGBAtoRGB,
+        HEXA: _r_export_RGBAtoRGB,
         int: _tuple3,
         float: _tuple3,
         tuple: _same
     },
     HSL : {
-        RGB: lambda r: rgb_to_hsl(*r.export()),
-        HEX: lambda r: rgb_to_hsl(*r.export()),
+        RGB: lambda r: rgb_to_hsl(r.r, r.g, r.b),
+        HEX: lambda r: rgb_to_hsl(r.r, r.g, r.b),
         HSL: _r_export,
-        HSV: lambda r: hsv_to_hsl(*r.export()),
-        CMYK: lambda r: cmyk_to_hsl(*r.export()),
-        RGBA: lambda r: rgb_to_hsl(*_r_export_slice(r)),
-        HEXA: lambda r: rgb_to_hsl(*_r_export_slice(r)),
+        HSV: lambda r: hsv_to_hsl(r.h, r.s, r.v),
+        CMYK: lambda r: cmyk_to_hsl(r.c,r.m,r.y,r.k),
+        RGBA: lambda r: rgb_to_hsl(r.r, r.g, r.b),
+        HEXA: lambda r: rgb_to_hsl(r.r, r.g, r.b),
         int: _tuple3,
         float: _tuple3,
         tuple: _same
     },
     HSV : {
-        RGB: lambda r: rgb_to_hsv(*r.export()),
-        HEX: lambda r: rgb_to_hsv(*r.export()),
-        HSL: lambda r: hsl_to_hsv(*r.export()),
+        RGB: lambda r: rgb_to_hsv(r.r, r.g, r.b),
+        HEX: lambda r: rgb_to_hsv(r.r, r.g, r.b),
+        HSL: lambda r: hsl_to_hsv(r.h, r.s, r.l),
         HSV: _r_export,
-        CMYK: lambda r: cmyk_to_hsv(*r.export()),
-        RGBA: lambda r: rgb_to_hsv(*_r_export_slice(r)),
-        HEXA: lambda r: rgb_to_hsv(*_r_export_slice(r)),
+        CMYK: lambda r: cmyk_to_hsv(r.c,r.m,r.y,r.k),
+        RGBA: lambda r: rgb_to_hsv(r.r, r.g, r.b),
+        HEXA: lambda r: rgb_to_hsv(r.r, r.g, r.b),
         int: _tuple3,
         float: _tuple3,
         tuple: _same
     },
     CMYK : {
-        RGB: lambda r: rgb_to_cmyk(*r.export()),
-        HEX: lambda r: rgb_to_cmyk(*r.export()),
-        HSL: lambda r: hsl_to_cmyk(*r.export()),
-        HSV: lambda r: hsv_to_cmyk(*r.export()),
+        RGB: lambda r: rgb_to_cmyk(r.r, r.g, r.b),
+        HEX: lambda r: rgb_to_cmyk(r.r, r.g, r.b),
+        HSL: lambda r: hsl_to_cmyk(r.h, r.s, r.l),
+        HSV: lambda r: hsv_to_cmyk(r.h, r.s, r.v),
         CMYK: _r_export,
-        RGBA: lambda r: rgb_to_cmyk(*_r_export_slice(r)),
-        HEXA: lambda r: rgb_to_cmyk(*_r_export_slice(r)),
+        RGBA: lambda r: rgb_to_cmyk(r.r, r.g, r.b),
+        HEXA: lambda r: rgb_to_cmyk(r.r, r.g, r.b),
         int: _tuple4,
         float: _tuple4,
         tuple: _same
     },
     RGBA : {
-        RGB: lambda r: (*r.export(), trnspDef),
-        HEX: lambda r: (*r.export(), trnspDef),
-        HSL: lambda r: (*hsl_to_rgb(*r.export()), trnspDef),
-        HSV: lambda r: (*hsv_to_rgb(*r.export()), trnspDef),
-        CMYK: lambda r: (*cmyk_to_rgb(*r.export()), trnspDef),
+        RGB: lambda r: (r.r, r.g, r.b, trnspDef),
+        HEX: lambda r: (r.r, r.g, r.b, trnspDef),
+        HSL: lambda r: (*hsl_to_rgb(r.h, r.s, r.l), trnspDef),
+        HSV: lambda r: (*hsv_to_rgb(r.h, r.s, r.v), trnspDef),
+        CMYK: lambda r: (*cmyk_to_rgb(r.c,r.m,r.y,r.k), trnspDef),
         RGBA: _r_export,
         HEXA: _r_export,
         int: _tuple4,
@@ -652,11 +628,11 @@ color_conversions_mapped ={
         tuple: _same
     },
     HEXA : {
-        RGB: lambda r: (*r.export(), trnspDef),
-        HEX: lambda r: (*r.export(), trnspDef),
-        HSL: lambda r: (*hsl_to_rgb(*r.export()), trnspDef),
-        HSV: lambda r: (*hsv_to_rgb(*r.export()), trnspDef),
-        CMYK: lambda r: (*cmyk_to_rgb(*r.export()), trnspDef),
+        RGB: lambda r: (r.r, r.g, r.b, trnspDef),
+        HEX: lambda r: (r.r, r.g, r.b, trnspDef),
+        HSL: lambda r: (*hsl_to_rgb(r.h, r.s, r.l), trnspDef),
+        HSV: lambda r: (*hsv_to_rgb(r.h, r.s, r.v), trnspDef),
+        CMYK: lambda r: (*cmyk_to_rgb(r.c,r.m,r.y,r.k), trnspDef),
         RGBA: _r_export,
         HEXA: _r_export,
         int: _tuple4,

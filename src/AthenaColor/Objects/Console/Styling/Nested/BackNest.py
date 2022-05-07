@@ -9,7 +9,6 @@ from __future__ import annotations
 # Custom Packages
 from AthenaColor.Objects.Color.ColorSystem import RGB,HEX, NormalizeRgb
 from AthenaColor.Functions.ANSIsquences import NestedColorSequence
-from AthenaColor.Functions.General import StrictType
 from AthenaColor.Objects.Console.Styling.Inline.Bodies import Back
 from AthenaColor.Objects.Console.Styling.Inline.MakeUp import Style
 
@@ -35,7 +34,7 @@ class BackNest:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
         return NestedColorSequence(
             obj,
-            f"\033[48;2;{';'.join(*StrictType(color,(RGB,HEX)).export())}m",
+            f"\033[48;2;{';'.join(*color.export())}m",
             Style.NoForeground,
             sep=sep
         )

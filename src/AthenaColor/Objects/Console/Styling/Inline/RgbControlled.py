@@ -11,7 +11,6 @@ from AthenaColor.Objects.Color.ColorTupleConversion import cmyk_to_rgb,hsv_to_rg
 from AthenaColor.Functions.ANSIsquences import ColorSequence
 from AthenaColor.Data.HtmlColors import HtmlColorObjects
 from AthenaColor.Objects.Color.ColorSystem import RGB, RGBA, HEX, HEXA, HSV, HSL, CMYK
-from AthenaColor.Functions.General import StrictType
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -25,7 +24,7 @@ __all__=[
 # ----------------------------------------------------------------------------------------------------------------------
 class RgbControlled:
     def __init__(self, param_code:str):
-        self._param_code = StrictType(param_code, str)
+        self._param_code = param_code
         self.Maroon              = ColorSequence(f"{self._param_code}{str(HtmlColorObjects.Maroon)}")
         self.DarkRed             = ColorSequence(f"{self._param_code}{str(HtmlColorObjects.DarkRed)}")
         self.Brown               = ColorSequence(f"{self._param_code}{str(HtmlColorObjects.Brown)}")

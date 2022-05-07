@@ -55,9 +55,3 @@ class Functions_General(unittest.TestCase):
             RoundHalfUp((1,))
         with self.assertRaises(TypeError):
             RoundHalfUp([1,])
-
-    def test_StrictType(self):
-        with self.assertRaises(TypeError):
-            StrictType("a", (int,float))
-        with self.assertRaises(TypeError):
-            StrictType(1, str)
