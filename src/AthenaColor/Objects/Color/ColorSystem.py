@@ -410,21 +410,21 @@ class HSV(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = round(Constrain(value, 360), init.decimalPlaces)
+        self._h = Constrain(value, 360)
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = round(Constrain(value, 1), init.decimalPlaces)
+        self._s = Constrain(value, 1)
 
     @property
     def v(self) -> int|float:
         return self._v
     @v.setter
     def v(self, value: int|float):
-        self._v = round(Constrain(value, 1), init.decimalPlaces)
+        self._v = Constrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -462,21 +462,21 @@ class HSL(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = round(Constrain(value, 360), init.decimalPlaces)
+        self._h = Constrain(value, 360)
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = round(Constrain(value, 1), init.decimalPlaces)
+        self._s = Constrain(value, 1)
 
     @property
     def l(self) -> int|float:
         return self._l
     @l.setter
     def l(self, value: int|float):
-        self._l = round(Constrain(value, 1), init.decimalPlaces)
+        self._l = Constrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -513,28 +513,28 @@ class CMYK(ColorSystem):
         return self._c
     @c.setter
     def c(self, value: int|float):
-        self._c = round(Constrain(value, 1), init.decimalPlaces)
+        self._c = Constrain(value, 1)
 
     @property
     def m(self) -> int|float:
         return self._m
     @m.setter
     def m(self, value: int|float):
-        self._m = round(Constrain(value, 1), init.decimalPlaces)
+        self._m = Constrain(value, 1)
 
     @property
     def y(self) -> int|float:
         return self._y
     @y.setter
     def y(self, value: int|float):
-        self._y = round(Constrain(value, 1), init.decimalPlaces)
+        self._y = Constrain(value, 1)
 
     @property
     def k(self) -> int|float:
         return self._k
     @k.setter
     def k(self, value: int|float):
-        self._k = round(Constrain(value, 1), init.decimalPlaces)
+        self._k = Constrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
