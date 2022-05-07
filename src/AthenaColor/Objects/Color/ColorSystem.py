@@ -25,9 +25,9 @@ __all__ = [
 # - Support Methods -
 # ----------------------------------------------------------------------------------------------------------------------
 def _ColorConversionInput(fnc):
-    def wrapper(self,other):
+    def wrapper(self,other:ColorSystem|int|tuple):
         try:
-            return fnc(self, color_conversions_mapped[type(self)][type(other)](other),)
+            return fnc(self, color_conversions_mapped[type(self)][type(other)](other))
         except KeyError:
             return NotImplemented
     return wrapper
@@ -89,50 +89,50 @@ class ColorSystem(ABC):
     #       it will convert the right-hand object to the same type as the left-hand type.
 
     @ _ColorConversionInput
-    def __add__(self, other: tuple) -> ColorSystem:
+    def __add__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(*CSD.add(self.export(), other))
     @ _ColorConversionInput
-    def __sub__(self, other: tuple) -> ColorSystem:
+    def __sub__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(*CSD.sub(self.export(), other))
     @ _ColorConversionInput
-    def __mul__(self, other: tuple) -> ColorSystem:
+    def __mul__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(*CSD.mul(self.export(), other))
     @ _ColorConversionInput
-    def __floordiv__(self, other: tuple) -> ColorSystem:
+    def __floordiv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(*CSD.floordiv(self.export(), other))
     @ _ColorConversionInput
-    def __truediv__(self, other: tuple) -> ColorSystem:
+    def __truediv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(*CSD.truediv(self.export(), other))
     @ _ColorConversionInput
-    def __mod__(self, other: tuple) -> ColorSystem:
+    def __mod__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(*CSD.mod(self.export(), other))
     @ _ColorConversionInput
-    def __pow__(self, other: tuple) -> ColorSystem:
+    def __pow__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(*CSD.power(self.export(), other))
 
     @ _ColorConversionInput
-    def __iadd__(self, other: tuple) -> ColorSystem:
+    def __iadd__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self._value_setter(CSD.add(self.export(), other))
     @ _ColorConversionInput
-    def __isub__(self, other: tuple) -> ColorSystem:
+    def __isub__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self._value_setter(CSD.sub(self.export(), other))
     @ _ColorConversionInput
-    def __imul__(self, other: tuple) -> ColorSystem:
+    def __imul__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self._value_setter(CSD.mul(self.export(), other))
     @ _ColorConversionInput
-    def __ifloordiv__(self, other: tuple) -> ColorSystem:
+    def __ifloordiv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self._value_setter(CSD.floordiv(self.export(), other))
     @ _ColorConversionInput
-    def __itruediv__(self, other: tuple) -> ColorSystem:
+    def __itruediv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self._value_setter(CSD.truediv(self.export(), other))
     @ _ColorConversionInput
-    def __itruediv__(self, other: tuple) -> ColorSystem:
+    def __itruediv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self._value_setter(CSD.truediv(self.export(), other))
     @ _ColorConversionInput
-    def __imod__(self, other: tuple) -> ColorSystem:
+    def __imod__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self._value_setter(CSD.mod(self.export(), other))
     @ _ColorConversionInput
-    def __ipow__(self, other: tuple) -> ColorSystem:
+    def __ipow__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self._value_setter(CSD.power(self.export(), other))
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -247,25 +247,25 @@ class HEX(RGB):
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     @ _ColorConversionInput
-    def __add__(self, other: tuple) -> ColorSystem:
+    def __add__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgb_to_hex(*CSD.add(self.export(), other)))
     @ _ColorConversionInput
-    def __sub__(self, other: tuple) -> ColorSystem:
+    def __sub__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgb_to_hex(*CSD.sub(self.export(), other)))
     @ _ColorConversionInput
-    def __mul__(self, other: tuple) -> ColorSystem:
+    def __mul__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgb_to_hex(*CSD.mul(self.export(), other)))
     @ _ColorConversionInput
-    def __floordiv__(self, other: tuple) -> ColorSystem:
+    def __floordiv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgb_to_hex(*CSD.floordiv(self.export(), other)))
     @ _ColorConversionInput
-    def __truediv__(self, other: tuple) -> ColorSystem:
+    def __truediv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgb_to_hex(*CSD.truediv(self.export(), other)))
     @ _ColorConversionInput
-    def __mod__(self, other: tuple) -> ColorSystem:
+    def __mod__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgb_to_hex(*CSD.mod(self.export(), other)))
     @ _ColorConversionInput
-    def __pow__(self, other: tuple) -> ColorSystem:
+    def __pow__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgb_to_hex(*CSD.power(self.export(), other)))
 
 # ------------------------------------------------------------------------------------------------------------------
@@ -362,25 +362,25 @@ class HEXA(RGBA):
     # - Math Dunders -
     # ------------------------------------------------------------------------------------------------------------------
     @ _ColorConversionInput
-    def __add__(self, other: tuple) -> ColorSystem:
+    def __add__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgba_to_hexa(*CSD.add(self.export(), other)))
     @ _ColorConversionInput
-    def __sub__(self, other: tuple) -> ColorSystem:
+    def __sub__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgba_to_hexa(*CSD.sub(self.export(), other)))
     @ _ColorConversionInput
-    def __mul__(self, other: tuple) -> ColorSystem:
+    def __mul__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgba_to_hexa(*CSD.mul(self.export(), other)))
     @ _ColorConversionInput
-    def __floordiv__(self, other: tuple) -> ColorSystem:
+    def __floordiv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgba_to_hexa(*CSD.floordiv(self.export(), other)))
     @ _ColorConversionInput
-    def __truediv__(self, other: tuple) -> ColorSystem:
+    def __truediv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgba_to_hexa(*CSD.truediv(self.export(), other)))
     @ _ColorConversionInput
-    def __mod__(self, other: tuple) -> ColorSystem:
+    def __mod__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgba_to_hexa(*CSD.mod(self.export(), other)))
     @ _ColorConversionInput
-    def __pow__(self, other: tuple) -> ColorSystem:
+    def __pow__(self, other: ColorSystem|int|tuple) -> ColorSystem:
         return self.__class__(rgba_to_hexa(*CSD.power(self.export(), other)))
 
 # ------------------------------------------------------------------------------------------------------------------
