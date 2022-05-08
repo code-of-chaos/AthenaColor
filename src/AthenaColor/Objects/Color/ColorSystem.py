@@ -35,7 +35,6 @@ def _ColorConversionInput(fnc):
 # - Actual Color System -
 # ----------------------------------------------------------------------------------------------------------------------
 class ColorSystem(ABC):
-    @abstractmethod
     def __init__(self, *_):
         # no 'ColorSystem' can be created on its own
         raise PermissionError
@@ -111,28 +110,36 @@ class ColorSystem(ABC):
 
     @ _ColorConversionInput
     def __iadd__(self, other: ColorSystem|int|tuple) -> ColorSystem:
-        return self._value_setter(CSD.add(self.export(), other))
+        self._value_setter(CSD.add(self.export(), other))
+        return self
     @ _ColorConversionInput
     def __isub__(self, other: ColorSystem|int|tuple) -> ColorSystem:
-        return self._value_setter(CSD.sub(self.export(), other))
+        self._value_setter(CSD.sub(self.export(), other))
+        return self
     @ _ColorConversionInput
     def __imul__(self, other: ColorSystem|int|tuple) -> ColorSystem:
-        return self._value_setter(CSD.mul(self.export(), other))
+        self._value_setter(CSD.mul(self.export(), other))
+        return self
     @ _ColorConversionInput
     def __ifloordiv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
-        return self._value_setter(CSD.floordiv(self.export(), other))
+        self._value_setter(CSD.floordiv(self.export(), other))
+        return self
     @ _ColorConversionInput
     def __itruediv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
-        return self._value_setter(CSD.truediv(self.export(), other))
+        self._value_setter(CSD.truediv(self.export(), other))
+        return self
     @ _ColorConversionInput
     def __itruediv__(self, other: ColorSystem|int|tuple) -> ColorSystem:
-        return self._value_setter(CSD.truediv(self.export(), other))
+        self._value_setter(CSD.truediv(self.export(), other))
+        return self
     @ _ColorConversionInput
     def __imod__(self, other: ColorSystem|int|tuple) -> ColorSystem:
-        return self._value_setter(CSD.mod(self.export(), other))
+        self._value_setter(CSD.mod(self.export(), other))
+        return self
     @ _ColorConversionInput
     def __ipow__(self, other: ColorSystem|int|tuple) -> ColorSystem:
-        return self._value_setter(CSD.power(self.export(), other))
+        self._value_setter(CSD.power(self.export(), other))
+        return self
 
     # ------------------------------------------------------------------------------------------------------------------
     # - Comparison Dunders -
@@ -164,6 +171,8 @@ class ColorSystem(ABC):
 # - RGB -
 # ------------------------------------------------------------------------------------------------------------------
 class RGB(ColorSystem):
+    __slots__ = "_r","_g","_b"
+
     """
     Color Object for RGB values.
     All r,g,b values are integer values which range between 0 and 255, including.
@@ -216,6 +225,8 @@ class RGB(ColorSystem):
 # ----------------------------------------------------------------------------------------------------------------------
 # inherits from rgb as it is just another notation of the rgb format
 class HEX(RGB):
+    __slots__ = "_r","_g","_b"
+
     """
     Color Object for HEX values.
     Inherits from RGB as this is just another notation for RGB values.
@@ -271,6 +282,8 @@ class HEX(RGB):
 # - RGBA -
 # ------------------------------------------------------------------------------------------------------------------
 class RGBA(ColorSystem):
+    __slots__ = "_r","_g","_b", "_a"
+
     """
     Color Object for RGBA values.
     All r,g,b,a values are integer values which range between 0 and 255, including.
@@ -330,6 +343,8 @@ class RGBA(ColorSystem):
 # ----------------------------------------------------------------------------------------------------------------------
 # inherits from rgba as it is just another notation of the rgb format
 class HEXA(RGBA):
+    __slots__ = "_r","_g","_b", "_a"
+
     """
     Color Object for HEXA values.
     Inherits from RGBA as this is just another notation for RGBA values.
@@ -385,6 +400,8 @@ class HEXA(RGBA):
 # - HSV -
 # ------------------------------------------------------------------------------------------------------------------
 class HSV(ColorSystem):
+    __slots__ = "_h","_s","_v"
+
     """
     Color Object for HSV values.
     The h value is a float value which ranges between 0 and 360, including.
@@ -437,6 +454,8 @@ class HSV(ColorSystem):
 # - HSL -
 # ------------------------------------------------------------------------------------------------------------------
 class HSL(ColorSystem):
+    __slots__ = "_h","_s","_l"
+
     """
     Color Object for HSL values.
     The h value is a float value which ranges between 0 and 360, including.
@@ -489,6 +508,8 @@ class HSL(ColorSystem):
 # - CMYK -
 # ----------------------------------------------------------------------------------------------------------------------
 class CMYK(ColorSystem):
+    __slots__ = "_c","_m","_y","_k"
+
     """
     Color Object for CMYK values.
     All c,m,y,k values are float values which range between 0 and 1, including

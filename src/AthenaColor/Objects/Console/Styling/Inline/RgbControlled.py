@@ -23,6 +23,25 @@ __all__=[
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class RgbControlled:
+    __slots__ = (
+        "_param_code",
+        "Maroon","DarkRed","Brown","Firebrick","Crimson","Red","Tomato","Coral","IndianRed","LightCoral","DarkSalmon",
+        "Salmon","LightSalmon","OrangeRed","DarkOrange","Orange","Gold","DarkGoldenRod","GoldenRod","PaleGoldenRod",
+        "DarkKhaki","Khaki","Olive","Yellow","YellowGreen","DarkOliveGreen","OliveDrab","LawnGreen","Chartreuse",
+        "GreenYellow","DarkGreen","Green","ForestGreen","Lime","LimeGreen","LightGreen","PaleGreen","DarkSeaGreen",
+        "MediumSpringGreen","SpringGreen","SeaGreen","MediumAquaMarine","MediumSeaGreen","LightSeaGreen","DarkSlateGray",
+        "Teal","DarkCyan","Aqua","Cyan","LightCyan","DarkTurquoise","Turquoise","MediumTurquoise","PaleTurquoise",
+        "AquaMarine","PowderBlue","CadetBlue","SteelBlue","CornFlowerBlue","DeepSkyBlue","DodgerBlue","LightBlue",
+        "SkyBlue","LightSkyBlue","MidnightBlue","Navy","DarkBlue","MediumBlue","Blue","RoyalBlue","BlueViolet","Indigo",
+        "DarkSlateBlue","SlateBlue","MediumSlateBlue","MediumPurple","DarkMagenta","DarkViolet","DarkOrchid","MediumOrchid",
+        "Purple","Thistle","Plum","Violet","Magenta","Orchid","MediumVioletRed","PaleVioletRed","DeepPink","HotPink",
+        "LightPink","Pink","AntiqueWhite","Beige","Bisque","BlanchedAlmond","Wheat","CornSilk","LemonChiffon",
+        "LightGoldenRodYellow","LightYellow","SaddleBrown","Sienna","Chocolate","Peru","SandyBrown","BurlyWood","Tan",
+        "RosyBrown","Moccasin","NavajoWhite","PeachPuff","MistyRose","LavenderBlush","Linen","OldLace","PapayaWhip",
+        "WeaShell","MintCream","SlateGray","LightSlateGray","LightSteelBlue","Lavender","FloralWhite","AliceBlue",
+        "GhostWhite","Honeydew","Ivory","Azure","Snow","Black","DimGray","Gray","DarkGray","Silver","LightGray"
+        ,"Gainsboro","WhiteSmoke","White",
+    )
     def __init__(self, param_code:str):
         self._param_code = param_code
         self.Maroon              = ColorSequence(f"{self._param_code}{str(HtmlColorObjects.Maroon)}")
