@@ -33,7 +33,7 @@ def TextNested():
     return a,b,c
 
 def TextNestedBig():
-    a = StyleNest.Bold(
+    StyleNest.Bold(
         StyleNest.Bold(
             StyleNest.Bold(
                 StyleNest.Bold(
