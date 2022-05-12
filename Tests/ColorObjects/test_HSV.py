@@ -13,6 +13,7 @@ from AthenaColor import *
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
+# noinspection PyTypeChecker
 class ColorObjects_HSV(unittest.TestCase):
     @staticmethod
     def CreateColor(h=.25,s=.5,v=.75) -> HSV:
@@ -32,6 +33,7 @@ class ColorObjects_HSV(unittest.TestCase):
     def test_str(self):
         self.assertEqual(str(self.CreateColor()),"0.25;0.5;0.75")
 
+    # noinspection PyTypeChecker
     def test_dunder_tuples(self):
         color = self.CreateColor()
         # Comparison
