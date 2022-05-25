@@ -30,6 +30,8 @@ __all__ = [
 # ----------------------------------------------------------------------------------------------------------------------
 def NormalizeRgb(r:int,g:int,b:int) -> Tuple[float, ...]:
     return r/255,g/255,b/255
+def NormalizeRgba(r:int,g:int,b:int,a:int) -> Tuple[float, ...]:
+    return r/255,g/255,b/255, a/255
 
 numbers = (int,float)
 
