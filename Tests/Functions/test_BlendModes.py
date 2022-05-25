@@ -7,7 +7,7 @@ import unittest
 
 # Custom Library
 from AthenaColor.Objects.Color.ColorSystem import RGB, RGBA
-from AthenaColor.Functions.BlendModes import blend_normal
+from AthenaColor.Functions.BlendModes import *
 
 
 # Custom Packages
@@ -20,4 +20,10 @@ class Functions_BlendModes(unittest.TestCase):
         self.assertEqual(
             RGBA(255,255,255,255),
             blend_normal(RGB(128,128,128), RGB(255,255,255))
+        )
+
+    def test_blend_multiply(self):
+        self.assertEqual(
+            RGBA(82, 77, 45,255),
+            blend_multiply(RGB(246, 231, 134), RGB(85,85,85))
         )

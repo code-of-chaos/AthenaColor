@@ -17,6 +17,15 @@ from AthenaColor.Objects.Color.ColorTupleConversion import NormalizeRgba
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Code -
 # ----------------------------------------------------------------------------------------------------------------------
+__all__ = [
+    "blend_normal", "blend_linearburn", "blend_colordodge", "blend_difference", "blend_lineardodge", "blend_screen",
+    "blend_darken", "blend_linearlight", "blend_vividlight", "blend_colorburn", "blend_multiply", "blend_lighten",
+    "blend_overlay", "blend_exclusion", "blend_hardlight", "blend_softlight", "blend_pinlight"
+]
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - Support Code -
+# ----------------------------------------------------------------------------------------------------------------------
 def _blend_function(color1:ColorSystem,color2:ColorSystem, formula:Callable) -> RGBA:
     color1_tuple = NormalizeRgba(*to_RGBA(color1).export())
     color2_tuple = NormalizeRgba(*to_RGBA(color2).export())
