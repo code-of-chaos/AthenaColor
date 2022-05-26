@@ -7,17 +7,31 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-import AthenaColor
+from AthenaColor.Console.Styling.Nested.RgbControlledNest import RgbControlledNested
+from AthenaColor.Console.Styling.Inline.Bodies import Fore, Back, Underline
+from AthenaColor.Console.Styling.Inline.Style import Style
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
+__all__=[
+    "ForeNest","BackNest", "UnderlineNest"
+]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def main():
-    pass
+ForeNest = RgbControlledNested(
+    inline_class=Fore,
+    reset=Style.NoForeground
+)
 
-if __name__ == '__main__':
-    main()
+BackNest = RgbControlledNested(
+    inline_class=Back,
+    reset=Style.NoBackground
+)
+
+UnderlineNest = RgbControlledNested(
+    inline_class=Underline,
+    reset=Style.NoUnderline
+)

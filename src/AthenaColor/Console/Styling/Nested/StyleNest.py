@@ -6,8 +6,8 @@
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions.ANSIsquences import NestedColorSequence,NestedColorSequence_NoReset
-from AthenaColor.Objects.Console.Styling.Inline.MakeUp import Style, Basic
+from AthenaColor.Functions.ANSIsequences import NestedColorSequence,NestedColorSequence_NoReset
+from AthenaColor.Console.Styling.Inline.Style import Style, Basic
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -

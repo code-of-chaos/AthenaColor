@@ -6,8 +6,8 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor.Objects.Color.ColorObjectConversion import *
-from AthenaColor.Objects.Color.ColorSystem import RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA
+from AthenaColor.Color.ColorObjectConversion import *
+from AthenaColor.Color.ColorSystem import RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA
 
 # Custom Packages
 # ----------------------------------------------------------------------------------------------------------------------

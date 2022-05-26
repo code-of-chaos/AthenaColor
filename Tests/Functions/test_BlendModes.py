@@ -6,8 +6,8 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor.Objects.Color.ColorSystem import RGB, RGBA
-from AthenaColor.Functions.BlendModes import *
+from AthenaColor.Color.ColorSystem import RGB, RGBA
+from AthenaColor.Color.BlendModes import *
 
 
 # Custom Packages

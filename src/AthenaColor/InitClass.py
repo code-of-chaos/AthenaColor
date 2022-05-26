@@ -9,24 +9,30 @@ import sys
 import os
 
 # Custom Packages
-from AthenaColor.Data.General import EscCodes
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 __all__ = [
-    "AthenaColorInitClass", "init"
+    "InitClass", "init"
 ]
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - Support Code -
+# ----------------------------------------------------------------------------------------------------------------------
+# moved tro this file, as this is the only place where it is used
+class EscCodes:
+    hex:str = "\x1b"
+    octal:str = "\033"
+    uni:str = "\u001b"
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Init Classes -
 # ----------------------------------------------------------------------------------------------------------------------
-class AthenaColorInitClass:
+class InitClass:
     _esc=EscCodes.hex
-    _roundUp = True
     _transparentDefault = ("ff",255)
     _decimalPlaces = 3
-    _stringSeparation = ";"
 
     def __init__(self):
         # prep the console for colors
@@ -68,28 +74,7 @@ class AthenaColorInitClass:
         else:
             raise ValueError
 
-    @property
-    def stringSeparation(self) -> str:
-        return self._stringSeparation
-
-    @stringSeparation.setter
-    def stringSeparation(self, value:str):
-        if isinstance(value,str):
-            self._stringSeparation = value
-        else:
-            raise ValueError
-
-    def __repr__(self) -> str:
-        return f"""
-AthenaColorInitClass(
-roundUp={self._roundUp}, 
-esc={self._esc.encode()}, 
-transparentDefault={self.transparentDefault}, 
-decimalPlaces={self.decimalPlaces}, 
-stringSeparation='{self.stringSeparation}'
-)""".replace("\n","")
-
 # ----------------------------------------------------------------------------------------------------------------------
 # - Init Object -
 # ----------------------------------------------------------------------------------------------------------------------
-init = AthenaColorInitClass()
+init = InitClass()
