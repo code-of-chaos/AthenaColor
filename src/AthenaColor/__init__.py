@@ -16,22 +16,22 @@ __all__ = [
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 from AthenaColor.InitClass import init
-from AthenaColor.Objects.Color.ColorSystem import (
+from AthenaColor.Color.ColorSystem import (
     RGB,RGBA,HEX,HEXA,HSV,HSL,CMYK
 )
-from AthenaColor.Objects.Console.Styling.Inline.Bodies import (
+from AthenaColor.Console.Styling.Inline.Bodies import (
     Fore,Back,Underline
 )
-from AthenaColor.Objects.Console.Styling.Inline.Style import (
+from AthenaColor.Console.Styling.Inline.Style import (
     Style,Basic
 )
-from AthenaColor.Objects.Console.Styling.Nested.ForeNest import ForeNest
-from AthenaColor.Objects.Console.Styling.Nested.BackNest import BackNest
-from AthenaColor.Objects.Console.Styling.Nested.UnderlineNest import UnderlineNest
+from AthenaColor.Console.Styling.Nested.ForeNest import ForeNest
+from AthenaColor.Console.Styling.Nested.BackNest import BackNest
+from AthenaColor.Console.Styling.Nested.UnderlineNest import UnderlineNest
 
-from AthenaColor.Objects.Console.Styling.Nested.StyleNest import (
+from AthenaColor.Console.Styling.Nested.StyleNest import (
     StyleNest,BasicNest
 )
-from AthenaColor.Objects.Color import (
+from AthenaColor.Color import (
     ColorTupleConversion, ColorObjectConversion
 )

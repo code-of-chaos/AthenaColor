@@ -6,7 +6,7 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor.Objects.Color.ColorTupleConversion import *
+from AthenaColor.Color.ColorTupleConversion import *
 
 # Custom Packages
 # ----------------------------------------------------------------------------------------------------------------------

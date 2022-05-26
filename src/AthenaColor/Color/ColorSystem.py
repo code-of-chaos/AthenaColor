@@ -9,7 +9,7 @@ from typing import Tuple
 
 # Custom Packages
 import AthenaColor.Functions.DunderFunctions as CSD
-from AthenaColor.Objects.Color.ColorTupleConversion import *
+from AthenaColor.Color.ColorTupleConversion import *
 from AthenaColor.InitClass import init
 from AthenaColor.Functions.Constraints import Constrain
 

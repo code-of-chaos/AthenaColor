@@ -7,10 +7,10 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Objects.Color.ColorSystem import RGB,HEX, NormalizeRgb
+from AthenaColor.Color.ColorSystem import RGB,HEX, NormalizeRgb
 from AthenaColor.Functions.ANSIsequences import NestedColorSequence
-from AthenaColor.Objects.Console.Styling.Inline.Bodies import Back
-from AthenaColor.Objects.Console.Styling.Inline.Style import Style
+from AthenaColor.Console.Styling.Inline.Bodies import Back
+from AthenaColor.Console.Styling.Inline.Style import Style
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
