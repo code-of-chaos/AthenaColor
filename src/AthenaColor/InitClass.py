@@ -23,10 +23,8 @@ __all__ = [
 # ----------------------------------------------------------------------------------------------------------------------
 class InitClass:
     _esc=EscCodes.hex
-    _roundUp = True
     _transparentDefault = ("ff",255)
     _decimalPlaces = 3
-    _stringSeparation = ";"
 
     def __init__(self):
         # prep the console for colors
@@ -67,27 +65,6 @@ class InitClass:
             self._decimalPlaces = value
         else:
             raise ValueError
-
-    @property
-    def stringSeparation(self) -> str:
-        return self._stringSeparation
-
-    @stringSeparation.setter
-    def stringSeparation(self, value:str):
-        if isinstance(value,str):
-            self._stringSeparation = value
-        else:
-            raise ValueError
-
-    def __repr__(self) -> str:
-        return f"""
-InitClass(
-roundUp={self._roundUp}, 
-esc={self._esc.encode()}, 
-transparentDefault={self.transparentDefault}, 
-decimalPlaces={self.decimalPlaces}, 
-stringSeparation='{self.stringSeparation}'
-)""".replace("\n","")
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Init Object -

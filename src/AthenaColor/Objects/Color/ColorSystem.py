@@ -35,12 +35,13 @@ def _ColorConversionInput(fnc):
 # - Actual Color System -
 # ----------------------------------------------------------------------------------------------------------------------
 class ColorSystem(ABC):
+    string_seperation=";"
     def __init__(self, *_):
         # no 'ColorSystem' can be created on its own
         raise PermissionError
 
     def __str__(self)->str:
-        return init.stringSeparation.join(str(c) for c in self)
+        return self.string_seperation.join(str(c) for c in self)
 
     @abstractmethod
     def __repr__(self)->str:...
