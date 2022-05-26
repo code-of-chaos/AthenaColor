@@ -15,13 +15,13 @@ from AthenaColor.Data.General import EscCodes
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 __all__ = [
-    "AthenaColorInitClass", "init"
+    "InitClass", "init"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Init Classes -
 # ----------------------------------------------------------------------------------------------------------------------
-class AthenaColorInitClass:
+class InitClass:
     _esc=EscCodes.hex
     _roundUp = True
     _transparentDefault = ("ff",255)
@@ -81,7 +81,7 @@ class AthenaColorInitClass:
 
     def __repr__(self) -> str:
         return f"""
-AthenaColorInitClass(
+InitClass(
 roundUp={self._roundUp}, 
 esc={self._esc.encode()}, 
 transparentDefault={self.transparentDefault}, 
@@ -92,4 +92,4 @@ stringSeparation='{self.stringSeparation}'
 # ----------------------------------------------------------------------------------------------------------------------
 # - Init Object -
 # ----------------------------------------------------------------------------------------------------------------------
-init = AthenaColorInitClass()
+init = InitClass()
