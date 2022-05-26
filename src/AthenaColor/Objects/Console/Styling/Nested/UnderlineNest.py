@@ -10,7 +10,7 @@ from __future__ import annotations
 from AthenaColor.Objects.Color.ColorSystem import RGB,HEX, NormalizeRgb
 from AthenaColor.Functions.ANSIsquences import NestedColorSequence
 from AthenaColor.Objects.Console.Styling.Inline.Bodies import Underline
-from AthenaColor.Objects.Console.Styling.Inline.MakeUp import Style
+from AthenaColor.Objects.Console.Styling.Inline.Style import Style
 
 
 # ----------------------------------------------------------------------------------------------------------------------
