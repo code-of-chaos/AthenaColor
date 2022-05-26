@@ -7,7 +7,7 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions.ANSIsquences import ColorSequence
+from AthenaColor.Functions.ANSIsequences import ColorSequence
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
