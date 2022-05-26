@@ -14,7 +14,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="AthenaColor",
-    version="4.2.0",
+    version="4.2.1",
     author="Andreas Sas",
     author_email="",
     description="Package to support full usage of RGB colors in the Console.",
