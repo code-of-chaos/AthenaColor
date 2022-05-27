@@ -16,6 +16,7 @@ A *No Dependency* python package for displaying the full spectrum of RGB colors 
 Inline styling:
 ```python
 from AthenaColor import Fore, Style
+
 print(  
     f"""  
     {Style.Italic}{Fore.SlateGray}AthenaColor Example:{Style.NoForeground}
