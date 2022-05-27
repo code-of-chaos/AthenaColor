@@ -10,7 +10,38 @@ A *No Dependency* python package for displaying the full spectrum of RGB colors 
 - *Nested* and *Inline* options to print StyleNest and Color makeup to the Console
 - 140 predefined extended HTML colors
 - By using the `RGB` object, you have access to print any RGB color to the console you desire
- 
+
+---
+## Quick Examples
+Inline styling:
+```python
+from AthenaColor import Fore, Style
+print(  
+    f"""  
+    {Style.Italic}{Fore.SlateGray}AthenaColor Example:{Style.NoForeground}
+    {Fore.Red}This is an of {Style.Bold}EXAMPLE{Style.NoBold} nested styling{Style.NoForeground}    
+    {Fore.SlateGray}As you can see, the color needs to be manually returned here{Style.NoForeground}{Style.NoItalic}
+    """  
+)
+```
+Nested Styling:
+```python
+from AthenaColor import ForeNest, StyleNest
+
+print(  
+   StyleNest.Italic(ForeNest.SlateGray(  
+       "AthenaColor Example:",  
+       ForeNest.Red(  
+           "This is an",  
+           StyleNest.Bold("EXAMPLE"),  
+           "of nested styling"  
+       ),    
+       "As you can see, the correct color returns here by itself",
+       sep="\n"  
+   ))  
+)
+```
+
 ---
 ## Documentation
 Full documentation can be found at:

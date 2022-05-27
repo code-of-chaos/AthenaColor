@@ -7,7 +7,6 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-import AthenaColor
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
