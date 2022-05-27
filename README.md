@@ -3,13 +3,20 @@
 
 <img height="128" src="https://github.com/DirectiveAthena/VSC-AthenaColor/blob/master/Resources/AthenaColor.png?raw=true" width="128"/>
 
-A *No Dependency* python package for displaying the full spectrum of RGB colors in the Console.
-
 --- 
-## Details and features 
-- *Nested* and *Inline* options to print StyleNest and Color makeup to the Console
-- 140 predefined extended HTML colors
-- By using the `RGB` object, you have access to print any RGB color to the console you desire
+## Package Details
+#### Details and features 
+A *No Dependency* Python package do display stext styling in a console.
+- Next to the full ability to use ANSI styling options, commonly used HTML color names are defined as default colors for Fore- and Background color styling
+  - The color option are avaible permitting the console can take advantage of RGB ANSI codes
+  - For a full list of all 140 out of the box available colors, go to [the full documentatio](https://publish.obsidian.md/directiveathena/Content/Programming/AthenaColor/Documentation/HTML+Named+Colors)
+  - By using the `RGB` object, you have access to print any RGB color to the console you desire
+- Uses a similar syntax to Colorama, but also allows for nested function patterns
+
+#### Python Version
+- Supported Python versions: **3.7**, **3.8**, **3.9**, **3.10**
+  - Other older versions of Python are not currently supported. 
+  - These older versions will probably not be supported by @Andreas Sas himself, but if you want to contribute to the project and make this package compatible with older versions of Python, Pull requests are always welcome.
 
 ---
 ## Quick Examples
