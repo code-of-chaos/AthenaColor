@@ -14,15 +14,15 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="AthenaColor",
-    version="5.1.0",
+    version="5.1.1",
     author="Andreas Sas",
     author_email="",
     description="Package to support full usage of RGB colors in the Console.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/DirectiveAthena/VerSC-AthenaColor",
+    url="https://github.com/DirectiveAthena/AthenaColor",
     project_urls={
-        "Bug Tracker": "https://github.com/DirectiveAthena/VerSC-AthenaColor/issues",
+        "Bug Tracker": "https://github.com/DirectiveAthena/AthenaColor/issues",
     },
     license="GPLv3",
     package_dir={"": "src"},

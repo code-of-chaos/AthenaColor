@@ -568,95 +568,72 @@ class CMYK(ColorSystem):
 # BELOW HERE IS FOR SPEED INCREASE!
 # Possible because we now have a __hash__ on any given ColorSystem class
 # needs to be placed here, as only after all the defining of all the colors, this map can be made
-_r_export = lambda r: r.export()
-_r_export_RGBAtoRGB = lambda r: (r.r, r.g, r.b)
-_tuple3 = lambda r: (r,r,r)
-_tuple4 = lambda r: (r,r,r,r)
-_same =  lambda r: r
-trnspDef = init.transparentDefault[1]
+_rgb_hex_mapped = {
+    RGB: lambda r: r.export(),
+    HEX: lambda r: r.export(),
+    HSL: lambda r: hsl_to_rgb(r.h, r.s, r.l),
+    HSV: lambda r: hsv_to_rgb(r.h, r.s, r.v),
+    CMYK: lambda r: cmyk_to_rgb(r.c,r.m,r.y,r.k),
+    RGBA: lambda r: (r.r, r.g, r.b),
+    HEXA: lambda r: (r.r, r.g, r.b),
+    int: lambda r: (r,r,r),
+    float: lambda r: (r,r,r),
+    tuple: lambda r: r
+}
+_rgba_hexa_mapped = {
+    RGB: lambda r: (r.r, r.g, r.b, init.transparentDefault[1]),
+    HEX: lambda r: (r.r, r.g, r.b, init.transparentDefault[1]),
+    HSL: lambda r: (*hsl_to_rgb(r.h, r.s, r.l), init.transparentDefault[1]),
+    HSV: lambda r: (*hsv_to_rgb(r.h, r.s, r.v), init.transparentDefault[1]),
+    CMYK: lambda r: (*cmyk_to_rgb(r.c,r.m,r.y,r.k), init.transparentDefault[1]),
+    RGBA: lambda r: r.export(),
+    HEXA: lambda r: r.export(),
+    int: lambda r: (r,r,r,r),
+    float: lambda r: (r,r,r,r),
+    tuple: lambda r: r
+}
+
 color_conversions_mapped ={
-    RGB : {
-        RGB: _r_export,
-        HEX: _r_export,
-        HSL: lambda r: hsl_to_rgb(r.h, r.s, r.l),
-        HSV: lambda r: hsv_to_rgb(r.h, r.s, r.v),
-        CMYK: lambda r: cmyk_to_rgb(r.c,r.m,r.y,r.k),
-        RGBA: _r_export_RGBAtoRGB,
-        HEXA: _r_export_RGBAtoRGB,
-        int: _tuple3,
-        float: _tuple3,
-        tuple: _same
-    },
-    HEX : {
-        RGB: _r_export,
-        HEX: _r_export,
-        HSL: lambda r: hsl_to_rgb(r.h, r.s, r.l),
-        HSV: lambda r: hsv_to_rgb(r.h, r.s, r.v),
-        CMYK: lambda r: cmyk_to_rgb(r.c,r.m,r.y,r.k),
-        RGBA: _r_export_RGBAtoRGB,
-        HEXA: _r_export_RGBAtoRGB,
-        int: _tuple3,
-        float: _tuple3,
-        tuple: _same
-    },
+    # RGB, HEX follow the same pattern
+    RGB : _rgb_hex_mapped,
+    HEX : _rgb_hex_mapped,
+    # RGBA and HEXA follow the same pattern
+    RGBA : _rgba_hexa_mapped,
+    HEXA : _rgba_hexa_mapped,
     HSL : {
         RGB: lambda r: rgb_to_hsl(r.r, r.g, r.b),
         HEX: lambda r: rgb_to_hsl(r.r, r.g, r.b),
-        HSL: _r_export,
+        HSL: lambda r: r.export(),
         HSV: lambda r: hsv_to_hsl(r.h, r.s, r.v),
         CMYK: lambda r: cmyk_to_hsl(r.c,r.m,r.y,r.k),
         RGBA: lambda r: rgb_to_hsl(r.r, r.g, r.b),
         HEXA: lambda r: rgb_to_hsl(r.r, r.g, r.b),
-        int: _tuple3,
-        float: _tuple3,
-        tuple: _same
+        int: lambda r: (r,r,r),
+        float: lambda r: (r,r,r),
+        tuple: lambda r: r
     },
     HSV : {
         RGB: lambda r: rgb_to_hsv(r.r, r.g, r.b),
         HEX: lambda r: rgb_to_hsv(r.r, r.g, r.b),
         HSL: lambda r: hsl_to_hsv(r.h, r.s, r.l),
-        HSV: _r_export,
+        HSV: lambda r: r.export(),
         CMYK: lambda r: cmyk_to_hsv(r.c,r.m,r.y,r.k),
         RGBA: lambda r: rgb_to_hsv(r.r, r.g, r.b),
         HEXA: lambda r: rgb_to_hsv(r.r, r.g, r.b),
-        int: _tuple3,
-        float: _tuple3,
-        tuple: _same
+        int: lambda r: (r,r,r),
+        float: lambda r: (r,r,r),
+        tuple: lambda r: r
     },
     CMYK : {
         RGB: lambda r: rgb_to_cmyk(r.r, r.g, r.b),
         HEX: lambda r: rgb_to_cmyk(r.r, r.g, r.b),
         HSL: lambda r: hsl_to_cmyk(r.h, r.s, r.l),
         HSV: lambda r: hsv_to_cmyk(r.h, r.s, r.v),
-        CMYK: _r_export,
+        CMYK: lambda r: r.export(),
         RGBA: lambda r: rgb_to_cmyk(r.r, r.g, r.b),
         HEXA: lambda r: rgb_to_cmyk(r.r, r.g, r.b),
-        int: _tuple4,
-        float: _tuple4,
-        tuple: _same
-    },
-    RGBA : {
-        RGB: lambda r: (r.r, r.g, r.b, trnspDef),
-        HEX: lambda r: (r.r, r.g, r.b, trnspDef),
-        HSL: lambda r: (*hsl_to_rgb(r.h, r.s, r.l), trnspDef),
-        HSV: lambda r: (*hsv_to_rgb(r.h, r.s, r.v), trnspDef),
-        CMYK: lambda r: (*cmyk_to_rgb(r.c,r.m,r.y,r.k), trnspDef),
-        RGBA: _r_export,
-        HEXA: _r_export,
-        int: _tuple4,
-        float: _tuple4,
-        tuple: _same
-    },
-    HEXA : {
-        RGB: lambda r: (r.r, r.g, r.b, trnspDef),
-        HEX: lambda r: (r.r, r.g, r.b, trnspDef),
-        HSL: lambda r: (*hsl_to_rgb(r.h, r.s, r.l), trnspDef),
-        HSV: lambda r: (*hsv_to_rgb(r.h, r.s, r.v), trnspDef),
-        CMYK: lambda r: (*cmyk_to_rgb(r.c,r.m,r.y,r.k), trnspDef),
-        RGBA: _r_export,
-        HEXA: _r_export,
-        int: _tuple4,
-        float: _tuple4,
-        tuple: _same
-    },
+        int: lambda r: (r,r,r,r),
+        float: lambda r: (r,r,r,r),
+        tuple: lambda r: r
+    }
 }
