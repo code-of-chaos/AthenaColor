@@ -1,7 +1,7 @@
 # - AthenaColor -
 [![pypi](https://img.shields.io/pypi/v/AthenaColor)](https://pypi.org/project/AthenaColor/) [![GitHub license](https://img.shields.io/github/license/DirectiveAthena/VerSC-AthenaColor)](https://github.com/DirectiveAthena/VerSC-AthenaColor/blob/master/LICENSE) [![Discord](https://img.shields.io/discord/814599159926620160?color=maroon)](https://discord.gg/6JcDbhXkCH) [![Downloads](https://pepy.tech/badge/athenacolor)](https://pepy.tech/project/athenacolor)
 
-<img height="128" src="https://github.com/DirectiveAthena/VSC-AthenaColor/blob/master/Resources/AthenaColor.png?raw=true" width="128"/>
+<img height="128" src="https://github.com/DirectiveAthena/AthenaColor/blob/master/Resources/AthenaColor.png?raw=true" width="128" alt="AthenaColor Logo"/>
 
 --- 
 ## Package Details
@@ -16,11 +16,11 @@ A *No Dependency* Python package do display stext styling in a console.
 #### Python Version
 - Supported Python versions: **3.7**, **3.8**, **3.9**, **3.10**
   - Other older versions of Python are not currently supported. 
-  - These older versions will probably not be supported by @Andreas Sas himself, but if you want to contribute to the project and make this package compatible with older versions of Python, Pull requests are always welcome.
+  - These older versions will probably not be supported by @AndreasSas himself, but if you want to contribute to the project and make this package compatible with older versions of Python, Pull requests are always welcome.
 
 ---
 ## Quick Examples
-Inline styling:
+**Inline styling**:
 ```python
 from AthenaColor import Fore, Style
 
@@ -32,7 +32,7 @@ print(
     """  
 )
 ```
-Nested Styling:
+**Nested Styling**:
 ```python
 from AthenaColor import ForeNest, StyleNest
 
@@ -44,7 +44,7 @@ print(
            StyleNest.Bold("EXAMPLE"),  
            "of nested styling"  
        ),    
-       "As you can see, the correct color returns here by itself",
+       "As you can see, a reset of color doesn't need to happen as this is done automatically",
        sep="\n"  
    ))  
 )
@@ -54,12 +54,13 @@ print(
 ## Documentation
 Full documentation can be found at:
 **[directiveathena.com/athenacolor-docu](https://www.directiveathena.com/athenacolor-docu)** (redirect to Obsidian.md publish site)
+(Reminder, the documentation is still under heavy development)
 
 ---
 ## Install
 To install the package in your Python environment
 
-```console 
+``` 
 pip install AthenaColor --upgrade
 ```
 
@@ -67,7 +68,7 @@ pip install AthenaColor --upgrade
 
 ## Links 
 Project files can be found at:    
-- [GitHub Repo](https://github.com/DirectiveAthena/VerSC-AthenaColor)     
+- [GitHub Repo](https://github.com/DirectiveAthena/AthenaColor)     
 - [Pypi link](https://pypi.org/project/AthenaColor/)    
 
 ---
