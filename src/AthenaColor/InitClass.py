@@ -37,7 +37,7 @@ class InitClass:
     def __init__(self):
         # prep the console for colors
         if sys.platform == 'win32':
-            os.system("color")
+            os.system("models/Color")
 
     @property
     def esc(self):

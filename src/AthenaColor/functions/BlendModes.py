@@ -12,7 +12,7 @@ from typing import Callable
 # Custom Packages
 from AthenaColor.Color.ColorSystem import ColorSystem, RGBA
 from AthenaColor.Color.ColorObjectConversion import to_RGBA
-from AthenaColor.Color.ColorTupleConversion import NormalizeRgba
+from AthenaColor.models.Color.ColorTupleConversion import NormalizeRgba
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Code -

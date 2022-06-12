@@ -9,7 +9,7 @@ from __future__ import annotations
 # Custom Packages
 from AthenaColor.Color.ColorSystem import RGB,HEX, NormalizeRgb
 from AthenaColor.Functions.ANSIsequences import NestedColorSequence
-from AthenaColor.Console.Styling.Inline.RgbControlled import RgbControlled
+from AthenaColor.models.Console.Styling.RgbControlled import RgbControlled
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
