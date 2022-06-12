@@ -9,16 +9,31 @@ import setuptools
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+def readme_handler() -> str:
+    with open("README.md", "r") as readme_file:
+        return readme_file.read()
 
+def version_handler() -> str:
+    # ------------------------------------------------------------------------------------------------------------------
+    version = 6,0,0 # <-- DEFINE THE VERSION IN A TUPLE FORMAT HERE
+    # ------------------------------------------------------------------------------------------------------------------
+    version_str = ".".join(str(i) for i in version)
+
+    with open("src/AthenaCSS/_info/_v.py", "w") as file:
+        file.write(f"def _version():\n    return '{version_str}'")
+
+    return version_str
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - Actual Setup -
+# ----------------------------------------------------------------------------------------------------------------------
 setuptools.setup(
     name="AthenaColor",
-    version="5.1.3",
+    version=version_handler(),
     author="Andreas Sas",
     author_email="",
-    description="Package to support full usage of RGB colors in the Console.",
-    long_description=long_description,
+    description="Package to support full usage of RGB colors in the Console",
+    long_description=readme_handler(),
     long_description_content_type="text/markdown",
     url="https://github.com/DirectiveAthena/AthenaColor",
     project_urls={
