@@ -16,7 +16,7 @@ A *No Dependency* Python package do display stext styling in a console.
 #### Python Version
 - Supported Python versions: **3.7**, **3.8**, **3.9**, **3.10**
   - Other older versions of Python are not currently supported. 
-  - These older versions will probably not be supported by @AndreasSas himself, but if you want to contribute to the project and make this package compatible with older versions of Python, Pull requests are always welcome.
+  - These older versions will probably not be supported by [@AndreasSas](https://github.com/AndreasSas) himself, but if you want to contribute to the project and make this package compatible with older versions of Python, Pull requests are always welcome.
 
 ---
 ## Quick Examples
