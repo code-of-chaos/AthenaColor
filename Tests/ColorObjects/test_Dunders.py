@@ -19,10 +19,10 @@ class DunderTesting(BulkTests):
     def test_RGB(self):
         objectType=RGB
         casesOperation=(
-            #operation  oargs               okwargs     args            kwargs      result
+            #operation  oArgs               oKwargs     args            kwargs      result
             (str,       (),                 {},         (0,0,0),        {},         "0;0;0"),
             (repr,      (),                 {},         (0,0,0),        {},         "RGB(r=0,g=0,b=0)"),
-            (round,     (),                 {},         (0,0,0),        {},         RGB(0,0,0)), # doesn't really impact the RGB or HEX objects, but exsists nonetheless
+            (round,     (),                 {},         (0,0,0),        {},         RGB(0,0,0)), # doesn't really impact the RGB or HEX objects, but exists nonetheless
             (bool,      (),                 {},         (0,0,0),        {},         False),
             (bool,      (),                 {},         (0,0,1),        {},         True),
             (divmod,    (8,),               {},         (127,71,54),    {},         (RGB(r=15,g=8,b=6), RGB(r=7,g=7,b=6))),
@@ -41,10 +41,10 @@ class DunderTesting(BulkTests):
     def test_HEX(self):
         objectType=HEX
         casesOperation=(
-            #operation  oargs   okwargs     args            kwargs      result
+            #operation  oArgs   oKwargs     args            kwargs      result
             (str,       (),     {},         ("#000000",),   {},         "#000000"),
             (repr,      (),     {},         ("#000000",),   {},         'HEX(hex_value="#000000")'),
-            (round,     (),     {},         ("#000000",),   {},         HEX("#000000")), # doesn't really impact the RGB or HEX objects, but exsists nonetheless
+            (round,     (),     {},         ("#000000",),   {},         HEX("#000000")), # doesn't really impact the RGB or HEX objects, but exists nonetheless
             (bool,      (),     {},         ("#000000",),   {},         False),
             (bool,      (),     {},         ("#000001",),   {},         True),
             (divmod,    (8,),   {},         ("#7f4736",),   {},         (HEX("#0f0806"), HEX("#070706"))),
@@ -55,10 +55,10 @@ class DunderTesting(BulkTests):
     def test_RGBA(self):
         objectType=RGBA
         casesOperation=(
-            #operation  oargs               okwargs     args                kwargs      result
+            #operation  oArgs               oKwargs     args                kwargs      result
             (str,       (),                 {},         (0,0,0),            {},         "0;0;0;0"),
             (repr,      (),                 {},         (0,0,0),            {},         "RGBA(r=0,g=0,b=0,a=0)"),
-            (round,     (),                 {},         (0,0,0),            {},         RGBA(0,0,0,0)), # doesn't really impact the RGB or HEX objects, but exsists nonetheless
+            (round,     (),                 {},         (0,0,0),            {},         RGBA(0,0,0,0)), # doesn't really impact the RGB or HEX objects, but exists nonetheless
             (bool,      (),                 {},         (0,0,0),            {},         False),
             (bool,      (),                 {},         (0,0,1),            {},         True),
             (divmod,    (8,),               {},         (127,71,54,28),     {},         (RGBA(r=15,g=8,b=6,a=3), RGBA(r=7,g=7,b=6,a=4))),
@@ -71,10 +71,10 @@ class DunderTesting(BulkTests):
     def test_HEXA(self):
         objectType=HEXA
         casesOperation=(
-            #operation  oargs               okwargs     args            kwargs      result
+            #operation  oArgs               oKwargs     args            kwargs      result
             (str,       (),                 {},         ("#00000000",), {},         "#00000000"),
             (repr,      (),                 {},         ("#00000000",), {},         'HEXA(hex_value="#00000000")'),
-            (round,     (),                 {},         ("#00000000",), {},         HEXA("#00000000")), # doesn't really impact the RGB or HEX objects, but exsists nonetheless
+            (round,     (),                 {},         ("#00000000",), {},         HEXA("#00000000")), # doesn't really impact the RGB or HEX objects, but exists nonetheless
             (bool,      (),                 {},         ("#00000000",), {},         False),
             (bool,      (),                 {},         ("#00000100",), {},         True),
             (divmod,    (8,),               {},         ("#7f473612",), {},         (HEXA(hex_value="#0f080602"), HEXA(hex_value="#07070602"))),
@@ -88,7 +88,7 @@ class DunderTesting(BulkTests):
     def test_HSV(self):
         objectType=HSV
         casesOperation=(
-            #operation  oargs               okwargs     args                    kwargs      result
+            #operation  oArgs               oKwargs     args                    kwargs      result
             (str,       (),                 {},         (180,.5,.5),            {},         "180;0.5;0.5"),
             (repr,      (),                 {},         (180,.5,.5),            {},         'HSV(h=180,s=0.5,v=0.5)'),
             (round,     (),                 {},         (180,.5,.5),            {},         HSV(180,0,0)),
@@ -105,7 +105,7 @@ class DunderTesting(BulkTests):
     def test_HSL(self):
         objectType=HSL
         casesOperation=(
-            #operation  oargs               okwargs     args                    kwargs      result
+            #operation  oArgs               oKwargs     args                    kwargs      result
             (str,       (),                 {},         (180,.5,.5),            {},         "180;0.5;0.5"),
             (repr,      (),                 {},         (180,.5,.5),            {},         'HSL(h=180,s=0.5,l=0.5)'),
             (round,     (),                 {},         (180,.5,.5),            {},         HSL(180,0,0)),
@@ -122,7 +122,7 @@ class DunderTesting(BulkTests):
     def test_CMYK(self):
         objectType=CMYK
         casesOperation=(
-            #operation  oargs                       okwargs     args                                kwargs      result
+            #operation  oArgs                       oKwargs     args                                kwargs      result
             (str,       (),                         {},         (.5,.5,.5,.5),                      {},         "0.5;0.5;0.5;0.5"),
             (repr,      (),                         {},         (.5,.5,.5,.5),                      {},         'CMYK(c=0.5,m=0.5,y=0.5,k=0.5)'),
             (round,     (),                         {},         (.5,.5,.5,.5),                      {},         CMYK(0,0,0,0)),

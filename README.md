@@ -6,10 +6,10 @@
 --- 
 ## Package Details
 #### Details and features 
-A *No Dependency* Python package do display stext styling in a console.
+A *No Dependency* Python package do display text styling in a console.
 - Next to the full ability to use ANSI styling options, commonly used HTML color names are defined as default colors for Fore- and Background color styling
-  - The color option are avaible permitting the console can take advantage of RGB ANSI codes
-  - For a full list of all 140 out of the box available colors, go to [the full documentatio](https://publish.obsidian.md/directiveathena/Content/Programming/AthenaColor/Documentation/HTML+Named+Colors)
+  - The color option are available permitting the console can take advantage of RGB ANSI codes
+  - For a full list of all 140 out of the box available colors, go to [the full documentation](https://publish.obsidian.md/directiveathena/Content/Programming/AthenaColor/Documentation/HTML+Named+Colors)
   - By using the `RGB` object, you have access to print any RGB color to the console you desire
 - Uses a similar syntax to Colorama, but also allows for nested function patterns
 

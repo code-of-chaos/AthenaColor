@@ -35,7 +35,7 @@ class RgbControlledNested:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
         return NestedColorSequence(
             obj,
-            f"{self._inline_class._param_code}{';'.join(*color.export())}m",
+            f"{self._inline_class.param_code}{';'.join(*color.export())}m",
             self._reset,
             sep=sep
         )
@@ -44,7 +44,7 @@ class RgbControlledNested:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
         return NestedColorSequence(
             obj,
-            f"{self._inline_class._param_code}{';'.join(*NormalizeRgb(r, g, b))}m",
+            f"{self._inline_class.param_code}{';'.join(*NormalizeRgb(r, g, b))}m",
             self._reset,
             sep=sep
         )

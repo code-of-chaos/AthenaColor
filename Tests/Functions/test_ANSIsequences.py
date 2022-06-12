@@ -13,14 +13,14 @@ from AthenaColor.Functions.ANSIsequences import ColorSequence, NestedColorSequen
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-class Functions_ANSIsequences(unittest.TestCase):
+class Functions_ANSISequences(unittest.TestCase):
     @staticmethod
     def nested(nested):
         return NestedColorSequence(
         # objects
         ("This is a test",
         nested),
-        # color/styling, reset and seperation
+        # color/styling, reset and separation
         color_code="\033[38;2;128;0;0m",
         reset_code="\033[0m",
         sep="\n"
@@ -42,7 +42,7 @@ class Functions_ANSIsequences(unittest.TestCase):
                 # objects
                 ("This is a test",
                 "For real"),
-                # color/styling, reset and seperation
+                # color/styling, reset and separation
                 color_code="\033[38;2;128;0;0m",
                 reset_code="\033[0m",
                 sep="\n"
@@ -56,7 +56,7 @@ f"""[38;2;128;0;0mThis is a test
                 # objects
                 ("This is a test",
                 "For real"),
-                # color/styling, reset and seperation
+                # color/styling, reset and separation
                 color_code="\033[38;2;128;0;0m",
                 reset_code="\033[0m",
                 sep="\n"

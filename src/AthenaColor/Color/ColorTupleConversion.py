@@ -22,7 +22,7 @@ from AthenaColor.Functions.Constraints import (
 __all__ = [
     "hsl_to_hsv","hsv_to_hsl","hex_to_hsl","hsl_to_hex","hex_to_hsv","hsv_to_hex","rgb_to_hsl","hsl_to_rgb",
     "rgb_to_hsv","hsv_to_rgb","hsv_to_cmyk","cmyk_to_hsv","cmyk_to_hsl","hsl_to_cmyk","hex_to_cmyk","cmyk_to_hex",
-    "rgb_to_cmyk","cmyk_to_rgb","hex_to_rgb","hexa_to_rgba","rgba_to_hexa","rgb_to_hex", "NormalizeRgb"
+    "rgb_to_cmyk","cmyk_to_rgb","hex_to_rgb","hexa_to_rgba","rgba_to_hexa","rgb_to_hex", "NormalizeRgb", "NormalizeRgba"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------

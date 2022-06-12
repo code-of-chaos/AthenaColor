@@ -15,7 +15,7 @@ from AthenaColor.Functions.Constraints import *
 # ----------------------------------------------------------------------------------------------------------------------
 class Functions_Constraints(unittest.TestCase):
     def test_Constrain(self):
-        # Keyworded arguments
+        # Keyword arguments
         self.assertEqual(Constrain(value=125,maximum=100),100)
         self.assertEqual(Constrain(value=85,maximum=100),85)
         self.assertEqual(Constrain(value=85,maximum=100,minimum=90),90)
