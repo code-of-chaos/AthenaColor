@@ -25,13 +25,13 @@ class BulkTests(unittest.TestCase):
                     ObjectType(value)
 
     def Subtest_ObjectOperation(self, ObjectType:type, args:tuple, kwargs:dict, cases):
-        for operation, oargs, okwargs,result in cases:
-            with self.subTest(ObjectType=ObjectType, args=args, kwargs=kwargs, oargs=oargs, okwargs=okwargs,result=result, ):
+        for operation, oArgs, oKwargs,result in cases:
+            with self.subTest(ObjectType=ObjectType, args=args, kwargs=kwargs, oArgs=oArgs, oKwargs=oKwargs,result=result, ):
                 test_object = ObjectType(*args, **kwargs)
-                self.assertEqual(operation(test_object, *oargs, *okwargs), result)
+                self.assertEqual(operation(test_object, *oArgs, *oKwargs), result)
 
     def Subtest_ObjectOperationBulk(self, ObjectType:type, cases):
-        for operation, oargs, okwargs, args, kwargs,result in cases:
-            with self.subTest(ObjectType=ObjectType, args=args, kwargs=kwargs, operation=operation,oargs=oargs, okwargs=okwargs,result=result, ):
+        for operation, oArgs, oKwargs, args, kwargs,result in cases:
+            with self.subTest(ObjectType=ObjectType, args=args, kwargs=kwargs, operation=operation,oArgs=oArgs, oKwargs=oKwargs,result=result, ):
                 test_object = ObjectType(*args, **kwargs)
-                self.assertEqual(operation(test_object, *oargs, *okwargs), result)
+                self.assertEqual(operation(test_object, *oArgs, *oKwargs), result)
