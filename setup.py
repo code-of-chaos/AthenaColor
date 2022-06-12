@@ -19,7 +19,7 @@ def version_handler() -> str:
     # ------------------------------------------------------------------------------------------------------------------
     version_str = ".".join(str(i) for i in version)
 
-    with open("src/AthenaCSS/_info/_v.py", "w") as file:
+    with open("src/AthenaColor/_info/_v.py", "w") as file:
         file.write(f"def _version():\n    return '{version_str}'")
 
     return version_str
