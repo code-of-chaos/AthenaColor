@@ -6,7 +6,7 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor.Functions.ANSIsequences import ColorSequence, NestedColorSequence
+from AthenaColor.functions.ansi_sequences import *
 
 # Custom Packages
 
@@ -16,51 +16,30 @@ from AthenaColor.Functions.ANSIsequences import ColorSequence, NestedColorSequen
 class Functions_ANSISequences(unittest.TestCase):
     @staticmethod
     def nested(nested):
-        return NestedColorSequence(
-        # objects
-        ("This is a test",
-        nested),
-        # color/styling, reset and separation
-        color_code="\033[38;2;128;0;0m",
-        reset_code="\033[0m",
-        sep="\n"
-    )
+        return color_sequence_nested(("This is a test",
+                                      nested), color_code="\033[38;2;128;0;0m", reset_code="\033[0m", sep="\n")
 
     def test_ColorSequence(self):
         self.assertEqual(
-            ColorSequence("38;2;128;0;0"),
+            color_sequence("38;2;128;0;0"),
             "[38;2;128;0;0m"
         )
         self.assertEqual(
-            ColorSequence(0),
+            color_sequence(0),
             "[0m"
         )
 
     def test_NestedColorSequence(self):
         self.assertEqual(
-            NestedColorSequence(
-                # objects
-                ("This is a test",
-                "For real"),
-                # color/styling, reset and separation
-                color_code="\033[38;2;128;0;0m",
-                reset_code="\033[0m",
-                sep="\n"
-            ),
+            color_sequence_nested(("This is a test",
+                                   "For real"), color_code="\033[38;2;128;0;0m", reset_code="\033[0m", sep="\n"),
 f"""[38;2;128;0;0mThis is a test
 [0m[38;2;128;0;0mFor real[0m"""
         )
         self.assertEqual(
             self.nested(self.nested(
-                NestedColorSequence(
-                # objects
-                ("This is a test",
-                "For real"),
-                # color/styling, reset and separation
-                color_code="\033[38;2;128;0;0m",
-                reset_code="\033[0m",
-                sep="\n"
-            ))),
+                color_sequence_nested(("This is a test",
+                                       "For real"), color_code="\033[38;2;128;0;0m", reset_code="\033[0m", sep="\n"))),
 f"""[38;2;128;0;0mThis is a test
 [0m[38;2;128;0;0m[38;2;128;0;0mThis is a test
 [0m[38;2;128;0;0m[38;2;128;0;0mThis is a test

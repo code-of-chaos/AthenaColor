@@ -8,16 +8,15 @@ from typing import Tuple
 # Custom Library
 
 # Custom Packages
-import AthenaColor.Functions.DunderFunctions as CSD
-from AthenaColor.Color.ColorTupleConversion import *
-from AthenaColor.InitClass import init
-from AthenaColor.Functions.Constraints import Constrain
+import AthenaColor.functions.dunder_functions as CSD
+from AthenaColor.functions.color_tuple_conversion import *
+from AthenaColor.functions.constrains import contrain
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 __all__ = [
-    "ColorSystem", "RGB", "RGBA", "HEX", "HEXA", "HSV", "HSL", "CMYK", "NormalizeRgb", "color_conversions_mapped"
+    "ColorSystem", "RGB", "RGBA", "HEX", "HEXA", "HSV", "HSL", "CMYK", "normalize_rgb", "color_conversions_mapped"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -198,21 +197,21 @@ class RGB(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        self._r = round(Constrain(value, 255))
+        self._r = round(contrain(value, 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        self._g = round(Constrain(value, 255))
+        self._g = round(contrain(value, 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        self._b = round(Constrain(value, 255))
+        self._b = round(contrain(value, 255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -309,28 +308,28 @@ class RGBA(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        self._r = round(Constrain(value, 255))
+        self._r = round(contrain(value, 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        self._g = round(Constrain(value, 255))
+        self._g = round(contrain(value, 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        self._b = round(Constrain(value, 255))
+        self._b = round(contrain(value, 255))
 
     @property
     def a(self) -> int:
         return self._a
     @a.setter
     def a(self, value: int|float):
-        self._a = round(Constrain(value, 255))
+        self._a = round(contrain(value, 255))
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
@@ -428,21 +427,21 @@ class HSV(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = Constrain(value, 360)
+        self._h = contrain(value, 360)
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = Constrain(value, 1)
+        self._s = contrain(value, 1)
 
     @property
     def v(self) -> int|float:
         return self._v
     @v.setter
     def v(self, value: int|float):
-        self._v = Constrain(value, 1)
+        self._v = contrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -482,21 +481,21 @@ class HSL(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = Constrain(value, 360)
+        self._h = contrain(value, 360)
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = Constrain(value, 1)
+        self._s = contrain(value, 1)
 
     @property
     def l(self) -> int|float:
         return self._l
     @l.setter
     def l(self, value: int|float):
-        self._l = Constrain(value, 1)
+        self._l = contrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -535,28 +534,28 @@ class CMYK(ColorSystem):
         return self._c
     @c.setter
     def c(self, value: int|float):
-        self._c = Constrain(value, 1)
+        self._c = contrain(value, 1)
 
     @property
     def m(self) -> int|float:
         return self._m
     @m.setter
     def m(self, value: int|float):
-        self._m = Constrain(value, 1)
+        self._m = contrain(value, 1)
 
     @property
     def y(self) -> int|float:
         return self._y
     @y.setter
     def y(self, value: int|float):
-        self._y = Constrain(value, 1)
+        self._y = contrain(value, 1)
 
     @property
     def k(self) -> int|float:
         return self._k
     @k.setter
     def k(self, value: int|float):
-        self._k = Constrain(value, 1)
+        self._k = contrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -581,11 +580,11 @@ _rgb_hex_mapped = {
     tuple: lambda r: r
 }
 _rgba_hexa_mapped = {
-    RGB: lambda r: (r.r, r.g, r.b, init.transparentDefault[1]),
-    HEX: lambda r: (r.r, r.g, r.b, init.transparentDefault[1]),
-    HSL: lambda r: (*hsl_to_rgb(r.h, r.s, r.l), init.transparentDefault[1]),
-    HSV: lambda r: (*hsv_to_rgb(r.h, r.s, r.v), init.transparentDefault[1]),
-    CMYK: lambda r: (*cmyk_to_rgb(r.c,r.m,r.y,r.k), init.transparentDefault[1]),
+    RGB: lambda r: (r.r, r.g, r.b, 255), # transparent set to default of 255
+    HEX: lambda r: (r.r, r.g, r.b, 255), # transparent set to default of 255
+    HSL: lambda r: (*hsl_to_rgb(r.h, r.s, r.l), 255), # transparent set to default of 255
+    HSV: lambda r: (*hsv_to_rgb(r.h, r.s, r.v), 255), # transparent set to default of 255
+    CMYK: lambda r: (*cmyk_to_rgb(r.c,r.m,r.y,r.k), 255), # transparent set to default of 255
     RGBA: lambda r: r.export(),
     HEXA: lambda r: r.export(),
     int: lambda r: (r,r,r,r),

@@ -7,7 +7,7 @@ import copy
 import operator
 
 # Custom Library
-from AthenaColor import RGB, RGBA, HEX, HEXA, HSL, HSV, CMYK
+from AthenaColor import *
 
 # Custom Packages
 from Tests.BulkTests import BulkTests

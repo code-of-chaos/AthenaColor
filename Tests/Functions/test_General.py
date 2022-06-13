@@ -6,8 +6,7 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor.Functions.General import *
-from AthenaColor import init
+from AthenaColor.functions.functions import *
 
 # Custom Packages
 
@@ -15,31 +14,19 @@ from AthenaColor import init
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class Functions_General(unittest.TestCase):
-    def test_RoundToDecimals(self):
-        for i, f in zip(range(1,24),range(24,56)):
-            with self.subTest(i=i, f=f):
-                self.assertEqual(RoundToDecimals(i/f), round(i/f , init.decimalPlaces))
-
-    # noinspection PyTypeChecker
-    def test_RoundToDecimals_Fail(self):
-        with self.assertRaises(TypeError):
-            RoundToDecimals(100,"a")
-        with self.assertRaises(TypeError):
-            RoundToDecimals("a",1)
-
     def test_RoundHalfUp(self):
         for i, e in ((0.5,1),(0.4,0),(1.1,1),(.8,1),):
             with self.subTest(i=i,e=e):
                 self.assertEqual(
-                    RoundHalfUp(i),
+                    round_half_up(i),
                     e
                 )
 
     # noinspection PyTypeChecker
     def test_RoundHalfUp_Fail(self):
         with self.assertRaises(TypeError):
-            RoundHalfUp("a")
+            round_half_up("a")
         with self.assertRaises(TypeError):
-            RoundHalfUp((1,))
+            round_half_up((1,))
         with self.assertRaises(TypeError):
-            RoundHalfUp([1,])
+            round_half_up([1, ])

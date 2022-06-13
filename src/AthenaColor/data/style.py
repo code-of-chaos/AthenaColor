@@ -2,27 +2,160 @@
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
+from __future__ import annotations
 
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions.ANSIsequences import NestedColorSequence,NestedColorSequence_NoReset
-from AthenaColor.Console.Styling.Inline.Style import Style, Basic
+from AthenaColor.functions.ansi_sequences import color_sequence, color_sequence_nested, color_sequence_nested_no_reset
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 __all__=[
+    "Style","Basic",
     "StyleNest", "BasicNest"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - StyleNest Sequences -
 # ----------------------------------------------------------------------------------------------------------------------
-NCS = NestedColorSequence            # Done for slight speed increase
-NCSNO = NestedColorSequence_NoReset  # Done for slight speed increase
+class Style:
+    # noinspection PyUnresolvedReferences
+    __all__=[
+        "Reset",
+        "Italic",
+        "NoItalic",
+        "Bold",
+        "NoBold",
+        "UnderlineNest",
+        "NoUnderline",
+        "Crossed",
+        "NoCrossed",
+        "Reversed",
+        "NoReversed",
+        "Frame",
+        "NoFrame",
+        "Circle",
+        "NoCircle",
+        "UnderlineDouble",
+        "NoForeground",
+        "NoBackground"
+    ]
+    Reset                       = color_sequence(0)
+    Bold                        = color_sequence(1)
+    NoBold                      = color_sequence(22)
+    Dim                         = color_sequence(2)
+    NoDim                       = color_sequence(22)
+    Italic                      = color_sequence(3)
+    NoItalic                    = color_sequence(23)
+    Underline                   = color_sequence(4)
+    NoUnderline                 = color_sequence(24)
+    BlinkSlow                   = color_sequence(5)  # NOT WORKING PYCHARM
+    NoBlinkSlow                 = color_sequence(25)  # NOT WORKING PYCHARM
+    BlinkRapid                  = color_sequence(6)  # NOT WORKING PYCHARM
+    NoBlinkRapid                = color_sequence(25)  # NOT WORKING PYCHARM
+    Reversed                    = color_sequence(7)
+    NoReversed                  = color_sequence(27)
+    Conceal                     = color_sequence(8)  # NOT WORKING PYCHARM
+    NoConceal                   = color_sequence(28)  # NOT WORKING PYCHARM
+    Crossed                     = color_sequence(9)
+    NoCrossed                   = color_sequence(29)
+    FontPrimary                 = color_sequence(10)  # NOT WORKING PYCHARM
+    FontSecond1                 = color_sequence(11)  # NOT WORKING PYCHARM
+    FontSecond2                 = color_sequence(12)  # NOT WORKING PYCHARM
+    FontSecond3                 = color_sequence(13)  # NOT WORKING PYCHARM
+    FontSecond4                 = color_sequence(14)  # NOT WORKING PYCHARM
+    FontSecond5                 = color_sequence(15)  # NOT WORKING PYCHARM
+    FontSecond6                 = color_sequence(16)  # NOT WORKING PYCHARM
+    FontSecond8                 = color_sequence(17)  # NOT WORKING PYCHARM
+    FontSecond9                 = color_sequence(18)  # NOT WORKING PYCHARM
+    FontSecond10                = color_sequence(19)  # NOT WORKING PYCHARM
+    NoFont                      = color_sequence(10)  # NOT WORKING PYCHARM
+    Fraktur                     = color_sequence(20)  # NOT WORKING PYCHARM
+    UnderlineDouble             = color_sequence(21)
+    NoUnderlineDouble           = color_sequence(24)
+    PropSpacing                 = color_sequence(26)  # NOT WORKING PYCHARM
+    NoPropSpacing               = color_sequence(26)  # NOT WORKING PYCHARM
+    # 30 - 37 -> see BasicNest
+    # 38 -> see RgbControlled.BackNest
+    NoForeground                = color_sequence(39)
+    # 40 - 47 -> see BasicNest
+    # 48 -> see RgbControlled.BackNest
+    NoBackground                = color_sequence(49)
+    Frame                       = color_sequence(51)
+    NoFrame                     = color_sequence(54)
+    Circle                      = color_sequence(52)
+    NoCircle                    = color_sequence(54)
+    OverLine                    = color_sequence(53)
+    NoOverLine                  = color_sequence(55)
+    # ? 56
+    # ? 57
+    # 58 -> see RgbControlled.UnderlineNest
+    UnderColourDefault          = color_sequence(59)
+    IdeogramUnderLine           = color_sequence(60)
+    IdeogramUnderLineDouble     = color_sequence(61)
+    IdeogramOverLine            = color_sequence(62)
+    IdeogramOverLineDouble      = color_sequence(63)
+    IdeogramStress              = color_sequence(64)
+    NoIdeogram                  = color_sequence(65)
+    SuperScript                 = color_sequence(73)
+    SubScript                   = color_sequence(74)
+    NoScript                    = color_sequence(75)
+    # ? 76 - 89
+    # 100 - 107 see BasicNest
+    # 90 - 97 see BasicNest
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - Basic Sequences -
+# ----------------------------------------------------------------------------------------------------------------------
+class Basic:
+    class Fore:
+        Black = color_sequence(30)
+        Red = color_sequence(31)
+        Green = color_sequence(32)
+        Yellow = color_sequence(33)
+        Blue = color_sequence(34)
+        Magenta = color_sequence(35)
+        Cyan = color_sequence(36)
+        White = color_sequence(37)
+        BrightBlack = color_sequence(90)
+        BrightRed = color_sequence(91)
+        BrightGreen = color_sequence(92)
+        BrightYellow = color_sequence(93)
+        BrightBlue = color_sequence(94)
+        BrightMagenta = color_sequence(95)
+        BrightCyan = color_sequence(96)
+        BrightWhite = color_sequence(97)
+
+    class Back:
+        Black = color_sequence(40)
+        Red = color_sequence(41)
+        Green = color_sequence(42)
+        Yellow = color_sequence(43)
+        Blue = color_sequence(44)
+        Magenta = color_sequence(45)
+        Cyan = color_sequence(46)
+        White = color_sequence(47)
+        BrightBlack = color_sequence(100)
+        BrightRed = color_sequence(101)
+        BrightGreen = color_sequence(102)
+        BrightYellow = color_sequence(103)
+        BrightBlue = color_sequence(104)
+        BrightMagenta = color_sequence(105)
+        BrightCyan = color_sequence(106)
+        BrightWhite = color_sequence(107)
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# - Nested Styling -
+# ----------------------------------------------------------------------------------------------------------------------
+NCS = color_sequence_nested            # Done for slight speed increase
+NCSNO = color_sequence_nested_no_reset  # Done for slight speed increase
 sep_ = " "
 
+# I know this is technically a model,
+#   BUT, given it depends so much on the code above I've decideded to place it here
 class StyleNest:
     @staticmethod
     def Reset(*obj,sep=sep_):                      return NCSNO(obj,Style.Reset,sep)
