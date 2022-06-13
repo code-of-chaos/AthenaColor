@@ -46,31 +46,31 @@ class ColorObjects_HSV(unittest.TestCase):
 
         # math
         self.assertEqual(
-            round(color + (.25,.25,.25),init.decimalPlaces),
+            round(color + (.25,.25,.25),3),
             HSV(.5,.75,1.0)
         )
         self.assertEqual(
-            round(color - (.25,.5,0.75),init.decimalPlaces),
+            round(color - (.25,.5,0.75),3),
             HSV(0.0,0.0,0.0)
         )
         self.assertEqual(
-            round(color * (.1,.5,0.75),init.decimalPlaces),
+            round(color * (.1,.5,0.75),3),
             HSV(0.025,0.25,0.562)
         )
         self.assertEqual(
-            round(color / (.1,.5,0.75),init.decimalPlaces),
+            round(color / (.1,.5,0.75),3),
             HSV(2.5,1.0,1.0)
         )
         self.assertEqual(
-            round(color // (.1,.5,0.75),init.decimalPlaces),
+            round(color // (.1,.5,0.75),3),
             HSV(2.0,1.0,1.0)
         )
         self.assertEqual(
-            round(color ** (.1,.5,0.75),init.decimalPlaces),
+            round(color ** (.1,.5,0.75),3),
             HSV(0.871,0.707,0.806)
         )
         self.assertEqual(
-            round(color % (.1,.5,0.75),init.decimalPlaces),
+            round(color % (.1,.5,0.75),3),
             HSV(0.05,0.0,0.0)
         )
 
@@ -87,31 +87,31 @@ class ColorObjects_HSV(unittest.TestCase):
 
         # math
         self.assertEqual(
-            round(color + RGB(32, 64, 128),init.decimalPlaces),
+            round(color + RGB(32, 64, 128),3),
             HSV(220.25,1,1)
         )
         self.assertEqual(
-            round(color - RGB(32, 64, 128),init.decimalPlaces),
+            round(color - RGB(32, 64, 128),3),
             HSV(0,0,0.248)
         )
         self.assertEqual(
-            round(color * RGB(4, 3, 2),init.decimalPlaces),
+            round(color * RGB(4, 3, 2),3),
             HSV(7.5,0.25,0.012)
         )
         self.assertEqual(
-            round(color / RGB(4, 3, 2),init.decimalPlaces),
+            round(color / RGB(4, 3, 2),3),
             HSV(0.008,1.0,1)
         )
         self.assertEqual(
-            round(color // RGB(9, 7, 5),init.decimalPlaces),
+            round(color // RGB(9, 7, 5),3),
             HSV(0.0,1.0,1)
         )
         self.assertEqual(
-            round(color ** RGB(2, 2, 1),init.decimalPlaces),
+            round(color ** RGB(2, 2, 1),3),
             HSV(0.0,0.707,0.998)
         )
         self.assertEqual(
-            round(color % RGB(9, 7, 5),init.decimalPlaces),
+            round(color % RGB(9, 7, 5),3),
             HSV(0.25,0.056,0.015)
         )
 
@@ -127,31 +127,31 @@ class ColorObjects_HSV(unittest.TestCase):
 
         # math
         self.assertEqual(
-            round(color + HEX("#abcdef"),init.decimalPlaces),
+            round(color + HEX("#abcdef"),3),
             HSV(210.25,0.785,1)
         )
         self.assertEqual(
-            round(color - HEX("#00bb55"),init.decimalPlaces),
+            round(color - HEX("#00bb55"),3),
             HSV(0,0,0.017)
         )
         self.assertEqual(
-            round(color * HEX("#020302"),init.decimalPlaces),
+            round(color * HEX("#020302"),3),
             HSV(30.0,0.167,0.009)
         )
         self.assertEqual(
-            round(color / HEX("#020302"),init.decimalPlaces),
+            round(color / HEX("#020302"),3),
             HSV(0.002,1,1)
         )
         self.assertEqual(
-            round(color // HEX("#050709"),init.decimalPlaces),
+            round(color // HEX("#050709"),3),
             HSV(0.0,1.0,1)
         )
         self.assertEqual(
-            round(color ** HEX("#020101"),init.decimalPlaces),
+            round(color ** HEX("#020101"),3),
             HSV(1.0,0.707,0.998)
         )
         self.assertEqual(
-            round(color % HEX("#121664"),init.decimalPlaces),
+            round(color % HEX("#121664"),3),
             HSV(0.25,0.5,0.358)
         )
 
@@ -167,31 +167,31 @@ class ColorObjects_HSV(unittest.TestCase):
 
         # math
         self.assertEqual(
-            round(color + HSL(0.125,0.5,0.1),init.decimalPlaces),
+            round(color + HSL(0.125,0.5,0.1),3),
             HSV(0.25,1,0.899)
         )
         self.assertEqual(
-            round(color - HSL(0.125,0.5,0.1),init.decimalPlaces),
+            round(color - HSL(0.125,0.5,0.1),3),
             HSV(0.25,0,0.601)
         )
         self.assertEqual(
-            round(color * HSL(0,0,0.01),init.decimalPlaces),
+            round(color * HSL(0,0,0.01),3),
             HSV(0.0,0.0,0.009)
         )
         self.assertEqual(
-            round(color / HSL(180,1,.01),init.decimalPlaces),
+            round(color / HSL(180,1,.01),3),
             HSV(0.001,0.5,1)
         )
         self.assertEqual(
-            round(color // HSL(180,1,.01),init.decimalPlaces),
+            round(color // HSL(180,1,.01),3),
             HSV(0.0,0.0,1)
         )
         self.assertEqual(
-            round(color ** HSL(0,0,0.006),init.decimalPlaces),
+            round(color ** HSL(0,0,0.006),3),
             HSV(1.0, 1.0, 0.998)
         )
         self.assertEqual(
-            round(color % HSL(180,0.2,0.1),init.decimalPlaces),
+            round(color % HSL(180,0.2,0.1),3),
             HSV(0.25,0.145,0.018)
         )
 
@@ -207,31 +207,31 @@ class ColorObjects_HSV(unittest.TestCase):
 
         # math
         self.assertEqual(
-            round(color + HSV(.25, .25, .25),init.decimalPlaces),
+            round(color + HSV(.25, .25, .25),3),
             HSV(.5, .75, 1.0)
         )
         self.assertEqual(
-            round(color - HSV(.25, .5, 0.75),init.decimalPlaces),
+            round(color - HSV(.25, .5, 0.75),3),
             HSV(0.0, 0.0, 0.0)
         )
         self.assertEqual(
-            round(color * HSV(.1, .5, 0.75),init.decimalPlaces),
+            round(color * HSV(.1, .5, 0.75),3),
             HSV(0.025, 0.25, 0.562)
         )
         self.assertEqual(
-            round(color / HSV(.1, .5, 0.75),init.decimalPlaces),
+            round(color / HSV(.1, .5, 0.75),3),
             HSV(2.5, 1.0, 1.0)
         )
         self.assertEqual(
-            round(color // HSV(.1, .5, 0.75),init.decimalPlaces),
+            round(color // HSV(.1, .5, 0.75),3),
             HSV(2.0, 1.0, 1.0)
         )
         self.assertEqual(
-            round(color ** HSV(.1, .5, 0.75),init.decimalPlaces),
+            round(color ** HSV(.1, .5, 0.75),3),
             HSV(0.871, 0.707, 0.806)
         )
         self.assertEqual(
-            round(color % HSV(.1, .5, 0.75),init.decimalPlaces),
+            round(color % HSV(.1, .5, 0.75),3),
             HSV(0.05, 0.0, 0.0)
         )
 
@@ -247,30 +247,30 @@ class ColorObjects_HSV(unittest.TestCase):
 
         # math
         self.assertEqual(
-            round(color + CMYK(.9,.9,.75,.1),init.decimalPlaces),
+            round(color + CMYK(.9,.9,.75,.1),3),
             HSV(240.25,1,0.974)
         )
         self.assertEqual(
-            round(color - CMYK(.9,.9,.75,.1),init.decimalPlaces),
+            round(color - CMYK(.9,.9,.75,.1),3),
             HSV(0,0,0.526)
         )
         self.assertEqual(
-            round(color * CMYK(.9,.9,.75,.9),init.decimalPlaces),
+            round(color * CMYK(.9,.9,.75,.9),3),
             HSV(60.0,0.25,0.018)
         )
         self.assertEqual(
-            round(color / CMYK(.9,.9,.75,.9),init.decimalPlaces),
+            round(color / CMYK(.9,.9,.75,.9),3),
             HSV(0.001,1.0,1)
         )
         self.assertEqual(
-            round(color // CMYK(.9,.9,.75,.9),init.decimalPlaces),
+            round(color // CMYK(.9,.9,.75,.9),3),
             HSV(0.0,1.0,1)
         )
         self.assertEqual(
-            round(color ** CMYK(1,0,0,0),init.decimalPlaces),
+            round(color ** CMYK(1,0,0,0),3),
             HSV(0.0,0.5,0.75)
         )
         self.assertEqual(
-            round(color % CMYK(0.75,0.25,0.25,0.15),init.decimalPlaces),
+            round(color % CMYK(0.75,0.25,0.25,0.15),3),
             HSV(0.25,0.5,0.111)
         )

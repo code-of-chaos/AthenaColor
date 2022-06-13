@@ -6,8 +6,8 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor.Color.ColorObjectConversion import *
-from AthenaColor.Color.ColorSystem import RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA
+from AthenaColor import *
+from AthenaColor.functions.color_object_conversion import *
 
 # Custom Packages
 # ----------------------------------------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ class ColorObject_ObjectConversion(unittest.TestCase):
         for value, output_value in cases:
             with self.subTest(value=value, output_value=output_value):
                 self.assertEqual(
-                    to_HSV(value),
+                    HSV(*(round(n, 3) for n in to_HSV(value))),
                     output_value
                 )
 
@@ -119,7 +119,7 @@ class ColorObject_ObjectConversion(unittest.TestCase):
         for value, output_value in cases:
             with self.subTest(value=value, output_value=output_value):
                 self.assertEqual(
-                    to_HSL(value),
+                    HSL(*(round(n, 3) for n in to_HSL(value))),
                     output_value
                 )
 
@@ -137,7 +137,7 @@ class ColorObject_ObjectConversion(unittest.TestCase):
         for value, output_value in cases:
             with self.subTest(value=value, output_value=output_value):
                 self.assertEqual(
-                    to_CMYK(value),
+                    CMYK(*(round(n, 3) for n in to_CMYK(value))),
                     output_value
                 )
 

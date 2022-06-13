@@ -8,10 +8,9 @@ from typing import Tuple
 # Custom Library
 
 # Custom Packages
-import AthenaColor.Functions.DunderFunctions as CSD
-from AthenaColor.Color.ColorTupleConversion import *
-from AthenaColor.InitClass import init
-from AthenaColor.Functions.Constraints import Constrain
+import AthenaColor.functions.dunder_functions as CSD
+from AthenaColor.functions.color_tuple_conversion import *
+from AthenaColor.functions.constrains import Constrain
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -581,11 +580,11 @@ _rgb_hex_mapped = {
     tuple: lambda r: r
 }
 _rgba_hexa_mapped = {
-    RGB: lambda r: (r.r, r.g, r.b, init.transparentDefault[1]),
-    HEX: lambda r: (r.r, r.g, r.b, init.transparentDefault[1]),
-    HSL: lambda r: (*hsl_to_rgb(r.h, r.s, r.l), init.transparentDefault[1]),
-    HSV: lambda r: (*hsv_to_rgb(r.h, r.s, r.v), init.transparentDefault[1]),
-    CMYK: lambda r: (*cmyk_to_rgb(r.c,r.m,r.y,r.k), init.transparentDefault[1]),
+    RGB: lambda r: (r.r, r.g, r.b, 255), # transparent set to default of 255
+    HEX: lambda r: (r.r, r.g, r.b, 255), # transparent set to default of 255
+    HSL: lambda r: (*hsl_to_rgb(r.h, r.s, r.l), 255), # transparent set to default of 255
+    HSV: lambda r: (*hsv_to_rgb(r.h, r.s, r.v), 255), # transparent set to default of 255
+    CMYK: lambda r: (*cmyk_to_rgb(r.c,r.m,r.y,r.k), 255), # transparent set to default of 255
     RGBA: lambda r: r.export(),
     HEXA: lambda r: r.export(),
     int: lambda r: (r,r,r,r),

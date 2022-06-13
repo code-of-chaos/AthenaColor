@@ -9,10 +9,10 @@ import math
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Functions.General import (
-    RoundHalfUp,RoundToDecimals
+from AthenaColor.functions.functions import (
+    RoundHalfUp
 )
-from AthenaColor.Functions.Constraints import (
+from AthenaColor.functions.constrains import (
     ConstrainHSV, ConstrainHSL, ConstrainRGB, ConstrainCMYK,ConstrainRGBA
 )
 
@@ -183,8 +183,8 @@ def rgb_to_hsv(r:int,g:int,b:int) -> Tuple[float,float,float]:
 
     return (
         round(Hue),
-        RoundToDecimals(Delta/Max if Max != 0 else 0),
-        RoundToDecimals(Max)
+        round(Delta/Max if Max != 0 else 0, 3),
+        round(Max, 3)
     )
 
 def hex_to_hsv(hexadecimal:str) -> Tuple[float,float,float]:
@@ -221,13 +221,13 @@ def rgb_to_cmyk(r:int,g:int,b:int) -> Tuple[float,float,float,float]:
     k = 1 - max(r_, g_, b_)
 
     if k == 1:
-        return 0,0,0,RoundToDecimals(k)
+        return 0,0,0,k
 
     return (
-        RoundToDecimals((1 - r_ - k) / (1 - k)),
-        RoundToDecimals((1 - g_ - k) / (1 - k)),
-        RoundToDecimals((1 - b_ - k) / (1 - k)),
-        RoundToDecimals(k)
+        round((1 - r_ - k) / (1 - k), 3),
+        round((1 - g_ - k) / (1 - k), 3),
+        round((1 - b_ - k) / (1 - k), 3),
+        round(k, 3)
     )
 
 def hex_to_cmyk(hexadecimal:str) -> Tuple[float,float,float,float]:
@@ -283,8 +283,8 @@ def rgb_to_hsl(r:int,g:int,b:int) -> Tuple[float,float,float]:
 
     return (
         round(Hue),    # H
-        RoundToDecimals(Delta/(1-abs((2*Lum)-1)) if Delta != 0 else 0),
-        RoundToDecimals(Lum)     # L
+        round(Delta/(1-abs((2*Lum)-1)) if Delta != 0 else 0, 3),
+        round(Lum, 3)     # L
     )
 
 def hex_to_hsl(hexadecimal:str) -> Tuple[float,float,float]:

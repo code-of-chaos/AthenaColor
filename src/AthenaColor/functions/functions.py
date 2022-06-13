@@ -3,30 +3,27 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
+import sys
+import os
 
 # Custom Library
 
 # Custom Packages
-from .RgbControlled import RgbControlled
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
-__all__=[
-    "Fore","Back", "Underline"
+__all__ = [
+    "RoundHalfUp"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-Fore = RgbControlled(
-    param_code= f"38;2;",
-)
+def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
+    return int(value + 0.5) # thanks for tedthetwonk for refinement
 
-Back = RgbControlled(
-    param_code= f"48;2;",
-)
-
-Underline = RgbControlled(
-    param_code= f"58;2;",
-)
+def fix_console():
+    # Apply a quick fix to make
+    if sys.platform == 'win32':
+        os.system("models/Color")

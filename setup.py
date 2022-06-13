@@ -32,7 +32,7 @@ setuptools.setup(
     version=version_handler(),
     author="Andreas Sas",
     author_email="",
-    description="Package to support full usage of RGB colors in the Console",
+    description="Package to support full usage of RGB colors in the console",
     long_description=readme_handler(),
     long_description_content_type="text/markdown",
     url="https://github.com/DirectiveAthena/AthenaColor",

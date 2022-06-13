@@ -7,20 +7,45 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.InitClass import init
+from AthenaColor.models.console.styling.rgb_controlled import RgbControlled
+from AthenaColor.models.console.styling.rgb_controlled_nested import RgbControlledNested
+
+from AthenaColor.data.style import Style
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
-__all__ = [
-    "RoundHalfUp","RoundToDecimals"
+__all__=[
+    "Fore","Back", "Underline",
+    "ForeNest", "BackNest", "UnderlineNest"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def RoundToDecimals(value:int|float, decimals:int=init.decimalPlaces):
-    return round(value, decimals)
+Fore = RgbControlled(
+    param_code= f"38;2;",
+)
 
-def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
-    return int(value + 0.5) # thanks for tedthetwonk for refinement
+Back = RgbControlled(
+    param_code= f"48;2;",
+)
+
+Underline = RgbControlled(
+    param_code= f"58;2;",
+)
+
+ForeNest = RgbControlledNested(
+    inline_class=Fore,
+    reset=Style.NoForeground
+)
+
+BackNest = RgbControlledNested(
+    inline_class=Back,
+    reset=Style.NoBackground
+)
+
+UnderlineNest = RgbControlledNested(
+    inline_class=Underline,
+    reset=Style.NoUnderline
+)
