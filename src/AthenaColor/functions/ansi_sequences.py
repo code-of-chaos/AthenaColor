@@ -30,6 +30,7 @@ def color_sequence_nested(obj:tuple, color_code:str, reset_code:int|str, sep:str
     Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
     Function wraps every obj in the properly defined control- and reset codes.
     This is made to prevent style makeup bleed
+    :rtype: object
     """
 
     # SHHH, don't touch this, this is speed 101

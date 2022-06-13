@@ -27,8 +27,8 @@ __all__ = [
 # - Support Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def _blend_function(color1:ColorSystem,color2:ColorSystem, formula:Callable) -> RGBA:
-    color1_tuple = normalize_rgba(,
-    color2_tuple = normalize_rgba(,
+    color1_tuple = normalize_rgba(*to_RGBA(color1).export())
+    color2_tuple = normalize_rgba(*to_RGBA(color2).export())
 
     # WARNING below values are normalized (aka between 0 and 1)
     normalized_outcome = (formula(a, b) for a, b in zip(color1_tuple, color2_tuple))
@@ -37,7 +37,7 @@ def _blend_function(color1:ColorSystem,color2:ColorSystem, formula:Callable) -> 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def blend_normal(color1:ColorSystem, color2:ColorSystem) -> RGBA:
+def blend_normal(_:ColorSystem, color2:ColorSystem) -> RGBA:
     # possible because to_RGBA creates a new object
     return to_RGBA(color2)
 
