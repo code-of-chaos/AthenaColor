@@ -6,7 +6,7 @@
 #   Nothing should ever be removed from this list, once something is added in a full version
 
 __all__ = [
-    "ColorTupleConversion","ColorObjectConversion",
+    "color_tuple_conversion","color_object_conversion",
     "RGB","RGBA","HEX","HEXA","HSV","HSL","CMYK",
     "Fore","Back","Underline","Style","Basic",
     "ForeNest","BackNest","UnderlineNest","StyleNest","BasicNest"
@@ -20,13 +20,13 @@ from AthenaColor.data.bodies import Fore, ForeNest, Back, BackNest, Underline, U
 
 from AthenaColor.models.color_system import RGB, RGBA, HEX, HEXA, HSV, HSL, CMYK
 
-import AthenaColor.functions.color_tuple_conversion as ColorTupleConversion
-import AthenaColor.functions.color_object_conversion as ColorObjectConversion
+import AthenaColor.functions.color_tuple_conversion as color_tuple_conversion
+import AthenaColor.functions.color_object_conversion as color_object_conversion
 
 # apply the fix, so that in windows the colors are shown correctly
-# noinspection PyProtectedMember
 from AthenaColor.functions.functions import fix_console as _fix_console
 _fix_console()
 
 # import the infor function
+# noinspection PyProtectedMember
 from AthenaColor._info.info import info
