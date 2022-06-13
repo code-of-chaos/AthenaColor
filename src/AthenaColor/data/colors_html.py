@@ -7,7 +7,7 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Color.ColorSystem import RGB
+from AthenaColor.models.color_system import RGB
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -

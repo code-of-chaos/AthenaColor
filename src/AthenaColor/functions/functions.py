@@ -3,35 +3,27 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # General Packages
 from __future__ import annotations
+import sys
+import os
 
 # Custom Library
 
 # Custom Packages
-from AthenaColor.Console.Styling.Nested.RgbControlledNest import RgbControlledNested
-from AthenaColor.Console.Styling.Inline.Bodies import Fore, Back, Underline
-from AthenaColor.Console.Styling.Inline.Style import Style
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
-__all__=[
-    "ForeNest","BackNest", "UnderlineNest"
+__all__ = [
+    "RoundHalfUp"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-ForeNest = RgbControlledNested(
-    inline_class=Fore,
-    reset=Style.NoForeground
-)
+def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
+    return int(value + 0.5) # thanks for tedthetwonk for refinement
 
-BackNest = RgbControlledNested(
-    inline_class=Back,
-    reset=Style.NoBackground
-)
-
-UnderlineNest = RgbControlledNested(
-    inline_class=Underline,
-    reset=Style.NoUnderline
-)
+def fix_console():
+    # Apply a quick fix to make
+    if sys.platform == 'win32':
+        os.system("models/Color")

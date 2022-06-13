@@ -5,8 +5,8 @@
 from __future__ import annotations
 import unittest
 
-# Custom Library
-from AthenaColor.Functions.DunderFunctions import *
+# Custom Libraryµ
+from AthenaColor.functions.dunder_functions import *
 
 # Custom Packages
 

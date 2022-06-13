@@ -7,7 +7,6 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.InitClass import init
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -24,7 +23,7 @@ def ColorSequence(control_code:int|str)->str:
     Used for quick assembly of correct Ansi Escape functions
     Used the escape code defined in AthenaColor init
     """
-    return f'{init.esc}[{control_code}m'
+    return f'\x1b[{control_code}m'
 
 def NestedColorSequence(obj:tuple, color_code:str, reset_code:int|str, sep:str=" ") -> str:
     """

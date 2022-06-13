@@ -6,7 +6,7 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor.models.Color.ColorTupleConversion import *
+from AthenaColor.functions.color_tuple_conversion import *
 
 # Custom Packages
 # ----------------------------------------------------------------------------------------------------------------------
@@ -157,7 +157,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for rgb_value, hsv_value in cases:
             with self.subTest(rgb_value=rgb_value, hsv_value=hsv_value):
                 self.assertEqual(
-                    rgb_to_hsv(*rgb_value),
+                    (*(round(n,3) for n in rgb_to_hsv(*rgb_value)),),
                     hsv_value
                 )
 
@@ -173,7 +173,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for hex_value, hsv_value in cases:
             with self.subTest(hex_value=hex_value, hsv_value=hsv_value):
                 self.assertEqual(
-                    hex_to_hsv(hex_value),
+                    (*(round(n,3) for n in hex_to_hsv(hex_value)),),
                     hsv_value
                 )
 
@@ -189,7 +189,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for cmyk_value, hsv_value in cases:
             with self.subTest(cmyk_value=cmyk_value, hsv_value=hsv_value):
                 self.assertEqual(
-                    cmyk_to_hsv(*cmyk_value),
+                    (*(round(n, 3) for n in cmyk_to_hsv(*cmyk_value)),),
                     hsv_value
                 )
 
@@ -205,7 +205,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for hsl_value, hsv_value in cases:
             with self.subTest(hsl_value=hsl_value, hsv_value=hsv_value):
                 self.assertEqual(
-                    hsl_to_hsv(*hsl_value),
+                    (*(round(n,3) for n in hsl_to_hsv(*hsl_value)),),
                     hsv_value
                 )
 
@@ -221,7 +221,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for rgb_value, cmyk_value in cases:
             with self.subTest(cmyk_value=cmyk_value, rgb_value=rgb_value):
                 self.assertEqual(
-                    rgb_to_cmyk(*rgb_value),
+                    (*(round(n,3) for n in rgb_to_cmyk(*rgb_value)),),
                     cmyk_value
                 )
 
@@ -237,7 +237,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for hex_value, cmyk_value in cases:
             with self.subTest(cmyk_value=cmyk_value, hex_value=hex_value):
                 self.assertEqual(
-                    hex_to_cmyk(hex_value),
+                    (*(round(n, 3) for n in hex_to_cmyk(hex_value)),),
                     cmyk_value
                 )
 
@@ -253,7 +253,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for hsv_value, cmyk_value in cases:
             with self.subTest(cmyk_value=cmyk_value, hsv_value=hsv_value):
                 self.assertEqual(
-                    hsv_to_cmyk(*hsv_value),
+                    (*(round(n,3) for n in hsv_to_cmyk(*hsv_value)),),
                     cmyk_value
                 )
 
@@ -269,7 +269,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for rgb_value, hsl_value in cases:
             with self.subTest(rgb_value=rgb_value, hsl_value=hsl_value):
                 self.assertEqual(
-                    rgb_to_hsl(*rgb_value),
+                    (*(round(n,3) for n in rgb_to_hsl(*rgb_value)),),
                     hsl_value
                 )
 
@@ -285,7 +285,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for hex_value, hsl_value in cases:
             with self.subTest(hex_value=hex_value, hsl_value=hsl_value):
                 self.assertEqual(
-                    hex_to_hsl(hex_value),
+                    (*(round(n,3) for n in hex_to_hsl(hex_value)),),
                     hsl_value
                 )
 
@@ -301,7 +301,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for hsv_value, hsl_value in cases:
             with self.subTest(hsl_value=hsl_value, hsv_value=hsv_value):
                 self.assertEqual(
-                    hsv_to_hsl(*hsv_value),
+                    (*(round(n,3) for n in hsv_to_hsl(*hsv_value)),),
                     hsl_value
                 )
 
@@ -317,7 +317,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
         for cmyk_value, hsl_value in cases:
             with self.subTest(cmyk_value=cmyk_value, hsl_value=hsl_value):
                 self.assertEqual(
-                    cmyk_to_hsl(*cmyk_value),
+                    (*(round(n, 3) for n in cmyk_to_hsl(*cmyk_value)),),
                     hsl_value
                 )
 

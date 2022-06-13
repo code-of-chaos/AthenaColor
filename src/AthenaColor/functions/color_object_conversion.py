@@ -7,8 +7,8 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-import AthenaColor.models.Color.ColorTupleConversion as CTC
-from AthenaColor.Color.ColorSystem import ColorSystem,RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA, color_conversions_mapped
+import AthenaColor.functions.color_tuple_conversion as CTC
+from AthenaColor.models.color_system import ColorSystem,RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA, color_conversions_mapped
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
