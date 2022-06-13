@@ -16,7 +16,7 @@ class ColorObject_TupleConversion(unittest.TestCase):
     def test_NormalizeRgb(self):
         for i in range(256):
             with self.subTest(i=i):
-                NormalizeRgb(i,i,i)
+                normalize_rgb(i, i, i)
 
     def test_hex_to_rgb(self):
         cases = (

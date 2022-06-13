@@ -18,15 +18,15 @@ class Functions_General(unittest.TestCase):
         for i, e in ((0.5,1),(0.4,0),(1.1,1),(.8,1),):
             with self.subTest(i=i,e=e):
                 self.assertEqual(
-                    RoundHalfUp(i),
+                    round_half_up(i),
                     e
                 )
 
     # noinspection PyTypeChecker
     def test_RoundHalfUp_Fail(self):
         with self.assertRaises(TypeError):
-            RoundHalfUp("a")
+            round_half_up("a")
         with self.assertRaises(TypeError):
-            RoundHalfUp((1,))
+            round_half_up((1,))
         with self.assertRaises(TypeError):
-            RoundHalfUp([1,])
+            round_half_up([1, ])

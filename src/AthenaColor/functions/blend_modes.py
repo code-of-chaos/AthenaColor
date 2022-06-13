@@ -12,7 +12,7 @@ from typing import Callable
 # Custom Packages
 from AthenaColor.models.color_system import ColorSystem, RGBA
 from AthenaColor.functions.color_object_conversion import to_RGBA
-from AthenaColor.functions.color_tuple_conversion import NormalizeRgba
+from AthenaColor.functions.color_tuple_conversion import normalize_rgba
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Code -
@@ -27,8 +27,8 @@ __all__ = [
 # - Support Code -
 # ----------------------------------------------------------------------------------------------------------------------
 def _blend_function(color1:ColorSystem,color2:ColorSystem, formula:Callable) -> RGBA:
-    color1_tuple = NormalizeRgba(*to_RGBA(color1).export())
-    color2_tuple = NormalizeRgba(*to_RGBA(color2).export())
+    color1_tuple = normalize_rgba(,
+    color2_tuple = normalize_rgba(,
 
     # WARNING below values are normalized (aka between 0 and 1)
     normalized_outcome = (formula(a, b) for a, b in zip(color1_tuple, color2_tuple))

@@ -10,10 +10,10 @@ import math
 
 # Custom Packages
 from AthenaColor.functions.functions import (
-    RoundHalfUp
+    round_half_up
 )
 from AthenaColor.functions.constrains import (
-    ConstrainHSV, ConstrainHSL, ConstrainRGB, ConstrainCMYK,ConstrainRGBA
+    contrain_hsv, constrain_hsl, constrain_rgb, constrain_cmyk, constrain_rgba
 )
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -22,15 +22,16 @@ from AthenaColor.functions.constrains import (
 __all__ = [
     "hsl_to_hsv","hsv_to_hsl","hex_to_hsl","hsl_to_hex","hex_to_hsv","hsv_to_hex","rgb_to_hsl","hsl_to_rgb",
     "rgb_to_hsv","hsv_to_rgb","hsv_to_cmyk","cmyk_to_hsv","cmyk_to_hsl","hsl_to_cmyk","hex_to_cmyk","cmyk_to_hex",
-    "rgb_to_cmyk","cmyk_to_rgb","hex_to_rgb","hexa_to_rgba","rgba_to_hexa","rgb_to_hex", "NormalizeRgb", "NormalizeRgba"
+    "rgb_to_cmyk","cmyk_to_rgb","hex_to_rgb","hexa_to_rgba","rgba_to_hexa","rgb_to_hex", "normalize_rgb",
+    "normalize_rgba"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def NormalizeRgb(r:int,g:int,b:int) -> Tuple[float, ...]:
+def normalize_rgb(r:int,g:int,b:int) -> Tuple[float, ...]:
     return r/255,g/255,b/255
-def NormalizeRgba(r:int,g:int,b:int,a:int) -> Tuple[float, ...]:
+def normalize_rgba(r:int,g:int,b:int,a:int) -> Tuple[float, ...]:
     return r/255,g/255,b/255, a/255
 
 numbers = (int,float)
@@ -62,7 +63,7 @@ def hsv_to_rgb(h:int|float,s:int|float,v:int|float) -> Tuple[int,int,int]:
     Function to convert a hsv tuple to a rgb tuple.
     Does not create an RGB object.
     """
-    h,s,v = ConstrainHSV(h,s,v)
+    h,s,v = contrain_hsv(h, s, v)
 
     C = v*s
     X = C*(1-math.fabs(math.fmod(h/60.0,2)-1))
@@ -78,9 +79,9 @@ def hsv_to_rgb(h:int|float,s:int|float,v:int|float) -> Tuple[int,int,int]:
     m = v-C
 
     return (
-        RoundHalfUp((r_ + m) * 255),
-        RoundHalfUp((g_ + m) * 255),
-        RoundHalfUp((b_ + m) * 255)
+        round_half_up((r_ + m) * 255),
+        round_half_up((g_ + m) * 255),
+        round_half_up((b_ + m) * 255)
     )
 
 def cmyk_to_rgb(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[int,int,int]:
@@ -88,11 +89,11 @@ def cmyk_to_rgb(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[int,in
     Function to convert a cmyk tuple to a rgb tuple.
     Does not create an RGB object.
     """
-    c,m,y,k = ConstrainCMYK(c,m,y,k)
+    c,m,y,k = constrain_cmyk(c, m, y, k)
     return (
-        RoundHalfUp(255 * (1 - c) * (1 - k)),  #r
-        RoundHalfUp(255 * (1 - m) * (1 - k)),  #g
-        RoundHalfUp(255 * (1 - y) * (1 - k))  #b
+        round_half_up(255 * (1 - c) * (1 - k)),  #r
+        round_half_up(255 * (1 - m) * (1 - k)),  #g
+        round_half_up(255 * (1 - y) * (1 - k))  #b
     )
 
 def hsl_to_rgb(h:int|float,s:int|float,l:int|float) -> Tuple[int,int,int]:
@@ -100,7 +101,7 @@ def hsl_to_rgb(h:int|float,s:int|float,l:int|float) -> Tuple[int,int,int]:
     Function to convert a hsl tuple to a rgb tuple.
     Does not create an RGB object.
     """
-    h,s,l =ConstrainHSL(h,s,l)
+    h,s,l =constrain_hsl(h, s, l)
 
     C = (1-math.fabs((2*l)-1))*s
     X = C*(1-math.fabs(math.fmod(h/60,2)-1))
@@ -116,9 +117,9 @@ def hsl_to_rgb(h:int|float,s:int|float,l:int|float) -> Tuple[int,int,int]:
     m = l-(C/2)
 
     return (
-        RoundHalfUp((r_ + m) * 255),
-        RoundHalfUp((g_ + m) * 255),
-        RoundHalfUp((b_ + m) * 255)
+        round_half_up((r_ + m) * 255),
+        round_half_up((g_ + m) * 255),
+        round_half_up((b_ + m) * 255)
     )
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -129,28 +130,28 @@ def rgb_to_hex(r:int|float,g:int|float,b:int|float) -> str:
     Function to convert a rgb to a hexadecimal string.
     Does not create a HEX object.
     """
-    return '#%02x%02x%02x' % ConstrainRGB(int(r),int(g),int(b))
+    return '#%02x%02x%02x' % constrain_rgb(int(r), int(g), int(b))
 
 def hsv_to_hex(h:int|float,s:int|float, v:int|float) -> str:
     """
     Function to convert a hsv to a hexadecimal string.
     Does not create a HEX object.
     """
-    return rgb_to_hex(*hsv_to_rgb(*ConstrainHSV(h,s,v)))
+    return rgb_to_hex(*hsv_to_rgb(*contrain_hsv(h, s, v)))
 
 def cmyk_to_hex(c:int|float,m:int|float,y:int|float,k:int|float) -> str:
     """
     Function to convert a cmyk to a hexadecimal string.
     Does not create a HEX object.
     """
-    return rgb_to_hex(*cmyk_to_rgb(*ConstrainCMYK(c,m,y,k)))
+    return rgb_to_hex(*cmyk_to_rgb(*constrain_cmyk(c, m, y, k)))
 
 def hsl_to_hex(h:int|float,s:int|float,l:int|float) -> str:
     """
     Function to convert a hsl to a hexadecimal string.
     Does not create a HEX object.
     """
-    return rgb_to_hex(*hsl_to_rgb(*ConstrainHSL(h,s,l)))
+    return rgb_to_hex(*hsl_to_rgb(*constrain_hsl(h, s, l)))
 
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -162,7 +163,7 @@ def rgb_to_hsv(r:int,g:int,b:int) -> Tuple[float,float,float]:
     Does not create an HSV object.
     """
     # Normalize
-    r_,g_,b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
+    r_,g_,b_ = normalize_rgb(*constrain_rgb(r,g,b))
 
     # Find max and min
     Max = max(r_, g_, b_)
@@ -199,14 +200,14 @@ def cmyk_to_hsv(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[float,
     Function to convert a cmyk tuple to a hsv tuple.
     Does not create an HSV object.
     """
-    return rgb_to_hsv(*cmyk_to_rgb(*ConstrainCMYK(c,m,y,k)))
+    return rgb_to_hsv(*cmyk_to_rgb(*constrain_cmyk(c, m, y, k)))
 
 def hsl_to_hsv(h:int|float,s:int|float,l:int|float) -> Tuple[float,float,float]:
     """
     Function to convert a hsl tuple to a hsv tuple.
     Does not create an HSV object.
     """
-    return rgb_to_hsv(*hsl_to_rgb(*ConstrainHSL(h,s,l)))
+    return rgb_to_hsv(*hsl_to_rgb(*constrain_hsl(h, s, l)))
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - CMYK -
@@ -217,7 +218,7 @@ def rgb_to_cmyk(r:int,g:int,b:int) -> Tuple[float,float,float,float]:
     Does not create an CMYK object.
     """
     # Normalize
-    r_, g_, b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
+    r_, g_, b_ = normalize_rgb(*constrain_rgb(r,g,b))
     k = 1 - max(r_, g_, b_)
 
     if k == 1:
@@ -242,14 +243,14 @@ def hsv_to_cmyk(h:int|float,s:int|float,v:int|float) -> Tuple[float,float,float,
     Function to convert a hsv tuple to a cmyk tuple.
     Does not create an CMYK object.
     """
-    return rgb_to_cmyk(*hsv_to_rgb(*ConstrainHSV(h,s,v)))
+    return rgb_to_cmyk(*hsv_to_rgb(*contrain_hsv(h, s, v)))
 
 def hsl_to_cmyk(h:int|float,s:int|float,l:int|float) -> Tuple[float,float,float,float]:
     """
     Function to convert a hsl tuple to a cmyk tuple.
     Does not create an CMYK object.
     """
-    return rgb_to_cmyk(*hsl_to_rgb(*ConstrainHSL(h,s,l)))
+    return rgb_to_cmyk(*hsl_to_rgb(*constrain_hsl(h, s, l)))
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - HSL -
@@ -260,7 +261,7 @@ def rgb_to_hsl(r:int,g:int,b:int) -> Tuple[float,float,float]:
     Does not create an HSL object.
     """
     # Normalize
-    r_, g_, b_ = NormalizeRgb(*ConstrainRGB(r,g,b))
+    r_, g_, b_ = normalize_rgb(*constrain_rgb(r,g,b))
     # Find max and min
     Max = max(r_, g_, b_)
     Min = min(r_, g_, b_)
@@ -299,14 +300,14 @@ def hsv_to_hsl(h:int|float,s:int|float,v:int|float) -> Tuple[float,float,float]:
     Function to convert a hsv tuple to a hsl tuple.
     Does not create an HSL object.
     """
-    return rgb_to_hsl(*hsv_to_rgb(*ConstrainHSV(h,s,v)))
+    return rgb_to_hsl(*hsv_to_rgb(*contrain_hsv(h, s, v)))
 
 def cmyk_to_hsl(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[float,float,float]:
     """
     Function to convert a cmyk tuple to a hsl tuple.
     Does not create an HSL object.
     """
-    return rgb_to_hsl(*cmyk_to_rgb(*ConstrainCMYK(c,m,y,k)))
+    return rgb_to_hsl(*cmyk_to_rgb(*constrain_cmyk(c, m, y, k)))
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - TRANSPARENT COLORS -
@@ -335,4 +336,4 @@ def rgba_to_hexa(r:int,g:int,b:int,a:int) -> str:
     Function to convert a rgba tuple to a hexa string.
     Does not create an HEXA object.
     """
-    return '#%02x%02x%02x%02x' % ConstrainRGBA(r,g,b,a)
+    return '#%02x%02x%02x%02x' % constrain_rgba(r, g, b, a)

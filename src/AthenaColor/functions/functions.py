@@ -14,13 +14,13 @@ import os
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
 __all__ = [
-    "RoundHalfUp"
+    "round_half_up", "fix_console"
 ]
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-def RoundHalfUp(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
+def round_half_up(value:int|float) -> int: # because Twidi didn't like RoundCorrectly :P
     return int(value + 0.5) # thanks for tedthetwonk for refinement
 
 def fix_console():

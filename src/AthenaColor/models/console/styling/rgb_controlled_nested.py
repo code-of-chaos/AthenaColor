@@ -7,14 +7,14 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.models.color_system import RGB,HEX, NormalizeRgb
-from AthenaColor.functions.ansi_sequences import NestedColorSequence
+from AthenaColor.models.color_system import RGB,HEX, normalize_rgb
+from AthenaColor.functions.ansi_sequences import color_sequence_nested
 from AthenaColor.models.console.styling.rgb_controlled import RgbControlled
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
-NCS = NestedColorSequence # Done for slight speed increase
+NCS = color_sequence_nested # Done for slight speed increase
 sep_=" "
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -33,21 +33,13 @@ class RgbControlledNested:
     # ------------------------------------------------------------------------------------------------------------------
     def custom(self,*obj, color:RGB|HEX, sep=sep_) -> str:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
-        return NestedColorSequence(
-            obj,
-            f"{self._inline_class.param_code}{';'.join(*color.export())}m",
-            self._reset,
-            sep=sep
-        )
+        return color_sequence_nested(obj, f"{self._inline_class.param_code}{';'.join(*color.export())}m", self._reset,
+                                     sep=sep)
 
     def rgb(self, *obj, r:int,g:int,b:int, sep=sep_) -> str:
         # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
-        return NestedColorSequence(
-            obj,
-            f"{self._inline_class.param_code}{';'.join(*NormalizeRgb(r, g, b))}m",
-            self._reset,
-            sep=sep
-        )
+        return color_sequence_nested(obj, f"{self._inline_class.param_code}{';'.join(*normalize_rgb(r, g, b))}m",
+                                     self._reset, sep=sep)
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -
