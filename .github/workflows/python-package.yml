@@ -9,9 +9,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
-defaults:
-  run:
-    working-directory: ../
+#defaults:
+#  run:
+#    working-directory: ../
 
 jobs:
   build:
@@ -41,4 +41,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with unittest
       run: |
-        pytest 
+        python -m pytest --import-mode=append Tests/
