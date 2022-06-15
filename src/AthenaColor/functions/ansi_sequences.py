@@ -33,7 +33,7 @@ def color_sequence_nested(obj:tuple, color_code:str, reset_code:int|str, sep:str
     :rtype: object
     """
 
-    # SHHH, don't touch this, this is speed 101
+    # SHH, don't touch this, this is speed 101
     text = ""
     for o in obj[:-1]:
         text += f"{color_code}{o}{sep}{reset_code}" # SEP moved to within the color - reset, as previously, it was color-reset anyway
@@ -46,7 +46,7 @@ def color_sequence_nested_no_reset(obj:tuple, color_code:int|str, sep:str=" ") -
     This is made to prevent style makeup bleed
     """
 
-    # SHHH, don't touch this, this is speed 101
+    # SHH, don't touch this, this is speed 101
     text = ""
     for o in obj[:-1]:
         text += f"{color_code}{o}{sep}" # SEP moved to within the color - reset, as previously, it was color-reset anyway

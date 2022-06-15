@@ -7,7 +7,7 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-import AthenaColor.functions.color_tuple_conversion as CTC
+from AthenaColor.functions.color_tuple_conversion import rgb_to_hex, rgba_to_hexa
 from AthenaColor.models.color_system import ColorSystem,RGB,HEX,CMYK,HSL,HSV,RGBA,HEXA, color_conversions_mapped
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ def to_HEX(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEX:
     Function which converts any Color Object to an HEX object.
     """
     try:
-        return HEX(CTC.rgb_to_hex(*color_conversions_mapped[HEX][type(color)](color)))
+        return HEX(rgb_to_hex(*color_conversions_mapped[HEX][type(color)](color)))
     except KeyError:
         return NotImplemented
 
@@ -97,6 +97,6 @@ def to_HEXA(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEXA:
     Function which converts any Color Object to an HEXA object.
     """
     try:
-        return HEXA(CTC.rgba_to_hexa(*color_conversions_mapped[HEXA][type(color)](color)))
+        return HEXA(rgba_to_hexa(*color_conversions_mapped[HEXA][type(color)](color)))
     except KeyError:
         return NotImplemented

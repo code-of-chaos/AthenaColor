@@ -27,6 +27,6 @@ import AthenaColor.functions.color_object_conversion as color_object_conversion
 from AthenaColor.functions.functions import fix_console as _fix_console
 _fix_console()
 
-# import the infor function
+# import the info function
 # noinspection PyProtectedMember
 from AthenaColor._info.info import info
