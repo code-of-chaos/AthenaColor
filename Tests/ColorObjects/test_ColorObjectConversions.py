@@ -6,8 +6,8 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor import *
-from AthenaColor.functions.color_object_conversion import *
+from src.AthenaColor import *
+from src.AthenaColor.functions.color_object_conversion import *
 
 # Custom Packages
 # ----------------------------------------------------------------------------------------------------------------------
