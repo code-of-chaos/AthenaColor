@@ -9,10 +9,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
-defaults:
-  run:
-    
-    working-directory: src/AthenaColor
+# defaults:
+#   run:
+#     working-directory: src/AthenaColor
 
 jobs:
   build:
