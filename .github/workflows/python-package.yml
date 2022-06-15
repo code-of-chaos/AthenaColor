@@ -42,4 +42,4 @@ jobs:
     - name: Test with pytest
       run: |
         pwd
-        pytest
+        python -m pytest
