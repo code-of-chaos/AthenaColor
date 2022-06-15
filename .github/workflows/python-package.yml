@@ -41,7 +41,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: add src to pythonpath
       run: |
-        PYTHONPATH="${PYTHONPATH}:AthenaColor/src"
+        PYTHONPATH="${PYTHONPATH}:src"
     - name: run unittest
       run: |
-        python -m unittest -v
+        python -m unittest  discover -s Tests
