@@ -43,5 +43,5 @@ jobs:
       run: |
         PYTHONPATH="${PYTHONPATH}:src"
     - name: run unittest
-      run: |
-        python -m unittest  discover -s Tests
+      run: python -m unittest  discover -s Tests
+      working-directory: test
