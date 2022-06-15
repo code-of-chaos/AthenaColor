@@ -13,7 +13,7 @@ from AthenaColor.functions.functions import (
     round_half_up
 )
 from AthenaColor.functions.constrains import (
-    contrain_hsv, constrain_hsl, constrain_rgb, constrain_cmyk, constrain_rgba
+    constrain_hsv, constrain_hsl, constrain_rgb, constrain_cmyk, constrain_rgba
 )
 
 # ----------------------------------------------------------------------------------------------------------------------
@@ -63,7 +63,7 @@ def hsv_to_rgb(h:int|float,s:int|float,v:int|float) -> Tuple[int,int,int]:
     Function to convert a hsv tuple to a rgb tuple.
     Does not create an RGB object.
     """
-    h,s,v = contrain_hsv(h, s, v)
+    h,s,v = constrain_hsv(h, s, v)
 
     C = v*s
     X = C*(1-math.fabs(math.fmod(h/60.0,2)-1))
@@ -137,7 +137,7 @@ def hsv_to_hex(h:int|float,s:int|float, v:int|float) -> str:
     Function to convert a hsv to a hexadecimal string.
     Does not create a HEX object.
     """
-    return rgb_to_hex(*hsv_to_rgb(*contrain_hsv(h, s, v)))
+    return rgb_to_hex(*hsv_to_rgb(*constrain_hsv(h, s, v)))
 
 def cmyk_to_hex(c:int|float,m:int|float,y:int|float,k:int|float) -> str:
     """
@@ -243,7 +243,7 @@ def hsv_to_cmyk(h:int|float,s:int|float,v:int|float) -> Tuple[float,float,float,
     Function to convert a hsv tuple to a cmyk tuple.
     Does not create an CMYK object.
     """
-    return rgb_to_cmyk(*hsv_to_rgb(*contrain_hsv(h, s, v)))
+    return rgb_to_cmyk(*hsv_to_rgb(*constrain_hsv(h, s, v)))
 
 def hsl_to_cmyk(h:int|float,s:int|float,l:int|float) -> Tuple[float,float,float,float]:
     """
@@ -300,7 +300,7 @@ def hsv_to_hsl(h:int|float,s:int|float,v:int|float) -> Tuple[float,float,float]:
     Function to convert a hsv tuple to a hsl tuple.
     Does not create an HSL object.
     """
-    return rgb_to_hsl(*hsv_to_rgb(*contrain_hsv(h, s, v)))
+    return rgb_to_hsl(*hsv_to_rgb(*constrain_hsv(h, s, v)))
 
 def cmyk_to_hsl(c:int|float,m:int|float,y:int|float,k:int|float) -> Tuple[float,float,float]:
     """

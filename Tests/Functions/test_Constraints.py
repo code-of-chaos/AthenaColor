@@ -16,25 +16,25 @@ from AthenaColor.functions.constrains import *
 class Functions_Constraints(unittest.TestCase):
     def test_Constrain(self):
         # Keyword arguments
-        self.assertEqual(contrain(value=125, maximum=100), 100)
-        self.assertEqual(contrain(value=85, maximum=100), 85)
-        self.assertEqual(contrain(value=85, maximum=100, minimum=90), 90)
-        self.assertEqual(contrain(value=-1000, maximum=100, minimum=-100), -100)
+        self.assertEqual(constrain(value=125, maximum=100), 100)
+        self.assertEqual(constrain(value=85, maximum=100), 85)
+        self.assertEqual(constrain(value=85, maximum=100, minimum=90), 90)
+        self.assertEqual(constrain(value=-1000, maximum=100, minimum=-100), -100)
 
     def test_Constrain_Fail(self):
         with self.assertRaises(TypeError):
             # noinspection PyTypeChecker
-            contrain(value="a", maximum=100)
+            constrain(value="a", maximum=100)
         with self.assertRaises(TypeError):
             # noinspection PyTypeChecker
-            contrain(value=100, maximum="a")
+            constrain(value=100, maximum="a")
         with self.assertRaises(TypeError):
             # noinspection PyTypeChecker
-            contrain(100, 100, "a")
+            constrain(100, 100, "a")
 
     def test_Constrain_HSV(self):
-        self.assertEqual(contrain_hsv(1000, 2, 2), (360, 1, 1))
-        self.assertEqual(contrain_hsv(-360, -1, -1), (0, 0, 0))
+        self.assertEqual(constrain_hsv(1000, 2, 2), (360, 1, 1))
+        self.assertEqual(constrain_hsv(-360, -1, -1), (0, 0, 0))
 
     def test_Constrain_HSL(self):
         self.assertEqual(constrain_hsl(1000, 2, 2), (360, 1, 1))

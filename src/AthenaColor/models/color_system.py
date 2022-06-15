@@ -10,7 +10,7 @@ from typing import Tuple
 # Custom Packages
 import AthenaColor.functions.dunder_functions as CSD
 from AthenaColor.functions.color_tuple_conversion import *
-from AthenaColor.functions.constrains import contrain
+from AthenaColor.functions.constrains import constrain
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -197,21 +197,21 @@ class RGB(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        self._r = round(contrain(value, 255))
+        self._r = round(constrain(value, 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        self._g = round(contrain(value, 255))
+        self._g = round(constrain(value, 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        self._b = round(contrain(value, 255))
+        self._b = round(constrain(value, 255))
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -308,28 +308,28 @@ class RGBA(ColorSystem):
         return self._r
     @r.setter
     def r(self, value: int|float):
-        self._r = round(contrain(value, 255))
+        self._r = round(constrain(value, 255))
 
     @property
     def g(self) -> int:
         return self._g
     @g.setter
     def g(self, value: int|float):
-        self._g = round(contrain(value, 255))
+        self._g = round(constrain(value, 255))
 
     @property
     def b(self) -> int:
         return self._b
     @b.setter
     def b(self, value: int|float):
-        self._b = round(contrain(value, 255))
+        self._b = round(constrain(value, 255))
 
     @property
     def a(self) -> int:
         return self._a
     @a.setter
     def a(self, value: int|float):
-        self._a = round(contrain(value, 255))
+        self._a = round(constrain(value, 255))
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
     # ------------------------------------------------------------------------------------------------------------------
@@ -427,21 +427,21 @@ class HSV(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = contrain(value, 360)
+        self._h = constrain(value, 360)
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = contrain(value, 1)
+        self._s = constrain(value, 1)
 
     @property
     def v(self) -> int|float:
         return self._v
     @v.setter
     def v(self, value: int|float):
-        self._v = contrain(value, 1)
+        self._v = constrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -481,21 +481,21 @@ class HSL(ColorSystem):
         return self._h
     @h.setter
     def h(self, value: int|float):
-        self._h = contrain(value, 360)
+        self._h = constrain(value, 360)
 
     @property
     def s(self) -> int|float:
         return self._s
     @s.setter
     def s(self, value: int|float):
-        self._s = contrain(value, 1)
+        self._s = constrain(value, 1)
 
     @property
     def l(self) -> int|float:
         return self._l
     @l.setter
     def l(self, value: int|float):
-        self._l = contrain(value, 1)
+        self._l = constrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods
@@ -534,28 +534,28 @@ class CMYK(ColorSystem):
         return self._c
     @c.setter
     def c(self, value: int|float):
-        self._c = contrain(value, 1)
+        self._c = constrain(value, 1)
 
     @property
     def m(self) -> int|float:
         return self._m
     @m.setter
     def m(self, value: int|float):
-        self._m = contrain(value, 1)
+        self._m = constrain(value, 1)
 
     @property
     def y(self) -> int|float:
         return self._y
     @y.setter
     def y(self, value: int|float):
-        self._y = contrain(value, 1)
+        self._y = constrain(value, 1)
 
     @property
     def k(self) -> int|float:
         return self._k
     @k.setter
     def k(self, value: int|float):
-        self._k = contrain(value, 1)
+        self._k = constrain(value, 1)
 
     # ------------------------------------------------------------------------------------------------------------------
     # MAGIC Methods

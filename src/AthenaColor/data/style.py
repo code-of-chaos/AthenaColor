@@ -155,7 +155,7 @@ NCSNO = color_sequence_nested_no_reset  # Done for slight speed increase
 sep_ = " "
 
 # I know this is technically a model,
-#   BUT, given it depends so much on the code above I've decideded to place it here
+#   BUT, given it depends so much on the code above I've decided to place it here
 class StyleNest:
     @staticmethod
     def Reset(*obj,sep=sep_):                      return NCSNO(obj,Style.Reset,sep)
