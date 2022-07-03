@@ -10,7 +10,7 @@ from __future__ import annotations
 from AthenaColor.models.color_system import RGB, RGBA, HEX, HEXA, HSV, HSL, CMYK
 from AthenaColor.functions.color_tuple_conversion import cmyk_to_rgb,hsv_to_rgb,hsl_to_rgb
 from AthenaColor.functions.ansi_sequences import color_sequence
-from AthenaColor.data.colors_html import HtmlColorObjects
+import AthenaColor.data.colors_html as HtmlColorObjects
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
@@ -23,6 +23,7 @@ __all__=[
 # - Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class RgbControlled:
+    __name__ = "RgbControlled"
     __slots__ = (
         "param_code",
         "Maroon","DarkRed","Brown","Firebrick","Crimson","Red","Tomato","Coral","IndianRed","LightCoral","DarkSalmon",
