@@ -22,6 +22,9 @@ def color_sequence(control_code:int|str)->str:
     """
     Used for quick assembly of correct Ansi Escape functions
     Used the escape code defined in AthenaColor init
+
+    Parameters:
+    - control_code : int|str -> numerical ANSI fragment
     """
     return f'\x1b[{control_code}m'
 
@@ -30,7 +33,12 @@ def color_sequence_nested(obj:tuple, color_code:str, reset_code:int|str, sep:str
     Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
     Function wraps every obj in the properly defined control- and reset codes.
     This is made to prevent style makeup bleed
-    :rtype: object
+
+    Parameters:
+    - obj : tuple -> Collection of all objects to be wrapped
+    - color_code : str -> Full color_sequenced ANSI code
+    - reset_code : int|str -> Full color_sequenced ANSI code to reset the given color
+    - sep : str -> separation string between the various objects
     """
 
     # SHH, don't touch this, this is speed 101
@@ -44,6 +52,11 @@ def color_sequence_nested_no_reset(obj:tuple, color_code:int|str, sep:str=" ") -
     Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
     Function wraps every obj in the properly defined control- and reset codes.
     This is made to prevent style makeup bleed
+
+    Parameters:
+    - obj : tuple -> Collection of all objects to be wrapped
+    - color_code : str -> Full color_sequenced ANSI code
+    - sep : str -> separation string between the various objects
     """
 
     # SHH, don't touch this, this is speed 101

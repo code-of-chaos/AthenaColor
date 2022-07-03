@@ -14,7 +14,7 @@ __all__ = [
 # ----------------------------------------------------------------------------------------------------------------------
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
-from AthenaColor.data.colors_html import HtmlColorObjects
+import AthenaColor.data.colors_html as HtmlColorObjects
 from AthenaColor.data.style import Style, StyleNest, Basic, BasicNest
 from AthenaColor.data.bodies import Fore, ForeNest, Back, BackNest, Underline, UnderlineNest
 

@@ -1,0 +1,2177 @@
+{
+    "AthenaColor": [
+        {
+            "type": "#class",
+            "name": "Basic",
+            "doc": null,
+            "parent_module": "AthenaColor",
+            "signature": "()",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "Fore",
+                    "doc": null,
+                    "parent_module": "AthenaColor.data.style",
+                    "signature": "()"
+                },
+                {
+                    "type": "#method",
+                    "name": "Back",
+                    "doc": null,
+                    "parent_module": "AthenaColor.data.style",
+                    "signature": "()"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "BasicNest",
+            "doc": null,
+            "parent_module": "AthenaColor",
+            "signature": "()",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "Fore",
+                    "doc": null,
+                    "parent_module": "AthenaColor.data.style",
+                    "signature": "()"
+                },
+                {
+                    "type": "#method",
+                    "name": "Back",
+                    "doc": null,
+                    "parent_module": "AthenaColor.data.style",
+                    "signature": "()"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "CMYK",
+            "doc": "Helper class that provides a standard way to create an ABC using\ninheritance.",
+            "parent_module": "AthenaColor",
+            "signature": "(c: 'int | float' = 0, m: 'int | float' = 0, y: 'int | float' = 0, k: 'int | float' = 0)",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, c: 'int | float' = 0, m: 'int | float' = 0, y: 'int | float' = 0, k: 'int | float' = 0)"
+                },
+                {
+                    "type": "#method",
+                    "name": "export",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'Tuple[int | float, int | float, int | float, int | float]'"
+                },
+                {
+                    "type": "#method",
+                    "name": "_value_setter",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, values: 'tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "__repr__",
+                    "doc": "Return repr(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "HEX",
+            "doc": "Helper class that provides a standard way to create an ABC using\ninheritance.",
+            "parent_module": "AthenaColor",
+            "signature": "(hex_value: 'str' = '#000000')",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, hex_value: 'str' = '#000000')"
+                },
+                {
+                    "type": "#method",
+                    "name": "__str__",
+                    "doc": "Return str(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                },
+                {
+                    "type": "#method",
+                    "name": "__repr__",
+                    "doc": "Return repr(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                },
+                {
+                    "type": "#method",
+                    "name": "__round__",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, n=None)"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "HEXA",
+            "doc": "Helper class that provides a standard way to create an ABC using\ninheritance.",
+            "parent_module": "AthenaColor",
+            "signature": "(hex_value: 'str' = '#00000000')",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, hex_value: 'str' = '#00000000')"
+                },
+                {
+                    "type": "#method",
+                    "name": "__str__",
+                    "doc": "Return str(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                },
+                {
+                    "type": "#method",
+                    "name": "__repr__",
+                    "doc": "Return repr(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                },
+                {
+                    "type": "#method",
+                    "name": "__round__",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, n=None)"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "HSL",
+            "doc": "Helper class that provides a standard way to create an ABC using\ninheritance.",
+            "parent_module": "AthenaColor",
+            "signature": "(h: 'int | float' = 0, s: 'int | float' = 0, l: 'int | float' = 0)",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, h: 'int | float' = 0, s: 'int | float' = 0, l: 'int | float' = 0)"
+                },
+                {
+                    "type": "#method",
+                    "name": "export",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'Tuple[int | float, int | float, int | float]'"
+                },
+                {
+                    "type": "#method",
+                    "name": "_value_setter",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, values: 'tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "__repr__",
+                    "doc": "Return repr(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "HSV",
+            "doc": "Helper class that provides a standard way to create an ABC using\ninheritance.",
+            "parent_module": "AthenaColor",
+            "signature": "(h: 'int | float' = 0.0, s: 'int | float' = 0.0, v: 'int | float' = 0.0)",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, h: 'int | float' = 0.0, s: 'int | float' = 0.0, v: 'int | float' = 0.0)"
+                },
+                {
+                    "type": "#method",
+                    "name": "export",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'Tuple[int | float, int | float, int | float]'"
+                },
+                {
+                    "type": "#method",
+                    "name": "_value_setter",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, values: 'tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "__repr__",
+                    "doc": "Return repr(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "HtmlColorObjects",
+            "doc": null,
+            "parent_module": "AthenaColor",
+            "signature": "()",
+            "methods": []
+        },
+        {
+            "type": "#class",
+            "name": "RGB",
+            "doc": "Helper class that provides a standard way to create an ABC using\ninheritance.",
+            "parent_module": "AthenaColor",
+            "signature": "(r: 'int | float' = 0, g: 'int | float' = 0, b: 'int | float' = 0)",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, r: 'int | float' = 0, g: 'int | float' = 0, b: 'int | float' = 0)"
+                },
+                {
+                    "type": "#method",
+                    "name": "export",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'Tuple[int, int, int]'"
+                },
+                {
+                    "type": "#method",
+                    "name": "_value_setter",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, values: 'tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "__repr__",
+                    "doc": "Return repr(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "RGBA",
+            "doc": "Helper class that provides a standard way to create an ABC using\ninheritance.",
+            "parent_module": "AthenaColor",
+            "signature": "(r: 'int' = 0, g: 'int' = 0, b: 'int' = 0, a: 'int' = 0)",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, r: 'int' = 0, g: 'int' = 0, b: 'int' = 0, a: 'int' = 0)"
+                },
+                {
+                    "type": "#method",
+                    "name": "export",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'Tuple[int, int, int, int]'"
+                },
+                {
+                    "type": "#method",
+                    "name": "_value_setter",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, values: 'tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "__repr__",
+                    "doc": "Return repr(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "Style",
+            "doc": null,
+            "parent_module": "AthenaColor",
+            "signature": "()",
+            "methods": []
+        },
+        {
+            "type": "#class",
+            "name": "StyleNest",
+            "doc": null,
+            "parent_module": "AthenaColor",
+            "signature": "()",
+            "methods": []
+        },
+        {
+            "type": "#func",
+            "name": "fix_console",
+            "doc": null,
+            "parent_module": "AthenaColor",
+            "signature": "()"
+        },
+        {
+            "type": "#class",
+            "name": "RgbControlled",
+            "doc": null,
+            "parent_module": "AthenaColor",
+            "signature": "(param_code: 'str')",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled",
+                    "signature": "(self, param_code: 'str')"
+                },
+                {
+                    "type": "#method",
+                    "name": "custom",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled",
+                    "signature": "(self, color: 'RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'str'"
+                }
+            ]
+        },
+        {
+            "type": "#class",
+            "name": "RgbControlledNested",
+            "doc": null,
+            "parent_module": "AthenaColor",
+            "signature": "(inline_class: 'RgbControlled', reset: 'str')",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, inline_class: 'RgbControlled', reset: 'str')"
+                },
+                {
+                    "type": "#method",
+                    "name": "custom",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, color: 'RGB | HEX', sep=' ') -> 'str'"
+                },
+                {
+                    "type": "#method",
+                    "name": "rgb",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, r: 'int', g: 'int', b: 'int', sep=' ') -> 'str'"
+                },
+                {
+                    "type": "#method",
+                    "name": "Maroon",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkRed",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Brown",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Firebrick",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Crimson",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Red",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Tomato",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Coral",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "IndianRed",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightCoral",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkSalmon",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Salmon",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightSalmon",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "OrangeRed",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkOrange",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Orange",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Gold",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkGoldenRod",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "GoldenRod",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "PaleGoldenRod",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkKhaki",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Khaki",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Olive",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Yellow",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "YellowGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkOliveGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "OliveDrab",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LawnGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Chartreuse",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "GreenYellow",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Green",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "ForestGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Lime",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LimeGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "PaleGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkSeaGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MediumSpringGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "SpringGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "SeaGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MediumAquaMarine",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MediumSeaGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightSeaGreen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkSlateGray",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Teal",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkCyan",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Aqua",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Cyan",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightCyan",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkTurquoise",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Turquoise",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MediumTurquoise",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "PaleTurquoise",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "AquaMarine",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "PowderBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "CadetBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "SteelBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "CornFlowerBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DeepSkyBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DodgerBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "SkyBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightSkyBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MidnightBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Navy",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MediumBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Blue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "RoyalBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "BlueViolet",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Indigo",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkSlateBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "SlateBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MediumSlateBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MediumPurple",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkMagenta",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkViolet",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkOrchid",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MediumOrchid",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Purple",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Thistle",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Plum",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Violet",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Magenta",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Orchid",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MediumVioletRed",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "PaleVioletRed",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DeepPink",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "HotPink",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightPink",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Pink",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "AntiqueWhite",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Beige",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Bisque",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "BlanchedAlmond",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Wheat",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "CornSilk",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LemonChiffon",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightGoldenRodYellow",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightYellow",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "SaddleBrown",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Sienna",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Chocolate",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Peru",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "SandyBrown",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "BurlyWood",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Tan",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "RosyBrown",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Moccasin",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "NavajoWhite",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "PeachPuff",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MistyRose",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LavenderBlush",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Linen",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "OldLace",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "PapayaWhip",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "WeaShell",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "MintCream",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "SlateGray",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightSlateGray",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightSteelBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Lavender",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "FloralWhite",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "AliceBlue",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "GhostWhite",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Honeydew",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Ivory",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Azure",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Snow",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Black",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DimGray",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Gray",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "DarkGray",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Silver",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "LightGray",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "Gainsboro",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "WhiteSmoke",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                },
+                {
+                    "type": "#method",
+                    "name": "White",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.console.styling.rgb_controlled_nested",
+                    "signature": "(self, *obj, sep=' ')"
+                }
+            ]
+        }
+    ],
+    "AthenaColor._info._v": [
+        {
+            "type": "#func",
+            "name": "_version",
+            "doc": null,
+            "parent_module": "AthenaColor._info._v",
+            "signature": "()"
+        }
+    ],
+    "AthenaColor._info.formatting": [
+        {
+            "type": "#func",
+            "name": "header",
+            "doc": null,
+            "parent_module": "AthenaColor._info.formatting",
+            "signature": "(header_text: 'str', to_str: 'bool')"
+        },
+        {
+            "type": "#func",
+            "name": "reference",
+            "doc": null,
+            "parent_module": "AthenaColor._info.formatting",
+            "signature": "(reference_text: 'str', to_str: 'bool')"
+        },
+        {
+            "type": "#func",
+            "name": "sub_modules",
+            "doc": null,
+            "parent_module": "AthenaColor._info.formatting",
+            "signature": "(module_text: 'str', to_str: 'bool')"
+        },
+        {
+            "type": "#func",
+            "name": "title",
+            "doc": null,
+            "parent_module": "AthenaColor._info.formatting",
+            "signature": "(title_text: 'str', to_str: 'bool')"
+        }
+    ],
+    "AthenaColor.models.color_system": [
+        {
+            "type": "#class",
+            "name": "ColorSystem",
+            "doc": "Helper class that provides a standard way to create an ABC using\ninheritance.",
+            "parent_module": "AthenaColor.models.color_system",
+            "signature": "(*_)",
+            "methods": [
+                {
+                    "type": "#method",
+                    "name": "__init__",
+                    "doc": "Initialize self.  See help(type(self)) for accurate signature.",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, *_)"
+                },
+                {
+                    "type": "#method",
+                    "name": "__str__",
+                    "doc": "Return str(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                },
+                {
+                    "type": "#method",
+                    "name": "__repr__",
+                    "doc": "Return repr(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'str'"
+                },
+                {
+                    "type": "#method",
+                    "name": "export",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'tuple'"
+                },
+                {
+                    "type": "#method",
+                    "name": "_value_setter",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, values: 'tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "average",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'float'"
+                },
+                {
+                    "type": "#method",
+                    "name": "__bool__",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self) -> 'bool'"
+                },
+                {
+                    "type": "#method",
+                    "name": "__round__",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, n=None) -> 'ColorSystem'"
+                },
+                {
+                    "type": "#method",
+                    "name": "__iter__",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self)"
+                },
+                {
+                    "type": "#method",
+                    "name": "__hash__",
+                    "doc": "Return hash(self).",
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self)"
+                },
+                {
+                    "type": "#method",
+                    "name": "__copy__",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self)"
+                },
+                {
+                    "type": "#method",
+                    "name": "__contains__",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, item)"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                },
+                {
+                    "type": "#method",
+                    "name": "wrapper",
+                    "doc": null,
+                    "parent_module": "AthenaColor.models.color_system",
+                    "signature": "(self, other: 'ColorSystem | int | tuple')"
+                }
+            ]
+        },
+        {
+            "type": "#func",
+            "name": "_ColorConversionInput",
+            "doc": null,
+            "parent_module": "AthenaColor.models.color_system",
+            "signature": "(fnc)"
+        }
+    ],
+    "AthenaColor.functions.color_tuple_conversion": [
+        {
+            "type": "#func",
+            "name": "rgb_to_hex",
+            "doc": "Function to convert a rgb to a hexadecimal string.\nDoes not create a HEX object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(r: 'int | float', g: 'int | float', b: 'int | float') -> 'str'"
+        },
+        {
+            "type": "#func",
+            "name": "rgba_to_hexa",
+            "doc": "Function to convert a rgba tuple to a hexa string.\nDoes not create an HEXA object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(r: 'int', g: 'int', b: 'int', a: 'int') -> 'str'"
+        },
+        {
+            "type": "#func",
+            "name": "cmyk_to_hex",
+            "doc": "Function to convert a cmyk to a hexadecimal string.\nDoes not create a HEX object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(c: 'int | float', m: 'int | float', y: 'int | float', k: 'int | float') -> 'str'"
+        },
+        {
+            "type": "#func",
+            "name": "cmyk_to_hsl",
+            "doc": "Function to convert a cmyk tuple to a hsl tuple.\nDoes not create an HSL object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(c: 'int | float', m: 'int | float', y: 'int | float', k: 'int | float') -> 'Tuple[float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "cmyk_to_hsv",
+            "doc": "Function to convert a cmyk tuple to a hsv tuple.\nDoes not create an HSV object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(c: 'int | float', m: 'int | float', y: 'int | float', k: 'int | float') -> 'Tuple[float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "cmyk_to_rgb",
+            "doc": "Function to convert a cmyk tuple to a rgb tuple.\nDoes not create an RGB object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(c: 'int | float', m: 'int | float', y: 'int | float', k: 'int | float') -> 'Tuple[int, int, int]'"
+        },
+        {
+            "type": "#func",
+            "name": "hex_to_cmyk",
+            "doc": "Function to convert a hexadecimal string to a cmyk tuple.\nDoes not create an CMYK object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(hexadecimal: 'str') -> 'Tuple[float, float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "hex_to_hsl",
+            "doc": "Function to convert a hexadecimal string to a hsl tuple.\nDoes not create an HSL object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(hexadecimal: 'str') -> 'Tuple[float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "hex_to_hsv",
+            "doc": "Function to convert a hexadecimal string to a hsv tuple.\nDoes not create an HSV object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(hexadecimal: 'str') -> 'Tuple[float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "hex_to_rgb",
+            "doc": "Function to convert a hexadecimal string to a rgb tuple.\nDoes not create an RGB object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(hexadecimal: 'str') -> 'Tuple[int, ...]'"
+        },
+        {
+            "type": "#func",
+            "name": "hexa_to_rgba",
+            "doc": "Function to convert a hexadecimal string to a rgb tuple.\nDoes not create an RGBA object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(hexadecimal: 'str') -> 'Tuple[int, ...]'"
+        },
+        {
+            "type": "#func",
+            "name": "hsl_to_cmyk",
+            "doc": "Function to convert a hsl tuple to a cmyk tuple.\nDoes not create an CMYK object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(h: 'int | float', s: 'int | float', l: 'int | float') -> 'Tuple[float, float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "hsl_to_hex",
+            "doc": "Function to convert a hsl to a hexadecimal string.\nDoes not create a HEX object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(h: 'int | float', s: 'int | float', l: 'int | float') -> 'str'"
+        },
+        {
+            "type": "#func",
+            "name": "hsl_to_hsv",
+            "doc": "Function to convert a hsl tuple to a hsv tuple.\nDoes not create an HSV object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(h: 'int | float', s: 'int | float', l: 'int | float') -> 'Tuple[float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "hsl_to_rgb",
+            "doc": "Function to convert a hsl tuple to a rgb tuple.\nDoes not create an RGB object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(h: 'int | float', s: 'int | float', l: 'int | float') -> 'Tuple[int, int, int]'"
+        },
+        {
+            "type": "#func",
+            "name": "hsv_to_cmyk",
+            "doc": "Function to convert a hsv tuple to a cmyk tuple.\nDoes not create an CMYK object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(h: 'int | float', s: 'int | float', v: 'int | float') -> 'Tuple[float, float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "hsv_to_hex",
+            "doc": "Function to convert a hsv to a hexadecimal string.\nDoes not create a HEX object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(h: 'int | float', s: 'int | float', v: 'int | float') -> 'str'"
+        },
+        {
+            "type": "#func",
+            "name": "hsv_to_hsl",
+            "doc": "Function to convert a hsv tuple to a hsl tuple.\nDoes not create an HSL object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(h: 'int | float', s: 'int | float', v: 'int | float') -> 'Tuple[float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "hsv_to_rgb",
+            "doc": "Function to convert a hsv tuple to a rgb tuple.\nDoes not create an RGB object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(h: 'int | float', s: 'int | float', v: 'int | float') -> 'Tuple[int, int, int]'"
+        },
+        {
+            "type": "#func",
+            "name": "normalize_rgb",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(r: 'int', g: 'int', b: 'int') -> 'Tuple[float, ...]'"
+        },
+        {
+            "type": "#func",
+            "name": "normalize_rgba",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(r: 'int', g: 'int', b: 'int', a: 'int') -> 'Tuple[float, ...]'"
+        },
+        {
+            "type": "#func",
+            "name": "rgb_to_cmyk",
+            "doc": "Function to convert a rgb tuple to a cmyk tuple.\nDoes not create an CMYK object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(r: 'int', g: 'int', b: 'int') -> 'Tuple[float, float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "rgb_to_hsl",
+            "doc": "Function to convert a rgb tuple to a hsl tuple.\nDoes not create an HSL object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(r: 'int', g: 'int', b: 'int') -> 'Tuple[float, float, float]'"
+        },
+        {
+            "type": "#func",
+            "name": "rgb_to_hsv",
+            "doc": "Function to convert a rgb tuple to a hsv tuple.\nDoes not create an HSV object.",
+            "parent_module": "AthenaColor.functions.color_tuple_conversion",
+            "signature": "(r: 'int', g: 'int', b: 'int') -> 'Tuple[float, float, float]'"
+        }
+    ],
+    "AthenaColor.functions.color_object_conversion": [
+        {
+            "type": "#func",
+            "name": "to_CMYK",
+            "doc": "Function which converts any Color Object to an CMYK object.",
+            "parent_module": "AthenaColor.functions.color_object_conversion",
+            "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'CMYK'"
+        },
+        {
+            "type": "#func",
+            "name": "to_HEX",
+            "doc": "Function which converts any Color Object to an HEX object.",
+            "parent_module": "AthenaColor.functions.color_object_conversion",
+            "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'HEX'"
+        },
+        {
+            "type": "#func",
+            "name": "to_HEXA",
+            "doc": "Function which converts any Color Object to an HEXA object.",
+            "parent_module": "AthenaColor.functions.color_object_conversion",
+            "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'HEXA'"
+        },
+        {
+            "type": "#func",
+            "name": "to_HSL",
+            "doc": "Function which converts any Color Object to an HSL object.",
+            "parent_module": "AthenaColor.functions.color_object_conversion",
+            "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'HSL'"
+        },
+        {
+            "type": "#func",
+            "name": "to_HSV",
+            "doc": "Function which converts any Color Object to an HSV object.",
+            "parent_module": "AthenaColor.functions.color_object_conversion",
+            "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'HSV'"
+        },
+        {
+            "type": "#func",
+            "name": "to_RGB",
+            "doc": "Function which converts any Color Object to an RGB object",
+            "parent_module": "AthenaColor.functions.color_object_conversion",
+            "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'RGB'"
+        },
+        {
+            "type": "#func",
+            "name": "to_RGBA",
+            "doc": "Function which converts any Color Object to an RGBA object.",
+            "parent_module": "AthenaColor.functions.color_object_conversion",
+            "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'RGBA'"
+        }
+    ],
+    "AthenaColor.functions.constrains": [
+        {
+            "type": "#func",
+            "name": "constrain_cmyk",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.constrains",
+            "signature": "(c: 'int | float', m: 'int | float', y: 'int | float', k: 'int | float') -> 'Tuple[int | float, int | float, int | float, int | float]'"
+        },
+        {
+            "type": "#func",
+            "name": "constrain_hsl",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.constrains",
+            "signature": "(h: 'int | float', s: 'int | float', l: 'int | float') -> 'Tuple[int | float, int | float, int | float]'"
+        },
+        {
+            "type": "#func",
+            "name": "constrain_hsv",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.constrains",
+            "signature": "(h: 'int | float', s: 'int | float', v: 'int | float') -> 'Tuple[int | float, int | float, int | float]'"
+        },
+        {
+            "type": "#func",
+            "name": "constrain_rgb",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.constrains",
+            "signature": "(r: 'int', g: 'int', b: 'int') -> 'Tuple[int, int, int]'"
+        },
+        {
+            "type": "#func",
+            "name": "constrain_rgba",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.constrains",
+            "signature": "(r: 'int', g: 'int', b: 'int', a: 'int') -> 'Tuple[int, int, int, int]'"
+        },
+        {
+            "type": "#func",
+            "name": "constrain",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.constrains",
+            "signature": "(value: 'int | float', maximum: 'int | float', minimum: 'int | float' = 0) -> 'int | float'"
+        }
+    ],
+    "AthenaColor.functions.functions": [
+        {
+            "type": "#func",
+            "name": "round_half_up",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.functions",
+            "signature": "(value: 'int | float') -> 'int'"
+        }
+    ],
+    "AthenaColor.functions.ansi_sequences": [
+        {
+            "type": "#func",
+            "name": "color_sequence_nested",
+            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed\n:rtype: object",
+            "parent_module": "AthenaColor.functions.ansi_sequences",
+            "signature": "(obj: 'tuple', color_code: 'str', reset_code: 'int | str', sep: 'str' = ' ') -> 'str'"
+        },
+        {
+            "type": "#func",
+            "name": "color_sequence_nested_no_reset",
+            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed",
+            "parent_module": "AthenaColor.functions.ansi_sequences",
+            "signature": "(obj: 'tuple', color_code: 'int | str', sep: 'str' = ' ') -> 'str'"
+        },
+        {
+            "type": "#func",
+            "name": "color_sequence",
+            "doc": "Used for quick assembly of correct Ansi Escape functions\nUsed the escape code defined in AthenaColor init",
+            "parent_module": "AthenaColor.functions.ansi_sequences",
+            "signature": "(control_code: 'int | str') -> 'str'"
+        },
+        {
+            "type": "#func",
+            "name": "color_sequence_nested",
+            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed\n:rtype: object",
+            "parent_module": "AthenaColor.functions.ansi_sequences",
+            "signature": "(obj: 'tuple', color_code: 'str', reset_code: 'int | str', sep: 'str' = ' ') -> 'str'"
+        },
+        {
+            "type": "#func",
+            "name": "color_sequence_nested_no_reset",
+            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed",
+            "parent_module": "AthenaColor.functions.ansi_sequences",
+            "signature": "(obj: 'tuple', color_code: 'int | str', sep: 'str' = ' ') -> 'str'"
+        }
+    ],
+    "AthenaColor.functions.dunder_functions": [
+        {
+            "type": "#func",
+            "name": "add",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'tuple'"
+        },
+        {
+            "type": "#func",
+            "name": "divmod_function",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'tuple'"
+        },
+        {
+            "type": "#func",
+            "name": "eq",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'bool'"
+        },
+        {
+            "type": "#func",
+            "name": "floordiv",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'tuple'"
+        },
+        {
+            "type": "#func",
+            "name": "ge",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'bool'"
+        },
+        {
+            "type": "#func",
+            "name": "gt",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'bool'"
+        },
+        {
+            "type": "#func",
+            "name": "le",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'bool'"
+        },
+        {
+            "type": "#func",
+            "name": "lt",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'bool'"
+        },
+        {
+            "type": "#func",
+            "name": "mod",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'tuple'"
+        },
+        {
+            "type": "#func",
+            "name": "mul",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'tuple'"
+        },
+        {
+            "type": "#func",
+            "name": "ne",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'bool'"
+        },
+        {
+            "type": "#func",
+            "name": "power",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'tuple'"
+        },
+        {
+            "type": "#func",
+            "name": "sub",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'tuple'"
+        },
+        {
+            "type": "#func",
+            "name": "truediv",
+            "doc": null,
+            "parent_module": "AthenaColor.functions.dunder_functions",
+            "signature": "(left: 'tuple', right: 'tuple') -> 'tuple'"
+        }
+    ]
+}
