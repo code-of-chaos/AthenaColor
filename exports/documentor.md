@@ -205,14 +205,6 @@ Return repr(self).
 
 ---
 
-#class AthenaColor.**HtmlColorObjects**()
-
-*`-!- Missing documentation -!-`*
-
-
-
----
-
 #class AthenaColor.**RGB**(r: int | float = 0, g: int | float = 0, b: int | float = 0)
 
 Helper class that provides a standard way to create an ABC using
@@ -1214,11 +1206,21 @@ Does not create an HSV object.
 
 Function which converts any Color Object to an CMYK object.
 
+Parameters:
+- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+Returns : CMYK
+
 ---
 
 #func AthenaColor.functions.color_object_conversion.**to_HEX**(color: ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA) -> HEX
 
 Function which converts any Color Object to an HEX object.
+
+Parameters:
+- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+Returns : HEX
 
 ---
 
@@ -1226,11 +1228,21 @@ Function which converts any Color Object to an HEX object.
 
 Function which converts any Color Object to an HEXA object.
 
+Parameters:
+- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+Returns : HEXA
+
 ---
 
 #func AthenaColor.functions.color_object_conversion.**to_HSL**(color: ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA) -> HSL
 
 Function which converts any Color Object to an HSL object.
+
+Parameters:
+- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+Returns : HSL
 
 ---
 
@@ -1238,11 +1250,21 @@ Function which converts any Color Object to an HSL object.
 
 Function which converts any Color Object to an HSV object.
 
+Parameters:
+- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+Returns : HSV
+
 ---
 
 #func AthenaColor.functions.color_object_conversion.**to_RGB**(color: ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA) -> RGB
 
 Function which converts any Color Object to an RGB object
+
+Parameters:
+- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+Returns : RGB
 
 ---
 
@@ -1250,35 +1272,40 @@ Function which converts any Color Object to an RGB object
 
 Function which converts any Color Object to an RGBA object.
 
+Parameters:
+- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+Returns : RGBA
+
 ---
 
 #func AthenaColor.functions.constrains.**constrain_cmyk**(c: int | float, m: int | float, y: int | float, k: int | float) -> Tuple[int | float, int | float, int | float, int | float]
 
-*`-!- Missing documentation -!-`*
+Constrain the given values to the CMYK format
 
 ---
 
 #func AthenaColor.functions.constrains.**constrain_hsl**(h: int | float, s: int | float, l: int | float) -> Tuple[int | float, int | float, int | float]
 
-*`-!- Missing documentation -!-`*
+Constrain the given values to the HSL format
 
 ---
 
 #func AthenaColor.functions.constrains.**constrain_hsv**(h: int | float, s: int | float, v: int | float) -> Tuple[int | float, int | float, int | float]
 
-*`-!- Missing documentation -!-`*
+Constrain the given values to the HSV format
 
 ---
 
 #func AthenaColor.functions.constrains.**constrain_rgb**(r: int, g: int, b: int) -> Tuple[int, int, int]
 
-*`-!- Missing documentation -!-`*
+Constrain the given values to the RGB format
 
 ---
 
 #func AthenaColor.functions.constrains.**constrain_rgba**(r: int, g: int, b: int, a: int) -> Tuple[int, int, int, int]
 
-*`-!- Missing documentation -!-`*
+Constrain the given values to the RGBA format
 
 ---
 
@@ -1299,7 +1326,12 @@ Function which converts any Color Object to an RGBA object.
 Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
 Function wraps every obj in the properly defined control- and reset codes.
 This is made to prevent style makeup bleed
-:rtype: object
+
+Parameters:
+- obj : tuple -> Collection of all objects to be wrapped
+- color_code : str -> Full color_sequenced ANSI code
+- reset_code : int|str -> Full color_sequenced ANSI code to reset the given color
+- sep : str -> separation string between the various objects
 
 ---
 
@@ -1308,6 +1340,11 @@ This is made to prevent style makeup bleed
 Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
 Function wraps every obj in the properly defined control- and reset codes.
 This is made to prevent style makeup bleed
+
+Parameters:
+- obj : tuple -> Collection of all objects to be wrapped
+- color_code : str -> Full color_sequenced ANSI code
+- sep : str -> separation string between the various objects
 
 ---
 
@@ -1316,6 +1353,9 @@ This is made to prevent style makeup bleed
 Used for quick assembly of correct Ansi Escape functions
 Used the escape code defined in AthenaColor init
 
+Parameters:
+- control_code : int|str -> numerical ANSI fragment
+
 ---
 
 #func AthenaColor.functions.ansi_sequences.**color_sequence_nested**(obj: tuple, color_code: str, reset_code: int | str, sep: str =  ) -> str
@@ -1323,7 +1363,12 @@ Used the escape code defined in AthenaColor init
 Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
 Function wraps every obj in the properly defined control- and reset codes.
 This is made to prevent style makeup bleed
-:rtype: object
+
+Parameters:
+- obj : tuple -> Collection of all objects to be wrapped
+- color_code : str -> Full color_sequenced ANSI code
+- reset_code : int|str -> Full color_sequenced ANSI code to reset the given color
+- sep : str -> separation string between the various objects
 
 ---
 
@@ -1332,6 +1377,11 @@ This is made to prevent style makeup bleed
 Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
 Function wraps every obj in the properly defined control- and reset codes.
 This is made to prevent style makeup bleed
+
+Parameters:
+- obj : tuple -> Collection of all objects to be wrapped
+- color_code : str -> Full color_sequenced ANSI code
+- sep : str -> separation string between the various objects
 
 ---
 

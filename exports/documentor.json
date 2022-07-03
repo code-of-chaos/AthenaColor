@@ -345,14 +345,6 @@
         },
         {
             "type": "#class",
-            "name": "HtmlColorObjects",
-            "doc": null,
-            "parent_module": "AthenaColor",
-            "signature": "()",
-            "methods": []
-        },
-        {
-            "type": "#class",
             "name": "RGB",
             "doc": "Helper class that provides a standard way to create an ABC using\ninheritance.",
             "parent_module": "AthenaColor",
@@ -1937,49 +1929,49 @@
         {
             "type": "#func",
             "name": "to_CMYK",
-            "doc": "Function which converts any Color Object to an CMYK object.",
+            "doc": "Function which converts any Color Object to an CMYK object.\n\nParameters:\n- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object\n\nReturns : CMYK",
             "parent_module": "AthenaColor.functions.color_object_conversion",
             "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'CMYK'"
         },
         {
             "type": "#func",
             "name": "to_HEX",
-            "doc": "Function which converts any Color Object to an HEX object.",
+            "doc": "Function which converts any Color Object to an HEX object.\n\nParameters:\n- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object\n\nReturns : HEX",
             "parent_module": "AthenaColor.functions.color_object_conversion",
             "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'HEX'"
         },
         {
             "type": "#func",
             "name": "to_HEXA",
-            "doc": "Function which converts any Color Object to an HEXA object.",
+            "doc": "Function which converts any Color Object to an HEXA object.\n\nParameters:\n- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object\n\nReturns : HEXA",
             "parent_module": "AthenaColor.functions.color_object_conversion",
             "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'HEXA'"
         },
         {
             "type": "#func",
             "name": "to_HSL",
-            "doc": "Function which converts any Color Object to an HSL object.",
+            "doc": "Function which converts any Color Object to an HSL object.\n\nParameters:\n- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object\n\nReturns : HSL",
             "parent_module": "AthenaColor.functions.color_object_conversion",
             "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'HSL'"
         },
         {
             "type": "#func",
             "name": "to_HSV",
-            "doc": "Function which converts any Color Object to an HSV object.",
+            "doc": "Function which converts any Color Object to an HSV object.\n\nParameters:\n- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object\n\nReturns : HSV",
             "parent_module": "AthenaColor.functions.color_object_conversion",
             "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'HSV'"
         },
         {
             "type": "#func",
             "name": "to_RGB",
-            "doc": "Function which converts any Color Object to an RGB object",
+            "doc": "Function which converts any Color Object to an RGB object\n\nParameters:\n- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object\n\nReturns : RGB",
             "parent_module": "AthenaColor.functions.color_object_conversion",
             "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'RGB'"
         },
         {
             "type": "#func",
             "name": "to_RGBA",
-            "doc": "Function which converts any Color Object to an RGBA object.",
+            "doc": "Function which converts any Color Object to an RGBA object.\n\nParameters:\n- color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object\n\nReturns : RGBA",
             "parent_module": "AthenaColor.functions.color_object_conversion",
             "signature": "(color: 'ColorSystem | RGB | HEX | CMYK | HSL | HSV | RGBA | HEXA') -> 'RGBA'"
         }
@@ -1988,35 +1980,35 @@
         {
             "type": "#func",
             "name": "constrain_cmyk",
-            "doc": null,
+            "doc": "Constrain the given values to the CMYK format",
             "parent_module": "AthenaColor.functions.constrains",
             "signature": "(c: 'int | float', m: 'int | float', y: 'int | float', k: 'int | float') -> 'Tuple[int | float, int | float, int | float, int | float]'"
         },
         {
             "type": "#func",
             "name": "constrain_hsl",
-            "doc": null,
+            "doc": "Constrain the given values to the HSL format",
             "parent_module": "AthenaColor.functions.constrains",
             "signature": "(h: 'int | float', s: 'int | float', l: 'int | float') -> 'Tuple[int | float, int | float, int | float]'"
         },
         {
             "type": "#func",
             "name": "constrain_hsv",
-            "doc": null,
+            "doc": "Constrain the given values to the HSV format",
             "parent_module": "AthenaColor.functions.constrains",
             "signature": "(h: 'int | float', s: 'int | float', v: 'int | float') -> 'Tuple[int | float, int | float, int | float]'"
         },
         {
             "type": "#func",
             "name": "constrain_rgb",
-            "doc": null,
+            "doc": "Constrain the given values to the RGB format",
             "parent_module": "AthenaColor.functions.constrains",
             "signature": "(r: 'int', g: 'int', b: 'int') -> 'Tuple[int, int, int]'"
         },
         {
             "type": "#func",
             "name": "constrain_rgba",
-            "doc": null,
+            "doc": "Constrain the given values to the RGBA format",
             "parent_module": "AthenaColor.functions.constrains",
             "signature": "(r: 'int', g: 'int', b: 'int', a: 'int') -> 'Tuple[int, int, int, int]'"
         },
@@ -2041,35 +2033,35 @@
         {
             "type": "#func",
             "name": "color_sequence_nested",
-            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed\n:rtype: object",
+            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed\n\nParameters:\n- obj : tuple -> Collection of all objects to be wrapped\n- color_code : str -> Full color_sequenced ANSI code\n- reset_code : int|str -> Full color_sequenced ANSI code to reset the given color\n- sep : str -> separation string between the various objects",
             "parent_module": "AthenaColor.functions.ansi_sequences",
             "signature": "(obj: 'tuple', color_code: 'str', reset_code: 'int | str', sep: 'str' = ' ') -> 'str'"
         },
         {
             "type": "#func",
             "name": "color_sequence_nested_no_reset",
-            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed",
+            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed\n\nParameters:\n- obj : tuple -> Collection of all objects to be wrapped\n- color_code : str -> Full color_sequenced ANSI code\n- sep : str -> separation string between the various objects",
             "parent_module": "AthenaColor.functions.ansi_sequences",
             "signature": "(obj: 'tuple', color_code: 'int | str', sep: 'str' = ' ') -> 'str'"
         },
         {
             "type": "#func",
             "name": "color_sequence",
-            "doc": "Used for quick assembly of correct Ansi Escape functions\nUsed the escape code defined in AthenaColor init",
+            "doc": "Used for quick assembly of correct Ansi Escape functions\nUsed the escape code defined in AthenaColor init\n\nParameters:\n- control_code : int|str -> numerical ANSI fragment",
             "parent_module": "AthenaColor.functions.ansi_sequences",
             "signature": "(control_code: 'int | str') -> 'str'"
         },
         {
             "type": "#func",
             "name": "color_sequence_nested",
-            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed\n:rtype: object",
+            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed\n\nParameters:\n- obj : tuple -> Collection of all objects to be wrapped\n- color_code : str -> Full color_sequenced ANSI code\n- reset_code : int|str -> Full color_sequenced ANSI code to reset the given color\n- sep : str -> separation string between the various objects",
             "parent_module": "AthenaColor.functions.ansi_sequences",
             "signature": "(obj: 'tuple', color_code: 'str', reset_code: 'int | str', sep: 'str' = ' ') -> 'str'"
         },
         {
             "type": "#func",
             "name": "color_sequence_nested_no_reset",
-            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed",
+            "doc": "Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.\nFunction wraps every obj in the properly defined control- and reset codes.\nThis is made to prevent style makeup bleed\n\nParameters:\n- obj : tuple -> Collection of all objects to be wrapped\n- color_code : str -> Full color_sequenced ANSI code\n- sep : str -> separation string between the various objects",
             "parent_module": "AthenaColor.functions.ansi_sequences",
             "signature": "(obj: 'tuple', color_code: 'int | str', sep: 'str' = ' ') -> 'str'"
         }
