@@ -21,6 +21,7 @@ sep_=" "
 # - Support Code -
 # ----------------------------------------------------------------------------------------------------------------------
 class RgbControlledNested:
+    __name__ = "RgbControlledNested"
     _inline_class:RgbControlled
     _reset:str
     __slots__ = ["_inline_class", "_reset"]

@@ -24,6 +24,11 @@ __all__ = [
 def to_RGB(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGB:
     """
     Function which converts any Color Object to an RGB object
+
+    Parameters:
+    - color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+    Returns : RGB
     """
     try:
         return RGB(*color_conversions_mapped[RGB][type(color)](color))
@@ -37,6 +42,11 @@ def to_RGB(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGB:
 def to_HEX(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEX:
     """
     Function which converts any Color Object to an HEX object.
+
+    Parameters:
+    - color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+    Returns : HEX
     """
     try:
         return HEX(rgb_to_hex(*color_conversions_mapped[HEX][type(color)](color)))
@@ -50,6 +60,11 @@ def to_HEX(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEX:
 def to_HSV(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSV:
     """
     Function which converts any Color Object to an HSV object.
+
+    Parameters:
+    - color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+    Returns : HSV
     """
     try:
         return HSV(*color_conversions_mapped[HSV][type(color)](color))
@@ -62,6 +77,11 @@ def to_HSV(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSV:
 def to_HSL(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSL:
     """
     Function which converts any Color Object to an HSL object.
+
+    Parameters:
+    - color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+    Returns : HSL
     """
     try:
         return HSL(*color_conversions_mapped[HSL][type(color)](color))
@@ -74,6 +94,11 @@ def to_HSL(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HSL:
 def to_CMYK(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> CMYK:
     """
     Function which converts any Color Object to an CMYK object.
+
+    Parameters:
+    - color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+    Returns : CMYK
     """
     try:
         return CMYK(*color_conversions_mapped[CMYK][type(color)](color))
@@ -86,6 +111,11 @@ def to_CMYK(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> CMYK:
 def to_RGBA(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGBA:
     """
     Function which converts any Color Object to an RGBA object.
+
+    Parameters:
+    - color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+    Returns : RGBA
     """
     try:
         return RGBA(*color_conversions_mapped[RGBA][type(color)](color))
@@ -95,6 +125,11 @@ def to_RGBA(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> RGBA:
 def to_HEXA(color:ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA) -> HEXA:
     """
     Function which converts any Color Object to an HEXA object.
+
+    Parameters:
+    - color : ColorSystem|RGB|HEX|CMYK|HSL|HSV|RGBA|HEXA -> Any valid ColorSystem object
+
+    Returns : HEXA
     """
     try:
         return HEXA(rgba_to_hexa(*color_conversions_mapped[HEXA][type(color)](color)))
