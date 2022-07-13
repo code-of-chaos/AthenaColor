@@ -7,7 +7,7 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.functions.ansi_sequences import color_sequence, color_sequence_nested, color_sequence_nested_no_reset
+from AthenaColor.func.ansi_sequences import color_sequence, color_sequence_nested, color_sequence_nested_no_reset
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -

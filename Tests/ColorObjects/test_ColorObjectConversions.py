@@ -7,7 +7,7 @@ import unittest
 
 # Custom Library
 from AthenaColor import *
-from AthenaColor.functions.color_object_conversion import *
+from AthenaColor.func.color_object_conversion import *
 
 # Custom Packages
 # ----------------------------------------------------------------------------------------------------------------------
