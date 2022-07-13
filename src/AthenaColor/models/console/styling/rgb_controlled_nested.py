@@ -8,7 +8,7 @@ from __future__ import annotations
 
 # Custom Packages
 from AthenaColor.models.color_system import RGB,HEX, normalize_rgb
-from AthenaColor.functions.ansi_sequences import color_sequence_nested
+from AthenaColor.func.ansi_sequences import color_sequence_nested
 from AthenaColor.models.console.styling.rgb_controlled import RgbControlled
 
 # ----------------------------------------------------------------------------------------------------------------------

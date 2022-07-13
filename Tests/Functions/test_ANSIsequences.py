@@ -6,7 +6,7 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor.functions.ansi_sequences import *
+from AthenaColor.func.ansi_sequences import *
 
 # Custom Packages
 

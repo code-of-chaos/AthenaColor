@@ -8,8 +8,8 @@ from __future__ import annotations
 
 # Custom Packages
 from AthenaColor.models.color_system import RGB, RGBA, HEX, HEXA, HSV, HSL, CMYK
-from AthenaColor.functions.color_tuple_conversion import cmyk_to_rgb,hsv_to_rgb,hsl_to_rgb
-from AthenaColor.functions.ansi_sequences import color_sequence
+from AthenaColor.func.color_tuple_conversion import cmyk_to_rgb,hsv_to_rgb,hsl_to_rgb
+from AthenaColor.func.ansi_sequences import color_sequence
 import AthenaColor.data.colors_html as HtmlColorObjects
 
 # ----------------------------------------------------------------------------------------------------------------------
