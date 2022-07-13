@@ -26,7 +26,3 @@ import AthenaColor.func.color_object_conversion as color_object_conversion
 # apply the fix, so that in windows the colors are shown correctly
 from AthenaColor.func.general import fix_console as _fix_console
 _fix_console()
-
-# import the info function
-# noinspection PyProtectedMember
-from AthenaColor._info.info import info
