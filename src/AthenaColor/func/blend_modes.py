@@ -11,8 +11,8 @@ from typing import Callable
 
 # Custom Packages
 from AthenaColor.models.color_system import ColorSystem, RGBA
-from AthenaColor.functions.color_object_conversion import to_RGBA
-from AthenaColor.functions.color_tuple_conversion import normalize_rgba
+from AthenaColor.func.color_object_conversion import to_RGBA
+from AthenaColor.func.color_tuple_conversion import normalize_rgba
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Support Code -

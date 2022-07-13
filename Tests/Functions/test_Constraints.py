@@ -6,7 +6,7 @@ from __future__ import annotations
 import unittest
 
 # Custom Library
-from AthenaColor.functions.constrains import *
+from AthenaColor.func.constrains import *
 
 # Custom Packages
 
