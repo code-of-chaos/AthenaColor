@@ -1,7 +1,7 @@
 # - AthenaColor -
 [![pypi](https://img.shields.io/pypi/v/AthenaColor)](https://pypi.org/project/AthenaColor/) [![GitHub license](https://img.shields.io/github/license/DirectiveAthena/VerSC-AthenaColor)](https://github.com/DirectiveAthena/VerSC-AthenaColor/blob/master/LICENSE) [![Discord](https://img.shields.io/discord/814599159926620160?color=maroon)](https://discord.gg/6JcDbhXkCH) [![Downloads](https://pepy.tech/badge/athenacolor)](https://pepy.tech/project/athenacolor)
 
-<img height="128" src="https://github.com/DirectiveAthena/AthenaColor/blob/master/Resources/AthenaColor.png?raw=true" width="128" alt="AthenaColor Logo"/>
+<img height="128" src="https://github.com/DirectiveAthena/AthenaColor/blob/core/Resources/AthenaColor.png?raw=true" width="128" alt="AthenaColor Logo"/>
 
 --- 
 ## Package Details
