@@ -1,28 +1,41 @@
 # ----------------------------------------------------------------------------------------------------------------------
 # - All -
 # ----------------------------------------------------------------------------------------------------------------------
-# This "__all__" is in a permanent structure.
-#   Things can be added (and probably will) in future releases
-#   Nothing should ever be removed from this list, once something is added in a full version
-
 __all__ = [
-    "color_tuple_conversion","color_object_conversion",
-    "RGB","RGBA","HEX","HEXA","HSV","HSL","CMYK",
     "Fore","Back","Underline","Style","Basic",
     "ForeNest","BackNest","UnderlineNest","StyleNest","BasicNest"
 ]
 # ----------------------------------------------------------------------------------------------------------------------
 # - Package Imports -
 # ----------------------------------------------------------------------------------------------------------------------
+# General Packages
+import os
+import sys
+
+# Custom Library
+
+# Custom Packages
 import AthenaColor.data.colors_html as HtmlColorObjects
 from AthenaColor.data.style import Style, StyleNest, Basic, BasicNest
-from AthenaColor.data.bodies import Fore, ForeNest, Back, BackNest, Underline, UnderlineNest
+from AthenaColor.models.rgb_controlled import RgbControlled
+from AthenaColor.models.rgb_controlled_nested import RgbControlledNested
 
-from AthenaColor.models.color_system import RGB, RGBA, HEX, HEXA, HSV, HSL, CMYK
+# ----------------------------------------------------------------------------------------------------------------------
+# - Support Code -
+# ----------------------------------------------------------------------------------------------------------------------
+# Applies a quick fix to make color appear in console
+if sys.platform == 'win32':
+    os.system("color")
 
-import AthenaColor.func.color_tuple_conversion as color_tuple_conversion
-import AthenaColor.func.color_object_conversion as color_object_conversion
+# ----------------------------------------------------------------------------------------------------------------------
+# - Code -
+# ----------------------------------------------------------------------------------------------------------------------
+# Collection of both inline and nested objects
+#   These can be used to use color in the console
+Fore = RgbControlled(param_code=f"38;2;",)
+Back = RgbControlled(param_code=f"48;2;",)
+Underline = RgbControlled(param_code=f"58;2;",)
 
-# apply the fix, so that in windows the colors are shown correctly
-from AthenaColor.func.general import fix_console as _fix_console
-_fix_console()
+ForeNest = RgbControlledNested(inline_class=Fore, reset=Style.NoForeground)
+BackNest = RgbControlledNested(inline_class=Back,reset=Style.NoBackground)
+UnderlineNest = RgbControlledNested(inline_class=Underline,reset=Style.NoUnderline)
