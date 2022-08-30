@@ -15,7 +15,7 @@ def readme_handler() -> str:
 
 def version_handler() -> str:
     # ------------------------------------------------------------------------------------------------------------------
-    version = 6,2,0 # <-- DEFINE THE VERSION IN A TUPLE FORMAT HERE
+    version = 7,0,0 # <-- DEFINE THE VERSION IN A TUPLE FORMAT HERE
     # ------------------------------------------------------------------------------------------------------------------
     version_str = ".".join(str(i) for i in version)
 
