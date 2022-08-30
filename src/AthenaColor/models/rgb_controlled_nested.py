@@ -7,9 +7,8 @@ from __future__ import annotations
 # Custom Library
 
 # Custom Packages
-from AthenaColor.models.color_system import RGB,HEX, normalize_rgb
 from AthenaColor.func.ansi_sequences import color_sequence_nested
-from AthenaColor.models.console.styling.rgb_controlled import RgbControlled
+from AthenaColor.models.rgb_controlled import RgbControlled
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - Code -
@@ -32,15 +31,13 @@ class RgbControlledNested:
     # ------------------------------------------------------------------------------------------------------------------
     # - Methods -
     # ------------------------------------------------------------------------------------------------------------------
-    def custom(self,*obj, color:RGB|HEX, sep=sep_) -> str:
-        # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
-        return color_sequence_nested(obj, f"{self._inline_class.param_code}{';'.join(*color.export())}m", self._reset,
-                                     sep=sep)
-
-    def rgb(self, *obj, r:int,g:int,b:int, sep=sep_) -> str:
-        # Don't rely on init.stringSeparation as the ANSI code rely on it being a ';'
-        return color_sequence_nested(obj, f"{self._inline_class.param_code}{';'.join(*normalize_rgb(r, g, b))}m",
-                                     self._reset, sep=sep)
+    def custom(self,*obj, color:tuple[int,int,int], sep=sep_) -> str:
+        return color_sequence_nested(
+            obj,
+            f"{self._inline_class.param_code}{';'.join((str(c) for c in color))}m",
+            self._reset,
+            sep=sep
+        )
 
     # ------------------------------------------------------------------------------------------------------------------
     # - HTML colors -
