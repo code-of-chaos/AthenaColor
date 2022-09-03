@@ -24,557 +24,557 @@ class RgbControlled:
 
     # ------------------------------------------------------------------------------------------------------------------
     @property
-    def Maroon(self):
+    def Maroon(self) -> str:
         return self.custom(HtmlColorObjects.MAROON)
 
     @property
-    def DarkRed(self):
+    def DarkRed(self) -> str:
         return self.custom(HtmlColorObjects.DARKRED)
 
     @property
-    def Brown(self):
+    def Brown(self) -> str:
         return self.custom(HtmlColorObjects.BROWN)
 
     @property
-    def Firebrick(self):
+    def Firebrick(self) -> str:
         return self.custom(HtmlColorObjects.FIREBRICK)
 
     @property
-    def Crimson(self):
+    def Crimson(self) -> str:
         return self.custom(HtmlColorObjects.CRIMSON)
 
     @property
-    def Red(self):
+    def Red(self) -> str:
         return self.custom(HtmlColorObjects.RED)
 
     @property
-    def Tomato(self):
+    def Tomato(self) -> str:
         return self.custom(HtmlColorObjects.TOMATO)
 
     @property
-    def Coral(self):
+    def Coral(self) -> str:
         return self.custom(HtmlColorObjects.CORAL)
 
     @property
-    def IndianRed(self):
+    def IndianRed(self) -> str:
         return self.custom(HtmlColorObjects.INDIANRED)
 
     @property
-    def LightCoral(self):
+    def LightCoral(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTCORAL)
 
     @property
-    def DarkSalmon(self):
+    def DarkSalmon(self) -> str:
         return self.custom(HtmlColorObjects.DARKSALMON)
 
     @property
-    def Salmon(self):
+    def Salmon(self) -> str:
         return self.custom(HtmlColorObjects.SALMON)
 
     @property
-    def LightSalmon(self):
+    def LightSalmon(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTSALMON)
 
     @property
-    def OrangeRed(self):
+    def OrangeRed(self) -> str:
         return self.custom(HtmlColorObjects.ORANGERED)
 
     @property
-    def DarkOrange(self):
+    def DarkOrange(self) -> str:
         return self.custom(HtmlColorObjects.DARKORANGE)
 
     @property
-    def Orange(self):
+    def Orange(self) -> str:
         return self.custom(HtmlColorObjects.ORANGE)
 
     @property
-    def Gold(self):
+    def Gold(self) -> str:
         return self.custom(HtmlColorObjects.GOLD)
 
     @property
-    def DarkGoldenRod(self):
+    def DarkGoldenRod(self) -> str:
         return self.custom(HtmlColorObjects.DARKGOLDENROD)
 
     @property
-    def GoldenRod(self):
+    def GoldenRod(self) -> str:
         return self.custom(HtmlColorObjects.GOLDENROD)
 
     @property
-    def PaleGoldenRod(self):
+    def PaleGoldenRod(self) -> str:
         return self.custom(HtmlColorObjects.PALEGOLDENROD)
 
     @property
-    def DarkKhaki(self):
+    def DarkKhaki(self) -> str:
         return self.custom(HtmlColorObjects.DARKKHAKI)
 
     @property
-    def Khaki(self):
+    def Khaki(self) -> str:
         return self.custom(HtmlColorObjects.KHAKI)
 
     @property
-    def Olive(self):
+    def Olive(self) -> str:
         return self.custom(HtmlColorObjects.OLIVE)
 
     @property
-    def Yellow(self):
+    def Yellow(self) -> str:
         return self.custom(HtmlColorObjects.YELLOW)
 
     @property
-    def YellowGreen(self):
+    def YellowGreen(self) -> str:
         return self.custom(HtmlColorObjects.YELLOWGREEN)
 
     @property
-    def DarkOliveGreen(self):
+    def DarkOliveGreen(self) -> str:
         return self.custom(HtmlColorObjects.DARKOLIVEGREEN)
 
     @property
-    def OliveDrab(self):
+    def OliveDrab(self) -> str:
         return self.custom(HtmlColorObjects.OLIVEDRAB)
 
     @property
-    def LawnGreen(self):
+    def LawnGreen(self) -> str:
         return self.custom(HtmlColorObjects.LAWNGREEN)
 
     @property
-    def Chartreuse(self):
+    def Chartreuse(self) -> str:
         return self.custom(HtmlColorObjects.CHARTREUSE)
 
     @property
-    def GreenYellow(self):
+    def GreenYellow(self) -> str:
         return self.custom(HtmlColorObjects.GREENYELLOW)
 
     @property
-    def DarkGreen(self):
+    def DarkGreen(self) -> str:
         return self.custom(HtmlColorObjects.DARKGREEN)
 
     @property
-    def Green(self):
+    def Green(self) -> str:
         return self.custom(HtmlColorObjects.GREEN)
 
     @property
-    def ForestGreen(self):
+    def ForestGreen(self) -> str:
         return self.custom(HtmlColorObjects.FORESTGREEN)
 
     @property
-    def Lime(self):
+    def Lime(self) -> str:
         return self.custom(HtmlColorObjects.LIME)
 
     @property
-    def LimeGreen(self):
+    def LimeGreen(self) -> str:
         return self.custom(HtmlColorObjects.LIMEGREEN)
 
     @property
-    def LightGreen(self):
+    def LightGreen(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTGREEN)
 
     @property
-    def PaleGreen(self):
+    def PaleGreen(self) -> str:
         return self.custom(HtmlColorObjects.PALEGREEN)
 
     @property
-    def DarkSeaGreen(self):
+    def DarkSeaGreen(self) -> str:
         return self.custom(HtmlColorObjects.DARKSEAGREEN)
 
     @property
-    def MediumSpringGreen(self):
+    def MediumSpringGreen(self) -> str:
         return self.custom(HtmlColorObjects.MEDIUMSPRINGGREEN)
 
     @property
-    def SpringGreen(self):
+    def SpringGreen(self) -> str:
         return self.custom(HtmlColorObjects.SPRINGGREEN)
 
     @property
-    def SeaGreen(self):
+    def SeaGreen(self) -> str:
         return self.custom(HtmlColorObjects.SEAGREEN)
 
     @property
-    def MediumAquaMarine(self):
+    def MediumAquaMarine(self) -> str:
         return self.custom(HtmlColorObjects.MEDIUMAQUAMARINE)
 
     @property
-    def MediumSeaGreen(self):
+    def MediumSeaGreen(self) -> str:
         return self.custom(HtmlColorObjects.MEDIUMSEAGREEN)
 
     @property
-    def LightSeaGreen(self):
+    def LightSeaGreen(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTSEAGREEN)
 
     @property
-    def DarkSlateGray(self):
+    def DarkSlateGray(self) -> str:
         return self.custom(HtmlColorObjects.DARKSLATEGRAY)
 
     @property
-    def Teal(self):
+    def Teal(self) -> str:
         return self.custom(HtmlColorObjects.TEAL)
 
     @property
-    def DarkCyan(self):
+    def DarkCyan(self) -> str:
         return self.custom(HtmlColorObjects.DARKCYAN)
 
     @property
-    def Aqua(self):
+    def Aqua(self) -> str:
         return self.custom(HtmlColorObjects.AQUA)
 
     @property
-    def Cyan(self):
+    def Cyan(self) -> str:
         return self.custom(HtmlColorObjects.CYAN)
 
     @property
-    def LightCyan(self):
+    def LightCyan(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTCYAN)
 
     @property
-    def DarkTurquoise(self):
+    def DarkTurquoise(self) -> str:
         return self.custom(HtmlColorObjects.DARKTURQUOISE)
 
     @property
-    def Turquoise(self):
+    def Turquoise(self) -> str:
         return self.custom(HtmlColorObjects.TURQUOISE)
 
     @property
-    def MediumTurquoise(self):
+    def MediumTurquoise(self) -> str:
         return self.custom(HtmlColorObjects.MEDIUMTURQUOISE)
 
     @property
-    def PaleTurquoise(self):
+    def PaleTurquoise(self) -> str:
         return self.custom(HtmlColorObjects.PALETURQUOISE)
 
     @property
-    def AquaMarine(self):
+    def AquaMarine(self) -> str:
         return self.custom(HtmlColorObjects.AQUAMARINE)
 
     @property
-    def PowderBlue(self):
+    def PowderBlue(self) -> str:
         return self.custom(HtmlColorObjects.POWDERBLUE)
 
     @property
-    def CadetBlue(self):
+    def CadetBlue(self) -> str:
         return self.custom(HtmlColorObjects.CADETBLUE)
 
     @property
-    def SteelBlue(self):
+    def SteelBlue(self) -> str:
         return self.custom(HtmlColorObjects.STEELBLUE)
 
     @property
-    def CornFlowerBlue(self):
+    def CornFlowerBlue(self) -> str:
         return self.custom(HtmlColorObjects.CORNFLOWERBLUE)
 
     @property
-    def DeepSkyBlue(self):
+    def DeepSkyBlue(self) -> str:
         return self.custom(HtmlColorObjects.DEEPSKYBLUE)
 
     @property
-    def DodgerBlue(self):
+    def DodgerBlue(self) -> str:
         return self.custom(HtmlColorObjects.DODGERBLUE)
 
     @property
-    def LightBlue(self):
+    def LightBlue(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTBLUE)
 
     @property
-    def SkyBlue(self):
+    def SkyBlue(self) -> str:
         return self.custom(HtmlColorObjects.SKYBLUE)
 
     @property
-    def LightSkyBlue(self):
+    def LightSkyBlue(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTSKYBLUE)
 
     @property
-    def MidnightBlue(self):
+    def MidnightBlue(self) -> str:
         return self.custom(HtmlColorObjects.MIDNIGHTBLUE)
 
     @property
-    def Navy(self):
+    def Navy(self) -> str:
         return self.custom(HtmlColorObjects.NAVY)
 
     @property
-    def DarkBlue(self):
+    def DarkBlue(self) -> str:
         return self.custom(HtmlColorObjects.DARKBLUE)
 
     @property
-    def MediumBlue(self):
+    def MediumBlue(self) -> str:
         return self.custom(HtmlColorObjects.MEDIUMBLUE)
 
     @property
-    def Blue(self):
+    def Blue(self) -> str:
         return self.custom(HtmlColorObjects.BLUE)
 
     @property
-    def RoyalBlue(self):
+    def RoyalBlue(self) -> str:
         return self.custom(HtmlColorObjects.ROYALBLUE)
 
     @property
-    def BlueViolet(self):
+    def BlueViolet(self) -> str:
         return self.custom(HtmlColorObjects.BLUEVIOLET)
 
     @property
-    def Indigo(self):
+    def Indigo(self) -> str:
         return self.custom(HtmlColorObjects.INDIGO)
 
     @property
-    def DarkSlateBlue(self):
+    def DarkSlateBlue(self) -> str:
         return self.custom(HtmlColorObjects.DARKSLATEBLUE)
 
     @property
-    def SlateBlue(self):
+    def SlateBlue(self) -> str:
         return self.custom(HtmlColorObjects.SLATEBLUE)
 
     @property
-    def MediumSlateBlue(self):
+    def MediumSlateBlue(self) -> str:
         return self.custom(HtmlColorObjects.MEDIUMSLATEBLUE)
 
     @property
-    def MediumPurple(self):
+    def MediumPurple(self) -> str:
         return self.custom(HtmlColorObjects.MEDIUMPURPLE)
 
     @property
-    def DarkMagenta(self):
+    def DarkMagenta(self) -> str:
         return self.custom(HtmlColorObjects.DARKMAGENTA)
 
     @property
-    def DarkViolet(self):
+    def DarkViolet(self) -> str:
         return self.custom(HtmlColorObjects.DARKVIOLET)
 
     @property
-    def DarkOrchid(self):
+    def DarkOrchid(self) -> str:
         return self.custom(HtmlColorObjects.DARKORCHID)
 
     @property
-    def MediumOrchid(self):
+    def MediumOrchid(self) -> str:
         return self.custom(HtmlColorObjects.MEDIUMORCHID)
 
     @property
-    def Purple(self):
+    def Purple(self) -> str:
         return self.custom(HtmlColorObjects.PURPLE)
 
     @property
-    def Thistle(self):
+    def Thistle(self) -> str:
         return self.custom(HtmlColorObjects.THISTLE)
 
     @property
-    def Plum(self):
+    def Plum(self) -> str:
         return self.custom(HtmlColorObjects.PLUM)
 
     @property
-    def Violet(self):
+    def Violet(self) -> str:
         return self.custom(HtmlColorObjects.VIOLET)
 
     @property
-    def Magenta(self):
+    def Magenta(self) -> str:
         return self.custom(HtmlColorObjects.MAGENTA)
 
     @property
-    def Orchid(self):
+    def Orchid(self) -> str:
         return self.custom(HtmlColorObjects.ORCHID)
 
     @property
-    def MediumVioletRed(self):
+    def MediumVioletRed(self) -> str:
         return self.custom(HtmlColorObjects.MEDIUMVIOLETRED)
 
     @property
-    def PaleVioletRed(self):
+    def PaleVioletRed(self) -> str:
         return self.custom(HtmlColorObjects.PALEVIOLETRED)
 
     @property
-    def DeepPink(self):
+    def DeepPink(self) -> str:
         return self.custom(HtmlColorObjects.DEEPPINK)
 
     @property
-    def HotPink(self):
+    def HotPink(self) -> str:
         return self.custom(HtmlColorObjects.HOTPINK)
 
     @property
-    def LightPink(self):
+    def LightPink(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTPINK)
 
     @property
-    def Pink(self):
+    def Pink(self) -> str:
         return self.custom(HtmlColorObjects.PINK)
 
     @property
-    def AntiqueWhite(self):
+    def AntiqueWhite(self) -> str:
         return self.custom(HtmlColorObjects.ANTIQUEWHITE)
 
     @property
-    def Beige(self):
+    def Beige(self) -> str:
         return self.custom(HtmlColorObjects.BEIGE)
 
     @property
-    def Bisque(self):
+    def Bisque(self) -> str:
         return self.custom(HtmlColorObjects.BISQUE)
 
     @property
-    def BlanchedAlmond(self):
+    def BlanchedAlmond(self) -> str:
         return self.custom(HtmlColorObjects.BLANCHEDALMOND)
 
     @property
-    def Wheat(self):
+    def Wheat(self) -> str:
         return self.custom(HtmlColorObjects.WHEAT)
 
     @property
-    def CornSilk(self):
+    def CornSilk(self) -> str:
         return self.custom(HtmlColorObjects.CORNSILK)
 
     @property
-    def LemonChiffon(self):
+    def LemonChiffon(self) -> str:
         return self.custom(HtmlColorObjects.LEMONCHIFFON)
 
     @property
-    def LightGoldenRodYellow(self):
+    def LightGoldenRodYellow(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTGOLDENRODYELLOW)
 
     @property
-    def LightYellow(self):
+    def LightYellow(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTYELLOW)
 
     @property
-    def SaddleBrown(self):
+    def SaddleBrown(self) -> str:
         return self.custom(HtmlColorObjects.SADDLEBROWN)
 
     @property
-    def Sienna(self):
+    def Sienna(self) -> str:
         return self.custom(HtmlColorObjects.SIENNA)
 
     @property
-    def Chocolate(self):
+    def Chocolate(self) -> str:
         return self.custom(HtmlColorObjects.CHOCOLATE)
 
     @property
-    def Peru(self):
+    def Peru(self) -> str:
         return self.custom(HtmlColorObjects.PERU)
 
     @property
-    def SandyBrown(self):
+    def SandyBrown(self) -> str:
         return self.custom(HtmlColorObjects.SANDYBROWN)
 
     @property
-    def BurlyWood(self):
+    def BurlyWood(self) -> str:
         return self.custom(HtmlColorObjects.BURLYWOOD)
 
     @property
-    def Tan(self):
+    def Tan(self) -> str:
         return self.custom(HtmlColorObjects.TAN)
 
     @property
-    def RosyBrown(self):
+    def RosyBrown(self) -> str:
         return self.custom(HtmlColorObjects.ROSYBROWN)
 
     @property
-    def Moccasin(self):
+    def Moccasin(self) -> str:
         return self.custom(HtmlColorObjects.MOCCASIN)
 
     @property
-    def NavajoWhite(self):
+    def NavajoWhite(self) -> str:
         return self.custom(HtmlColorObjects.NAVAJOWHITE)
 
     @property
-    def PeachPuff(self):
+    def PeachPuff(self) -> str:
         return self.custom(HtmlColorObjects.PEACHPUFF)
 
     @property
-    def MistyRose(self):
+    def MistyRose(self) -> str:
         return self.custom(HtmlColorObjects.MISTYROSE)
 
     @property
-    def LavenderBlush(self):
+    def LavenderBlush(self) -> str:
         return self.custom(HtmlColorObjects.LAVENDERBLUSH)
 
     @property
-    def Linen(self):
+    def Linen(self) -> str:
         return self.custom(HtmlColorObjects.LINEN)
 
     @property
-    def OldLace(self):
+    def OldLace(self) -> str:
         return self.custom(HtmlColorObjects.OLDLACE)
 
     @property
-    def PapayaWhip(self):
+    def PapayaWhip(self) -> str:
         return self.custom(HtmlColorObjects.PAPAYAWHIP)
 
     @property
-    def WeaShell(self):
+    def WeaShell(self) -> str:
         return self.custom(HtmlColorObjects.WEASHELL)
 
     @property
-    def MintCream(self):
+    def MintCream(self) -> str:
         return self.custom(HtmlColorObjects.MINTCREAM)
 
     @property
-    def SlateGray(self):
+    def SlateGray(self) -> str:
         return self.custom(HtmlColorObjects.SLATEGRAY)
 
     @property
-    def LightSlateGray(self):
+    def LightSlateGray(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTSLATEGRAY)
 
     @property
-    def LightSteelBlue(self):
+    def LightSteelBlue(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTSTEELBLUE)
 
     @property
-    def Lavender(self):
+    def Lavender(self) -> str:
         return self.custom(HtmlColorObjects.LAVENDER)
 
     @property
-    def FloralWhite(self):
+    def FloralWhite(self) -> str:
         return self.custom(HtmlColorObjects.FLORALWHITE)
 
     @property
-    def AliceBlue(self):
+    def AliceBlue(self) -> str:
         return self.custom(HtmlColorObjects.ALICEBLUE)
 
     @property
-    def GhostWhite(self):
+    def GhostWhite(self) -> str:
         return self.custom(HtmlColorObjects.GHOSTWHITE)
 
     @property
-    def Honeydew(self):
+    def Honeydew(self) -> str:
         return self.custom(HtmlColorObjects.HONEYDEW)
 
     @property
-    def Ivory(self):
+    def Ivory(self) -> str:
         return self.custom(HtmlColorObjects.IVORY)
 
     @property
-    def Azure(self):
+    def Azure(self) -> str:
         return self.custom(HtmlColorObjects.AZURE)
 
     @property
-    def Snow(self):
+    def Snow(self) -> str:
         return self.custom(HtmlColorObjects.SNOW)
 
     @property
-    def Black(self):
+    def Black(self) -> str:
         return self.custom(HtmlColorObjects.BLACK)
 
     @property
-    def DimGray(self):
+    def DimGray(self) -> str:
         return self.custom(HtmlColorObjects.DIMGRAY)
 
     @property
-    def Gray(self):
+    def Gray(self) -> str:
         return self.custom(HtmlColorObjects.GRAY)
 
     @property
-    def DarkGray(self):
+    def DarkGray(self) -> str:
         return self.custom(HtmlColorObjects.DARKGRAY)
 
     @property
-    def Silver(self):
+    def Silver(self) -> str:
         return self.custom(HtmlColorObjects.SILVER)
 
     @property
-    def LightGray(self):
+    def LightGray(self) -> str:
         return self.custom(HtmlColorObjects.LIGHTGRAY)
 
     @property
-    def Gainsboro(self):
+    def Gainsboro(self) -> str:
         return self.custom(HtmlColorObjects.GAINSBORO)
 
     @property
-    def WhiteSmoke(self):
+    def WhiteSmoke(self) -> str:
         return self.custom(HtmlColorObjects.WHITESMOKE)
 
     @property
-    def White(self):
+    def White(self) -> str:
         return self.custom(HtmlColorObjects.WHITE)

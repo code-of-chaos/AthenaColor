@@ -4,6 +4,7 @@
 # General Packages
 from __future__ import annotations
 
+from typing import Any
 # Custom Library
 
 # Custom Packages
@@ -21,7 +22,7 @@ def color_sequence(control_code:int|str)->str:
     """
     return f'\x1b[{control_code}m'
 
-def color_sequence_nested(obj:tuple, color_code:str, reset_code:int|str, sep:str=" ") -> str:
+def color_sequence_nested(obj:tuple[Any, ...], color_code:str, reset_code:str, sep:str=" ") -> str:
     """
     Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
     Function wraps every obj in the properly defined control- and reset codes.
@@ -40,7 +41,7 @@ def color_sequence_nested(obj:tuple, color_code:str, reset_code:int|str, sep:str
         text += f"{color_code}{o}{sep}{reset_code}" # SEP moved to within the color - reset, as previously, it was color-reset anyway
     return text + f"{color_code}{obj[-1]}{reset_code}"
 
-def color_sequence_nested_no_reset(obj:tuple, color_code:int|str, sep:str=" ") -> str:
+def color_sequence_nested_no_reset(obj:tuple[Any, ...], color_code:str, sep:str=" ") -> str:
     """
     Used by Nested Console StyleNest Makeup operations like ForeNest, BackNest, StyleNest.
     Function wraps every obj in the properly defined control- and reset codes.
