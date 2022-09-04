@@ -41,7 +41,10 @@ setuptools.setup(
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.7",
     classifiers=[
+        "Development Status :: 4 - Beta",
+        "Environment :: Console",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: OS Independent"
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
@@ -51,5 +54,6 @@ setuptools.setup(
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
+        "Topic :: Terminals"
     ]
 )
