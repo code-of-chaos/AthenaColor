@@ -1,9 +1,18 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# - Package Imports -
+# ----------------------------------------------------------------------------------------------------------------------
+# General Packages
 import unittest
 
+# Custom Library
+
+# Custom Packages
 from AthenaColor.models.rgb_controlled_nested import RgbControlledNested
 from AthenaColor.models.rgb_controlled_nested import RgbControlled
 
-
+# ----------------------------------------------------------------------------------------------------------------------
+# - TestRGBControlledNested -
+# ----------------------------------------------------------------------------------------------------------------------
 class TestRGBControlledNested(unittest.TestCase):
     def setUp(self):
         self.rgb_controlled_nested = RgbControlledNested(
@@ -26,14 +35,14 @@ class TestRGBControlledNested(unittest.TestCase):
 
 
     def test_rgb_controlled_nested(self):
-        for input_vals, result in self.testcases:
-            if isinstance(input_vals[-2], tuple):
-                obj = input_vals[:-2]
-                color = input_vals[-2]
-                sep = input_vals[-1]
+        for input_values, result in self.testcases:
+            if isinstance(input_values[-2], tuple):
+                obj = input_values[:-2]
+                color = input_values[-2]
+                sep = input_values[-1]
             else:
-                obj = input_vals[:-1]
-                color = input_vals[-1]
+                obj = input_values[:-1]
+                color = input_values[-1]
                 sep = ' '
 
             with self.subTest(msg=result):
