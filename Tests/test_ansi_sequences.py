@@ -1,10 +1,20 @@
+# ----------------------------------------------------------------------------------------------------------------------
+# - Package Imports -
+# ----------------------------------------------------------------------------------------------------------------------
+# General Packages
 import unittest
 
+# Custom Library
+
+# Custom Packages
 from AthenaColor.func.ansi_sequences import color_sequence
 from AthenaColor.func.ansi_sequences import color_sequence_nested
 from AthenaColor.func.ansi_sequences import color_sequence_nested_no_reset
 
 
+# ----------------------------------------------------------------------------------------------------------------------
+# - TestColorSequence -
+# ----------------------------------------------------------------------------------------------------------------------
 class TestColorSequence(unittest.TestCase):
     def test_color_sequence(self):
         for value, result in (
@@ -15,6 +25,9 @@ class TestColorSequence(unittest.TestCase):
                 self.assertEqual(color_sequence(value), result)
 
 
+# ----------------------------------------------------------------------------------------------------------------------
+# - TestColorSequenceNested -
+# ----------------------------------------------------------------------------------------------------------------------
 class TestColorSequenceNested(unittest.TestCase):
     def setUp(self):
         self.testcases = (
@@ -33,11 +46,14 @@ class TestColorSequenceNested(unittest.TestCase):
         self.testcases = None
 
     def test_color_sequence_nested(self):
-        for input_vals, result in self.testcases:
-            with self.subTest(msg=f'{input_vals!r}-{result}'):
-                self.assertEqual(color_sequence_nested(*input_vals), result)
+        for input_values, result in self.testcases:
+            with self.subTest(msg=f'{input_values!r}-{result}'):
+                self.assertEqual(color_sequence_nested(*input_values), result)
 
 
+# ----------------------------------------------------------------------------------------------------------------------
+# - TestColorSequenceNestedNoReset -
+# ----------------------------------------------------------------------------------------------------------------------
 class TestColorSequenceNestedNoReset(unittest.TestCase):
     def setUp(self):
         self.testcases = (
@@ -56,7 +72,7 @@ class TestColorSequenceNestedNoReset(unittest.TestCase):
         self.testcases = None
 
     def test_color_sequence_nested_no_reset(self):
-        for input_vals, result in self.testcases:
-            with self.subTest(msg=f'{input_vals!r}-{result}'):
-                self.assertEqual(color_sequence_nested_no_reset(*input_vals), result)
+        for input_values, result in self.testcases:
+            with self.subTest(msg=f'{input_values!r}-{result}'):
+                self.assertEqual(color_sequence_nested_no_reset(*input_values), result)
 
