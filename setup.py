@@ -37,6 +37,7 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/DirectiveAthena/AthenaColor/issues",
     },
     license="GPLv3",
+    package_data={"": ["py.typed"]},
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.7",
@@ -55,5 +56,6 @@ setuptools.setup(
         "Programming Language :: Python :: Implementation :: CPython",
         "Programming Language :: Python :: Implementation :: PyPy",
         "Topic :: Terminals"
+        "Typing :: Typed"
     ]
 )
