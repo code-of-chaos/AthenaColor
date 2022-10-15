@@ -7,6 +7,7 @@ import unittest
 # Custom Library
 
 # Custom Packages
+from AthenaColor.data import colors_html
 from AthenaColor.models.rgb_controlled_nested import RgbControlledNested
 from AthenaColor.models.rgb_controlled_nested import RgbControlled
 
@@ -49,4 +50,28 @@ class TestRGBControlledNested(unittest.TestCase):
                 self.assertEqual(
                     self.rgb_controlled_nested.custom(*obj, color=color, sep=sep),
                     result
+                )
+
+    def test_all_colors(self):
+        r = RgbControlledNested(RgbControlled(';'), '--')
+        color_vars = dict(
+            map(
+                lambda x: (x[0].lower(), x[1]),
+                filter(
+                    lambda x: x[0][0].isupper(),
+                    vars(RgbControlledNested).items()
+                )
+            )
+        )
+
+        for color_name, color_values in filter(
+                lambda x: x[0].isupper(), vars(colors_html).items()
+        ):
+            color_name = color_name.lower()
+            with self.subTest(msg=f'color-nested-correct[{color_name}]'):
+                self.assertIn(color_name, color_vars)
+                self.assertEqual(
+                    color_vars[color_name](r, 'abc', 'def', sep='..'),
+                    f'\x1b[;{";".join(map(str, color_values))}mabc..--'
+                        f'\x1b[;{";".join(map(str, color_values))}mdef--'
                 )
