@@ -152,111 +152,111 @@ sep_ = " "
 #   BUT, given it depends so much on the code above I've decided to place it here
 class StyleNest:
     @staticmethod
-    def Reset(*obj:tuple[Any, ...],sep:str=sep_) -> str:                      return NCSNO(obj,Style.Reset,sep)
+    def Reset(*obj:Any,sep:str=sep_) -> str:                      return NCSNO(obj,Style.Reset,sep)
     @staticmethod
-    def Bold(*obj:tuple[Any, ...],sep:str=sep_) -> str:                       return NCS(obj,Style.Bold,Style.NoBold,sep)
+    def Bold(*obj:Any,sep:str=sep_) -> str:                       return NCS(obj,Style.Bold,Style.NoBold,sep)
     @staticmethod
-    def NoBold(*obj:tuple[Any, ...],sep:str=sep_) -> str:                     return NCSNO(obj,Style.NoBold,sep)
+    def NoBold(*obj:Any,sep:str=sep_) -> str:                     return NCSNO(obj,Style.NoBold,sep)
     @staticmethod
-    def Dim(*obj:tuple[Any, ...],sep:str=sep_) -> str:                        return NCS(obj,Style.Dim,Style.NoBold,sep)
+    def Dim(*obj:Any,sep:str=sep_) -> str:                        return NCS(obj,Style.Dim,Style.NoBold,sep)
     @staticmethod
-    def NoDim(*obj:tuple[Any, ...],sep:str=sep_) -> str:                      return NCSNO(obj,Style.NoBold,sep)
+    def NoDim(*obj:Any,sep:str=sep_) -> str:                      return NCSNO(obj,Style.NoBold,sep)
     @staticmethod
-    def Italic(*obj:tuple[Any, ...],sep:str=sep_) -> str:                     return NCS(obj,Style.Italic,Style.NoItalic,sep)
+    def Italic(*obj:Any,sep:str=sep_) -> str:                     return NCS(obj,Style.Italic,Style.NoItalic,sep)
     @staticmethod
-    def NoItalic(*obj:tuple[Any, ...],sep:str=sep_) -> str:                   return NCSNO(obj,Style.NoItalic,sep)
+    def NoItalic(*obj:Any,sep:str=sep_) -> str:                   return NCSNO(obj,Style.NoItalic,sep)
     @staticmethod
-    def Underline(*obj:tuple[Any, ...],sep:str=sep_) -> str:                  return NCS(obj,Style.Underline,Style.NoUnderline,sep)
+    def Underline(*obj:Any,sep:str=sep_) -> str:                  return NCS(obj,Style.Underline,Style.NoUnderline,sep)
     @staticmethod
-    def NoUnderline(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCSNO(obj,Style.NoUnderline,sep)
+    def NoUnderline(*obj:Any,sep:str=sep_) -> str:                return NCSNO(obj,Style.NoUnderline,sep)
     @staticmethod
-    def BlinkSlow(*obj:tuple[Any, ...],sep:str=sep_) -> str:                  return NCS(obj,Style.BlinkSlow,Style.NoBlinkSlow,sep)
+    def BlinkSlow(*obj:Any,sep:str=sep_) -> str:                  return NCS(obj,Style.BlinkSlow,Style.NoBlinkSlow,sep)
     @staticmethod
-    def NoBlinkSlow(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCSNO(obj,Style.NoBlinkSlow,sep)
+    def NoBlinkSlow(*obj:Any,sep:str=sep_) -> str:                return NCSNO(obj,Style.NoBlinkSlow,sep)
     @staticmethod
-    def BlinkRapid(*obj:tuple[Any, ...],sep:str=sep_) -> str:                 return NCS(obj,Style.BlinkRapid,Style.NoBlinkRapid,sep)
+    def BlinkRapid(*obj:Any,sep:str=sep_) -> str:                 return NCS(obj,Style.BlinkRapid,Style.NoBlinkRapid,sep)
     @staticmethod
-    def NoBlinkRapid(*obj:tuple[Any, ...],sep:str=sep_) -> str:               return NCSNO(obj,Style.NoBlinkRapid,sep)
+    def NoBlinkRapid(*obj:Any,sep:str=sep_) -> str:               return NCSNO(obj,Style.NoBlinkRapid,sep)
     @staticmethod
-    def Reversed(*obj:tuple[Any, ...],sep:str=sep_) -> str:                   return NCS(obj,Style.Reversed,Style.NoReversed,sep)
+    def Reversed(*obj:Any,sep:str=sep_) -> str:                   return NCS(obj,Style.Reversed,Style.NoReversed,sep)
     @staticmethod
-    def NoReversed(*obj:tuple[Any, ...],sep:str=sep_) -> str:                 return NCSNO(obj,Style.NoReversed,sep)
+    def NoReversed(*obj:Any,sep:str=sep_) -> str:                 return NCSNO(obj,Style.NoReversed,sep)
     @staticmethod
-    def Conceal(*obj:tuple[Any, ...],sep:str=sep_) -> str:                    return NCS(obj,Style.Conceal,Style.NoConceal,sep)
+    def Conceal(*obj:Any,sep:str=sep_) -> str:                    return NCS(obj,Style.Conceal,Style.NoConceal,sep)
     @staticmethod
-    def NoConceal(*obj:tuple[Any, ...],sep:str=sep_) -> str:                  return NCSNO(obj,Style.NoConceal,sep)
+    def NoConceal(*obj:Any,sep:str=sep_) -> str:                  return NCSNO(obj,Style.NoConceal,sep)
     @staticmethod
-    def Crossed(*obj:tuple[Any, ...],sep:str=sep_) -> str:                    return NCS(obj,Style.Crossed,Style.NoCrossed,sep)
+    def Crossed(*obj:Any,sep:str=sep_) -> str:                    return NCS(obj,Style.Crossed,Style.NoCrossed,sep)
     @staticmethod
-    def NoCrossed(*obj:tuple[Any, ...],sep:str=sep_) -> str:                  return NCSNO(obj,Style.NoCrossed,sep)
+    def NoCrossed(*obj:Any,sep:str=sep_) -> str:                  return NCSNO(obj,Style.NoCrossed,sep)
     @staticmethod
-    def FontPrimary(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.NoFont,Style.NoFont,sep)
+    def FontPrimary(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.NoFont,Style.NoFont,sep)
     @staticmethod
-    def FontSecond1(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond1,Style.NoFont,sep)
+    def FontSecond1(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond1,Style.NoFont,sep)
     @staticmethod
-    def FontSecond2(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond2,Style.NoFont,sep)
+    def FontSecond2(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond2,Style.NoFont,sep)
     @staticmethod
-    def FontSecond3(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond3,Style.NoFont,sep)
+    def FontSecond3(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond3,Style.NoFont,sep)
     @staticmethod
-    def FontSecond4(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond4,Style.NoFont,sep)
+    def FontSecond4(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond4,Style.NoFont,sep)
     @staticmethod
-    def FontSecond5(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond5,Style.NoFont,sep)
+    def FontSecond5(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond5,Style.NoFont,sep)
     @staticmethod
-    def FontSecond6(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond6,Style.NoFont,sep)
+    def FontSecond6(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond6,Style.NoFont,sep)
     @staticmethod
-    def FontSecond8(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond8,Style.NoFont,sep)
+    def FontSecond8(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond8,Style.NoFont,sep)
     @staticmethod
-    def FontSecond9(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond9,Style.NoFont,sep)
+    def FontSecond9(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.FontSecond9,Style.NoFont,sep)
     @staticmethod
-    def FontSecond10(*obj:tuple[Any, ...],sep:str=sep_) -> str:               return NCS(obj,Style.FontSecond10,Style.NoFont,sep)
+    def FontSecond10(*obj:Any,sep:str=sep_) -> str:               return NCS(obj,Style.FontSecond10,Style.NoFont,sep)
     @staticmethod
-    def NoFont(*obj:tuple[Any, ...],sep:str=sep_) -> str:                     return NCSNO(obj,Style.NoFont,sep)
+    def NoFont(*obj:Any,sep:str=sep_) -> str:                     return NCSNO(obj,Style.NoFont,sep)
     @staticmethod
-    def Fraktur(*obj:tuple[Any, ...],sep:str=sep_) -> str:                    return NCSNO(obj,Style.Fraktur,sep)
+    def Fraktur(*obj:Any,sep:str=sep_) -> str:                    return NCSNO(obj,Style.Fraktur,sep)
     @staticmethod
-    def UnderlineDouble(*obj:tuple[Any, ...],sep:str=sep_) -> str:            return NCS(obj,Style.UnderlineDouble,Style.NoUnderline,sep)
+    def UnderlineDouble(*obj:Any,sep:str=sep_) -> str:            return NCS(obj,Style.UnderlineDouble,Style.NoUnderline,sep)
     @staticmethod
-    def NoUnderlineDouble(*obj:tuple[Any, ...],sep:str=sep_) -> str:          return NCSNO(obj,Style.NoUnderline,sep)
+    def NoUnderlineDouble(*obj:Any,sep:str=sep_) -> str:          return NCSNO(obj,Style.NoUnderline,sep)
     @staticmethod
-    def PropSpacing(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.PropSpacing,Style.NoPropSpacing,sep)
+    def PropSpacing(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.PropSpacing,Style.NoPropSpacing,sep)
     @staticmethod
-    def NoPropSpacing(*obj:tuple[Any, ...],sep:str=sep_) -> str:              return NCSNO(obj,Style.NoPropSpacing,sep)
+    def NoPropSpacing(*obj:Any,sep:str=sep_) -> str:              return NCSNO(obj,Style.NoPropSpacing,sep)
     @staticmethod
-    def NoForeground(*obj:tuple[Any, ...],sep:str=sep_) -> str:               return NCSNO(obj,Style.NoForeground,sep)
+    def NoForeground(*obj:Any,sep:str=sep_) -> str:               return NCSNO(obj,Style.NoForeground,sep)
     @staticmethod
-    def NoBackground(*obj:tuple[Any, ...],sep:str=sep_) -> str:               return NCSNO(obj,Style.NoBackground,sep)
+    def NoBackground(*obj:Any,sep:str=sep_) -> str:               return NCSNO(obj,Style.NoBackground,sep)
     @staticmethod
-    def Frame(*obj:tuple[Any, ...],sep:str=sep_) -> str:                      return NCS(obj,Style.Frame,Style.NoFrame,sep)
+    def Frame(*obj:Any,sep:str=sep_) -> str:                      return NCS(obj,Style.Frame,Style.NoFrame,sep)
     @staticmethod
-    def NoFrame(*obj:tuple[Any, ...],sep:str=sep_) -> str:                    return NCSNO(obj,Style.NoFrame,sep)
+    def NoFrame(*obj:Any,sep:str=sep_) -> str:                    return NCSNO(obj,Style.NoFrame,sep)
     @staticmethod
-    def Circle(*obj:tuple[Any, ...],sep:str=sep_) -> str:                     return NCS(obj,Style.Circle,Style.NoFrame,sep)
+    def Circle(*obj:Any,sep:str=sep_) -> str:                     return NCS(obj,Style.Circle,Style.NoFrame,sep)
     @staticmethod
-    def NoCircle(*obj:tuple[Any, ...],sep:str=sep_) -> str:                   return NCSNO(obj,Style.NoFrame,sep)
+    def NoCircle(*obj:Any,sep:str=sep_) -> str:                   return NCSNO(obj,Style.NoFrame,sep)
     @staticmethod
-    def OverLine(*obj:tuple[Any, ...],sep:str=sep_) -> str:                   return NCS(obj,Style.OverLine,Style.NoOverLine,sep)
+    def OverLine(*obj:Any,sep:str=sep_) -> str:                   return NCS(obj,Style.OverLine,Style.NoOverLine,sep)
     @staticmethod
-    def NoOverLine(*obj:tuple[Any, ...],sep:str=sep_) -> str:                 return NCSNO(obj,Style.NoOverLine,sep)
+    def NoOverLine(*obj:Any,sep:str=sep_) -> str:                 return NCSNO(obj,Style.NoOverLine,sep)
     @staticmethod
-    def UnderColourDefault(*obj:tuple[Any, ...],sep:str=sep_) -> str:         return NCSNO(obj,Style.UnderColourDefault,sep)
+    def UnderColourDefault(*obj:Any,sep:str=sep_) -> str:         return NCSNO(obj,Style.UnderColourDefault,sep)
     @staticmethod
-    def IdeogramUnderLine(*obj:tuple[Any, ...],sep:str=sep_) -> str:          return NCS(obj,Style.IdeogramUnderLine,Style.NoIdeogram,sep)
+    def IdeogramUnderLine(*obj:Any,sep:str=sep_) -> str:          return NCS(obj,Style.IdeogramUnderLine,Style.NoIdeogram,sep)
     @staticmethod
-    def IdeogramUnderLineDouble(*obj:tuple[Any, ...],sep:str=sep_) -> str:    return NCS(obj,Style.IdeogramUnderLineDouble,Style.NoIdeogram,sep)
+    def IdeogramUnderLineDouble(*obj:Any,sep:str=sep_) -> str:    return NCS(obj,Style.IdeogramUnderLineDouble,Style.NoIdeogram,sep)
     @staticmethod
-    def IdeogramOverLine(*obj:tuple[Any, ...],sep:str=sep_) -> str:           return NCS(obj,Style.IdeogramOverLine,Style.NoIdeogram,sep)
+    def IdeogramOverLine(*obj:Any,sep:str=sep_) -> str:           return NCS(obj,Style.IdeogramOverLine,Style.NoIdeogram,sep)
     @staticmethod
-    def IdeogramOverLineDouble(*obj:tuple[Any, ...],sep:str=sep_) -> str:     return NCS(obj,Style.IdeogramOverLineDouble,Style.NoIdeogram,sep)
+    def IdeogramOverLineDouble(*obj:Any,sep:str=sep_) -> str:     return NCS(obj,Style.IdeogramOverLineDouble,Style.NoIdeogram,sep)
     @staticmethod
-    def IdeogramStress(*obj:tuple[Any, ...],sep:str=sep_) -> str:             return NCS(obj,Style.IdeogramStress,Style.NoIdeogram,sep)
+    def IdeogramStress(*obj:Any,sep:str=sep_) -> str:             return NCS(obj,Style.IdeogramStress,Style.NoIdeogram,sep)
     @staticmethod
-    def NoIdeogram(*obj:tuple[Any, ...],sep:str=sep_) -> str:                 return NCSNO(obj,Style.NoIdeogram,sep)
+    def NoIdeogram(*obj:Any,sep:str=sep_) -> str:                 return NCSNO(obj,Style.NoIdeogram,sep)
     @staticmethod
-    def SuperScript(*obj:tuple[Any, ...],sep:str=sep_) -> str:                return NCS(obj,Style.SuperScript,Style.NoScript,sep)
+    def SuperScript(*obj:Any,sep:str=sep_) -> str:                return NCS(obj,Style.SuperScript,Style.NoScript,sep)
     @staticmethod
-    def SubScript(*obj:tuple[Any, ...],sep:str=sep_) -> str:                  return NCS(obj,Style.SubScript,Style.NoScript,sep)
+    def SubScript(*obj:Any,sep:str=sep_) -> str:                  return NCS(obj,Style.SubScript,Style.NoScript,sep)
     @staticmethod
-    def NoScript(*obj:tuple[Any, ...],sep:str=sep_) -> str:                   return NCSNO(obj,Style.NoScript,sep)
+    def NoScript(*obj:Any,sep:str=sep_) -> str:                   return NCSNO(obj,Style.NoScript,sep)
 
 # ----------------------------------------------------------------------------------------------------------------------
 # - BasicNest Sequences -
@@ -264,68 +264,68 @@ class StyleNest:
 class BasicNest:
     class Fore:
         @staticmethod
-        def Black(*obj:tuple[Any, ...],sep:str=sep_) -> str:           return NCS(obj, Basic.Fore.Black, Style.NoForeground,sep)
+        def Black(*obj:Any,sep:str=sep_) -> str:           return NCS(obj, Basic.Fore.Black, Style.NoForeground,sep)
         @staticmethod
-        def Red(*obj:tuple[Any, ...],sep:str=sep_) -> str:             return NCS(obj, Basic.Fore.Red, Style.NoForeground,sep)
+        def Red(*obj:Any,sep:str=sep_) -> str:             return NCS(obj, Basic.Fore.Red, Style.NoForeground,sep)
         @staticmethod
-        def Green(*obj:tuple[Any, ...],sep:str=sep_) -> str:           return NCS(obj, Basic.Fore.Green, Style.NoForeground,sep)
+        def Green(*obj:Any,sep:str=sep_) -> str:           return NCS(obj, Basic.Fore.Green, Style.NoForeground,sep)
         @staticmethod
-        def Yellow(*obj:tuple[Any, ...],sep:str=sep_) -> str:          return NCS(obj, Basic.Fore.Yellow, Style.NoForeground,sep)
+        def Yellow(*obj:Any,sep:str=sep_) -> str:          return NCS(obj, Basic.Fore.Yellow, Style.NoForeground,sep)
         @staticmethod
-        def Blue(*obj:tuple[Any, ...],sep:str=sep_) -> str:            return NCS(obj, Basic.Fore.Blue, Style.NoForeground,sep)
+        def Blue(*obj:Any,sep:str=sep_) -> str:            return NCS(obj, Basic.Fore.Blue, Style.NoForeground,sep)
         @staticmethod
-        def Magenta(*obj:tuple[Any, ...],sep:str=sep_) -> str:         return NCS(obj, Basic.Fore.Magenta, Style.NoForeground,sep)
+        def Magenta(*obj:Any,sep:str=sep_) -> str:         return NCS(obj, Basic.Fore.Magenta, Style.NoForeground,sep)
         @staticmethod
-        def Cyan(*obj:tuple[Any, ...],sep:str=sep_) -> str:            return NCS(obj, Basic.Fore.Cyan, Style.NoForeground,sep)
+        def Cyan(*obj:Any,sep:str=sep_) -> str:            return NCS(obj, Basic.Fore.Cyan, Style.NoForeground,sep)
         @staticmethod
-        def White(*obj:tuple[Any, ...],sep:str=sep_) -> str:           return NCS(obj, Basic.Fore.White, Style.NoForeground,sep)
+        def White(*obj:Any,sep:str=sep_) -> str:           return NCS(obj, Basic.Fore.White, Style.NoForeground,sep)
         @staticmethod
-        def BrightBlack(*obj:tuple[Any, ...],sep:str=sep_) -> str:     return NCS(obj, Basic.Fore.BrightBlack, Style.NoForeground,sep)
+        def BrightBlack(*obj:Any,sep:str=sep_) -> str:     return NCS(obj, Basic.Fore.BrightBlack, Style.NoForeground,sep)
         @staticmethod
-        def BrightRed(*obj:tuple[Any, ...],sep:str=sep_) -> str:       return NCS(obj, Basic.Fore.BrightRed, Style.NoForeground,sep)
+        def BrightRed(*obj:Any,sep:str=sep_) -> str:       return NCS(obj, Basic.Fore.BrightRed, Style.NoForeground,sep)
         @staticmethod
-        def BrightGreen(*obj:tuple[Any, ...],sep:str=sep_) -> str:     return NCS(obj, Basic.Fore.BrightGreen, Style.NoForeground,sep)
+        def BrightGreen(*obj:Any,sep:str=sep_) -> str:     return NCS(obj, Basic.Fore.BrightGreen, Style.NoForeground,sep)
         @staticmethod
-        def BrightYellow(*obj:tuple[Any, ...],sep:str=sep_) -> str:    return NCS(obj, Basic.Fore.BrightYellow, Style.NoForeground,sep)
+        def BrightYellow(*obj:Any,sep:str=sep_) -> str:    return NCS(obj, Basic.Fore.BrightYellow, Style.NoForeground,sep)
         @staticmethod
-        def BrightBlue(*obj:tuple[Any, ...],sep:str=sep_) -> str:      return NCS(obj, Basic.Fore.BrightBlue, Style.NoForeground,sep)
+        def BrightBlue(*obj:Any,sep:str=sep_) -> str:      return NCS(obj, Basic.Fore.BrightBlue, Style.NoForeground,sep)
         @staticmethod
-        def BrightMagenta(*obj:tuple[Any, ...],sep:str=sep_) -> str:   return NCS(obj, Basic.Fore.BrightMagenta, Style.NoForeground,sep)
+        def BrightMagenta(*obj:Any,sep:str=sep_) -> str:   return NCS(obj, Basic.Fore.BrightMagenta, Style.NoForeground,sep)
         @staticmethod
-        def BrightCyan(*obj:tuple[Any, ...],sep:str=sep_) -> str:      return NCS(obj, Basic.Fore.BrightCyan, Style.NoForeground,sep)
+        def BrightCyan(*obj:Any,sep:str=sep_) -> str:      return NCS(obj, Basic.Fore.BrightCyan, Style.NoForeground,sep)
         @staticmethod
-        def BrightWhite(*obj:tuple[Any, ...],sep:str=sep_) -> str:     return NCS(obj, Basic.Fore.BrightWhite, Style.NoForeground,sep)
+        def BrightWhite(*obj:Any,sep:str=sep_) -> str:     return NCS(obj, Basic.Fore.BrightWhite, Style.NoForeground,sep)
 
     class Back:
         @staticmethod
-        def Black(*obj:tuple[Any, ...],sep:str=sep_) -> str:           return NCS(obj, Basic.Back.Black, Style.NoBackground,sep)
+        def Black(*obj:Any,sep:str=sep_) -> str:           return NCS(obj, Basic.Back.Black, Style.NoBackground,sep)
         @staticmethod
-        def Red(*obj:tuple[Any, ...],sep:str=sep_) -> str:             return NCS(obj, Basic.Back.Red, Style.NoBackground,sep)
+        def Red(*obj:Any,sep:str=sep_) -> str:             return NCS(obj, Basic.Back.Red, Style.NoBackground,sep)
         @staticmethod
-        def Green(*obj:tuple[Any, ...],sep:str=sep_) -> str:           return NCS(obj, Basic.Back.Green, Style.NoBackground,sep)
+        def Green(*obj:Any,sep:str=sep_) -> str:           return NCS(obj, Basic.Back.Green, Style.NoBackground,sep)
         @staticmethod
-        def Yellow(*obj:tuple[Any, ...],sep:str=sep_) -> str:          return NCS(obj, Basic.Back.Yellow, Style.NoBackground,sep)
+        def Yellow(*obj:Any,sep:str=sep_) -> str:          return NCS(obj, Basic.Back.Yellow, Style.NoBackground,sep)
         @staticmethod
-        def Blue(*obj:tuple[Any, ...],sep:str=sep_) -> str:            return NCS(obj, Basic.Back.Blue, Style.NoBackground,sep)
+        def Blue(*obj:Any,sep:str=sep_) -> str:            return NCS(obj, Basic.Back.Blue, Style.NoBackground,sep)
         @staticmethod
-        def Magenta(*obj:tuple[Any, ...],sep:str=sep_) -> str:         return NCS(obj, Basic.Back.Magenta, Style.NoBackground,sep)
+        def Magenta(*obj:Any,sep:str=sep_) -> str:         return NCS(obj, Basic.Back.Magenta, Style.NoBackground,sep)
         @staticmethod
-        def Cyan(*obj:tuple[Any, ...],sep:str=sep_) -> str:            return NCS(obj, Basic.Back.Cyan, Style.NoBackground,sep)
+        def Cyan(*obj:Any,sep:str=sep_) -> str:            return NCS(obj, Basic.Back.Cyan, Style.NoBackground,sep)
         @staticmethod
-        def White(*obj:tuple[Any, ...],sep:str=sep_) -> str:           return NCS(obj, Basic.Back.White, Style.NoBackground,sep)
+        def White(*obj:Any,sep:str=sep_) -> str:           return NCS(obj, Basic.Back.White, Style.NoBackground,sep)
         @staticmethod
-        def BrightBlack(*obj:tuple[Any, ...],sep:str=sep_) -> str:     return NCS(obj, Basic.Back.BrightBlack, Style.NoBackground,sep)
+        def BrightBlack(*obj:Any,sep:str=sep_) -> str:     return NCS(obj, Basic.Back.BrightBlack, Style.NoBackground,sep)
         @staticmethod
-        def BrightRed(*obj:tuple[Any, ...],sep:str=sep_) -> str:       return NCS(obj, Basic.Back.BrightRed, Style.NoBackground,sep)
+        def BrightRed(*obj:Any,sep:str=sep_) -> str:       return NCS(obj, Basic.Back.BrightRed, Style.NoBackground,sep)
         @staticmethod
-        def BrightGreen(*obj:tuple[Any, ...],sep:str=sep_) -> str:     return NCS(obj, Basic.Back.BrightGreen, Style.NoBackground,sep)
+        def BrightGreen(*obj:Any,sep:str=sep_) -> str:     return NCS(obj, Basic.Back.BrightGreen, Style.NoBackground,sep)
         @staticmethod
-        def BrightYellow(*obj:tuple[Any, ...],sep:str=sep_) -> str:    return NCS(obj, Basic.Back.BrightYellow, Style.NoBackground,sep)
+        def BrightYellow(*obj:Any,sep:str=sep_) -> str:    return NCS(obj, Basic.Back.BrightYellow, Style.NoBackground,sep)
         @staticmethod
-        def BrightBlue(*obj:tuple[Any, ...],sep:str=sep_) -> str:      return NCS(obj, Basic.Back.BrightBlue, Style.NoBackground,sep)
+        def BrightBlue(*obj:Any,sep:str=sep_) -> str:      return NCS(obj, Basic.Back.BrightBlue, Style.NoBackground,sep)
         @staticmethod
-        def BrightMagenta(*obj:tuple[Any, ...],sep:str=sep_) -> str:   return NCS(obj, Basic.Back.BrightMagenta, Style.NoBackground,sep)
+        def BrightMagenta(*obj:Any,sep:str=sep_) -> str:   return NCS(obj, Basic.Back.BrightMagenta, Style.NoBackground,sep)
         @staticmethod
-        def BrightCyan(*obj:tuple[Any, ...],sep:str=sep_) -> str:      return NCS(obj, Basic.Back.BrightCyan, Style.NoBackground,sep)
+        def BrightCyan(*obj:Any,sep:str=sep_) -> str:      return NCS(obj, Basic.Back.BrightCyan, Style.NoBackground,sep)
         @staticmethod
-        def BrightWhite(*obj:tuple[Any, ...],sep:str=sep_) -> str:     return NCS(obj, Basic.Back.BrightWhite, Style.NoBackground,sep)
+        def BrightWhite(*obj:Any,sep:str=sep_) -> str:     return NCS(obj, Basic.Back.BrightWhite, Style.NoBackground,sep)
