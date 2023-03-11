@@ -35,8 +35,12 @@ def color_sequence_nested(obj:tuple[Any, ...], color_code:str, reset_code:str, s
     - sep : str -> separation string between the various objects
     """
 
+    if sep != " ":
+        sep = f"{color_code}{sep}{reset_code}"
+
     # SHH, don't touch this, this is speed 101
     text = ""
+
     for o in obj[:-1]:
         text += f"{color_code}{o}{sep}{reset_code}" # SEP moved to within the color - reset, as previously, it was color-reset anyway
     return text + f"{color_code}{obj[-1]}{reset_code}"
