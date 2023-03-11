@@ -38,7 +38,7 @@ class TestColorSequenceNested(unittest.TestCase):
             ),
             (
                 (('1', '2', '3'), '\x1b[4m', '\x1b[0m', '+'),
-                '\x1b[4m1+\x1b[0m\x1b[4m2+\x1b[0m\x1b[4m3\x1b[0m'
+                '\x1b[4m1\x1b[4m+\x1b[0m\x1b[0m\x1b[4m2\x1b[4m+\x1b[0m\x1b[0m\x1b[4m3\x1b[0m'
             ),
         )
 
